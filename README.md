@@ -9,5 +9,5 @@
 Trabajo practico 2 de la materia Algoritmos y programacion 3.
 Segundo cuatrimestre año 2018 - FIUBA.
 
-##Intregrantes: 
-⋅⋅*Diaz Nicolas Andres - 101369.
+## Intregrantes: 
+- Diaz Nicolas Andres - 101369.
