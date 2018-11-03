@@ -1,8 +1,6 @@
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-import junit.framework.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClasePruebaTest {
 
@@ -10,6 +8,6 @@ public class ClasePruebaTest {
 	public void pruebaOKTest() {
 		ClasePrueba instanciaPrueba = new ClasePrueba();
 		String resultado = instanciaPrueba.retornoOk();
-		Assert.assertEquals("Ok", resultado);
+        assertEquals("Ok", resultado);
 	}
 }
