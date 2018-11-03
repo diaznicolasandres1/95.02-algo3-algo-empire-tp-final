@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="nicopaez.tutoriales.oo.notas" basedir="." default="test">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="tp2.build" basedir="." default="test">
 	<property name="build" location="build" />
 	<property name="libs" location="libs" />
 	<property name="classes.dir" location="build" />
@@ -83,21 +83,18 @@
 		</cobertura-instrument>
 	</target>
 
-
     <target name="ejecutar.tests" depends="compilar.tests">
-        <junit fork="yes" failureProperty="test.failure" forkmode="once" showoutput="true">
-            <sysproperty key="net.sourceforge.cobertura.datafile" file="${build}/cobertura.ser" />
+        <junitlauncher failureProperty="test.failure" printSummary="true">
             <classpath location="${instrumented.dir}" />
             <classpath location="${build}" />
             <classpath refid="cobertura.classpath" />
             <classpath refid="classpath" />
-            <formatter type="xml" />
             <test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
-            <batchtest todir="${reports.xml.dir}" unless="testcase">
+            <testclasses outputDir="${reports.xml.dir}" unless="testcase">
                 <fileset dir="${build}/tests" includes="**/*Test.class" />
                 <fileset dir="${build}/tests" includes="**/Prueba*.class" />
-            </batchtest>
-        </junit>
+            </testclasses>
+        </junitlauncher>
         <fail message="Pruebas fallidas" if="test.failure" />
         <junitreport todir="${reports.xml.dir}">
             <fileset dir="${reports.xml.dir}">
@@ -134,17 +131,15 @@
 	</target>
 
     <target name="test" depends="compilar.tests.sin.instrumentar">
-        <junit fork="no" failureProperty="test.failure" showoutput="true">
+        <junitlauncher failureProperty="test.failure" printSummary="true">
             <classpath location="${build}" />
             <classpath refid="classpath" />
-            <batchtest todir="${reports.xml.dir}" unless="testcase">
+            <testclasses outputDir="${reports.xml.dir}" unless="testcase">
                 <fileset dir="${build}/tests" includes="**/*Test.class" />
-                <formatter type="plain" usefile="false"/>
-            </batchtest>
-        </junit>
+            </testclasses>
+        </junitlauncher>
         <fail message="Pruebas fallidas" if="test.failure" />
     </target>
-
 
     <target name="compilar.paquete" depends="test">
 		<javac srcdir="src" destdir="${build}/classes" debug="no">
@@ -197,7 +192,6 @@
 			</fileset>
 		</pmd>
 	</target>
-
 
 		<target name="empaquetar.con.imagenes" depends="compilar.paquete">
 			<copydir src="src/gui/imagess"
