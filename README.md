@@ -25,7 +25,8 @@ Siempre:
 1. Cambios en codigo, informe o diagramas
     1. Informe: Modificar informe
     1. Codigo: Modificar src/ y test/ con IntelliJ/Eclipse/Netbeans
-    1. Diagramas: Modificar diagramas con Astah UML y subirlos como imagenes.
+    1. Diagramas: Modificar diagramas con Astah UML y subirlos como imagenes
+1. Ejecutar pruebas unitarias y de integración. Además, usar el script de Ant (`ant` en el directorio donde se tenga el proyecto) para comprobar que se pueda buildear correctamente
 1. `git status`
 1. `git add ARCHIVOS_MODIFICADOS`. No agregar archivos propios de los IDEs.
 1. `git commit -m "Agrego.."`
