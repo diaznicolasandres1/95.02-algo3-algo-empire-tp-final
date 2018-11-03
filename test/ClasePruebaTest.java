@@ -1,13 +1,14 @@
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.Assert;
+import org.junit.Test;
 
 public class ClasePruebaTest {
 
 	@Test
 	public void pruebaOKTest() {
+
 		ClasePrueba instanciaPrueba = new ClasePrueba();
 		String resultado = instanciaPrueba.retornoOk();
-        assertEquals("Ok", resultado);
+        Assert.assertEquals("Ok", resultado);
+
 	}
 }
