@@ -1,18 +1,18 @@
-# Algo Empire.
+# Algo Empire
 Trabajo practico de la materia Algoritmos y programación III - Modelo de Age of Empires II -
 Segundo cuatrimestre año 2018 - FIUBA.
 
 ![Build Status](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3.svg?token=4LgUpS6rvXisEoAyjjAp&branch=master
-)
+) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d3a7af654e14a3d9c4445b1abba0a52)](https://www.codacy.com/app/FacuMastri/Algo-Empire-AYP3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=diaznicolasandres1/Algo-Empire-AYP3&amp;utm_campaign=Badge_Grade)
 
-## Intregrantes:
-- Balladares, Alejandro - 101118.
-- Diaz, Nicolas Andres - 101369.
-- Galvan Perez, Jonathan - 101250.
-- Mastricchio, Facundo Rodrigo - 100874.
+## Intregrantes
+-  Balladares, Alejandro, 101118
+-  Diaz, Nicolas Andres, 101369
+-  Galvan Perez, Jonathan, 101250
+-  Mastricchio, Facundo Rodrigo, 100874
 
 ---
-## Pasos para trabajar:
+## Pasos para trabajar
 
 _Opcional: pueden automatizar todo los pasos utilizando GitKraken o los plugins de integracion propio de cada IDE._
 
@@ -29,17 +29,17 @@ Siempre:
 1. Ejecutar pruebas unitarias y de integración. Además, usar el script de Ant (`ant` en el directorio donde se tenga el proyecto) para comprobar que se pueda buildear correctamente
 1. `git status`
 1. `git add ARCHIVOS_MODIFICADOS`. No agregar archivos propios de los IDEs.
-1. `git commit -m "Agrego.."`
+1. `git commit -m "Comentario del commit"`
 1. `git push origin master` 
 1. Confirmar que el build paso las pruebas de [Travis](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3/) (se recibe un mail de no hacerlo)
 
 ---
 ## Entregas
 
-**1ra Entrega (15 de noviembre):**
+### 1ra Entrega (15 de noviembre)
 
-**2da Entrega (22 de noviembre):**
+### 2da Entrega (22 de noviembre)
 
-**3ra entrega (29 de noviembre):**
+### 3ra entrega (29 de noviembre)
 
-**4ta entrega (6 de diciembre):**
+### 4ta entrega (6 de diciembre)
