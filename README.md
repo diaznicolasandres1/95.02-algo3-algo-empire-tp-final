@@ -3,7 +3,7 @@ Trabajo practico de la materia Algoritmos y programación III - Modelo de Age of
 Segundo cuatrimestre año 2018 - FIUBA.
 
 ![Build Status](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3.svg?token=4LgUpS6rvXisEoAyjjAp&branch=master
-) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d3a7af654e14a3d9c4445b1abba0a52)](https://www.codacy.com/app/FacuMastri/Algo-Empire-AYP3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=diaznicolasandres1/Algo-Empire-AYP3&amp;utm_campaign=Badge_Grade)
+)
 [![codecov](https://codecov.io/gh/diaznicolasandres1/Algo-Empire-AYP3/branch/master/graph/badge.svg)](https://codecov.io/gh/diaznicolasandres1/Algo-Empire-AYP3)
 
 ## Intregrantes
