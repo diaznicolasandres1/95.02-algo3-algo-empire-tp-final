@@ -11,7 +11,7 @@ after_success:
 notifications:
  email:
     recipients:
-      - diaz.nicolasandres@gmail.com
+      - nadiaz@fi.uba.ar
       - facundomastricchio@gmail.com
       - alejandroballadaresparisi@gmail.com
       - jonathangalvanperez@gmail.com
