@@ -1,8 +1,8 @@
-package Modelo;
+package modelo;
 
 public class Posicion {
-	int posX;
-	int posY;
+	private int posX;
+	private int posY;
 	
 	public Posicion(int newPosX, int newPosY) {
 		this.posX = newPosX;
