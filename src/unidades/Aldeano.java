@@ -2,7 +2,7 @@ package unidades;
 
 import modelo.Oro;
 
-public class Aldeano extends Unidad {
+public class Aldeano extends Unidad implements CambiarEstado {
 	
 	
 	

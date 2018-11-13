@@ -17,6 +17,5 @@ public abstract class Unidad {
     }
 	
 
-	 public abstract void estarOcupado();
-	 public abstract void estarDisponible();
+	
 }
