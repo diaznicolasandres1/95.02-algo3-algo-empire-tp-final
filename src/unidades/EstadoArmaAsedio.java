@@ -4,6 +4,6 @@ public interface EstadoArmaAsedio{
 	
 	public void atacar();	
 	
-	public boolean mePuedoMover();
+	public void moverse();
 
 }

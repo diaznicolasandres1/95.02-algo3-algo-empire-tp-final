@@ -26,9 +26,9 @@ public class ArmaDeAsedio extends Unidad {
 	}
 	
 	
-	//Es un boolean si se puede mover o no ya que los movimientos se manejan por afuera del modelo	
-	public boolean mePuedoMover() {
-		return estado.mePuedoMover();
+		
+	public void moverse() {
+		estado.moverse();
 		
 	}
 

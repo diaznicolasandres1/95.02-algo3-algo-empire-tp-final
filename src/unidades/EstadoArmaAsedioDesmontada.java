@@ -6,8 +6,8 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 		//Si esta desmontada no puede atacar? Lanzar exception
 	}
 	
-	public boolean mePuedoMover() {
-		return true;
+	public void moverse() {
+	
 	}
 
 }
