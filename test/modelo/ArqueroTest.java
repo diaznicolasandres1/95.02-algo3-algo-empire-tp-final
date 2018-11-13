@@ -9,7 +9,7 @@ import unidades.Espadachin;
 public class ArqueroTest {
 	
 	@Test
-	public void test01CreacionDeEspadachin() {
+	public void test01CreacionDeArquero() {
 		Arquero arquero = new Arquero();		
 		Assert.assertEquals(arquero.getVida(), 75);
 		

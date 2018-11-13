@@ -16,7 +16,7 @@ public class AldeanoTests {
 		Aldeano aldeano = new Aldeano();		
 		Assert.assertEquals(aldeano.getVida(), 50);
 		
-		}
+	}
 	
 		
 		@Test
