@@ -28,8 +28,15 @@ public class AldeanoTests {
 			Assert.assertEquals(125, cantidadOro);
 			
 			
-			
-			
+		}
+		
+		public void test03AldeanoOcupadoNoSumaOro() {
+			Aldeano aldeano = new Aldeano();
+			Oro oro = new Oro(100);
+			aldeano.estarOcupado();
+			aldeano.recolectarOro(oro);
+			int cantidadOro = oro.getOro();
+			Assert.assertEquals(100, cantidadOro);
 			
 		}
 	
