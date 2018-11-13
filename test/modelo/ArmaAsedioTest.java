@@ -17,35 +17,9 @@ public class ArmaAsedioTest {
 		
 	}
 	
-	@Test
-	public void test02ArmaSeCreaDesmontadaYSePuedeMover() {
-		ArmaDeAsedio arma = new ArmaDeAsedio();	
-		boolean mePuedoMover = arma.mePuedoMover();
-		Assert.assertEquals(true,mePuedoMover);
-		
-	}
-	
-	@Test
-	public void test03ArmaDesmontadaNoSePuedeMover() {
-		ArmaDeAsedio arma = new ArmaDeAsedio();	
-		arma.montarArma();
-		boolean mePuedoMover = arma.mePuedoMover();
-		Assert.assertEquals(false,mePuedoMover);	
-		
-	}
-	
-	@Test
-	public void test04ArmaDesmontadaYLuegoMontadaSePuedeMover() {
-		ArmaDeAsedio arma = new ArmaDeAsedio();	
-		arma.montarArma();
-		boolean mePuedoMover = arma.mePuedoMover();		
-		Assert.assertEquals(false,mePuedoMover);	
-		arma.desmontarArma();
-		Assert.assertEquals(arma.mePuedoMover(), true);
-		
-	}
-	
-
-	
-
 }
+
+	
+
+	
+
