@@ -9,7 +9,7 @@ import junit.framework.Assert;
 import modelo.Oro;
 import unidades.Aldeano;
 
-public class AldeanoTests {
+public class AldeanoTest {
 
 	@Test
 	public void test01CreacionDeAldeano() {

@@ -8,7 +8,7 @@ import junit.framework.Assert;
 import unidades.Aldeano;
 import unidades.ArmaDeAsedio;
 
-public class ArmaAsedioTests {
+public class ArmaAsedioTest {
 
 	@Test
 	public void test01CreacionDeArmaAsedio() {
