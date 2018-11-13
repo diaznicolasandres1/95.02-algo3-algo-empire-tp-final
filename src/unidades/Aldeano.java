@@ -17,12 +17,12 @@ public class Aldeano extends Unidad {
 	public void recolectarOro(Oro oro) {
 		estado.recolectarOro(oro);
 	}
-	 @Override
-	 public void estarOcupado() {
+
+	 public void estarOcupado(){
 		 estado = new EstadoAldeanoOcupado();
 	 }
 	 
-	 @Override
+
 	 public void estarDisponible() {
 		 estado = new EstadoAldeanoDisponible();
 	 }
