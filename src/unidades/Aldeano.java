@@ -6,25 +6,25 @@ import modelo.Oro;
 
 public class Aldeano extends Unidad  {
 	
-	
+	Oro oro ;
 	
 	private EstadoAldeano estado = new EstadoAldeanoDisponible();
 	
 
 	
-	public Aldeano() {
+	public Aldeano(Oro oroNuevo) {
 		vida = 50;
 		costo = 25;
+		oro = oroNuevo;
 	}
 	
 
-	public void recolectarOro(Oro oro) {
-		estado.recolectarOro(oro);
-	}
+	
 
 	 public void estarOcupado(int turnosOcupado){
 		 estado = new EstadoAldeanoOcupado(turnosOcupado);
 	 }
+	 
 	 public Cuartel construirCuartel() {
 
 		 return estado.construirCuartel(this,3);
@@ -39,7 +39,8 @@ public class Aldeano extends Unidad  {
 		 estado = new EstadoAldeanoDisponible();
 	 }
 
-	public void avanzarTurno() {		
+	public void avanzarTurno() {
+		estado.recolectarOro(oro);
 		estado.avanzarTurno(this);
 	}
 	public void aldeanoSeLibero() {
