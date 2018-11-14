@@ -16,8 +16,8 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	}
 
 	@Override
-	public PlazaCentral construirPlazaCentral(Aldeano aldeano,int turnosOcupado) {
-		PlazaCentral plaza = new PlazaCentral();
+	public PlazaCentral construirPlazaCentral(Aldeano aldeano,int turnosOcupado, Oro oro) {
+		PlazaCentral plaza = new PlazaCentral(oro);
 		aldeano.estarOcupado(3);
 		
 		return plaza;

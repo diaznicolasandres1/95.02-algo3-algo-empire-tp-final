@@ -29,7 +29,7 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 
 
 	@Override
-	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado) {
+	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
 		throw new AldeanoEstaOcupadoException();
 		
 	}

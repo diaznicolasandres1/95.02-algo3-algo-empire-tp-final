@@ -31,7 +31,7 @@ public class Aldeano extends Unidad  {
 	 }
 	 
 	 public PlazaCentral construirPlazaCentral() {
-		 return estado.construirPlazaCentral(this,3);
+		 return estado.construirPlazaCentral(this,3,oro);
 	 }
 
 	 public void estarDisponible() {
