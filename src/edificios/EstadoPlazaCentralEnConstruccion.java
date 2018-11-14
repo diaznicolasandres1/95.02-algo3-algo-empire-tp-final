@@ -14,22 +14,19 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	}
 
 	@Override
-	public void repararse(PlazaCentral plaza) {
+	public void repararse(PlazaCentral plaza) {		
 		
-		
-	}
-
-	@Override
-	public Aldeano crearAldeano() {
-		
-		return null;
-	}
+	}	
 
 	@Override
 	public void recibirDanio(PlazaCentral plazaCentral, int danio) {
 	
 	}
-
+	@Override
+	public Aldeano crearAldeano() {
+		
+		return null;
+	}
 	
 	
 
