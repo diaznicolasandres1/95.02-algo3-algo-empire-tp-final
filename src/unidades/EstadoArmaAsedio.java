@@ -4,6 +4,6 @@ public interface EstadoArmaAsedio{
 	
 	public void atacar();	
 	
-	public void moverse();
+	public void moverse() throws NoSePuedeMoverArmaAsedioMontadaException;
 
 }

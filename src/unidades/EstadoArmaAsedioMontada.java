@@ -6,7 +6,12 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
    //como esta montada se puede atacar, se implementa para la prox entrega
 	}
 	
-	public void moverse() {
+	
+	
+	
+	public void moverse() throws NoSePuedeMoverArmaAsedioMontadaException  {	
+		
+		throw new NoSePuedeMoverArmaAsedioMontadaException();
 		
 	}
 
