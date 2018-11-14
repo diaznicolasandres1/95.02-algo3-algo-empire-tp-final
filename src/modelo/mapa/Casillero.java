@@ -29,7 +29,7 @@ public class Casillero {
         this.edificio = null;
     }
 
-    private boolean estaOcupado() {
+    public boolean estaOcupado() {
         return (this.unidad != null || this.edificio != null);
     }
 
