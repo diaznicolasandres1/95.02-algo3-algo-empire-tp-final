@@ -39,7 +39,6 @@ public class MapaTest {
         Assert.assertNotNull(mapa);
     }
 
-
     @Test
     public void test03creaMapaConMedidasGrandes() {
         Mapa mapa = new Mapa(500, 200);
@@ -245,6 +244,4 @@ public class MapaTest {
 
         mapa.moverUnidadDesdeHasta(armaAsedio, 1, 3, 2, 2);
     }
-
-
 }
