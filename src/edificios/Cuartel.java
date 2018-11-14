@@ -10,10 +10,10 @@ public class Cuartel extends Edificio {
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 	
 	public Cuartel(Oro nuevoOro) {
-		vida =250;
-		costo = 50;
+		vida =250;		
 		tamanio = 4;
 		oro = nuevoOro;
+		oro.restarOro(50);
 		
 		
 	}
