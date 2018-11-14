@@ -18,17 +18,6 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	}
 	
 	@Override
-	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void recolectarOro(Oro oro) {		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void repararEdificio(Aldeano aldeano, Edificio edificio) {
 		this.edificio = edificio;
 		
@@ -43,8 +32,19 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 		}
 			
 		
+	}
+	
+	@Override
+	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void recolectarOro(Oro oro) {		
 		
 	}
+	
 
 	@Override
 	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {

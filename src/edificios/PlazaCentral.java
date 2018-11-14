@@ -34,6 +34,7 @@ public class PlazaCentral extends Edificio {
 		}
 		
 		/**/
+
 		
 		public void terminoDeCrearse() {
 			estado = new EstadoPlazaCentralCreada();

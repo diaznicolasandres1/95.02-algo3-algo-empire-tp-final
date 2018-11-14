@@ -31,22 +31,18 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
 	@Override
 	public void avanzarTurno(Edificio cuartel) {
 		// TODO Auto-generated method stub
-		
-	}	
-
+	}		
 
 
 	@Override
-	public void repararse(Cuartel cuartel) {
+	public void repararse(Edificio cuartel) {
 		cuartel.repararseASimismo();
 		
-	}
-
-
-	@Override
-	public void repararse(Edificio edificio) {
-		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
 
 }

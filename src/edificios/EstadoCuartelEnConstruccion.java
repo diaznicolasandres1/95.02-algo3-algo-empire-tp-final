@@ -45,11 +45,6 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 
 
 
-	@Override
-	public void repararse(Cuartel cuartel) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 

@@ -100,7 +100,7 @@ public class AldeanoTest {
 	}
 	
 	@Test
-	public void aldeanoReparandoCuartelDebeEstarOcupado() {
+	public void test10aldeanoReparandoCuartelDebeEstarOcupado() {
 		Oro oro = new Oro(500);
     	Aldeano aldeano = new Aldeano(oro);  //25 oro   
         Cuartel cuartel =  aldeano.construirCuartel(); //50 Oro       
@@ -123,7 +123,7 @@ public class AldeanoTest {
 		
 	}
 	@Test
-	public void aldeanoReparandoDebeEstarOcupado() {
+	public void aldeanoReparandoDebeEstarOcupadoYTerminaCuandoSeReparaElEdificio() {
 		Oro oro = new Oro(500);
     	Aldeano aldeano = new Aldeano(oro);  //25 oro   
         PlazaCentral plaza =  aldeano.construirPlazaCentral(); //100 Oro
