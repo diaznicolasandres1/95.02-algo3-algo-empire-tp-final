@@ -2,6 +2,8 @@ package modelo;
 
 import junit.framework.Assert;
 import org.junit.Test;
+
+import edificios.Cuartel;
 import unidades.Aldeano;
 import unidades.AldeanoEstaOcupadoException;
 import unidades.Espadachin;
@@ -96,5 +98,27 @@ public class AldeanoTest {
 		Aldeano aldeano = new Aldeano(oro);
 	}
 	
+	@Test
+	public void aldeanoReparandoDebeEstarOcupado() {
+		Oro oro = new Oro(500);
+    	Aldeano aldeano = new Aldeano(oro);  //25 oro   
+        Cuartel cuartel =  aldeano.construirCuartel(); //50 Oro       
+        aldeano.avanzarTurno();//Segundo turno ocupado
+        cuartel.avanzarTurno();//Segundo turno ocupado
+        aldeano.avanzarTurno();//tercer turno ocupado
+        cuartel.avanzarTurno();//tercer turno ocupado
+        
+      
+        cuartel.recibirDanio(100); //Ya se construyo se le puede hacer daño
+        aldeano.aldeanoRepararEdificio(cuartel); //No Genera oro en este turno
+        aldeano.avanzarTurno();//Tercer turno ocupado 
+       
+       
+        
+        
+        int cantidadOro = oro.getOro();
+        Assert.assertEquals(425, cantidadOro);
+		
+	}
     
 }

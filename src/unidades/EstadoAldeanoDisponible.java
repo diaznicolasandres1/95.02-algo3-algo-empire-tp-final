@@ -2,6 +2,7 @@ package unidades;
 
 import edificios.Cuartel;
 import edificios.Edificio;
+import edificios.EdificioTieneVidaMaximaException;
 import edificios.PlazaCentral;
 import modelo.Oro;
 
@@ -31,8 +32,17 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	}
 
 	@Override
-	public void repararEdificio(Edificio edificio) {
-		edificio.repararseASimismo();
+	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
+		aldeano.estarOcupado(10); //Sacar calculo cuanto seria el maximo de turnos que podria estar ocupado
+		try {
+			
+			edificio.repararseASimismo();
+			
+		}catch(EdificioTieneVidaMaximaException e){
+			aldeano.estarDisponible();
+		}
+			
+		
 		
 	}
 

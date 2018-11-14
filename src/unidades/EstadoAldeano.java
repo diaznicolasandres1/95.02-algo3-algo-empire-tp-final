@@ -11,7 +11,7 @@ public interface EstadoAldeano {
 	Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado, Oro oro);		
 	void recolectarOro(Oro oro);
 	void avanzarTurno(Aldeano aldeano);
-	void repararEdificio(Edificio edificio);
+	void repararEdificio(Aldeano aldeano,Edificio edificio);
 	PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
 	
 
