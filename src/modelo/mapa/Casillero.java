@@ -16,10 +16,6 @@ public class Casillero {
         this.unidad = unidad;
     }
 
-    private boolean estaOcupado() {
-        return (this.unidad == null || this.edificio == null);
-    }
-
     public void colocarEdificio(Edificio edificio) {
 
         if (this.estaOcupado()) {
@@ -27,4 +23,14 @@ public class Casillero {
         }
         this.edificio = edificio;
     }
+
+    public void desocupar() {
+        this.unidad = null;
+        this.edificio = null;
+    }
+
+    private boolean estaOcupado() {
+        return (this.unidad != null || this.edificio != null);
+    }
+
 }
