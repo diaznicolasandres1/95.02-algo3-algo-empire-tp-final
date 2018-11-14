@@ -17,110 +17,55 @@ public class CasilleroTest {
         Assert.assertNotNull(new Casillero());
     }
 
-    @Test
-    public void test02casilleroSeCreaDesocupado() {
-
-        Casillero casillero = new Casillero();
-
-        Assert.assertTrue(!casillero.estaOcupado());
-    }
-
-    @Test
-    public void test03casilleroEsOcupadoPorUnidadYSeVerificaQueEstaOcupado() {
-
-        Casillero casillero = new Casillero();
-        Arquero arquero = new Arquero(oro);
-
-        casillero.colocarUnidad(arquero);
-
-        Assert.assertTrue(casillero.estaOcupado());
-
-    }
-
     @Test(expected = CasilleroOcupadoException.class)
-    public void test04casilleroEsOcupadoPorUnidadYSeIntentaOcuparNuevamenteLanzaExcepcion() {
+    public void test02casilleroEsOcupadoPorUnidadYSeIntentaOcuparNuevamentePorOtraUnidadLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
         Arquero arquero = new Arquero(oro);
         Arquero otroArquero = new Arquero(oro);
 
-        casillero.colocarUnidad(arquero);
+        casillero.colocar(arquero);
 
-        casillero.colocarUnidad(otroArquero);
-    }
-
-    @Test
-    public void test04casilleroOcupadoPorUnidadEsDesocupadoYSeVerificaQueNoEsteOcupado() {
-
-        Casillero casillero = new Casillero();
-        Arquero arquero = new Arquero(oro);
-
-        casillero.colocarUnidad(arquero);
-        casillero.desocupar();
-
-        Assert.assertTrue(!casillero.estaOcupado());
-    }
-
-    @Test
-    public void test05casilleroEsOcupadoPorEdificioYSeVerificaQueEsteOcupado() {
-
-        Casillero casillero = new Casillero();
-        PlazaCentral plaza = new PlazaCentral(oro);
-
-        casillero.colocarEdificio(plaza);
-
-        Assert.assertTrue(casillero.estaOcupado());
+        casillero.colocar(otroArquero);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test06casilleroOcupadoPorEdificioSeIntentaOcuparPorUnidadLanzaExcepcion() {
+    public void test03casilleroOcupadoPorEdificioSeIntentaOcuparPorUnidadLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
         PlazaCentral plaza = new PlazaCentral(oro);
         Arquero arquero = new Arquero(oro);
 
-        casillero.colocarEdificio(plaza);
+        casillero.colocar(plaza);
 
-        casillero.colocarUnidad(arquero);
+        casillero.colocar(arquero);
     }
 
-    @Test
-    public void test07casilleroOcupadoPorEdificioEsDesocupadoYSeVerificaQueNoEsteOcupado() {
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test04casilleroOcupadoPorEdificioSeIntentaOcuparPorEdificioLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
         PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral otraPlaza = new PlazaCentral(oro);
 
-        casillero.colocarEdificio(plaza);
-        casillero.desocupar();
+        casillero.colocar(plaza);
 
-        Assert.assertTrue(!casillero.estaOcupado());
+        casillero.colocar(otraPlaza);
     }
 
-    @Test
-    public void test08casilleroEsOcupadoPorEdificioYDesocupadoMultiplesVecesYSeVerificaQueNoEsteOcupado() {
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test05casilleroEsOcupadoYDesocupadoMultiplesVecesYAlFinalLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
         PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral otraPlaza = new PlazaCentral(oro);
 
         for (int i = 0; i < 1000; i++) {
-            casillero.colocarEdificio(plaza);
+            casillero.colocar(plaza);
             casillero.desocupar();
         }
+        casillero.colocar(otraPlaza);
 
-        Assert.assertTrue(!casillero.estaOcupado());
-    }
-
-    @Test
-    public void test09casilleroEsOcupadoPorUnidadYDesocupadoMultiplesVecesYSeVerificaQueNoEsteOcupado() {
-
-        Casillero casillero = new Casillero();
-        Arquero arquero = new Arquero(oro);
-
-        for (int i = 0; i < 1000; i++) {
-            casillero.colocarUnidad(arquero);
-            casillero.desocupar();
-        }
-
-        Assert.assertTrue(!casillero.estaOcupado());
+        casillero.colocar(plaza);
     }
 }
