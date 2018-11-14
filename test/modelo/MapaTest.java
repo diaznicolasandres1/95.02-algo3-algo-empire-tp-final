@@ -177,8 +177,8 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 25);
         Posicion posicion = new Posicion(5, 5);
-        Espadachin espadachin = new Espadachin();
-        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 5, 5);
@@ -192,8 +192,8 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 30);
         Posicion posicion = new Posicion(10, 11);
-        Espadachin espadachin = new Espadachin();
-        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 11, 10);
@@ -206,7 +206,7 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 30);
         Posicion posicion = new Posicion(8, 9);
-        Espadachin espadachin = new Espadachin();
+        Espadachin espadachin = new Espadachin(oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 9, 8);
@@ -219,8 +219,8 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 36);
         Posicion posicion = new Posicion(3, 1);
-        ArmaDeAsedio armaAsedio = new ArmaDeAsedio();
-        Cuartel cuartel = new Cuartel();
+        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(oro);
+        Cuartel cuartel = new Cuartel(oro);
         armaAsedio.setPosicion(posicion);
 
         cuartel.colocarseEn(mapa, 1, 1);
@@ -235,8 +235,8 @@ public class MapaTest {
         Mapa mapa = new Mapa(25, 36);
         Posicion unaPosicion = new Posicion(3, 1);
         Posicion otraPosicion = new Posicion(2, 2);
-        ArmaDeAsedio armaAsedio = new ArmaDeAsedio();
-        Arquero arquero = new Arquero();
+        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(oro);
+        Arquero arquero = new Arquero(oro);
         armaAsedio.setPosicion(unaPosicion);
         arquero.setPosicion(otraPosicion);
 
