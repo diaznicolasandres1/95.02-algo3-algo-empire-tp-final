@@ -1,3 +1,5 @@
+/*
+
 package modelo;
 
 import static org.junit.Assert.*;
@@ -54,3 +56,4 @@ public class PosicionTest {
 
 
 }
+*/
