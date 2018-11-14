@@ -1,6 +1,9 @@
 package modelo;
 
+import unidades.Unidad;
+
 public class Posicion {
+
 	private int posX;
 	private int posY;
 
@@ -19,6 +22,14 @@ public class Posicion {
             throw new RangoInvalidoException();
         }
         return otraPosicion.wrapperEstaDentroDelRango(this.posX, this.posY, rango);
+    }
+
+    public void moverUnidadHacia(Unidad unidad, Posicion posicion, int rangoMovimiento) {
+
+        if (!this.estaDentroDelRango(posicion, rangoMovimiento)) {
+            throw new PosicionFueraDeRango();
+        }
+        unidad.setPosicion(posicion);
     }
 
     private boolean esRangoValido(int rango) {
