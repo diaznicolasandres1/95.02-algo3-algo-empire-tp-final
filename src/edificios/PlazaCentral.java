@@ -5,8 +5,6 @@ import unidades.Aldeano;
 public class PlazaCentral extends Edificio {
 	
 	
-	 	/* Se le asigna estado creada para poder hacer los primeros test
-	 	 * luego refactorizamos  y empieza en estado: EnConstruccion y vemos como hacer los turnos*/
 	
 	
 		EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
