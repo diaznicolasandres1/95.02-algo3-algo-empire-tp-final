@@ -29,17 +29,17 @@ public class Mapa {
 
     public void colocarUnidad(Unidad unidad, int fila, int columna) {
 
-        Casillero casillero = this.buscarCasillero(fila, columna);
+        filas.get(fila - 1).colocarUnidad(unidad, columna);
         Posicion posicion = new Posicion(columna, fila);
-        casillero.colocarUnidad(unidad);
         unidad.setPosicion(posicion);
     }
 
     public void colocarEdificio(Edificio edificio, int tamanioEdificio, int fila, int columna) {
 
-        ArrayList<Casillero> terreno = this.buscarCasillerosParaEdificio(tamanioEdificio, fila, columna);
-        for (Casillero casillero : terreno) {
-            casillero.colocarEdificio(edificio);
+        int cantidadFilasAUtilizar = tamanioEdificio / 2;
+        for (int i = 0; i <= cantidadFilasAUtilizar; i++) {
+            filas.get(fila + i - 1).colocarEdificio(edificio, columna);
+            filas.get(fila + i - 1).colocarEdificio(edificio, columna + i);
         }
     }
 
@@ -65,12 +65,12 @@ public class Mapa {
 
     private void agregarFilas() {
         for (int i = 1; i <= altura; i++) {
-            ArrayList<Casillero> auxFila = new ArrayList<>();
+            ArrayList<Casillero> casillerosEnFila = new ArrayList<>();
             for (int j = (i - 1) * base; j < i * base; j++) {
-                auxFila.add(casilleros.get(j));
+                casillerosEnFila.add(casilleros.get(j));
             }
             Fila fila = new Fila();
-            fila.agregarCasilleros(auxFila);
+            fila.agregarCasilleros(casillerosEnFila);
             filas.add(fila);
         }
     }
@@ -79,18 +79,6 @@ public class Mapa {
 
         Fila fila = filas.get(numeroFila - 1);
         return fila.buscarCasillero(numeroColumna - 1);
-    }
-
-    private ArrayList<Casillero> buscarCasillerosParaEdificio(int tamanioEdificio, int filaInicio, int columnaInicio) {
-
-        ArrayList<Casillero> terreno = new ArrayList<>();
-        int cantidadFilasAUtilizar = tamanioEdificio / 2;
-
-        for (int i = 0; i <= cantidadFilasAUtilizar; i++) {
-            terreno.add(this.buscarCasillero(filaInicio + i, columnaInicio));
-            terreno.add(this.buscarCasillero(filaInicio + i, columnaInicio + i));
-        }
-        return terreno;
     }
 
     private boolean esTamanioValido(int base, int altura) {
