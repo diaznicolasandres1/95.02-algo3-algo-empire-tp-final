@@ -1,10 +1,12 @@
 package unidades;
 
+import modelo.Oro;
+
 public class Espadachin extends Unidad {
 
-	public Espadachin() {
+	public Espadachin(Oro oro) {
 		vida = 100;
-		costo = 50;
+		oro.restarOro(50);
 	}
 	
 

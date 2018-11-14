@@ -7,8 +7,7 @@ import modelo.Oro;
 public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	
 	public void recolectarOro(Oro oro) {
-		oro.sumarOro(25);
-		
+		oro.sumarOro(25);		
 	}
 	
 	public void avanzarTurno(Aldeano aldeano) {
@@ -17,15 +16,15 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 
 	@Override
 	public PlazaCentral construirPlazaCentral(Aldeano aldeano,int turnosOcupado, Oro oro) {
-		PlazaCentral plaza = new PlazaCentral(oro);
-		aldeano.estarOcupado(3);
 		
+		PlazaCentral plaza = new PlazaCentral(oro);		
+		aldeano.estarOcupado(3);		
 		return plaza;
 	}
 
 	@Override
-	public Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado) {
-		Cuartel cuartel = new Cuartel();
+	public Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado, Oro oro) {
+		Cuartel cuartel = new Cuartel(oro);
 		aldeano.estarOcupado(3);
 		return cuartel;
 	}

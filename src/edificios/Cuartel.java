@@ -1,17 +1,20 @@
 package edificios;
 
+import modelo.Oro;
 import unidades.Aldeano;
 import unidades.Arquero;
 import unidades.Espadachin;
 
 public class Cuartel extends Edificio {
-	
+	Oro oro;
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 	
-	public Cuartel() {
-		vida =250;
-		costo = 50;
+	public Cuartel(Oro nuevoOro) {
+		vida =250;		
 		tamanio = 4;
+		oro = nuevoOro;
+		oro.restarOro(50);
+		
 		
 	}
 	
@@ -32,11 +35,11 @@ public class Cuartel extends Edificio {
 	}
 	
 	public Arquero crearArqueroDesdeCuartel() {
-		return estado.crearArquero();
+		return estado.crearArquero(oro);
 		
 	}
 	public Espadachin crearEspadachinDesdeCuartel() {
-		return estado.crearEspadachin();
+		return estado.crearEspadachin(oro);
 	}
 	
 

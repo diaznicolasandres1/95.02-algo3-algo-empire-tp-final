@@ -9,10 +9,11 @@ import junit.framework.Assert;
 import unidades.Aldeano;
 
 public class PlazaCentralTest {
-	Oro oro = new Oro(100);
+	
 
 	@Test
 	public void test01CreacionDePlazaCentral() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		Assert.assertEquals(plaza.getVida(), 450);
 		
@@ -21,6 +22,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test02PlazaCentralEnConstruccionNoRecibeDanio() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.recibirDanio(50);
 		Assert.assertEquals(plaza.getVida(), 450);
@@ -30,6 +32,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test03PlazaCentralConstruidaRecibeDanio() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -45,6 +48,7 @@ public class PlazaCentralTest {
 
 	@Test
 	public void test04PlazaCentralRecibirDanioYRepararse() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -59,6 +63,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test05PlazaCentralRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -75,6 +80,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test06CrearAldeanoDesdePlazaCentral() {
+		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -82,6 +88,19 @@ public class PlazaCentralTest {
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
 		Assert.assertEquals(aldeano.getVida(), 50);
 		
+	}
+	
+	@Test
+	public void test07CrearPlazaRestaOro() {
+		Oro oro = new Oro(500);
+		PlazaCentral plaza = new PlazaCentral(oro);
+		Assert.assertEquals(oro.getOro(), 400); //Cuesta 100 crearse
+		
+	}
+	@Test(expected = NoTenesOroSuficienteException.class)
+	public void test08CrearPlazaConOroInsuficiente() {
+		Oro oro = new Oro(50);
+		PlazaCentral plaza = new PlazaCentral(oro);		
 	}
 	
 }

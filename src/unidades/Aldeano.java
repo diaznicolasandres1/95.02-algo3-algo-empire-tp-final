@@ -13,9 +13,9 @@ public class Aldeano extends Unidad  {
 
 	
 	public Aldeano(Oro oroNuevo) {
-		vida = 50;
-		costo = 25;
+		vida = 50;		
 		oro = oroNuevo;
+		oro.restarOro(25);
 	}
 	
 
@@ -27,7 +27,7 @@ public class Aldeano extends Unidad  {
 	 
 	 public Cuartel construirCuartel() {
 
-		 return estado.construirCuartel(this,3);
+		 return estado.construirCuartel(this,3,oro);
 	 }
 	 
 	 public PlazaCentral construirPlazaCentral() {

@@ -15,7 +15,7 @@ import unidades.Espadachin;
 import java.util.ArrayList;
 
 public class MapaTest {
-	Oro oro = new Oro(100);
+	Oro oro = new Oro(10000);
 
     @Test(expected = TamanioInvalidoException.class)
     public void test01crearMapaConMedidasNegativasLanzaExcepcion() {
@@ -165,7 +165,7 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(50, 40);
         PlazaCentral plaza = new PlazaCentral(oro);
-        Espadachin espadachin = new Espadachin();
+        Espadachin espadachin = new Espadachin(oro);
 
         mapa.colocarUnidad(espadachin, 23, 22);
 

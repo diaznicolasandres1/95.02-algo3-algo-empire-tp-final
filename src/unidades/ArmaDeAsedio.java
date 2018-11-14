@@ -1,12 +1,14 @@
 package unidades;
 
+import modelo.Oro;
+
 public class ArmaDeAsedio extends Unidad {
 	
 	EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
 	
-	public ArmaDeAsedio() {
+	public ArmaDeAsedio(Oro oro) {
 		vida = 150;
-		costo = 200;
+		oro.restarOro(200);
 	}	
 
 	public void montarArma() {
