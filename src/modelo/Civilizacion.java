@@ -1,8 +1,12 @@
 
 package modelo;
 
-import unidades.colocable;
-import unidades.unidad;
+import unidades.Colocable;
+import unidades.Unidad;
+
+import java.util.ArrayList;
+
+import edificios.Edificio;
 import edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.mapa.Casillero;
@@ -12,8 +16,10 @@ public class Civilizacion {
 	Oro oro;
 	ArrayList<Unidad> unidades;
 	ArrayList<Edificio> edificios;
-	limitePoblacion = 50;
+	int limitePoblacion = 50;
 	int aldeanosIniciales = 3;
+	
+}
 	
 	/*
 	public Civilizacion(int PosCastilloX, int PosCastilloY) {
