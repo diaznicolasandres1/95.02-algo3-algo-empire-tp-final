@@ -3,15 +3,14 @@ package edificios;
 import unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
-	
-	
-	
-	
+
 		EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
+	private int tamanio;
 
 		public PlazaCentral () {
 			vida = 450;
 			costo = 100;
+			tamanio = 4;
 		}
 		
 		public void repararse() {

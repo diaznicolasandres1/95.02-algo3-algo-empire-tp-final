@@ -1,13 +1,13 @@
 package edificios;
 
-import unidades.UnidadEstaMuertaException;
+import modelo.mapa.Mapa;
 
 public abstract class Edificio {
 	
 	protected int vida;
 	protected int costo;
-	
-	
+	protected int tamanio;
+
 	public int getVida() {
 		return vida;
 	}
@@ -21,10 +21,13 @@ public abstract class Edificio {
 	
 	public void repararseASimismo(int varlorARepararse, int vidaMaxima) {
 		vida += varlorARepararse;
-		if(vida >= vidaMaxima) {
+		if (vida >= vidaMaxima) {
 			vida = vidaMaxima;
 		}
-		
+	}
+
+	public void colocarseEn(Mapa mapa, int fila, int columna) {
+		mapa.colocarEdificio(this, tamanio, fila, columna);
 	}
 	
 	
