@@ -1,5 +1,8 @@
 package modelo.mapa;
 
+import edificios.Edificio;
+import unidades.Unidad;
+
 import java.util.ArrayList;
 
 public class Fila {
@@ -12,12 +15,18 @@ public class Fila {
 
     public void agregarCasilleros(ArrayList<Casillero> casilleros) {
 
-        for (int i = 0; i < casilleros.size(); i++) {
-            this.casilleros.add(casilleros.get(i));
-        }
+        this.casilleros.addAll(casilleros);
     }
 
     public Casillero buscarCasillero(int numeroColumna) {
         return casilleros.get(numeroColumna);
+    }
+
+    public void colocarUnidad(Unidad unidad, int columna) {
+        casilleros.get(columna - 1).colocarUnidad(unidad);
+    }
+
+    public void colocarEdificio(Edificio edificio, int columna) {
+        casilleros.get(columna - 1).colocarEdificio(edificio);
     }
 }
