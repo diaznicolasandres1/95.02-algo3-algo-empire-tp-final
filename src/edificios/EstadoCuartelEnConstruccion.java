@@ -5,7 +5,7 @@ import unidades.Arquero;
 import unidades.Espadachin;
 
 public class EstadoCuartelEnConstruccion implements EstadoCuartel {
-	int turnos;
+	int turnos =3 ;
 	
 	public void avanzarTurno(Edificio cuartel) {
 		turnos -=1;
