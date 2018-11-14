@@ -7,6 +7,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import unidades.Aldeano;
 import unidades.ArmaDeAsedio;
+import unidades.NoSePuedeAtacarArmaAsedioDesmontadaException;
 import unidades.NoSePuedeMoverArmaAsedioMontadaException;
 
 public class ArmaAsedioTest {
@@ -18,10 +19,17 @@ public class ArmaAsedioTest {
 	}
 	
 	@Test(expected = NoSePuedeMoverArmaAsedioMontadaException.class)
-	public void test02MoverArmaMontadaLanzaExcepcion() throws NoSePuedeMoverArmaAsedioMontadaException {
+	public void test02MoverArmaMontadaLanzaExcepcion() {
 		ArmaDeAsedio arma = new ArmaDeAsedio();	
 		arma.montarArma();
 		arma.moverse();
+		
+	}
+	
+	@Test(expected = NoSePuedeAtacarArmaAsedioDesmontadaException.class)
+	public void test03AtacarConArmaDesmontada() {
+		ArmaDeAsedio arma = new ArmaDeAsedio();			
+		arma.atacar();
 		
 	}
 	

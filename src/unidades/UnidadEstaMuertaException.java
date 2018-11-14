@@ -1,5 +1,5 @@
 package unidades;
 
-public class UnidadEstaMuertaException extends Exception {
+public class UnidadEstaMuertaException extends RuntimeException {
 
 }

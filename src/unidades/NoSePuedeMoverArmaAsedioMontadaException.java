@@ -1,5 +1,5 @@
 package unidades;
 
-public class NoSePuedeMoverArmaAsedioMontadaException extends Exception {
+public class NoSePuedeMoverArmaAsedioMontadaException extends RuntimeException {
 
 }

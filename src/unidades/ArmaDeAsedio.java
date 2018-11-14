@@ -27,7 +27,7 @@ public class ArmaDeAsedio extends Unidad {
 	
 	
 		
-	public void moverse() throws NoSePuedeMoverArmaAsedioMontadaException{
+	public void moverse() {
 		estado.moverse();
 		
 	}
