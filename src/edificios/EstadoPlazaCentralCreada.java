@@ -23,4 +23,12 @@ public class EstadoPlazaCentralCreada implements EstadoPlazaCentral {
 		
 	}
 
+
+
+	@Override
+	public void avanzarTurno(PlazaCentral plazaCentral) {
+	
+		
+	}
+
 }
