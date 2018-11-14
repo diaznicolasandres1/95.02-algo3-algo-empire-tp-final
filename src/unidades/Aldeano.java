@@ -27,7 +27,7 @@ public class Aldeano extends Unidad  {
 	 
 	 public Cuartel construirCuartel() {
 
-		 return estado.construirCuartel(this,3);
+		 return estado.construirCuartel(this,3,oro);
 	 }
 	 
 	 public PlazaCentral construirPlazaCentral() {

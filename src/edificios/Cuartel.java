@@ -1,17 +1,20 @@
 package edificios;
 
+import modelo.Oro;
 import unidades.Aldeano;
 import unidades.Arquero;
 import unidades.Espadachin;
 
 public class Cuartel extends Edificio {
-	
+	Oro oro;
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 	
-	public Cuartel() {
+	public Cuartel(Oro nuevoOro) {
 		vida =250;
 		costo = 50;
 		tamanio = 4;
+		oro = nuevoOro;
+		
 		
 	}
 	

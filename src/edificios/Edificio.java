@@ -1,5 +1,6 @@
 package edificios;
 
+import modelo.Oro;
 import modelo.mapa.Mapa;
 
 public abstract class Edificio {
@@ -7,6 +8,7 @@ public abstract class Edificio {
 	protected int vida;
 	protected int costo;
 	protected int tamanio;
+	
 
 	public int getVida() {
 		return vida;

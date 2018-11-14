@@ -36,7 +36,7 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 
 
 	@Override
-	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado) {
+	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
 		throw new AldeanoEstaOcupadoException();
 	}		
 	

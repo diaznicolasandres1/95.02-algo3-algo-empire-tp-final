@@ -24,8 +24,8 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	}
 
 	@Override
-	public Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado) {
-		Cuartel cuartel = new Cuartel();
+	public Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado, Oro oro) {
+		Cuartel cuartel = new Cuartel(oro);
 		aldeano.estarOcupado(3);
 		return cuartel;
 	}

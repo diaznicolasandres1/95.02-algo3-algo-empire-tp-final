@@ -5,10 +5,10 @@ import unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
 	
-		Oro oro;
-
+		
+		 Oro oro;
 		EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
-	private int tamanio;
+	    private int tamanio;
 
 		public PlazaCentral (Oro oroInicio) {
 			vida = 450;
