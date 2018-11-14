@@ -1,6 +1,8 @@
 package unidades;
 
 import edificios.Cuartel;
+import edificios.Edificio;
+import edificios.EdificioTieneVidaMaximaException;
 import edificios.PlazaCentral;
 import modelo.Oro;
 
@@ -38,6 +40,18 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 	@Override
 	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
 		throw new AldeanoEstaOcupadoException();
+	}
+
+	@Override
+	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
+try {
+			
+			edificio.repararseASimismo();
+			
+		}catch(EdificioTieneVidaMaximaException e){
+			aldeano.estarDisponible();
+		}
+		
 	}		
 	
 

@@ -39,9 +39,16 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 	}
 
 	@Override
-	public Arquero crearArquero(Oro oro) {
-		
+	public Arquero crearArquero(Oro oro) {		
 		throw new CuartelCreandoseException();
+	}
+
+
+
+	@Override
+	public void repararse(Cuartel cuartel) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

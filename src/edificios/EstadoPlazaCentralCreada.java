@@ -13,7 +13,7 @@ public class EstadoPlazaCentralCreada implements EstadoPlazaCentral{
 
 	@Override
 	public void repararse(Edificio plaza) {
-		plaza.repararseASimismo(25,450);
+		plaza.repararseASimismo();
 				
 	}	
 

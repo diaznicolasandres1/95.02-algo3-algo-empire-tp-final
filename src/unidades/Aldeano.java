@@ -1,6 +1,7 @@
 package unidades;
 
 import edificios.Cuartel;
+import edificios.Edificio;
 import edificios.PlazaCentral;
 import modelo.Oro;
 
@@ -19,14 +20,15 @@ public class Aldeano extends Unidad  {
 	}
 	
 
-	
+	public void aldeanoRepararEdificio(Edificio edificio) {
+		estado.repararEdificio(this, edificio);
+	}
 
 	 public void estarOcupado(int turnosOcupado){
 		 estado = new EstadoAldeanoOcupado(turnosOcupado);
 	 }
 	 
 	 public Cuartel construirCuartel() {
-
 		 return estado.construirCuartel(this,3,oro);
 	 }
 	 
