@@ -1,9 +1,9 @@
 package edificios;
 
-import modelo.Oro;
 import modelo.mapa.Mapa;
+import unidades.Colocable;
 
-public abstract class Edificio {
+public abstract class Edificio implements Colocable {
 	protected int vidaMaxima;
 	protected int vida;
 	protected int costo;
@@ -32,9 +32,10 @@ public abstract class Edificio {
 		}
 	}
 
-	public void colocarseEn(Mapa mapa, int fila, int columna) {
-		mapa.colocarEdificio(this, tamanio, fila, columna);
-	}
+    @Override
+    public void colocarseEn(Mapa mapa, int fila, int columna) {
+        mapa.colocarEdificio(this, tamanio, fila, columna);
+    }
 
 	protected abstract void terminoDeCrearse();
 
