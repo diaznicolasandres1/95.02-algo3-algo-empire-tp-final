@@ -27,7 +27,7 @@ public class Posicion {
     public void moverUnidadHacia(Unidad unidad, Posicion posicion, int rangoMovimiento) {
 
         if (!this.estaDentroDelRango(posicion, rangoMovimiento)) {
-            throw new PosicionFueraDeRango();
+            throw new PosicionFueraDeRangoException();
         }
         unidad.setPosicion(posicion);
     }

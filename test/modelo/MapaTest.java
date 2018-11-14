@@ -201,7 +201,7 @@ public class MapaTest {
         mapa.moverUnidadDesdeHasta(espadachin, 11, 10, 100, 100);
     }
 
-    @Test(expected = PosicionFueraDeRango.class)
+    @Test(expected = PosicionFueraDeRangoException.class)
     public void test17mapaMueveUnidadFueraDelRangoDeUnidadLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 30);
