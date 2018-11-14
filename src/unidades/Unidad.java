@@ -1,8 +1,9 @@
 package unidades;
 
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
-public abstract class Unidad {
+public abstract class Unidad implements Colocable {
 
 	protected int vida;
 	protected int costo;
@@ -26,5 +27,10 @@ public abstract class Unidad {
 
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
+    }
+
+    @Override
+    public void colocarseEn(Mapa mapa, int fila, int columna) {
+        mapa.colocarUnidad(this, fila, columna);
     }
 }
