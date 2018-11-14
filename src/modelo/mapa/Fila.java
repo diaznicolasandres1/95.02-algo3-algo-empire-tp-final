@@ -1,7 +1,6 @@
 package modelo.mapa;
 
-import edificios.Edificio;
-import unidades.Unidad;
+import unidades.Colocable;
 
 import java.util.ArrayList;
 
@@ -22,11 +21,8 @@ public class Fila {
         return casilleros.get(numeroColumna);
     }
 
-    public void colocarUnidad(Unidad unidad, int columna) {
-        casilleros.get(columna - 1).colocarUnidad(unidad);
+    public void colocar(Colocable colocable, int columna) {
+        casilleros.get(columna - 1).colocar(colocable);
     }
 
-    public void colocarEdificio(Edificio edificio, int columna) {
-        casilleros.get(columna - 1).colocarEdificio(edificio);
-    }
 }
