@@ -29,8 +29,7 @@ public class ArmaAsedioTest {
 	@Test(expected = NoSePuedeAtacarArmaAsedioDesmontadaException.class)
 	public void test03AtacarConArmaDesmontada() {
 		ArmaDeAsedio arma = new ArmaDeAsedio();			
-		arma.atacar();
-		
+		arma.atacar();		
 	}
 	
 }

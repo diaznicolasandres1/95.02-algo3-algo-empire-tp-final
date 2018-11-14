@@ -9,7 +9,7 @@ public abstract class Unidad {
 		return vida;
 	}
 	
-	public void recibirDanio(int danio) throws UnidadEstaMuertaException  {
+	public void recibirDanio(int danio)   {
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
