@@ -6,6 +6,7 @@ Segundo cuatrimestre año 2018 - FIUBA.
 )
 [![codecov](https://codecov.io/gh/diaznicolasandres1/Algo-Empire-AYP3/branch/master/graph/badge.svg)](https://codecov.io/gh/diaznicolasandres1/Algo-Empire-AYP3)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/02562e58ec574e73bee2a1ecf7b99712)](https://www.codacy.com/app/diaznicolasandres1/Algo-Empire-AYP3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=diaznicolasandres1/Algo-Empire-AYP3&amp;utm_campaign=Badge_Grade)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Intregrantes
 -  Balladares, Alejandro, 101118
