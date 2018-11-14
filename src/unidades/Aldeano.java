@@ -13,9 +13,9 @@ public class Aldeano extends Unidad  {
 
 	
 	public Aldeano(Oro oroNuevo) {
-		vida = 50;
-		costo = 25;
+		vida = 50;		
 		oro = oroNuevo;
+		oro.restarOro(25);
 	}
 	
 
