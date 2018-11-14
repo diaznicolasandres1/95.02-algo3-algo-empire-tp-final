@@ -15,6 +15,7 @@ public class PlazaCentral extends Edificio {
 			costo = 100;
 			tamanio = 4;
 			oro = oroInicio;
+			oro.restarOro(costo);
 		}
 		
 		public void repararse() {
