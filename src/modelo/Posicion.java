@@ -8,18 +8,14 @@ public class Posicion {
 		this.posX = newPosX;
 		this.posY = newPosY;
 	}
-	
-	public int getPosX() {
-		return this.posX;
-	}
-	
-	public int getPosY() {
-		return this.posY;
-	}
 
-	public boolean dentroRango(Posicion otraPosicion, int rango) {
-		int rangoX = this.posX - otraPosicion.getPosX();
-		int rangoY = this.posY - otraPosicion.getPosY();
+	public boolean estaDentroDelRangoDe(Posicion posicion, int rango) {
+		return compararDistancias(this.posX, this.posY, rango);
+	}
+	
+	private boolean compararDistancias(int posX, int posY, int rango) {
+		int rangoX = this.posX - posX;
+		int rangoY = this.posY - posY;
 		boolean condicion1 = (rangoX <= rango) && (rangoX >= -rango);
 		boolean condicion2 = (rangoY <= rango) && (rangoY >= -rango);
 		return condicion1 && condicion2;
