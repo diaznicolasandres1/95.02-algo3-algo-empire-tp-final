@@ -13,7 +13,7 @@ public class EspadachinTest {
 	@Test
 	public void test01CreacionDeEspadachin() {
 		Espadachin espadachin = new Espadachin();		
-		Assert.assertEquals(espadachin.getVida(), 75);
+		Assert.assertEquals(espadachin.getVida(), 100);
 		
 		}
 	
