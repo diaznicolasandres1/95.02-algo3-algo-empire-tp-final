@@ -7,7 +7,9 @@ public class PlazaCentral extends Edificio {
 	
 	 	/* Se le asigna estado creada para poder hacer los primeros test
 	 	 * luego refactorizamos  y empieza en estado: EnConstruccion y vemos como hacer los turnos*/
-		EstadoPlazaCentral estado = new EstadoPlazaCentralCreada();
+	
+	
+		EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
 		public PlazaCentral () {
 			vida = 450;
@@ -17,6 +19,7 @@ public class PlazaCentral extends Edificio {
 		public void repararse() {
 			estado.repararse(this);
 		}
+		
 		
 		
 		public void recibirDanio(int valorDanio) {
@@ -29,5 +32,14 @@ public class PlazaCentral extends Edificio {
 			
 		}
 		
+		/**/
+		
+		public void terminoDeCrearse() {
+			estado = new EstadoPlazaCentralCreada();
+		}
+		
+		public void avanzarTurno() {
+			estado.avanzarTurno(this);
+		}
 		
 }
