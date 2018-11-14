@@ -44,13 +44,7 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 
 	@Override
 	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
-try {
-			
-			edificio.repararseASimismo();
-			
-		}catch(EdificioTieneVidaMaximaException e){
-			aldeano.estarDisponible();
-		}
+		
 		
 	}		
 	

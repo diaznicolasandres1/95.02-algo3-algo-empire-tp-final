@@ -20,14 +20,16 @@ public class Aldeano extends Unidad  {
 	}
 	
 
-	public void aldeanoRepararEdificio(Edificio edificio) {
+	public void aldeanoRepararEdificio(Edificio edificio) {		
 		estado.repararEdificio(this, edificio);
 	}
 
 	 public void estarOcupado(int turnosOcupado){
 		 estado = new EstadoAldeanoOcupado(turnosOcupado);
 	 }
-	 
+	 public void estarEnReparacion() {
+		 estado = new EstadoAldeanoReparando();
+	 }
 	 public Cuartel construirCuartel() {
 		 return estado.construirCuartel(this,3,oro);
 	 }

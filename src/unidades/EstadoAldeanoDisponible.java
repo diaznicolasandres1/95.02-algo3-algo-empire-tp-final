@@ -33,16 +33,9 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 
 	@Override
 	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
-		aldeano.estarOcupado(10); //Sacar calculo cuanto seria el maximo de turnos que podria estar ocupado
-		try {
-			
-			edificio.repararseASimismo();
-			
-		}catch(EdificioTieneVidaMaximaException e){
-			aldeano.estarDisponible();
-		}
-			
-		
+		aldeano.estarEnReparacion();
+		aldeano.aldeanoRepararEdificio(edificio);
+
 		
 	}
 

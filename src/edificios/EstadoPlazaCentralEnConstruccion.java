@@ -5,7 +5,7 @@ import unidades.Aldeano;
 
 public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	
-	private int turnos = 3 ;
+	private int turnos = 3;
 	
 	public void avanzarTurno(Edificio plaza) {
 		turnos -=1;
