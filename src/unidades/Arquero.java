@@ -1,10 +1,12 @@
 package unidades;
 
+import modelo.Oro;
+
 public class Arquero extends Unidad {
 	
-	public Arquero() {
+	public Arquero(Oro oro) {
 		vida = 75;
-		costo = 75;
+		oro.restarOro(75);
 	}
 
 	

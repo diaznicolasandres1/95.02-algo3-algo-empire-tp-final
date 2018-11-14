@@ -10,7 +10,8 @@ public class ArqueroTest {
 	
 	@Test
 	public void test01CreacionDeArquero() {
-		Arquero arquero = new Arquero();		
+		Oro oro = new Oro(300);
+		Arquero arquero = new Arquero(oro);		
 		Assert.assertEquals(arquero.getVida(), 75);
 		
 		}

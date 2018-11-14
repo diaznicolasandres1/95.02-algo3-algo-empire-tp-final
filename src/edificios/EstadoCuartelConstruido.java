@@ -1,5 +1,6 @@
 package edificios;
 
+import modelo.Oro;
 import unidades.Arquero;
 import unidades.Espadachin;
 
@@ -19,15 +20,15 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
 
 
 	@Override
-	public Espadachin crearEspadachin() {
-		Espadachin espadachin = new Espadachin();
+	public Espadachin crearEspadachin(Oro oro) {
+		Espadachin espadachin = new Espadachin(oro);
 		return espadachin;
 		
 	}
 
 	@Override
-	public Arquero crearArquero() {
-		Arquero arquero = new Arquero();
+	public Arquero crearArquero(Oro oro) {
+		Arquero arquero = new Arquero(oro);
 		return arquero;
 		
 	}

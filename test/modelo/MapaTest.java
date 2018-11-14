@@ -148,7 +148,7 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(50, 40);
         PlazaCentral plaza = new PlazaCentral(oro);
-        Espadachin espadachin = new Espadachin();
+        Espadachin espadachin = new Espadachin(oro);
 
         mapa.colocarUnidad(espadachin, 23, 22);
 

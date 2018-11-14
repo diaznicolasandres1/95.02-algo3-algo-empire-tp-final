@@ -35,11 +35,11 @@ public class Cuartel extends Edificio {
 	}
 	
 	public Arquero crearArqueroDesdeCuartel() {
-		return estado.crearArquero();
+		return estado.crearArquero(oro);
 		
 	}
 	public Espadachin crearEspadachinDesdeCuartel() {
-		return estado.crearEspadachin();
+		return estado.crearEspadachin(oro);
 	}
 	
 

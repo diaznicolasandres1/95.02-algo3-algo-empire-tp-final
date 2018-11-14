@@ -78,7 +78,7 @@ public class CuartelTest {
 	
 	@Test
 	public void test06CrearArqueroDesdeCuartel() {
-		Oro oro = new Oro(500);
+		Oro oro = new Oro(1000);
 		Cuartel cuartel = new Cuartel(oro);
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
