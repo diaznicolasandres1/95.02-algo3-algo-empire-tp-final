@@ -29,7 +29,7 @@ public class PosicionTest {
 	}
 		
 	@Test
-    public void test02posicionDentroDeRangoLimiteDevuelveTrue() {
+    public void test04posicionDentroDeRangoLimiteDevuelveTrue() {
 
         Posicion unaPosicion = new Posicion(1, 1);
         Posicion otraPosicion = new Posicion(1, 6);
@@ -38,7 +38,7 @@ public class PosicionTest {
 	}
 	
 	@Test
-    public void test03posicionFueraDeRangoDevuelveFalse() {
+    public void test05posicionFueraDeRangoDevuelveFalse() {
 
         Posicion unaPosicion = new Posicion(1, 1);
         Posicion otraPosicion = new Posicion(1, 7);
@@ -47,7 +47,7 @@ public class PosicionTest {
 	}
 	
 	@Test
-    public void test04posicionDentroDeRangoMenorDevuelveFalse() {
+    public void test06posicionDentroDeRangoMenorDevuelveFalse() {
 
         Posicion unaPosicion = new Posicion(1, 1);
         Posicion otraPosicion = new Posicion(1, 6);
@@ -56,14 +56,14 @@ public class PosicionTest {
 	}
 	
 	@Test
-    public void test05posicionDentroDeRangoDiagonalDevuelveTrue() {
+    public void test07posicionDentroDeRangoDiagonalDevuelveTrue() {
         Posicion unaPosicion = new Posicion(1, 1);
         Posicion otraPosicion = new Posicion(6, 6);
         Assert.assertTrue(unaPosicion.estaDentroDelRango(otraPosicion, 5));
 	}
 	
 	@Test
-    public void test06posicionFueraDeRangoDiagonalDevuelveFalse() {
+    public void test08posicionFueraDeRangoDiagonalDevuelveFalse() {
 
         Posicion unaPosicion = new Posicion(1, 1);
         Posicion otraPosicion = new Posicion(7, 7);
@@ -72,7 +72,7 @@ public class PosicionTest {
     }
 
     @Test(expected = RangoInvalidoException.class)
-    public void test07posicionSeComparaConRangoNegativoLanzaExcepcion() {
+    public void test09posicionSeComparaConRangoNegativoLanzaExcepcion() {
 
         Posicion unaPosicion = new Posicion(10, 100);
         Posicion otraPosicion = new Posicion(15, 49);
@@ -81,15 +81,11 @@ public class PosicionTest {
     }
 
     @Test(expected = RangoInvalidoException.class)
-    public void test08posicionSeComparaConRangoNuloLanzaExcepcion() {
+    public void test10posicionSeComparaConRangoNuloLanzaExcepcion() {
 
         Posicion unaPosicion = new Posicion(140, 100);
         Posicion otraPosicion = new Posicion(56, 49);
 
         unaPosicion.estaDentroDelRango(otraPosicion, 0);
     }
-
-
-
-
 }
