@@ -17,19 +17,38 @@ public class PlazaCentralTest {
 		
 		
 	}
-
+	
 	@Test
-	public void test02PlazaCentralRecibirDanio() {
+	public void test02PlazaCentralEnConstruccionNoRecibeDanio() {
 		PlazaCentral plaza = new PlazaCentral();
 		plaza.recibirDanio(50);
-		Assert.assertEquals(plaza.getVida(), 400);
+		Assert.assertEquals(plaza.getVida(), 450);
 		
 		
 	}
 	
 	@Test
-	public void test03PlazaCentralRecibirDanioYRepararse() {
+	public void test03PlazaCentralConstruidaRecibeDanio() {
 		PlazaCentral plaza = new PlazaCentral();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		/*Avanzo 3 turnos y como esta creada recibe daño*/
+		plaza.recibirDanio(50);
+		Assert.assertEquals(plaza.getVida(), 400);
+		
+		
+	}
+
+
+
+	@Test
+	public void test04PlazaCentralRecibirDanioYRepararse() {
+		PlazaCentral plaza = new PlazaCentral();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		
 		plaza.recibirDanio(50);
 		plaza.repararse();
 		Assert.assertEquals(plaza.getVida(), 425);
@@ -38,8 +57,11 @@ public class PlazaCentralTest {
 	}
 	
 	@Test
-	public void test04PlazaCentralRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
+	public void test05PlazaCentralRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
 		PlazaCentral plaza = new PlazaCentral();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
 		plaza.recibirDanio(50);
 		plaza.repararse();
 		plaza.repararse();
@@ -51,8 +73,11 @@ public class PlazaCentralTest {
 	}
 	
 	@Test
-	public void test05CrearAldeanoDesdePlazaCentral() {
+	public void test06CrearAldeanoDesdePlazaCentral() {
 		PlazaCentral plaza = new PlazaCentral();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
 		Assert.assertEquals(aldeano.getVida(), 50);
 		
