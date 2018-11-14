@@ -9,13 +9,14 @@ public class Cuartel extends Edificio {
 	Oro oro;
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 	
+	
 	public Cuartel(Oro nuevoOro) {
-		vida =250;		
+		vidaMaxima = 250;
+		vida = 250;
+		reparacion = 50;
 		tamanio = 4;
 		oro = nuevoOro;
-		oro.restarOro(50);
-		
-		
+		oro.restarOro(50);		
 	}
 	
 	public void repararse() {

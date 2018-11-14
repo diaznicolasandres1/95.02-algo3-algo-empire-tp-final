@@ -7,6 +7,7 @@ import org.junit.Test;
 import edificios.Cuartel;
 import edificios.CuartelCreandoseException;
 import edificios.PlazaCentral;
+import edificios.EdificioTieneVidaMaximaException;
 import junit.framework.Assert;
 import unidades.Arquero;
 import unidades.Espadachin;
@@ -51,14 +52,14 @@ public class CuartelTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		;
+		
 		cuartel.recibirDanio(50);
 		cuartel.repararse();
 		Assert.assertEquals(cuartel.getVida(), 250);
 	}
 	
 	
-	@Test
+	@Test(expected = EdificioTieneVidaMaximaException.class)	
 	public void test05CuartelRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
 		Oro oro = new Oro(500);
 		Cuartel cuartel = new Cuartel(oro);
@@ -66,14 +67,13 @@ public class CuartelTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		
 		cuartel.recibirDanio(50);
 		
 		cuartel.repararse();
 		cuartel.repararse();
 		cuartel.repararse();
 		cuartel.repararse();
-		Assert.assertEquals(cuartel.getVida(), 250);	
+		
 	}
 	
 	@Test

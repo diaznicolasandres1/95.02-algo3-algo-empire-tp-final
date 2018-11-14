@@ -4,10 +4,11 @@ import modelo.Oro;
 import modelo.mapa.Mapa;
 
 public abstract class Edificio {
-	
+	protected int vidaMaxima;
 	protected int vida;
 	protected int costo;
 	protected int tamanio;
+	protected int reparacion;
 	
 
 	public int getVida() {
@@ -21,8 +22,11 @@ public abstract class Edificio {
         vida -= danio;
     }
 	
-	public void repararseASimismo(int varlorARepararse, int vidaMaxima) {
-		vida += varlorARepararse;
+	public void repararseASimismo() {
+		if(vida == vidaMaxima) {
+			throw new EdificioTieneVidaMaximaException();
+		}
+		vida += reparacion;
 		if (vida >= vidaMaxima) {
 			vida = vidaMaxima;
 		}

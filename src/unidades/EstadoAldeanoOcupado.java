@@ -1,6 +1,7 @@
 package unidades;
 
 import edificios.Cuartel;
+import edificios.Edificio;
 import edificios.PlazaCentral;
 import modelo.Oro;
 
@@ -38,6 +39,12 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 	@Override
 	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
 		throw new AldeanoEstaOcupadoException();
+	}
+
+	@Override
+	public void repararEdificio(Edificio edificio) {
+		// TODO Auto-generated method stub
+		
 	}		
 	
 

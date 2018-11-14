@@ -1,6 +1,7 @@
 package unidades;
 
 import edificios.Cuartel;
+import edificios.Edificio;
 import edificios.PlazaCentral;
 import modelo.Oro;
 
@@ -27,6 +28,12 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 		Cuartel cuartel = new Cuartel(oro);
 		aldeano.estarOcupado(3);
 		return cuartel;
+	}
+
+	@Override
+	public void repararEdificio(Edificio edificio) {
+		edificio.repararseASimismo();
+		
 	}
 
 

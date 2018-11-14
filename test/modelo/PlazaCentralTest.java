@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edificios.EdificioTieneVidaMaximaException;
 import edificios.PlazaCentral;
 import junit.framework.Assert;
 import unidades.Aldeano;
@@ -61,7 +62,7 @@ public class PlazaCentralTest {
 		
 	}
 	
-	@Test
+	@Test(expected = EdificioTieneVidaMaximaException.class)
 	public void test05PlazaCentralRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
 		Oro oro = new Oro(500);
 		PlazaCentral plaza = new PlazaCentral(oro);
@@ -74,7 +75,7 @@ public class PlazaCentralTest {
 		plaza.repararse();
 		plaza.repararse();
 		plaza.repararse();
-		Assert.assertEquals(plaza.getVida(), 450);	
+			
 		
 	}
 	
