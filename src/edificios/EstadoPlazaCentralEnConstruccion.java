@@ -1,5 +1,6 @@
 package edificios;
 
+import modelo.Oro;
 import unidades.Aldeano;
 
 public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
@@ -23,7 +24,7 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	
 	}
 	@Override
-	public Aldeano crearAldeano() {
+	public Aldeano crearAldeano(Oro oro) {
 		
 		return null;
 	}

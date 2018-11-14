@@ -9,10 +9,11 @@ import junit.framework.Assert;
 import unidades.Aldeano;
 
 public class PlazaCentralTest {
+	Oro oro = new Oro(100);
 
 	@Test
 	public void test01CreacionDePlazaCentral() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		Assert.assertEquals(plaza.getVida(), 450);
 		
 		
@@ -20,7 +21,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test02PlazaCentralEnConstruccionNoRecibeDanio() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.recibirDanio(50);
 		Assert.assertEquals(plaza.getVida(), 450);
 		
@@ -29,7 +30,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test03PlazaCentralConstruidaRecibeDanio() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -44,7 +45,7 @@ public class PlazaCentralTest {
 
 	@Test
 	public void test04PlazaCentralRecibirDanioYRepararse() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -58,7 +59,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test05PlazaCentralRecibirDanioYRepararseVariasVecesNoSuperaVidaMaxima() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -74,7 +75,7 @@ public class PlazaCentralTest {
 	
 	@Test
 	public void test06CrearAldeanoDesdePlazaCentral() {
-		PlazaCentral plaza = new PlazaCentral();
+		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -83,6 +84,5 @@ public class PlazaCentralTest {
 		
 	}
 	
-	
-
 }
+

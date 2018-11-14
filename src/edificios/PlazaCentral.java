@@ -1,16 +1,20 @@
 package edificios;
 
+import modelo.Oro;
 import unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
+	
+		Oro oro;
 
 		EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 	private int tamanio;
 
-		public PlazaCentral () {
+		public PlazaCentral (Oro oroInicio) {
 			vida = 450;
 			costo = 100;
 			tamanio = 4;
+			oro = oroInicio;
 		}
 		
 		public void repararse() {
@@ -23,7 +27,7 @@ public class PlazaCentral extends Edificio {
 		}
 		
 		public Aldeano crearAldeanoDesdePlaza() {
-			return estado.crearAldeano();
+			return estado.crearAldeano(oro);
 			
 		}
 		
