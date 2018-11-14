@@ -4,6 +4,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 import unidades.Aldeano;
 import unidades.AldeanoEstaOcupadoException;
+import unidades.Espadachin;
 import unidades.NoSePuedeMoverArmaAsedioMontadaException;
 
 public class AldeanoTest {
@@ -87,4 +88,13 @@ public class AldeanoTest {
     	Aldeano aldeano = new Aldeano(oro);
     	Assert.assertEquals(75, oro.getOro());
     }
+    
+
+	@Test(expected = NoTenesOroSuficienteException.class)
+	public void test09CrearAldeanoConOroInsuficiente() {
+		Oro oro = new Oro(5);
+		Aldeano aldeano = new Aldeano(oro);
+	}
+	
+    
 }
