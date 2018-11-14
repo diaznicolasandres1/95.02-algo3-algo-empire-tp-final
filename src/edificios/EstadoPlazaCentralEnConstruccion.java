@@ -6,7 +6,7 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	
 	private int turnos = 3 ;
 	
-	public void avanzarTurno(PlazaCentral plaza) {
+	public void avanzarTurno(Edificio plaza) {
 		turnos -=1;
 		if (turnos < 1) {
 			plaza.terminoDeCrearse();			
@@ -14,12 +14,12 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	}
 
 	@Override
-	public void repararse(PlazaCentral plaza) {		
+	public void repararse(Edificio plaza) {		
 		
 	}	
 
 	@Override
-	public void recibirDanio(PlazaCentral plazaCentral, int danio) {
+	public void recibirDanio(Edificio plazaCentral, int danio) {
 	
 	}
 	@Override

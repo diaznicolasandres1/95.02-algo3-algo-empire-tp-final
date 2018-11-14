@@ -29,6 +29,10 @@ public abstract class Edificio {
 	public void colocarseEn(Mapa mapa, int fila, int columna) {
 		mapa.colocarEdificio(this, tamanio, fila, columna);
 	}
+
+	protected abstract void terminoDeCrearse();
+
+	
 	
 	
 

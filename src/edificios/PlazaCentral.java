@@ -15,9 +15,7 @@ public class PlazaCentral extends Edificio {
 		
 		public void repararse() {
 			estado.repararse(this);
-		}
-		
-		
+		}		
 		
 		public void recibirDanio(int valorDanio) {
 			estado.recibirDanio(this, valorDanio);
