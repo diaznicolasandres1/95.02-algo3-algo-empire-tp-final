@@ -4,33 +4,32 @@ import edificios.Cuartel;
 import edificios.Edificio;
 import edificios.PlazaCentral;
 import modelo.Oro;
+import modelo.Posicion;
 
 public class Aldeano extends Unidad  {
-	
-	Oro oro ;
-	
-	private EstadoAldeano estado = new EstadoAldeanoDisponible();
-	
 
+    private Oro oro;
+	private EstadoAldeano estado = new EstadoAldeanoDisponible();
 	
 	public Aldeano(Oro oroNuevo) {
 		vida = 50;		
 		oro = oroNuevo;
 		oro.restarOro(25);
 	}
-	
 
-	public void aldeanoRepararEdificio(Edificio edificio) {		
+    public void aldeanoRepararEdificio(Edificio edificio) {
 		estado.repararEdificio(this, edificio);
 	}
 
 	 public void estarOcupado(int turnosOcupado){
 		 estado = new EstadoAldeanoOcupado(turnosOcupado);
 	 }
+
 	 public void estarEnReparacion() {
 		 estado = new EstadoAldeanoReparando();
 	 }
-	 public Cuartel construirCuartel() {
+
+    public Cuartel construirCuartel() {
 		 return estado.construirCuartel(this,3,oro);
 	 }
 	 
@@ -44,11 +43,16 @@ public class Aldeano extends Unidad  {
 	 }
 
 	public void avanzarTurno() {
-		estado.recolectarOro(oro);
+
+        estado.recolectarOro(oro);
 		estado.avanzarTurno(this);
 	}
 	public void aldeanoSeLibero() {
 		estado = new EstadoAldeanoDisponible();
-		
+    }
+
+    @Override
+    public void moverHacia(Posicion posicion) {
+        estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
 	}
 }
