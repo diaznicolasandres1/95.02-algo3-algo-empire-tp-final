@@ -1,6 +1,7 @@
 package unidades;
 
 import modelo.Oro;
+import modelo.Posicion;
 
 public class ArmaDeAsedio extends Unidad {
 	
@@ -13,21 +14,19 @@ public class ArmaDeAsedio extends Unidad {
 
 	public void montarArma() {
 		estado = new EstadoArmaAsedioMontada();
-		
 	}
 	
 	public void desmontarArma() {
 		estado = new EstadoArmaAsedioDesmontada();
-		
 	}
 	
 	public void atacar() {
 		estado.atacar();
-	}	
-		
-	public void moverse() {
-		estado.moverse();
-		
+	}
+
+	@Override
+	public void moverHacia(Posicion posicion) {
+		estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
 	}
 
 }
