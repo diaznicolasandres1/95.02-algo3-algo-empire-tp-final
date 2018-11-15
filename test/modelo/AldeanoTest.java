@@ -3,6 +3,8 @@ package modelo;
 import edificios.Cuartel;
 import edificios.PlazaCentral;
 import junit.framework.Assert;
+import modelo.mapa.CasilleroOcupadoException;
+import modelo.mapa.Mapa;
 import org.junit.Test;
 import unidades.Aldeano;
 import unidades.AldeanoEstaOcupadoException;
@@ -159,6 +161,118 @@ public class AldeanoTest {
         aldeano.setPosicion(unaPosicion);
 
         aldeano.moverHacia(otraPosicion);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test14aldeanoSeMueveHaciaElNorteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 9, 10);
+
+        mapa.colocarUnidad(otroAldeano, 9, 10);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test15aldeanoSeMueveHaciaElSurYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 11, 10);
+
+        mapa.colocarUnidad(otroAldeano, 11, 10);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test16aldeanoSeMueveHaciaElEsteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 10, 11);
+
+        mapa.colocarUnidad(otroAldeano, 10, 11);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test17aldeanoSeMueveHaciaElOesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 10, 9);
+
+        mapa.colocarUnidad(otroAldeano, 10, 9);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test18aldeanoSeMueveHaciaElNoresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 9, 11);
+
+        mapa.colocarUnidad(otroAldeano, 9, 11);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test19aldeanoSeMueveHaciaElSuresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 11, 11);
+
+        mapa.colocarUnidad(otroAldeano, 11, 11);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test20aldeanoSeMueveHaciaElSuroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 11, 9);
+
+        mapa.colocarUnidad(otroAldeano, 11, 9);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test21aldeanoSeMueveHaciaElNoroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(unAldeano, 10, 10);
+        mapa.moverUnidadDesdeHasta(unAldeano, 10, 10, 9, 9);
+
+        mapa.colocarUnidad(otroAldeano, 9, 9);
     }
 
 	@Test
