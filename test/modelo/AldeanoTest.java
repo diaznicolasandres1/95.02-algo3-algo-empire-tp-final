@@ -186,8 +186,8 @@ public class AldeanoTest {
         
         
         int cantidadOro = oro.getOro();
-        Assert.assertEquals(375, cantidadOro);
-        Assert.assertEquals(plaza.getVida(),450);
+        Assert.assertEquals(375, cantidadOro); //No genero oro por estar ocupado
+        Assert.assertEquals(plaza.getVida(),450); //La plaza vuelve a tener toda su vida
 		
 	}
 }
