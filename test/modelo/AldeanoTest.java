@@ -1,14 +1,11 @@
 package modelo;
 
-import junit.framework.Assert;
-import org.junit.Test;
-
 import edificios.Cuartel;
 import edificios.PlazaCentral;
+import junit.framework.Assert;
+import org.junit.Test;
 import unidades.Aldeano;
 import unidades.AldeanoEstaOcupadoException;
-import unidades.Espadachin;
-import unidades.NoSePuedeMoverArmaAsedioMontadaException;
 
 public class AldeanoTest {
 
@@ -122,6 +119,48 @@ public class AldeanoTest {
         Assert.assertEquals(425, cantidadOro);
 		
 	}
+
+    @Test(expected = AldeanoEstaOcupadoException.class)
+    public void test11aldeanoIntentaMoverseMientrasEstaReparandoLanzaExcepcion() {
+
+        Oro oro = new Oro(500);
+        Aldeano aldeano = new Aldeano(oro);
+        Posicion unaPosicion = new Posicion(50, 50);
+        Posicion otraPosicion = new Posicion(51, 51);
+
+        aldeano.setPosicion(unaPosicion);
+        aldeano.estarEnReparacion();
+
+        aldeano.moverHacia(otraPosicion);
+    }
+
+    @Test(expected = AldeanoEstaOcupadoException.class)
+    public void test12aldeanoIntentaMoverseMientrasEstaOcupadoLanzaExcepcion() {
+
+        Oro oro = new Oro(500);
+        Aldeano aldeano = new Aldeano(oro);
+        Posicion unaPosicion = new Posicion(50, 50);
+        Posicion otraPosicion = new Posicion(51, 51);
+
+        aldeano.setPosicion(unaPosicion);
+        aldeano.estarOcupado(10);
+
+        aldeano.moverHacia(otraPosicion);
+    }
+
+    @Test(expected = PosicionFueraDeRangoException.class)
+    public void test13aldeanoDisponibleIntentaMoverseFueraDeRangoLanzaExcepcion() {
+
+        Oro oro = new Oro(500);
+        Aldeano aldeano = new Aldeano(oro);
+        Posicion unaPosicion = new Posicion(1, 5);
+        Posicion otraPosicion = new Posicion(0, 0);
+
+        aldeano.setPosicion(unaPosicion);
+
+        aldeano.moverHacia(otraPosicion);
+    }
+
 	@Test
 	public void aldeanoReparandoDebeEstarOcupadoYTerminaCuandoSeReparaElEdificio() {
 		Oro oro = new Oro(500);
