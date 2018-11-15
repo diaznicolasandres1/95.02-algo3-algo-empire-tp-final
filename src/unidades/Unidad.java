@@ -33,4 +33,7 @@ public abstract class Unidad implements Colocable {
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarUnidad(this, fila, columna);
     }
+    
+	public void avanzarTurno() {};
+    
 }

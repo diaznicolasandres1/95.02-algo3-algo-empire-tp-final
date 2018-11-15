@@ -41,18 +41,19 @@ public class Aldeano extends Unidad  {
 		 
 		 estado = new EstadoAldeanoDisponible();
 	 }
+	 
+	 @Override
+	 public void avanzarTurno() {
 
-	public void avanzarTurno() {
+		 estado.recolectarOro(oro);
+		 estado.avanzarTurno(this);
+	 }
+	 public void aldeanoSeLibero() {
+		 estado = new EstadoAldeanoDisponible();
+	 }
 
-        estado.recolectarOro(oro);
-		estado.avanzarTurno(this);
-	}
-	public void aldeanoSeLibero() {
-		estado = new EstadoAldeanoDisponible();
-    }
-
-    @Override
-    public void moverHacia(Posicion posicion) {
-        estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
-	}
+	 @Override
+	 public void moverHacia(Posicion posicion) {
+		 estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
+	 }
 }
