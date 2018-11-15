@@ -15,18 +15,20 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	}
 
 	@Override
-	public void repararse(Edificio plaza) {		
+	public void repararse(Edificio plaza) {	
+		throw new PlazaCentralEnConstruccionException();
 		
 	}	
 
 	@Override
 	public void recibirDanio(Edificio plazaCentral, int danio) {
+		throw new PlazaCentralEnConstruccionException();
 	
 	}
 	@Override
 	public Aldeano crearAldeano(Oro oro) {
+		throw new PlazaCentralEnConstruccionException();
 		
-		return null;
 	}
 	
 	
