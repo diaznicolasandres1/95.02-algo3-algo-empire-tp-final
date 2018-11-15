@@ -1,6 +1,8 @@
 package modelo;
 
 import junit.framework.Assert;
+import modelo.mapa.CasilleroOcupadoException;
+import modelo.mapa.Mapa;
 import org.junit.Test;
 import unidades.ArmaDeAsedio;
 import unidades.NoSePuedeAtacarArmaAsedioDesmontadaException;
@@ -67,6 +69,118 @@ public class ArmaAsedioTest {
 		arma.setPosicion(unaPosicion);
 
 		arma.moverHacia(otraPosicion);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test07armaDeAsedioSeMueveHaciaElNorteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 9, 10);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 9, 10);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test08armaDeAsedioSeMueveHaciaElSurYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 11, 10);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 11, 10);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test09armaDeAsedioSeMueveHaciaElEsteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 10, 11);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 10, 11);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test10armaDeAsedioSeMueveHaciaElOesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 10, 9);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 10, 9);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test11armaDeAsedioSeMueveHaciaElNoresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 9, 11);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 9, 11);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test12armaDeAsedioSeMueveHaciaElSuresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 11, 11);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 11, 11);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test13armaDeAsedioSeMueveHaciaElSuroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 11, 9);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 11, 9);
+	}
+
+	@Test(expected = CasilleroOcupadoException.class)
+	public void test14armaDeAsedioSeMueveHaciaElNoroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+
+		Mapa mapa = new Mapa(20, 20);
+		Oro oro = new Oro(2000);
+		ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(oro);
+		ArmaDeAsedio otraArmaDeAsedio = new ArmaDeAsedio(oro);
+
+		mapa.colocarUnidad(unArmaDeAsedio, 10, 10);
+		mapa.moverUnidadDesdeHasta(unArmaDeAsedio, 10, 10, 9, 9);
+
+		mapa.colocarUnidad(otraArmaDeAsedio, 9, 9);
 	}
 	
 }
