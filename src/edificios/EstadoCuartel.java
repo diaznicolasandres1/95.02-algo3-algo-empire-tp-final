@@ -5,8 +5,8 @@ import unidades.Arquero;
 import unidades.Espadachin;
 
 public interface EstadoCuartel extends EstadoEdificio {
-	
-	public  Espadachin crearEspadachin(Oro oro);
-	public Arquero crearArquero(Oro oro);
 
+    Espadachin crearEspadachin(Oro oro);
+
+    Arquero crearArquero(Oro oro);
 }
