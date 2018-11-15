@@ -7,8 +7,8 @@ import modelo.OrganizadorDeTurnos;
 
 public class OrganizadorDeTurnosTest {
 	Mapa mapa = new Mapa(15, 15);
-	Civilizacion civ1 = new Civilizacion(mapa, 2, 2);
-	Civilizacion civ2 = new Civilizacion(mapa, 14, 14);
+	Civilizacion civ1 = new Civilizacion(mapa);
+	Civilizacion civ2 = new Civilizacion(mapa);
 	OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(civ1, civ2);
 
 	@Test
