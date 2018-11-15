@@ -5,10 +5,10 @@ import edificios.Edificio;
 import edificios.EdificioTieneVidaMaximaException;
 import edificios.PlazaCentral;
 import modelo.Oro;
+import modelo.Posicion;
 
 public class EstadoAldeanoReparando implements EstadoAldeano{
 
-	
 	Edificio edificio;
 	
 	@Override
@@ -20,7 +20,6 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	@Override
 	public void repararEdificio(Aldeano aldeano, Edificio edificio) {
 		this.edificio = edificio;
-		
 		try {
 			
 			edificio.repararseASimismo();
@@ -30,8 +29,6 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 			
 			aldeano.estarDisponible();
 		}
-			
-		
 	}
 	
 	@Override
@@ -44,7 +41,6 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	public void recolectarOro(Oro oro) {		
 		
 	}
-	
 
 	@Override
 	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
@@ -52,4 +48,8 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 		return null;
 	}
 
+    @Override
+    public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) throws AldeanoEstaOcupadoException {
+        throw new AldeanoEstaOcupadoException();
+    }
 }
