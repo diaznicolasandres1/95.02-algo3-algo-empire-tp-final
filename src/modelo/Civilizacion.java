@@ -1,15 +1,9 @@
-
 package modelo;
 
-import unidades.Colocable;
+import edificios.Edificio;
 import unidades.Unidad;
 
 import java.util.ArrayList;
-
-import edificios.Edificio;
-import edificios.PlazaCentral;
-import modelo.Oro;
-import modelo.mapa.Casillero;
 
 public class Civilizacion {
 	

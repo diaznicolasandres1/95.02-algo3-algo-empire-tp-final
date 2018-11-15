@@ -18,11 +18,11 @@ public class Fila {
     }
 
     public Casillero buscarCasillero(int numeroColumna) {
-        return casilleros.get(numeroColumna);
+        return casilleros.get(numeroColumna - 1);
     }
 
     public void colocar(Colocable colocable, int columna) {
-        casilleros.get(columna - 1).colocar(colocable);
+        this.buscarCasillero(columna).colocar(colocable);
     }
 
 }

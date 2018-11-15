@@ -29,7 +29,7 @@ public class Mapa {
 
     public void colocarUnidad(Unidad unidad, int fila, int columna) {
 
-        filas.get(fila - 1).colocar(unidad, columna);
+        this.buscarFila(fila).colocar(unidad, columna);
         Posicion posicion = new Posicion(columna, fila);
         unidad.setPosicion(posicion);
     }
@@ -38,8 +38,8 @@ public class Mapa {
 
         int cantidadFilasAUtilizar = tamanioEdificio / 2;
         for (int i = 0; i <= cantidadFilasAUtilizar; i++) {
-            filas.get(fila + i - 1).colocar(edificio, columna);
-            filas.get(fila + i - 1).colocar(edificio, columna + i);
+            this.buscarFila(fila + i).colocar(edificio, columna);
+            this.buscarFila(fila + i).colocar(edificio, columna + i);
         }
     }
 
@@ -77,8 +77,12 @@ public class Mapa {
 
     private Casillero buscarCasillero(int numeroFila, int numeroColumna) {
 
-        Fila fila = filas.get(numeroFila - 1);
-        return fila.buscarCasillero(numeroColumna - 1);
+        Fila fila = this.buscarFila(numeroFila);
+        return fila.buscarCasillero(numeroColumna);
+    }
+
+    private Fila buscarFila(int numeroFila) {
+        return filas.get(numeroFila - 1);
     }
 
     private boolean esTamanioValido(int base, int altura) {
