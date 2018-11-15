@@ -2,6 +2,7 @@ package modelo;
 import edificios.Castillo;
 import edificios.EdificioTieneVidaMaximaException;
 import junit.framework.Assert;
+import unidades.ArmaDeAsedio;
 
 import static org.junit.Assert.*;
 
@@ -54,5 +55,36 @@ public class CastilloTest {
 		castillo.repararseASimismo();
 		castillo.repararseASimismo();		
 	}
+	
+	@Test
+	public void test05CastilloCreaArmaDeAsedioRestaOro() {
+		Oro oro = new Oro(1000);
+		Castillo castillo = new Castillo(oro);
+		ArmaDeAsedio arma1 = castillo.crearArmaDeAsedio();		
+		Assert.assertEquals(oro.getOro(), 800);
+		
+	}
+	
+	@Test 
+	public void test06CastilloCreaArmaYEstaExiste() {
+		Oro oro = new Oro(1000);
+		Castillo castillo = new Castillo(oro);
+		ArmaDeAsedio arma1 = castillo.crearArmaDeAsedio();		
+		Assert.assertEquals(arma1.getVida(), 150);
+		
+	}
+	@Test (expected = NoTenesOroSuficienteException.class)
+	public void test07CastilloCreaArmaDeAsedioHastaNoTenerDineroLanzaExcpecion() {
+		Oro oro = new Oro(1000);
+		Castillo castillo = new Castillo(oro);
+		castillo.crearArmaDeAsedio();
+		castillo.crearArmaDeAsedio();
+		castillo.crearArmaDeAsedio();
+		castillo.crearArmaDeAsedio();
+		castillo.crearArmaDeAsedio();
+		castillo.crearArmaDeAsedio();	
+		
+	}
+	
 
 }

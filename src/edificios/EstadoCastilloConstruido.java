@@ -22,10 +22,5 @@ public class EstadoCastilloConstruido implements EstadoEdificio {
 		
 	}
 	
-	public ArmaDeAsedio crearArmaDeAsedio(Oro oro) {
-		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;
-		return armaDeAsedio;		
-		
-	}
-
+	
 }

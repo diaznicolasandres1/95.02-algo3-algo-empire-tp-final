@@ -5,7 +5,7 @@ import unidades.ArmaDeAsedio;
 
 public class Castillo extends Edificio {
 
-	protected Oro oro;
+	 Oro oro;
 	EstadoCastilloConstruido estado;
 	
 	public Castillo(Oro oro) {
@@ -13,6 +13,7 @@ public class Castillo extends Edificio {
 		vida = 1000;
 		reparacion = 15;
 		tamanio = 8;
+		this.oro = oro;
 		estado = new EstadoCastilloConstruido();
 	}	
 	
@@ -23,7 +24,8 @@ public class Castillo extends Edificio {
 	}
 	
 	public ArmaDeAsedio crearArmaDeAsedio() {
-		return estado.crearArmaDeAsedio(oro);
+		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;
+		return armaDeAsedio;	
 		
 	}
 	
