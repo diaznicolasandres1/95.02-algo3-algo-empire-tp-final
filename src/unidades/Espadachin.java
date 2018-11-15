@@ -8,9 +8,4 @@ public class Espadachin extends Unidad {
 		vida = 100;
 		oro.restarOro(50);
 	}
-	
-
-
-
-
 }
