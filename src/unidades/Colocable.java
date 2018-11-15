@@ -4,6 +4,5 @@ import modelo.mapa.Mapa;
 
 public interface Colocable {
 
-    public void colocarseEn(Mapa mapa, int fila, int columna);
-
+    void colocarseEn(Mapa mapa, int fila, int columna);
 }
