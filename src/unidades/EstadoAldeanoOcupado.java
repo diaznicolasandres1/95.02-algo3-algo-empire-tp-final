@@ -2,9 +2,9 @@ package unidades;
 
 import edificios.Cuartel;
 import edificios.Edificio;
-import edificios.EdificioTieneVidaMaximaException;
 import edificios.PlazaCentral;
 import modelo.Oro;
+import modelo.Posicion;
 
 public class EstadoAldeanoOcupado implements EstadoAldeano{
 	
@@ -18,9 +18,6 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 		
 	}
 
-
-	
-	
 	@Override
 	public void avanzarTurno(Aldeano aldeano) {
 		turnos -=1;
@@ -28,7 +25,6 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 			aldeano.aldeanoSeLibero();	
 		}
 	}
-
 
 	@Override
 	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
@@ -44,11 +40,10 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 
 	@Override
 	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
-		
-		
-	}		
-	
+	}
 
-	
-
+	@Override
+	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) throws AldeanoEstaOcupadoException {
+		throw new AldeanoEstaOcupadoException();
+	}
 }
