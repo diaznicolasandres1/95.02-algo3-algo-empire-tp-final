@@ -1,13 +1,16 @@
 package unidades;
 
+import modelo.Posicion;
+
 public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
-	
-	public void atacar() {
+
+	@Override
+	public void atacar() throws NoSePuedeAtacarArmaAsedioDesmontadaException {
 		throw new NoSePuedeAtacarArmaAsedioDesmontadaException();
 	}
-	
-	public void moverse() {
-	
-	}
 
+	@Override
+	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) {
+		origen.moverUnidadHacia(unidad, destino, rangoMovimiento);
+	}
 }
