@@ -8,6 +8,4 @@ public class Arquero extends Unidad {
 		vida = 75;
 		oro.restarOro(75);
 	}
-
-	
 }
