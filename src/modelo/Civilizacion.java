@@ -1,6 +1,9 @@
 package modelo;
 
 import edificios.Edificio;
+import edificios.PlazaCentral;
+import modelo.mapa.Casillero;
+import modelo.mapa.Mapa;
 import unidades.Unidad;
 
 import java.util.ArrayList;
@@ -12,25 +15,25 @@ public class Civilizacion {
 	ArrayList<Edificio> edificios;
 	int limitePoblacion = 50;
 	int aldeanosIniciales = 3;
+	Mapa mapa;
 	
-}
-	
-	/*
-	public Civilizacion(int PosCastilloX, int PosCastilloY) {
+
+	public Civilizacion(Mapa mapa, int posCastilloX, int posCastilloY) {
 		oro = new Oro(100);
 		unidades = new ArrayList<>();
-		PlazaCentral plaza = new PlazaCentral(oro);
-		plaza.colocarseEn(mapa, 1, 1);
+		edificios = new ArrayList<>();
+/*		PlazaCentral plaza = new PlazaCentral(oro);
+		plaza.colocarseEn(mapa, posCastilloX, posCastilloY);
 		
 		for(int i=0; i<aldeanosIniciales; i++){
 			Unidad unidad = plaza.crearAldeanoDesdePlaza();
-			Casillero casillero = plaza.casilleroAlrededorDisponible(); //falta implementar
-			casillero.colocar(Colocable colocable);
+			Casillero casillero = plaza.casilleroAlrededorDisponible(); falta implementar
+			casillero.colocar(unidad);
 			unidades.add(unidad);
-		}
+		}*/
 	}
 	
-	public avanzarTurnoCivilizacion(){
+	public void avanzarTurnoCivilizacion(){
 		for(Edificio edificio: edificios){
 			edificio.avanzarTurno();
 		}
@@ -39,7 +42,6 @@ public class Civilizacion {
 		}
 	}
 }
-	*/
 
 	
 
