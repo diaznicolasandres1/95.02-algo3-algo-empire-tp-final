@@ -1,4 +1,4 @@
-package unidades;
+package modelo.unidades;
 
 import modelo.Oro;
 import modelo.Posicion;
