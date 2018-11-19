@@ -1,8 +1,8 @@
 package modelo.mapa;
 
-import edificios.Edificio;
+import modelo.edificios.Edificio;
 import modelo.Posicion;
-import unidades.Unidad;
+import modelo.unidades.Unidad;
 
 import java.util.ArrayList;
 
@@ -28,18 +28,15 @@ public class Mapa {
     }
 
     public void colocarUnidad(Unidad unidad, int fila, int columna) {
-
         this.buscarFila(fila).colocar(unidad, columna);
-        Posicion posicion = new Posicion(columna, fila);
-        unidad.setPosicion(posicion);
     }
 
-    public void colocarEdificio(Edificio edificio, int tamanioEdificio, int fila, int columna) {
+    public void colocarEdificio(Edificio edificio, int tamanioEdificio, int filaInicio, int columnaInicio) {
 
         int cantidadFilasAUtilizar = tamanioEdificio / 2;
-        for (int i = 0; i <= cantidadFilasAUtilizar; i++) {
-            this.buscarFila(fila + i).colocar(edificio, columna);
-            this.buscarFila(fila + i).colocar(edificio, columna + i);
+        for (int i = 0; i < cantidadFilasAUtilizar; i++) {
+            this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio);
+            this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + 1);
         }
     }
 
@@ -51,6 +48,19 @@ public class Mapa {
         unidad.moverHacia(posicion);
         casilleroDestino.colocar(unidad);
         casilleroOrigen.desocupar();
+    }
+
+    public void descolocarUnidad(int fila, int columna) {
+        this.buscarFila(fila).descolocar(columna);
+    }
+
+    public void descolocarEdificio(int tamanioEdificio, int filaInicio, int columnaInicio) {
+
+        int cantidadFilasOcupadas = tamanioEdificio / 2;
+        for (int i = 0; i < cantidadFilasOcupadas; i++) {
+            this.buscarFila(filaInicio + i).descolocar(columnaInicio);
+            this.buscarFila(filaInicio + i).descolocar(columnaInicio + 1);
+        }
     }
 
     private void agregarCasilleros() {
