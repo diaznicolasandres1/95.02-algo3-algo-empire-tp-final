@@ -1,16 +1,15 @@
 package modelo;
 
-import edificios.Edificio;
-import edificios.PlazaCentral;
-import edificios.Castillo;
-import edificios.Cuartel;
+import modelo.edificios.Edificio;
+import modelo.edificios.PlazaCentral;
+import modelo.edificios.Castillo;
+import modelo.edificios.Cuartel;
 import modelo.mapa.Mapa;
-import unidades.Aldeano;
-import unidades.Unidad;
-import unidades.Espadachin;
-import unidades.Arquero;
-import unidades.ArmaDeAsedio;
-import modelo.LimiteDePoblacionAlcanzadoException;
+import modelo.unidades.Aldeano;
+import modelo.unidades.Unidad;
+import modelo.unidades.Espadachin;
+import modelo.unidades.Arquero;
+import modelo.unidades.ArmaDeAsedio;
 
 import java.util.ArrayList;
 
