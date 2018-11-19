@@ -1,8 +1,12 @@
 
 package modelo;
 
-import org.junit.Test;
+import modelo.edificios.PlazaCentral;
+import modelo.mapa.CasilleroOcupadoException;
+import modelo.mapa.Mapa;
 import org.junit.Assert;
+import org.junit.Test;
+import modelo.unidades.Aldeano;
 
 public class PosicionTest {
 
@@ -87,5 +91,37 @@ public class PosicionTest {
         Posicion otraPosicion = new Posicion(56, 49);
 
         unaPosicion.estaDentroDelRango(otraPosicion, 0);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test11posicionDescolocaUnidadDeMapaYSeColocaDosUnidadesEnElMismoLugarLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Posicion posicion = new Posicion(10, 10);
+        Oro oro = new Oro(5000);
+
+        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+        posicion.descolocarUnidadDe(mapa);
+
+        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test12posicionDescolocaEdificioDeMapaYSeColocaUnidadesEnElMismoLugarVariasVecesLanzaExcepcion() {
+
+        Oro oro = new Oro(5000);
+        Mapa mapa = new Mapa(20, 20);
+        Posicion posicion = new Posicion(10, 10);
+
+        mapa.colocarEdificio(new PlazaCentral(oro), 10, 10, 10);
+        posicion.descolocarEdificioDe(mapa, 4);
+
+        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+        mapa.colocarUnidad(new Aldeano(oro), 11, 10);
+        mapa.colocarUnidad(new Aldeano(oro), 10, 11);
+        mapa.colocarUnidad(new Aldeano(oro), 11, 11);
+
+        mapa.colocarUnidad(new Aldeano(oro), 11, 11);
     }
 }
