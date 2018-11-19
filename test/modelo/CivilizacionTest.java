@@ -3,8 +3,6 @@ import org.junit.Assert;
 
 import modelo.Civilizacion;
 import modelo.mapa.Mapa;
-import edificios.PlazaCentral;
-import modelo.LimiteDePoblacionAlcanzadoException;
 
 public class CivilizacionTest {
 	Mapa mapa = new Mapa(15, 15);
