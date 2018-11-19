@@ -1,7 +1,6 @@
 # Algo Empire
 Trabajo practico de la materia Algoritmos y programación III - Modelo de Age of Empires II -
 Segundo cuatrimestre año 2018 - FIUBA.
-Link de overLeaf para editar el documento: https://www.overleaf.com/6538475577bggwkfmmvhnz
 
 ![Build Status](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3.svg?token=4LgUpS6rvXisEoAyjjAp&branch=master
 )
@@ -30,6 +29,7 @@ Siempre:
     1. Informe: Modificar informe
     1. Codigo: Modificar src/ y test/ con IntelliJ/Eclipse/Netbeans
     1. Diagramas: Modificar diagramas con Astah UML y subirlos como imagenes
+    1. Informe: https://www.overleaf.com/6538475577bggwkfmmvhnz
 1. Ejecutar pruebas unitarias y de integración. Además, usar el script de Ant (`ant` en el directorio donde se tenga el proyecto) para comprobar que se pueda buildear correctamente
 1. `git status`
 1. `git add ARCHIVOS_MODIFICADOS`. No agregar archivos propios de los IDEs.
