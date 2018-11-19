@@ -1,11 +1,10 @@
-package modelo;
+package modelo.mapa;
 
-import edificios.PlazaCentral;
-import modelo.mapa.Casillero;
-import modelo.mapa.CasilleroOcupadoException;
+import modelo.Oro;
+import modelo.edificios.PlazaCentral;
+import modelo.unidades.Arquero;
 import org.junit.Assert;
 import org.junit.Test;
-import unidades.Arquero;
 
 public class CasilleroTest {
 
