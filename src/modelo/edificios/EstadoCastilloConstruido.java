@@ -14,6 +14,8 @@ public class EstadoCastilloConstruido implements EstadoEdificio {
 		
 	}
 
+	/*En este estado no hacen nada*/
+	
 	@Override
 	public void avanzarTurno(Edificio castillo) {		
 		

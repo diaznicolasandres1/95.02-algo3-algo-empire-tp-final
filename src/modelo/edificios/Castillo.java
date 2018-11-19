@@ -17,11 +17,14 @@ public class Castillo extends Edificio {
 		estado = new EstadoCastilloConstruido();
 	}	
 	
+	
 	@Override
 	protected void terminoDeCrearse() {
 		//Ya empieza construido.
 		
 	}
+	
+	/*Castillo crea arma de asedio*/
 	
 	public ArmaDeAsedio crearArmaDeAsedio() {
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;

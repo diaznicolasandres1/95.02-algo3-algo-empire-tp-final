@@ -17,12 +17,14 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 	public void recolectarOro(Oro oro) {
 		
 	}
+	
+	/*-----Override -----*/
 
 	@Override
 	public void avanzarTurno(Aldeano aldeano) {
 		turnos -=1;
 		if (turnos < 1) {
-			aldeano.aldeanoSeLibero();	
+			aldeano.estarDisponible();	
 		}
 	}
 
@@ -32,7 +34,6 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 		
 	}
 
-
 	@Override
 	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
 		throw new AldeanoEstaOcupadoException();
@@ -40,10 +41,12 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 
 	@Override
 	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
+		throw new AldeanoEstaOcupadoException();
+		
 	}
 
 	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) throws AldeanoEstaOcupadoException {
+	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento)  {
 		throw new AldeanoEstaOcupadoException();
 	}
 }

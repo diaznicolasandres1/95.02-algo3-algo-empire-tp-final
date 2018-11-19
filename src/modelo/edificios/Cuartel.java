@@ -18,6 +18,9 @@ public class Cuartel extends Edificio {
 		oro.restarOro(50);		
 	}
 	
+	
+	/*Los estados se encargan de realizar la accion*/
+	
 	public void repararse() {
 		estado.repararse(this);
 	}	

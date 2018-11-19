@@ -17,13 +17,19 @@ public abstract class Edificio implements Colocable {
 		return vida;
 	}
 	
+	
+	/*-----Recibir danio-----*/	
+	
 	public void recibirDanioConValor(int danio)   {
         if (vida <= 0) {
             throw new UnidadFueDestruidaException();
         }
         vida -= danio;
-    }
-
+    }	
+	
+	
+	/*-----Repararse a si mismo-----*/
+	
     public void repararseAsimismo() {
 
         if (vida == vidaMaxima) {
@@ -34,21 +40,36 @@ public abstract class Edificio implements Colocable {
 			vida = vidaMaxima;
 		}
 	}
-
+    
+    
+    
+    /*-----Descolocarse-----*/	
+    
     @Override
     public void descolocarseDe(Mapa mapa) {
         this.posicionInicio.descolocarEdificioDe(mapa, this.tamanio);
     }
+    
+    
+    
+    /*-----Colocarse en-----*/	
 
     @Override
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarEdificio(this, tamanio, fila, columna);
         this.setPosicionInicio(new Posicion(columna, fila));
     }
+    
+    
+    
+    /*-----Setear posicion de inicio-----*/	
 
     private void setPosicionInicio(Posicion posicion) {
         this.posicionInicio = posicion;
     }
+    
+    
+    
 
 	protected abstract void terminoDeCrearse();
 	

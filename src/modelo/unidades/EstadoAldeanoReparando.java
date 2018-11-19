@@ -11,11 +11,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 
 	Edificio edificio;
 	
-	@Override
-	public void avanzarTurno(Aldeano aldeano) {
-		repararEdificio(aldeano,edificio);
-		
-	}
+
 	
 	@Override
 	public void repararEdificio(Aldeano aldeano, Edificio edificio) {
@@ -32,9 +28,14 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	}
 	
 	@Override
+	public void avanzarTurno(Aldeano aldeano) {
+		repararEdificio(aldeano,edificio);
+		
+	}
+	
+	@Override
 	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new AldeanoEstaOcupadoException();
 	}
 
 	@Override
@@ -44,12 +45,11 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 
 	@Override
 	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new AldeanoEstaOcupadoException();
 	}
 
     @Override
-    public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) throws AldeanoEstaOcupadoException {
+    public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) {
         throw new AldeanoEstaOcupadoException();
     }
 }

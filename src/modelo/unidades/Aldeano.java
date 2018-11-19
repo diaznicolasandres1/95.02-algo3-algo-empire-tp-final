@@ -20,6 +20,8 @@ public class Aldeano extends Unidad {
     public void aldeanoRepararEdificio(Edificio edificio) {
         estado.repararEdificio(this, edificio);
     }
+    
+    /*-----Cambio de estados-----*/	
 
     public void estarOcupado(int turnosOcupado) {
         estado = new EstadoAldeanoOcupado(turnosOcupado);
@@ -28,6 +30,12 @@ public class Aldeano extends Unidad {
     public void estarEnReparacion() {
         estado = new EstadoAldeanoReparando();
     }
+    
+    public void estarDisponible() {
+        estado = new EstadoAldeanoDisponible();
+    }
+    
+    /*-----El aldeano construye cuartel y plaza central-----*/	
 
     public Cuartel construirCuartel() {
         return estado.construirCuartel(this, 3, oro);
@@ -36,10 +44,10 @@ public class Aldeano extends Unidad {
     public PlazaCentral construirPlazaCentral() {
         return estado.construirPlazaCentral(this, 3, oro);
     }
+    
+    /*----------------------------------------------------*/	
 
-    public void estarDisponible() {
-        estado = new EstadoAldeanoDisponible();
-    }
+ 
 
     @Override
     public void avanzarTurno() {
@@ -47,9 +55,6 @@ public class Aldeano extends Unidad {
         estado.avanzarTurno(this);
     }
 
-    public void aldeanoSeLibero() {
-        estado = new EstadoAldeanoDisponible();
-    }
 
     @Override
     public void moverHacia(Posicion posicion) {
