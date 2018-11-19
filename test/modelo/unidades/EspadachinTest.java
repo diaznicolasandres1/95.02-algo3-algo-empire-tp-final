@@ -1,10 +1,13 @@
-package modelo;
+package modelo.unidades;
 
 import junit.framework.Assert;
+import modelo.NoTenesOroSuficienteException;
+import modelo.Oro;
+import modelo.Posicion;
+import modelo.PosicionFueraDeRangoException;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import org.junit.Test;
-import unidades.Espadachin;
 
 public class EspadachinTest {
 
@@ -55,10 +58,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 9, 10);
 
-		mapa.colocarUnidad(otroEspadachin, 9, 10);
+        otroEspadachin.colocarseEn(mapa, 9, 10);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -69,10 +72,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 11, 10);
 
-		mapa.colocarUnidad(otroEspadachin, 11, 10);
+        otroEspadachin.colocarseEn(mapa, 11, 10);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -83,10 +86,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 10, 11);
 
-		mapa.colocarUnidad(otroEspadachin, 10, 11);
+        otroEspadachin.colocarseEn(mapa, 10, 11);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -97,10 +100,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 10, 9);
 
-		mapa.colocarUnidad(otroEspadachin, 10, 9);
+        otroEspadachin.colocarseEn(mapa, 10, 9);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -111,10 +114,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 9, 11);
 
-		mapa.colocarUnidad(otroEspadachin, 9, 11);
+        otroEspadachin.colocarseEn(mapa, 9, 11);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -125,10 +128,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 11, 11);
 
-		mapa.colocarUnidad(otroEspadachin, 11, 11);
+        otroEspadachin.colocarseEn(mapa, 11, 11);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -139,10 +142,10 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 11, 9);
 
-		mapa.colocarUnidad(otroEspadachin, 11, 9);
+        otroEspadachin.colocarseEn(mapa, 11, 9);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)
@@ -153,12 +156,53 @@ public class EspadachinTest {
 		Espadachin unEspadachin = new Espadachin(oro);
 		Espadachin otroEspadachin = new Espadachin(oro);
 
-		mapa.colocarUnidad(unEspadachin, 10, 10);
+        unEspadachin.colocarseEn(mapa, 10, 10);
 		mapa.moverUnidadDesdeHasta(unEspadachin, 10, 10, 9, 9);
 
-		mapa.colocarUnidad(otroEspadachin, 9, 9);
-	}
-	
-	
+        otroEspadachin.colocarseEn(mapa, 9, 9);
+    }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test13espadachinIntentaColocarseFueraDelRangoPositivoDelMapaLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Espadachin espadachin = new Espadachin(oro);
+
+        espadachin.colocarseEn(mapa, 100, 100);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test14espadachinIntentaColocarseFueraDelRangoNegativoDelMapaLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Espadachin espadachin = new Espadachin(oro);
+
+        espadachin.colocarseEn(mapa, -1000, -1000);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test15espadachinIntentaColocarseEnLimiteDelRangoNuloDelMapaLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Espadachin espadachin = new Espadachin(oro);
+
+        espadachin.colocarseEn(mapa, 0, 0);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test16espadachinSeColocaEnMapaYSeDescolocaYSeColocanDosUnidadesEnElMismoLugarLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Oro oro = new Oro(200);
+        Espadachin espadachin = new Espadachin(oro);
+
+        espadachin.colocarseEn(mapa, 10, 10);
+        espadachin.descolocarseDe(mapa);
+        mapa.colocarUnidad(new Espadachin(oro), 10, 10);
+
+        mapa.colocarUnidad(new Espadachin(oro), 10, 10);
+    }
 }
