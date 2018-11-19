@@ -1,6 +1,6 @@
 package modelo.mapa;
 
-import unidades.Colocable;
+import modelo.unidades.Colocable;
 
 public class Casillero {
 
