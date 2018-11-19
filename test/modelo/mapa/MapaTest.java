@@ -1,16 +1,17 @@
-package modelo;
+package modelo.mapa;
 
-import edificios.Cuartel;
-import edificios.PlazaCentral;
-import modelo.mapa.CasilleroOcupadoException;
-import modelo.mapa.Mapa;
-import modelo.mapa.TamanioInvalidoException;
+import modelo.Oro;
+import modelo.Posicion;
+import modelo.PosicionFueraDeRangoException;
+import modelo.edificios.Castillo;
+import modelo.edificios.Cuartel;
+import modelo.edificios.PlazaCentral;
+import modelo.unidades.Aldeano;
+import modelo.unidades.ArmaDeAsedio;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 import org.junit.Assert;
 import org.junit.Test;
-import unidades.Aldeano;
-import unidades.ArmaDeAsedio;
-import unidades.Arquero;
-import unidades.Espadachin;
 
 import java.util.ArrayList;
 
@@ -93,30 +94,30 @@ public class MapaTest {
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
 
-        plaza.colocarseEn(mapa, 10, 10);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
 
         mapa.colocarUnidad(aldeano, 10, 10);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test08edificioSeColocaEnMapaYSeIntetaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test08edificioSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
 
-        plaza.colocarseEn(mapa, 10, 10);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
 
         mapa.colocarUnidad(aldeano, 11, 10);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test09edificioSeColocaEnMapaYSeIntetaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test09edificioSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
 
-        plaza.colocarseEn(mapa, 10, 10);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
 
         mapa.colocarUnidad(aldeano, 11, 11);
     }
@@ -127,7 +128,7 @@ public class MapaTest {
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
 
-        plaza.colocarseEn(mapa, 10, 10);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
 
         mapa.colocarUnidad(aldeano, 10, 11);
     }
@@ -138,7 +139,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.colocarseEn(mapa, 35, 100);
+        mapa.colocarEdificio(plaza, 4, 35, 100);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -147,7 +148,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.colocarseEn(mapa, -1000, -1000);
+        mapa.colocarEdificio(plaza, 4, -1000, -1000);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -156,7 +157,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.colocarseEn(mapa, 0, 0);
+        mapa.colocarEdificio(plaza, 4, 0, 0);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -168,7 +169,7 @@ public class MapaTest {
 
         mapa.colocarUnidad(espadachin, 23, 22);
 
-        plaza.colocarseEn(mapa, 23, 22);
+        mapa.colocarEdificio(plaza, 4, 23, 22);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -192,7 +193,6 @@ public class MapaTest {
         Mapa mapa = new Mapa(25, 30);
         Posicion posicion = new Posicion(10, 11);
         Espadachin espadachin = new Espadachin(oro);
-        Arquero arquero = new Arquero(oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 11, 10);
@@ -243,5 +243,35 @@ public class MapaTest {
         mapa.colocarUnidad(armaAsedio, 1, 3);
 
         mapa.moverUnidadDesdeHasta(armaAsedio, 1, 3, 2, 2);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test20mapaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 40);
+        Arquero arquero = new Arquero(oro);
+        Aldeano aldeano = new Aldeano(oro);
+
+        mapa.colocarUnidad(arquero, 10, 10);
+        mapa.descolocarUnidad(10, 10);
+        mapa.colocarUnidad(aldeano, 10, 10);
+
+        mapa.colocarUnidad(arquero, 10, 10);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test21mapaColocaYDescolocaEdificioYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(20, 40);
+        Castillo castillo = new Castillo(oro);
+
+        mapa.colocarEdificio(castillo, 16, 10, 10);
+        mapa.descolocarEdificio(16, 10, 10);
+        for (int i = 0; i < 8; i++) {
+            mapa.colocarUnidad(new Arquero(oro), 10 + i, 10);
+            mapa.colocarUnidad(new Arquero(oro), 10 + i, 11);
+        }
+
+        mapa.colocarUnidad(new Aldeano(oro), 15, 10);
     }
 }
