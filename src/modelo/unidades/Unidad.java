@@ -1,4 +1,4 @@
-package unidades;
+package modelo.unidades;
 
 import modelo.Posicion;
 import modelo.mapa.Mapa;
@@ -29,11 +29,17 @@ public abstract class Unidad implements Colocable {
         this.posicion = posicion;
     }
 
-    @Override
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarUnidad(this, fila, columna);
+        this.setPosicion(new Posicion(columna, fila));
     }
-    
-	public void avanzarTurno() {};
-    
+
+    @Override
+    public void descolocarseDe(Mapa mapa) {
+        this.posicion.descolocarUnidadDe(mapa);
+    }
+
+    public void avanzarTurno() {
+
+    }
 }
