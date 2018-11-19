@@ -1,8 +1,8 @@
-package edificios;
+package modelo.edificios;
 
 import modelo.Oro;
-import unidades.Arquero;
-import unidades.Espadachin;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 
 public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 	int turnos =3 ;

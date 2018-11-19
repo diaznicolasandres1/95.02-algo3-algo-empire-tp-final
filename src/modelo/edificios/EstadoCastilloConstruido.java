@@ -1,13 +1,10 @@
-package edificios;
-
-import modelo.Oro;
-import unidades.ArmaDeAsedio;
+package modelo.edificios;
 
 public class EstadoCastilloConstruido implements EstadoEdificio {
 
 	@Override
 	public void repararse(Edificio castillo) {
-		castillo.repararseASimismo();
+		castillo.repararseAsimismo();
 		
 	}
 

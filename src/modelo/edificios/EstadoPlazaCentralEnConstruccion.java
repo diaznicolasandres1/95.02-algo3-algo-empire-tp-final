@@ -1,7 +1,7 @@
-package edificios;
+package modelo.edificios;
 
 import modelo.Oro;
-import unidades.Aldeano;
+import modelo.unidades.Aldeano;
 
 public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	

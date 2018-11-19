@@ -1,9 +1,9 @@
-package unidades;
+package modelo.unidades;
 
-import edificios.Cuartel;
-import edificios.Edificio;
-import edificios.EdificioTieneVidaMaximaException;
-import edificios.PlazaCentral;
+import modelo.edificios.Cuartel;
+import modelo.edificios.Edificio;
+import modelo.edificios.EdificioTieneVidaMaximaException;
+import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
 
@@ -21,8 +21,8 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	public void repararEdificio(Aldeano aldeano, Edificio edificio) {
 		this.edificio = edificio;
 		try {
-			
-			edificio.repararseASimismo();
+
+			edificio.repararseAsimismo();
 			
 			
 		}catch(EdificioTieneVidaMaximaException e){

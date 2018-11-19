@@ -1,8 +1,8 @@
-package edificios;
+package modelo.edificios;
 
 import modelo.Oro;
-import unidades.Arquero;
-import unidades.Espadachin;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 
 public class EstadoCuartelConstruido implements EstadoCuartel {
 
@@ -36,7 +36,7 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
 
 	@Override
 	public void repararse(Edificio cuartel) {
-		cuartel.repararseASimismo();
+		cuartel.repararseAsimismo();
 		
 		
 	}
