@@ -1,6 +1,6 @@
 package modelo.mapa;
 
-import unidades.Colocable;
+import modelo.unidades.Colocable;
 
 import java.util.ArrayList;
 
@@ -17,12 +17,16 @@ public class Fila {
         this.casilleros.addAll(casilleros);
     }
 
-    public Casillero buscarCasillero(int numeroColumna) {
-        return casilleros.get(numeroColumna - 1);
+    public Casillero buscarCasillero(int columna) {
+        return casilleros.get(columna - 1);
     }
 
     public void colocar(Colocable colocable, int columna) {
         this.buscarCasillero(columna).colocar(colocable);
+    }
+
+    public void descolocar(int columna) {
+        this.buscarCasillero(columna).desocupar();
     }
 
 }
