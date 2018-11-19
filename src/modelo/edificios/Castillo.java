@@ -1,18 +1,18 @@
-package edificios;
+package modelo.edificios;
 
 import modelo.Oro;
-import unidades.ArmaDeAsedio;
+import modelo.unidades.ArmaDeAsedio;
 
 public class Castillo extends Edificio {
 
-	 Oro oro;
+    Oro oro;
 	EstadoCastilloConstruido estado;
 	
 	public Castillo(Oro oro) {
 		vidaMaxima = 1000;
 		vida = 1000;
 		reparacion = 15;
-		tamanio = 8;
+        tamanio = 16;
 		this.oro = oro;
 		estado = new EstadoCastilloConstruido();
 	}	
