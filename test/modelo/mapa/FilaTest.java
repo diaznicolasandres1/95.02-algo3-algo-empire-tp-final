@@ -1,12 +1,10 @@
-package modelo;
+package modelo.mapa;
 
-import modelo.mapa.Casillero;
-import modelo.mapa.CasilleroOcupadoException;
-import modelo.mapa.Fila;
+import modelo.Oro;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 import org.junit.Assert;
 import org.junit.Test;
-import unidades.Arquero;
-import unidades.Espadachin;
 
 import java.util.ArrayList;
 
@@ -88,5 +86,24 @@ public class FilaTest {
         fila.colocar(arquero, 1);
 
         fila.colocar(espadachin, -500);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test06filaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
+
+        Fila fila = new Fila();
+        Arquero arquero = new Arquero(oro);
+        Espadachin espadachin = new Espadachin(oro);
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            casilleros.add(new Casillero());
+        }
+
+        fila.agregarCasilleros(casilleros);
+        fila.colocar(arquero, 10);
+        fila.descolocar(10);
+        fila.colocar(espadachin, 10);
+
+        fila.colocar(arquero, 10);
     }
 }
