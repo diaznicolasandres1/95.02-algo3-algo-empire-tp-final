@@ -1,14 +1,13 @@
-package edificios;
+package modelo.edificios;
 
 import modelo.Oro;
-import unidades.Aldeano;
-import unidades.Arquero;
-import unidades.Espadachin;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 
 public class Cuartel extends Edificio {
-	Oro oro;
+
+    Oro oro;
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
-	
 	
 	public Cuartel(Oro nuevoOro) {
 		vidaMaxima = 250;
