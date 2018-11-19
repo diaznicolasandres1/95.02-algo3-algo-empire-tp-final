@@ -1,8 +1,8 @@
-package unidades;
+package modelo.unidades;
 
-import edificios.Cuartel;
-import edificios.Edificio;
-import edificios.PlazaCentral;
+import modelo.edificios.Cuartel;
+import modelo.edificios.Edificio;
+import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
 
