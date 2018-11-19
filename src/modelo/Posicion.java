@@ -1,6 +1,7 @@
 package modelo;
 
-import unidades.Unidad;
+import modelo.mapa.Mapa;
+import modelo.unidades.Unidad;
 
 public class Posicion {
 
@@ -21,7 +22,7 @@ public class Posicion {
         if (!this.esRangoValido(rango)) {
             throw new RangoInvalidoException();
         }
-        return otraPosicion.wrapperEstaDentroDelRango(this.posX, this.posY, rango);
+        return otraPosicion.estaDentroDelRangoConXeY(this.posX, this.posY, rango);
     }
 
     public void moverUnidadHacia(Unidad unidad, Posicion posicion, int rangoMovimiento) {
@@ -32,6 +33,14 @@ public class Posicion {
         unidad.setPosicion(posicion);
     }
 
+    public void descolocarUnidadDe(Mapa mapa) {
+        mapa.descolocarUnidad(this.posY, this.posX);
+    }
+
+    public void descolocarEdificioDe(Mapa mapa, int tamanioEdificio) {
+        mapa.descolocarEdificio(tamanioEdificio, this.posY, this.posX);
+    }
+
     private boolean esRangoValido(int rango) {
         return rango > 0;
     }
@@ -40,7 +49,7 @@ public class Posicion {
         return (posX >= 0 && posY >= 0);
     }
 
-    private boolean wrapperEstaDentroDelRango(int posX, int posY, int rango) {
+    private boolean estaDentroDelRangoConXeY(int posX, int posY, int rango) {
 
         int diferenciaEnX = this.posX - posX;
         int diferenciaEnY = this.posY - posY;
