@@ -24,13 +24,14 @@ public class ArmaAsedioTest {
 	@Test(expected = NoSePuedeMoverArmaAsedioMontadaException.class)
 	public void test02MoverArmaMontadaLanzaExcepcion() {
 
+		Mapa mapa = new Mapa(20, 20);
 		Oro oro = new Oro(500);
 		ArmaDeAsedio arma = new ArmaDeAsedio(oro);
 		Posicion posicion = new Posicion(9, 9);
 
 		arma.montarArma();
 
-		arma.moverHacia(posicion);
+		arma.moverHacia(posicion, mapa);
 		
 	}
 	
@@ -62,6 +63,7 @@ public class ArmaAsedioTest {
 	@Test(expected = PosicionFueraDeRangoException.class)
 	public void test06armaDeAsedioSeMueveFueraDeRangoLanzaExcepcion() {
 
+		Mapa mapa = new Mapa(20, 20);
 		Oro oro = new Oro(500);
 		ArmaDeAsedio arma = new ArmaDeAsedio(oro);
 		Posicion unaPosicion = new Posicion(5, 5);
@@ -69,7 +71,7 @@ public class ArmaAsedioTest {
 
 		arma.setPosicion(unaPosicion);
 
-		arma.moverHacia(otraPosicion);
+		arma.moverHacia(otraPosicion, mapa);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)

@@ -26,7 +26,7 @@ Solo la primera vez:
 Siempre:
 1. `git pull`
 1. Cambios en codigo, informe o diagramas
-    1. Informe: Modificar informe
+    1. Informe: Modificar [informe](https://www.overleaf.com/6538475577bggwkfmmvhnz)
     1. Codigo: Modificar src/ y test/ con IntelliJ/Eclipse/Netbeans
     1. Diagramas: Modificar diagramas con Astah UML y subirlos como imagenes
     1. Informe: https://www.overleaf.com/6538475577bggwkfmmvhnz

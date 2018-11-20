@@ -48,6 +48,7 @@ public class ArqueroTest {
     @Test(expected = PosicionFueraDeRangoException.class)
     public void test04arqueroSeMueveFueraDeRangoYLanzaExcepcion() {
 
+        Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(300);
         Arquero arquero = new Arquero(oro);
         Posicion unaPosicion = new Posicion(5, 5);
@@ -55,7 +56,7 @@ public class ArqueroTest {
 
         arquero.setPosicion(unaPosicion);
 
-        arquero.moverHacia(otraPosicion);
+        arquero.moverHacia(otraPosicion, mapa);
     }
 
     @Test(expected = CasilleroOcupadoException.class)

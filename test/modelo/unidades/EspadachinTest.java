@@ -40,6 +40,7 @@ public class EspadachinTest {
 	@Test(expected = PosicionFueraDeRangoException.class)
 	public void test04espadachinSeMueveFueraDeRangoYLanzaExcepcion() {
 
+		Mapa mapa = new Mapa(20, 20);
 		Oro oro = new Oro(300);
 		Espadachin espadachin = new Espadachin(oro);
 		Posicion unaPosicion = new Posicion(5, 5);
@@ -47,7 +48,7 @@ public class EspadachinTest {
 
 		espadachin.setPosicion(unaPosicion);
 
-		espadachin.moverHacia(otraPosicion);
+		espadachin.moverHacia(otraPosicion, mapa);
 	}
 
 	@Test(expected = CasilleroOcupadoException.class)

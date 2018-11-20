@@ -5,6 +5,7 @@ import modelo.edificios.Edificio;
 import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	
@@ -37,8 +38,8 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 	}
 
 	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) {
-		origen.moverUnidadHacia(unidad, destino, rangoMovimiento);
+	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+		origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
 	}
 }
 

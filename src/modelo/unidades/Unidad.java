@@ -21,8 +21,8 @@ public abstract class Unidad implements Colocable {
         vida -= danio;
     }
 
-    public void moverHacia(Posicion posicion) {
-        this.posicion.moverUnidadHacia(this, posicion, rangoMovimiento);
+    public void moverHacia(Posicion destino, Mapa mapa) {
+        this.posicion.moverUnidadHacia(this, mapa, destino, rangoMovimiento);
     }
 
     public void setPosicion(Posicion posicion) {
@@ -31,7 +31,6 @@ public abstract class Unidad implements Colocable {
 
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarUnidad(this, fila, columna);
-        this.setPosicion(new Posicion(columna, fila));
     }
 
     @Override

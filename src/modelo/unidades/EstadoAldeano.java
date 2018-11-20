@@ -5,6 +5,7 @@ import modelo.edificios.Edificio;
 import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public interface EstadoAldeano {
 	
@@ -15,5 +16,5 @@ public interface EstadoAldeano {
 	void repararEdificio(Aldeano aldeano,Edificio edificio);
 	PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
 
-	void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento);
+	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
 }

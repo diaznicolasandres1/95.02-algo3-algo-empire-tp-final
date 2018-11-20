@@ -1,6 +1,7 @@
 package modelo.unidades;
 
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 
@@ -10,7 +11,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 	}
 
 	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) {
-		origen.moverUnidadHacia(unidad, destino, rangoMovimiento);
+	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+		origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
 	}
 }

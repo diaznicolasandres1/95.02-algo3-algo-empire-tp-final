@@ -25,12 +25,12 @@ public class Posicion {
         return otraPosicion.estaDentroDelRangoConXeY(this.posX, this.posY, rango);
     }
 
-    public void moverUnidadHacia(Unidad unidad, Posicion posicion, int rangoMovimiento) {
+    public void moverUnidadHacia(Unidad unidad, Mapa mapa, Posicion destino, int rangoMovimiento) {
 
-        if (!this.estaDentroDelRango(posicion, rangoMovimiento)) {
+        if (!this.estaDentroDelRango(destino, rangoMovimiento)) {
             throw new PosicionFueraDeRangoException();
         }
-        unidad.setPosicion(posicion);
+        destino.moverUnidadConXeY(unidad, mapa, this.posX, this.posY);
     }
 
     public void descolocarUnidadDe(Mapa mapa) {
@@ -39,6 +39,10 @@ public class Posicion {
 
     public void descolocarEdificioDe(Mapa mapa, int tamanioEdificio) {
         mapa.descolocarEdificio(tamanioEdificio, this.posY, this.posX);
+    }
+
+    private void moverUnidadConXeY(Unidad unidad, Mapa mapa, int xDeOrigen, int yDeOrigen) {
+        mapa.moverUnidadDesdeHasta(unidad, yDeOrigen, xDeOrigen, this.posY, this.posX);
     }
 
     private boolean esRangoValido(int rango) {

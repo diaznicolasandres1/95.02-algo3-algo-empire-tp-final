@@ -205,13 +205,11 @@ public class MapaTest {
     public void test17mapaMueveUnidadFueraDelRangoDeUnidadLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 30);
-        Posicion posicion = new Posicion(8, 9);
         Espadachin espadachin = new Espadachin(oro);
-        espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 9, 8);
 
-        mapa.moverUnidadDesdeHasta(espadachin, 9, 8, 22, 22);
+        espadachin.moverHacia(new Posicion(22, 22), mapa);
     }
 
     @Test(expected = CasilleroOcupadoException.class)

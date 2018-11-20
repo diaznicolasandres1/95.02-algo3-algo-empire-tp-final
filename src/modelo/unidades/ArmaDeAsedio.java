@@ -2,6 +2,7 @@ package modelo.unidades;
 
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public class ArmaDeAsedio extends Unidad {
 	
@@ -25,8 +26,8 @@ public class ArmaDeAsedio extends Unidad {
 	}
 
 	@Override
-	public void moverHacia(Posicion posicion) {
-		estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
+	public void moverHacia(Posicion destino, Mapa mapa) {
+		estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, rangoMovimiento);
 	}
 
 }

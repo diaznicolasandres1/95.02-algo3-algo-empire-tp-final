@@ -1,7 +1,7 @@
 package modelo.mapa;
 
-import modelo.edificios.Edificio;
 import modelo.Posicion;
+import modelo.edificios.Edificio;
 import modelo.unidades.Unidad;
 
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ public class Mapa {
 
     public void colocarUnidad(Unidad unidad, int fila, int columna) {
         this.buscarFila(fila).colocar(unidad, columna);
+        unidad.setPosicion(new Posicion(columna, fila));
     }
 
     public void colocarEdificio(Edificio edificio, int tamanioEdificio, int filaInicio, int columnaInicio) {
@@ -44,9 +45,8 @@ public class Mapa {
 
         Casillero casilleroOrigen = this.buscarCasillero(filaOrigen, columnaOrigen);
         Casillero casilleroDestino = this.buscarCasillero(filaDestino, columnaDestino);
-        Posicion posicion = new Posicion(columnaDestino, filaOrigen);
-        unidad.moverHacia(posicion);
         casilleroDestino.colocar(unidad);
+        unidad.setPosicion(new Posicion(columnaDestino, filaDestino));
         casilleroOrigen.desocupar();
     }
 
