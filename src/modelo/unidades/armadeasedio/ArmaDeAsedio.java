@@ -1,11 +1,13 @@
 package modelo.unidades.armadeasedio;
 
+import modelo.Ataque;
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
-public class ArmaDeAsedio extends Unidad {
+public class ArmaDeAsedio extends Unidad implements Ataque {
 	
 	EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
 	
@@ -22,13 +24,23 @@ public class ArmaDeAsedio extends Unidad {
 		estado = new EstadoArmaAsedioDesmontada();
 	}
 	
-	public void atacar() {
-		estado.atacar();
-	}
+
 
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
 		estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, rangoMovimiento);
+	}
+
+	@Override
+	public void atacar(Edificio edificio) {
+		estado.atacar(edificio);
+		
+	}
+
+	@Override
+	public void atacar(Unidad unidad) {
+		throw new ArmaAsedioSoloPuedeAtacarEdificiosException();
+		
 	}
 
 }
