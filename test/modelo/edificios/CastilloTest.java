@@ -5,8 +5,9 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
-import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
+import modelo.unidades.aldeano.Aldeano;
+
 import org.junit.Test;
 
 

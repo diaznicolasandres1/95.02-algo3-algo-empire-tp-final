@@ -9,6 +9,9 @@ import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.aldeano.Aldeano;
+import modelo.unidades.aldeano.AldeanoEstaOcupadoException;
+
 import org.junit.Test;
 
 public class AldeanoTest {

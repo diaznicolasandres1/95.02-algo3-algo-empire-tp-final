@@ -4,9 +4,10 @@ package modelo;
 import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.aldeano.Aldeano;
+
 import org.junit.Assert;
 import org.junit.Test;
-import modelo.unidades.Aldeano;
 
 public class PosicionTest {
 

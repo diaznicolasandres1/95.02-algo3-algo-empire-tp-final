@@ -3,8 +3,8 @@ package modelo.unidades.arquero;
 import modelo.Ataque;
 import modelo.Oro;
 import modelo.edificios.Edificio;
-import modelo.unidades.Aldeano;
 import modelo.unidades.Unidad;
+import modelo.unidades.aldeano.Aldeano;
 
 public class Arquero extends Unidad implements Ataque {
 	

@@ -8,6 +8,7 @@ import modelo.PosicionFueraDeRangoException;
 import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.arquero.ArqueroYaAtacoEnEsteTurnoException;
 

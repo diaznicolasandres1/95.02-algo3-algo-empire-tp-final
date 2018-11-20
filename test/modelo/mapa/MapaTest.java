@@ -6,9 +6,9 @@ import modelo.PosicionFueraDeRangoException;
 import modelo.edificios.Castillo;
 import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
-import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Espadachin;
+import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 
 import org.junit.Assert;

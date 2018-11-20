@@ -1,7 +1,7 @@
 package modelo.edificios;
 
 import modelo.Oro;
-import modelo.unidades.Aldeano;
+import modelo.unidades.aldeano.Aldeano;
 
 public interface EstadoPlazaCentral extends EstadoEdificio{
 

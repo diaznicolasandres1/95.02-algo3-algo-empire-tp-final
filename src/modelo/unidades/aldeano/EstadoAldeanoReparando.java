@@ -1,4 +1,4 @@
-package modelo.unidades;
+package modelo.unidades.aldeano;
 
 import modelo.edificios.Cuartel;
 import modelo.edificios.Edificio;
@@ -7,6 +7,7 @@ import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.mapa.Mapa;
+import modelo.unidades.Unidad;
 
 public class EstadoAldeanoReparando implements EstadoAldeano{
 
