@@ -1,8 +1,8 @@
 package modelo.mapa;
 
 import modelo.Oro;
-import modelo.unidades.Espadachin;
 import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 import org.junit.Assert;
 import org.junit.Test;

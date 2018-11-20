@@ -20,7 +20,7 @@ public class EstadoArqueroOcupado implements EstadoArquero {
 
 	@Override
 	public void atacar(Unidad unidad) {
-		// TODO Auto-generated method stub
+		throw new ArqueroYaAtacoEnEsteTurnoException();
 		
 	}
 

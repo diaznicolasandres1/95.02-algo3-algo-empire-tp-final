@@ -6,10 +6,10 @@ import modelo.PosicionFueraDeRangoException;
 import modelo.edificios.Castillo;
 import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
-import modelo.unidades.Espadachin;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 import org.junit.Assert;
 import org.junit.Test;

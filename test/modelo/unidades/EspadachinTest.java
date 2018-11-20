@@ -5,8 +5,15 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.PosicionFueraDeRangoException;
+import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.aldeano.Aldeano;
+import modelo.unidades.arquero.Arquero;
+import modelo.unidades.arquero.ArqueroYaAtacoEnEsteTurnoException;
+import modelo.unidades.espadachin.Espadachin;
+import modelo.unidades.espadachin.EspadachinYaAtacoEnEsteTurnoException;
+
 import org.junit.Test;
 
 public class EspadachinTest {
@@ -205,5 +212,48 @@ public class EspadachinTest {
         mapa.colocarUnidad(new Espadachin(oro), 10, 10);
 
         mapa.colocarUnidad(new Espadachin(oro), 10, 10);
+    }
+    /*-----PRUEBAS DE ATAQUE A EDIFICIO Y UNIDAD-----*/
+    @Test 
+    public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
+		Oro oro = new Oro(300);
+        Arquero arquero1 = new Arquero(oro);
+        Arquero arquero2 = new Arquero(oro);
+        
+        arquero1.atacar(arquero2);
+		Assert.assertEquals(arquero2.getVida(), 65);
+    
+    }
+    
+    @Test 
+    public void test18EspadachinAtacaAldeanoYLeResta10deVida() {
+		Oro oro = new Oro(300);
+        Espadachin espadachin = new Espadachin(oro);
+      	Aldeano aldeano  = new Aldeano(oro);
+        
+        espadachin.atacar(aldeano);
+		Assert.assertEquals(aldeano.getVida(), 25);
+    
+    }
+    
+    @Test 
+    public void test19ArqueroAtacaPlazaCentralYLeResta15deVida() {
+		Oro oro = new Oro(800);
+		Espadachin espadachin = new Espadachin(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+        
+        espadachin.atacar(plaza);
+		Assert.assertEquals(plaza.getVida(), 435);
+    
+    }
+    
+    @Test(expected = EspadachinYaAtacoEnEsteTurnoException.class)
+    public void test20ArqueroSoloPuedeAtacarUnaVezPorTurno() {
+		Oro oro = new Oro(800);
+		Espadachin espadachin = new Espadachin(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+       
+       espadachin.atacar(plaza);
+       espadachin.atacar(plaza);
     }
 }

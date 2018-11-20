@@ -9,7 +9,7 @@ import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
-import modelo.unidades.Espadachin;
+import modelo.unidades.espadachin.Espadachin;
 
 import java.util.ArrayList;
 

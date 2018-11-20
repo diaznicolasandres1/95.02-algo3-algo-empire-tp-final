@@ -5,9 +5,9 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
-import modelo.unidades.Espadachin;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 import org.junit.Test;
 

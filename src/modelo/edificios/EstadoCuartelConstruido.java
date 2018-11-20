@@ -1,8 +1,8 @@
 package modelo.edificios;
 
 import modelo.Oro;
-import modelo.unidades.Espadachin;
 import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 public class EstadoCuartelConstruido implements EstadoCuartel {
 
