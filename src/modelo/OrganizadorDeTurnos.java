@@ -1,6 +1,5 @@
 package modelo;
 
-import modelo.Civilizacion;
 import java.util.Random;
 
 public class OrganizadorDeTurnos {
@@ -18,8 +17,8 @@ public class OrganizadorDeTurnos {
 	}
 	
 	public Civilizacion cambiarTurno() {
-		civilizacionEnTurno.avanzarTurnoCivilizacion();
-		civilizacionEnTurno.avanzarTurnoCivilizacion();
+		civilizacionEnTurno.avanzarTurno();
+		civilizacionEnTurno.avanzarTurno();
 		Civilizacion aux = civilizacionEnTurno;
 		civilizacionEnTurno = civilizacionEnEspera;
 		civilizacionEnEspera = aux;

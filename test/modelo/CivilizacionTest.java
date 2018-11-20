@@ -1,65 +1,125 @@
 package modelo;
 
-import org.junit.Test;
-import org.junit.Assert;
-
-import modelo.Civilizacion;
+import modelo.edificios.Castillo;
+import modelo.edificios.Cuartel;
+import modelo.edificios.PlazaCentral;
 import modelo.mapa.Mapa;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class CivilizacionTest {
-	Mapa mapa = new Mapa(15, 15);
-	Civilizacion civilizacion = new Civilizacion(mapa);
 
 	@Test
 	public void test01OroInicialEs100() {
-		Assert.assertEquals(100, civilizacion.cantidadDeOro());
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+
+		Assert.assertEquals(100, civilizacion.getOro());
 	}
 
 	@Test
 	public void test02CantidadDeUnidadesInicialEs3() {
-		Assert.assertEquals(3, civilizacion.cantidadDeUnidades());
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+
+		Assert.assertEquals(3, civilizacion.getPoblacion());
 	}
 
 	@Test
-	public void test03CantidadDeEdificiosIinicialEs2() {
-		Assert.assertEquals(2, civilizacion.cantidadDeEdificios());
+	public void test03CantidadDeEdificiosInicialEs2() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+
+		Assert.assertEquals(2, civilizacion.getCantidadDeEdificios());
 	}
 
-/*	@Test
-	public void test04CrearUnidadConLimiteDePoblacionAlcanzado() {
-		for(int i=0, i<50, i++) {
-			PlazaCentral plaza = new PlazaCentral();
-			civilizacion.crearAldeanoDesdePlaza(plaza);
+	@Test(expected = LimiteDePoblacionAlcanzadoException.class)
+	public void test04CrearUnidadConLimiteDePoblacionAlcanzadoLanzaExcepcion() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		PlazaCentral plaza = new PlazaCentral(oro);
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+
+		for (int i = 0; i < 50; i++) {
+			civilizacion.crearAldeano(plaza);
 		}
-		
 	}
 	
 	@Test
-	public void test04CrearAldeanoDesdePlazaAumentaUnidades() {
-		PlazaCentral plaza = new PlazaCentral();
-		civilizacion.crearAldeanoDesdePlaza(plaza);
-		Assert.assertEquals(3, civilizacion.cantidadDeUnidades());
+	public void test04CrearAldeanoDesdePlazaAumentaPoblacion() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		PlazaCentral plaza = new PlazaCentral(oro);
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+
+		civilizacion.crearAldeano(plaza);
+
+		Assert.assertEquals(4, civilizacion.getPoblacion());
 	}
 
 	@Test
-	public void testCrearEspadachin() {
-		fail("Not yet implemented");
+	public void test05CrearEspadachinDesdeCuartelAumentaPoblacion() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Cuartel cuartel = new Cuartel(oro);
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+
+		civilizacion.crearEspadachin(cuartel);
+
+		Assert.assertEquals(4, civilizacion.getPoblacion());
 	}
 
 	@Test
-	public void testCrearArquero() {
-		fail("Not yet implemented");
+	public void test06CrearArqueroDesdeCuartelAumentaPoblacion() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Cuartel cuartel = new Cuartel(oro);
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+
+		civilizacion.crearArquero(cuartel);
+
+		Assert.assertEquals(4, civilizacion.getPoblacion());
 	}
 
 	@Test
-	public void testCrearArmaDeAsedio() {
-		fail("Not yet implemented");
+	public void testCrearArmaDeAsedioDesdeCastilloAumentaPoblacion() {
+
+		Oro oro = new Oro(2000);
+		Mapa mapa = new Mapa(15, 15);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Castillo castillo = new Castillo(oro);
+
+		civilizacion.crearArmaDeAsedio(castillo);
+
+		Assert.assertEquals(4, civilizacion.getPoblacion());
+
 	}
 
 	@Test
 	public void testAvanzarTurnoCivilizacion() {
 		
 	}
-	*/
 
 }
