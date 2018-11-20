@@ -5,6 +5,7 @@ import modelo.edificios.Edificio;
 import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public class Aldeano extends Unidad {
 
@@ -57,7 +58,7 @@ public class Aldeano extends Unidad {
 
 
     @Override
-    public void moverHacia(Posicion posicion) {
-        estado.moverUnidadDesdeHacia(this, this.posicion, posicion, rangoMovimiento);
+    public void moverHacia(Posicion destino, Mapa mapa) {
+        estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, rangoMovimiento);
     }
 }

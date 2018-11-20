@@ -118,6 +118,7 @@ public class AldeanoTest {
     @Test(expected = AldeanoEstaOcupadoException.class)
     public void test10aldeanoIntentaMoverseMientrasEstaReparandoLanzaExcepcion() {
 
+        Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);
         Posicion unaPosicion = new Posicion(50, 50);
@@ -126,12 +127,13 @@ public class AldeanoTest {
         aldeano.setPosicion(unaPosicion);
         aldeano.estarEnReparacion();
 
-        aldeano.moverHacia(otraPosicion);
+        aldeano.moverHacia(otraPosicion, mapa);
     }
 
     @Test(expected = AldeanoEstaOcupadoException.class)
     public void test11aldeanoIntentaMoverseMientrasEstaOcupadoLanzaExcepcion() {
 
+        Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);
         Posicion unaPosicion = new Posicion(50, 50);
@@ -140,12 +142,13 @@ public class AldeanoTest {
         aldeano.setPosicion(unaPosicion);
         aldeano.estarOcupado(10);
 
-        aldeano.moverHacia(otraPosicion);
+        aldeano.moverHacia(otraPosicion, mapa);
     }
 
     @Test(expected = PosicionFueraDeRangoException.class)
     public void test12aldeanoDisponibleIntentaMoverseFueraDeRangoLanzaExcepcion() {
 
+        Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);
         Posicion unaPosicion = new Posicion(1, 5);
@@ -153,7 +156,7 @@ public class AldeanoTest {
 
         aldeano.setPosicion(unaPosicion);
 
-        aldeano.moverHacia(otraPosicion);
+        aldeano.moverHacia(otraPosicion, mapa);
     }
 
     @Test(expected = CasilleroOcupadoException.class)

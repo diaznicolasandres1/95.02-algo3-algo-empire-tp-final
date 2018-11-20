@@ -6,6 +6,7 @@ import modelo.edificios.EdificioTieneVidaMaximaException;
 import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
+import modelo.mapa.Mapa;
 
 public class EstadoAldeanoReparando implements EstadoAldeano{
 
@@ -49,7 +50,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 	}
 
     @Override
-    public void moverUnidadDesdeHacia(Unidad unidad, Posicion origen, Posicion destino, int rangoMovimiento) {
+	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
         throw new AldeanoEstaOcupadoException();
     }
 }
