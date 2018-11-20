@@ -1,8 +1,9 @@
-package modelo.unidades;
+package modelo.unidades.armadeasedio;
 
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.mapa.Mapa;
+import modelo.unidades.Unidad;
 
 public class ArmaDeAsedio extends Unidad {
 	

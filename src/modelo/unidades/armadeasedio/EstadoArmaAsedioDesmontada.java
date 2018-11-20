@@ -1,7 +1,8 @@
-package modelo.unidades;
+package modelo.unidades.armadeasedio;
 
 import modelo.Posicion;
 import modelo.mapa.Mapa;
+import modelo.unidades.Unidad;
 
 public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 

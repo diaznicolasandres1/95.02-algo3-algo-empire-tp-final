@@ -1,7 +1,7 @@
 package modelo.edificios;
 
 import modelo.Oro;
-import modelo.unidades.ArmaDeAsedio;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
 public class Castillo extends Edificio {
 

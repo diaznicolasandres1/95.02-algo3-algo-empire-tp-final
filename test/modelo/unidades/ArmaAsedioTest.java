@@ -7,6 +7,10 @@ import modelo.Posicion;
 import modelo.PosicionFueraDeRangoException;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.armadeasedio.NoSePuedeAtacarArmaAsedioDesmontadaException;
+import modelo.unidades.armadeasedio.NoSePuedeMoverArmaAsedioMontadaException;
+
 import org.junit.Test;
 
 public class ArmaAsedioTest {
