@@ -5,6 +5,7 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.PosicionFueraDeRangoException;
+import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
@@ -44,8 +45,9 @@ public class ArmaAsedioTest {
 
 		Oro oro = new Oro(500);
 		ArmaDeAsedio arma = new ArmaDeAsedio(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
 
-		arma.atacar();
+		arma.atacar(plaza);
 	}
 	
 	@Test
@@ -230,12 +232,22 @@ public class ArmaAsedioTest {
         armaDeAsedio.colocarseEn(mapa, 10, 10);
         armaDeAsedio.descolocarseDe(mapa);
         mapa.colocarUnidad(new ArmaDeAsedio(oro), 10, 10);
-
         mapa.colocarUnidad(new ArmaDeAsedio(oro), 10, 10);
     }
-}
 
+
+	@Test
+	public void test19ArmaAsedioMontadaAtacaEdificio() {
+		 Oro oro = new Oro(1000);
+	     ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
+	     PlazaCentral plaza = new PlazaCentral(oro);
+	     armaDeAsedio.montarArma();
+	     armaDeAsedio.atacar(plaza);
+	     Assert.assertEquals(plaza.getVida(), 375);
+		
+	}
 	
+}
 
 	
 
