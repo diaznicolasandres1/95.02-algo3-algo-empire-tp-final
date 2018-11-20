@@ -6,8 +6,9 @@ import modelo.Oro;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Aldeano;
-import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
+import modelo.unidades.arquero.Arquero;
+
 import org.junit.Test;
 
 public class CuartelTest {

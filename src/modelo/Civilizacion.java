@@ -7,8 +7,8 @@ import modelo.edificios.Cuartel;
 import modelo.mapa.Mapa;
 import modelo.unidades.Aldeano;
 import modelo.unidades.Unidad;
+import modelo.unidades.arquero.Arquero;
 import modelo.unidades.Espadachin;
-import modelo.unidades.Arquero;
 import modelo.unidades.ArmaDeAsedio;
 
 import java.util.ArrayList;

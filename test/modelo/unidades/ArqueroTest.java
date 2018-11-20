@@ -8,9 +8,14 @@ import modelo.PosicionFueraDeRangoException;
 import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.arquero.Arquero;
+import modelo.unidades.arquero.ArqueroYaAtacoEnEsteTurnoException;
+
 import org.junit.Test;
 
 public class ArqueroTest {
+	
+	/*-----PRUEBAS DE CREACION-----*/
 	
 	@Test
 	public void test01CreacionDeArquero() {
@@ -37,6 +42,8 @@ public class ArqueroTest {
 
         Arquero arquero = new Arquero(oro);
     }
+	
+	/*-----PRUEBAS DE POSICION-----*/
 
     @Test(expected = PosicionFueraDeRangoException.class)
     public void test04arqueroSeMueveFueraDeRangoYLanzaExcepcion() {
@@ -207,6 +214,13 @@ public class ArqueroTest {
         mapa.colocarUnidad(new Arquero(oro), 10, 10);
     }
     
+    
+    /*------PRUEBAS DE ATAQUE-----*/
+    
+    
+    
+    
+    /*-----PRUEBAS DE ATAQUE A EDIFICIO Y UNIDAD-----*/
     @Test 
     public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
 		Oro oro = new Oro(300);
@@ -239,5 +253,17 @@ public class ArqueroTest {
 		Assert.assertEquals(plaza.getVida(), 440);
     
     }
+    
+    @Test(expected = ArqueroYaAtacoEnEsteTurnoException.class)
+    public void test20ArqueroSoloPuedeAtacarUnaVezPorTurno() {
+		Oro oro = new Oro(800);
+		 Arquero arquero1 = new Arquero(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+       
+       arquero1.atacar(plaza);
+       arquero1.atacar(plaza);
+    }
+    
+    
 
 }

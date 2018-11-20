@@ -2,7 +2,8 @@ package modelo.mapa;
 
 import modelo.Oro;
 import modelo.edificios.PlazaCentral;
-import modelo.unidades.Arquero;
+import modelo.unidades.arquero.Arquero;
+
 import org.junit.Assert;
 import org.junit.Test;
 

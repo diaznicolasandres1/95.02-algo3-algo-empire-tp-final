@@ -8,8 +8,9 @@ import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
 import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
-import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
+import modelo.unidades.arquero.Arquero;
+
 import org.junit.Assert;
 import org.junit.Test;
 

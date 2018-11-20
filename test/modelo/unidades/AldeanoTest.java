@@ -12,6 +12,8 @@ import modelo.mapa.Mapa;
 import org.junit.Test;
 
 public class AldeanoTest {
+	
+	/*----PRUEBAS DE CREACION-----*/
 
 	@Test
 	public void test01CreacionDeAldeano() {
@@ -102,14 +104,16 @@ public class AldeanoTest {
         Cuartel cuartel =  aldeano.construirCuartel(); //50 Oro       
         aldeano.avanzarTurno();//Segundo turno ocupado
         cuartel.avanzarTurno();//Segundo turno ocupado
+        
         aldeano.avanzarTurno();//tercer turno ocupado
         cuartel.avanzarTurno();//tercer turno ocupado
-        aldeano.avanzarTurno();//tercer turno ocupado
-        cuartel.avanzarTurno();//tercer turno ocupado
+        
+        aldeano.avanzarTurno();
+        cuartel.avanzarTurno();
 
         cuartel.recibirDanio(100); //Ya se construyo se le puede hacer daño
         aldeano.aldeanoRepararEdificio(cuartel); //No Genera oro en este turno
-        aldeano.avanzarTurno();//Tercer turno ocupado 
+        aldeano.avanzarTurno();
 
         int cantidadOro = oro.getOro();
         Assert.assertEquals(425, cantidadOro);

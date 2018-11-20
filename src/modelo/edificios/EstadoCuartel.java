@@ -1,8 +1,8 @@
 package modelo.edificios;
 
 import modelo.Oro;
-import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
+import modelo.unidades.arquero.Arquero;
 
 public interface EstadoCuartel extends EstadoEdificio {
 
