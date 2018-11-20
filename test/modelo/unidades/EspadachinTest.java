@@ -256,4 +256,17 @@ public class EspadachinTest {
        espadachin.atacar(plaza);
        espadachin.atacar(plaza);
     }
+    @Test
+    public void test21EspadachinAtacaPasaElTurnoYPuedeVolverAAtacar() {
+		Oro oro = new Oro(800);
+		Espadachin espadachin = new Espadachin(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+		espadachin.atacar(plaza);
+		espadachin.avanzarTurno(); 
+		
+		espadachin.atacar(plaza);
+		Assert.assertEquals(plaza.getVida(), 420);
+      
+      
+    }
 }

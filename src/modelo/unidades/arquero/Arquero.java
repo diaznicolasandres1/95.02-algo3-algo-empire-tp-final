@@ -16,7 +16,7 @@ public class Arquero extends Unidad implements Ataque {
 	}
 
 	
-	public void avanzarTurno(Aldeano aldeano) {
+	public void avanzarTurno() {
 		estado.avanzarTurno(this);
 		
 	}

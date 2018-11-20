@@ -30,6 +30,10 @@ public class Espadachin extends Unidad implements Ataque {
 		
 	}
 	
+	public void avanzarTurno() {
+		estado.avanzarTurno(this);
+	}
+	
 
 	public void estarDisponible() {
 		 estado = new EstadoEspadachinDisponible();		

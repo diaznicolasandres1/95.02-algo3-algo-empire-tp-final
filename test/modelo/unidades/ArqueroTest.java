@@ -259,11 +259,21 @@ public class ArqueroTest {
     @Test(expected = ArqueroYaAtacoEnEsteTurnoException.class)
     public void test20ArqueroSoloPuedeAtacarUnaVezPorTurno() {
 		Oro oro = new Oro(800);
-		 Arquero arquero1 = new Arquero(oro);
+		Arquero arquero1 = new Arquero(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
        
        arquero1.atacar(plaza);
        arquero1.atacar(plaza);
+    }
+    @Test
+    public void test21ArqueroAtacaPasaElTurnoYPuedeVolverAAtacar() {
+		Oro oro = new Oro(800);
+		Arquero arquero1 = new Arquero(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+       
+		arquero1.atacar(plaza);
+		arquero1.avanzarTurno();
+		arquero1.atacar(plaza);
     }
     
     
