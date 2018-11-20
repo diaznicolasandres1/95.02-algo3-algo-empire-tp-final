@@ -5,6 +5,7 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.PosicionFueraDeRangoException;
+import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import org.junit.Test;
@@ -206,4 +207,38 @@ public class ArqueroTest {
 
         mapa.colocarUnidad(new Arquero(oro), 10, 10);
     }
+    
+    @Test 
+    public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
+		Oro oro = new Oro(300);
+        Arquero arquero1 = new Arquero(oro);
+        Arquero arquero2 = new Arquero(oro);
+        
+        arquero1.atacar(arquero2);
+		Assert.assertEquals(arquero2.getVida(), 65);
+    
+    }
+    
+    @Test 
+    public void test18ArqueroAtacaAldeanoYLeResta10deVida() {
+		Oro oro = new Oro(300);
+        Arquero arquero1 = new Arquero(oro);
+      	Aldeano aldeano  = new Aldeano(oro);
+        
+        arquero1.atacar(aldeano);
+		Assert.assertEquals(aldeano.getVida(), 40);
+    
+    }
+    
+    @Test 
+    public void test19ArqueroAtacaPlazaCentralYLeResta15deVida() {
+		Oro oro = new Oro(800);
+		 Arquero arquero1 = new Arquero(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+        
+        arquero1.atacar(plaza);
+		Assert.assertEquals(plaza.getVida(), 440);
+    
+    }
+
 }
