@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import modelo.unidades.Unidad;
+import modelo.unidades.UnidadEstaMuertaException;
 
 
 public class Poblacion {
@@ -27,15 +28,22 @@ public class Poblacion {
 	}
 	
 	public void avanzarTurno() {
+		ArrayList<Unidad> removibles = new ArrayList<>();
 		for (Unidad unidad : this.unidades) {
-			if (unidad == null)
-				this.unidades.remove(unidad);
-			else
+			try {
+				unidad.recibirDanio(0);
+			}catch(UnidadEstaMuertaException e) {
+				removibles.add(unidad);
+			}finally {
 				unidad.avanzarTurno();
+			}
+		}
+		for (Unidad unidad : removibles) {
+			this.unidades.remove(unidad);
 		}
 	}
 	
-	public boolean PerteneceUnidad(Unidad unidad) {
+	public boolean perteneceUnidad(Unidad unidad) {
 		return this.unidades.contains(unidad);
 	}
 	
