@@ -27,7 +27,7 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 	}	
 	public void desmontarArma() { 
 		estado.desmontarArma(this);
-		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioMontada());	
+		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());	
 		
 	}
 	

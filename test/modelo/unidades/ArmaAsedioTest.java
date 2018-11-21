@@ -261,8 +261,7 @@ public class ArmaAsedioTest {
 		 Oro oro = new Oro(1000);
 	     ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
 	     PlazaCentral plaza = new PlazaCentral(oro);
-	     armaDeAsedio.montarArma();
-	     
+	     armaDeAsedio.montarArma();	     
 	     armaDeAsedio.atacar(plaza);
 	     
 	    
@@ -320,6 +319,54 @@ public class ArmaAsedioTest {
 	     armaDeAsedio.montarArma();
 	}
 	
+	@Test
+	public void test26ProbarDesmontarYMontarVariasVecesPasandoTurnos() {
+		Oro oro = new Oro(1000);
+	    ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);	     
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.desmontarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.desmontarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    
+	    
+	    PlazaCentral plaza = new PlazaCentral(oro);
+	     
+	     armaDeAsedio.atacar(plaza);
+	     
+	     Assert.assertEquals(plaza.getVida(), 375);
+		
+	}
+	
+	@Test(expected=NoSePuedeAtacarArmaAsedioDesmontadaException.class)
+	public void test27MontoYDesmontoVariasVecesArmaDesmontadaNoAtaca() {
+		Oro oro = new Oro(1000);
+	    ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);	     
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.desmontarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.desmontarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.montarArma();
+	    armaDeAsedio.avanzarTurno();
+	    armaDeAsedio.desmontarArma();
+	    armaDeAsedio.avanzarTurno();
+	    
+	    
+	    PlazaCentral plaza = new PlazaCentral(oro);
+	     
+	     armaDeAsedio.atacar(plaza);
+	     
+		
+	}
 	
 	
 	
