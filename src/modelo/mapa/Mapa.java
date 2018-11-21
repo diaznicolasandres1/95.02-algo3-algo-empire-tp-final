@@ -56,16 +56,21 @@ public class Mapa {
         casilleroOrigen.desocupar();
     }
 
+    /* TODO se puede hacer un unico metodo para edificios y unidades sabiendo que cada colocable tiene las posiciones que ocupan */
+
     public void descolocarUnidad(int fila, int columna) {
         this.buscarFila(fila).descolocar(columna);
     }
 
     public void descolocarEdificio(int tamanioEdificio, int filaInicio, int columnaInicio) {
 
-        int cantidadFilasOcupadas = tamanioEdificio / 2;
-        for (int i = 0; i < cantidadFilasOcupadas; i++) {
-            this.buscarFila(filaInicio + i).descolocar(columnaInicio);
-            this.buscarFila(filaInicio + i).descolocar(columnaInicio + 1);
+        double cantidadFilasAUtilizar = sqrt(tamanioEdificio);
+        double cantidadColumnasAUtilizar = sqrt(tamanioEdificio);
+
+        for (int i = 0; i < cantidadFilasAUtilizar; i++) {
+            for (int j = 0; j < cantidadColumnasAUtilizar; j++) {
+                this.buscarFila(filaInicio + i).descolocar(columnaInicio + j);
+            }
         }
     }
 
