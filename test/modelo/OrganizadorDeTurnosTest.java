@@ -9,9 +9,9 @@ public class OrganizadorDeTurnosTest {
 	@Test
 	public void test01OrganizadorDeTurnosDevuelveUnaDeLasCivilizaciones() {
 
-		Mapa mapa = new Mapa(15, 15);
-		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 3);
-		Civilizacion otraCiv = new Civilizacion(mapa, 1, 11, 1, 13);
+		Mapa mapa = new Mapa(20, 20);
+		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 5);
+		Civilizacion otraCiv = new Civilizacion(mapa, 1, 10, 1, 14);
 
 		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unaCiv, otraCiv);
 		Civilizacion civilizacion = organizador.cambiarTurno();
@@ -21,9 +21,9 @@ public class OrganizadorDeTurnosTest {
 	@Test
 	public void test02OAvanzarDevuelveLaSiguienteCivilizacion() {
 
-		Mapa mapa = new Mapa(15, 15);
-		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 3);
-		Civilizacion otraCiv = new Civilizacion(mapa, 1, 11, 1, 13);
+		Mapa mapa = new Mapa(20, 20);
+		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 5);
+		Civilizacion otraCiv = new Civilizacion(mapa, 1, 10, 1, 14);
 		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unaCiv, otraCiv);
 
 		Civilizacion primerCiv = organizador.cambiarTurno();

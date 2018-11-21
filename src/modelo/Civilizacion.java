@@ -1,11 +1,10 @@
 package modelo;
 
-import modelo.edificios.Edificio;
-import modelo.edificios.PlazaCentral;
 import modelo.edificios.Castillo;
 import modelo.edificios.Cuartel;
+import modelo.edificios.Edificio;
+import modelo.edificios.PlazaCentral;
 import modelo.mapa.Mapa;
-import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
@@ -69,7 +68,6 @@ public class Civilizacion {
 		this.estructuras.avanzarTurno();
 		this.poblacion.avanzarTurno();
 	}
-
 
 	private void colocarPlaza(Oro oro, int fila, int columna, Mapa mapa) {
 		PlazaCentral plaza = new PlazaCentral(oro);

@@ -14,7 +14,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 
 		Assert.assertEquals(100, civilizacion.getOro());
 	}
@@ -24,7 +24,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 
 		Assert.assertEquals(3, civilizacion.getPoblacion());
 	}
@@ -34,7 +34,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 
 		Assert.assertEquals(2, civilizacion.getCantidadDeEdificios());
 	}
@@ -44,7 +44,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -60,7 +60,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -76,7 +76,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 		Cuartel cuartel = new Cuartel(oro);
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -92,7 +92,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 		Cuartel cuartel = new Cuartel(oro);
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -108,7 +108,7 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 3, 3);
+		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
 		Castillo castillo = new Castillo(oro);
 
 		civilizacion.crearArmaDeAsedio(castillo);
