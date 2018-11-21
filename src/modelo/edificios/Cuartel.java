@@ -28,7 +28,7 @@ public class Cuartel extends Edificio {
 		estado.repararse(this);
 	}	
 	
-	public void recibirDanio(int valorDanio) {
+	public void recibirDanioCuartel(int valorDanio) {
 		estado.recibirDanio(this, valorDanio);
 		
 	}

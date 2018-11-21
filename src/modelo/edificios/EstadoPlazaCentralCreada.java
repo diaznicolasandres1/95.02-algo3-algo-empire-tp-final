@@ -18,7 +18,7 @@ public class EstadoPlazaCentralCreada implements EstadoPlazaCentral{
 
 	@Override
 	public void recibirDanio(Edificio plazaCentral, int danio) {
-		plazaCentral.recibirDanioConValor(danio);		
+		plazaCentral.recibirDanio(danio);		
 	}
 
 	@Override

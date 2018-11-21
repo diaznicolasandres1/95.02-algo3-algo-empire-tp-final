@@ -14,7 +14,7 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	@Override
 	public void atacar(Edificio edificio) {
 		/*try: validar distancia*/
-		edificio.recibirDanioConValor(15);
+		edificio.recibirDanio(15);
 		/*catch lanzar excepcion fuera de rango*/
 		
 	}

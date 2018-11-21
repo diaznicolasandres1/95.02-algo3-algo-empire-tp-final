@@ -10,7 +10,7 @@ public class EstadoCastilloConstruido implements EstadoEdificio {
 
 	@Override
 	public void recibirDanio(Edificio castillo, int danio) {
-		castillo.recibirDanioConValor(danio);	
+		castillo.recibirDanio(danio);	
 		
 	}
 

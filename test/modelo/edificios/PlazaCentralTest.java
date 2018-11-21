@@ -23,7 +23,7 @@ public class PlazaCentralTest {
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
         try {
-            plaza.recibirDanio(50);
+            plaza.recibirDanioPlazaCentral(50);
         } catch (Exception e) {
             Assert.assertEquals(plaza.getVida(), 450);
         }
@@ -39,7 +39,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
         /* Avanzo 3 turnos y como esta creada recibe daño */
-        plaza.recibirDanio(50);
+        plaza.recibirDanioPlazaCentral(50);
 
         Assert.assertEquals(plaza.getVida(), 400);
     }
@@ -53,7 +53,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
 
-        plaza.recibirDanio(50);
+        plaza.recibirDanioPlazaCentral(50);
         plaza.repararseAsimismo();
         Assert.assertEquals(plaza.getVida(), 425);
 
@@ -69,7 +69,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
 
-        plaza.recibirDanio(50);
+        plaza.recibirDanioPlazaCentral(50);
 
         plaza.repararseAsimismo();
         plaza.repararseAsimismo();

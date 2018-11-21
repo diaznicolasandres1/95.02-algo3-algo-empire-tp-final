@@ -114,7 +114,7 @@ public class AldeanoTest {
         aldeano.avanzarTurno();
         cuartel.avanzarTurno();
 
-        cuartel.recibirDanio(100); //Ya se construyo se le puede hacer daño
+        cuartel.recibirDanioCuartel(100); //Ya se construyo se le puede hacer daño
         aldeano.aldeanoRepararEdificio(cuartel); //No Genera oro en este turno
         aldeano.avanzarTurno();
 
@@ -335,7 +335,7 @@ public class AldeanoTest {
         aldeano.avanzarTurno();// Aldeano libre 
         plaza.avanzarTurno();// Edificio construido
 
-        plaza.recibirDanio(100); //Ya se construyo se le puede hacer daño
+        plaza.recibirDanioPlazaCentral(100); //Ya se construyo se le puede hacer daño
         aldeano.aldeanoRepararEdificio(plaza);
         aldeano.avanzarTurno();       
         aldeano.avanzarTurno();
