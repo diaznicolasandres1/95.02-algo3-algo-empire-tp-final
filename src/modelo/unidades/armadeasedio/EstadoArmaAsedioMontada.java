@@ -19,10 +19,27 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 		edificio.recibirDanioConValor(75);
 		/*catch lanzar excepcion fuera de rango*/
 	}
+	
+	@Override
+	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+		armaDeAsedio.desmontar();
+		
+	}
+
 
 	@Override
 	public void atacar(Unidad unidad) {
+		
+	}
+
+	@Override
+	public void montarArma(ArmaDeAsedio armaDeAsedio) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+	
+
+
 }

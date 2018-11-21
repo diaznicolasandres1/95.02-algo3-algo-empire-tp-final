@@ -15,5 +15,11 @@ public interface EstadoArmaAsedio {
 	void atacar(Edificio edificio);
 	void atacar(Unidad unidad);
 
+	
+	void montarArma(ArmaDeAsedio armaDeAsedio);
+	void desmontarArma(ArmaDeAsedio armaDeAsedio);
+
+	
+
 
 }

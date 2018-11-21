@@ -20,10 +20,23 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 		
 	}
 
-
 	@Override
-	public void atacar(Unidad unidad) {
-		throw new NoSePuedeAtacarArmaAsedioDesmontadaException();
+	public void montarArma(ArmaDeAsedio armaDeAsedio) {
+		armaDeAsedio.montar();
 		
 	}
+
+
+	@Override
+	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+		throw new ElArmaYaEstaDesmontadaException();
+		
+	}
+	
+	@Override
+	public void atacar(Unidad unidad) {
+		
+		
+	}
+
 }

@@ -9,7 +9,10 @@ import modelo.unidades.Unidad;
 
 public class ArmaDeAsedio extends Unidad implements Ataque {
 	
+	
+	
 	EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
+	EstadoArmaAsedio proximoEstado;
 	
 	public ArmaDeAsedio(Oro oro) {
 		vida = 150;
@@ -17,11 +20,30 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 	}	
 
 	public void montarArma() {
-		estado = new EstadoArmaAsedioMontada();
+		estado.montarArma(this);
+		
 	}
 	
-	public void desmontarArma() {
-		estado = new EstadoArmaAsedioDesmontada();
+	public void desmontarArma() { //Se desmonta y ya ese turno no puede hacer nada mas
+		estado.desmontarArma(this);
+	}
+	
+	public void avanzarTurno() {
+		estado = proximoEstado;
+	}
+	
+	
+	
+	public void montar() {
+		estado = new EstadoArmaAsedioEnPausa();
+		proximoEstado= new EstadoArmaAsedioMontada();
+		
+		
+	}
+	public void desmontar() {
+		estado = new EstadoArmaAsedioEnPausa();
+		proximoEstado = new EstadoArmaAsedioDesmontada();
+		
 	}
 	
 
@@ -39,7 +61,7 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Unidad unidad) {
-		throw new ArmaAsedioSoloPuedeAtacarEdificiosException();
+		throw new ArmaDeAsedioNoPuedeAtacarUnidadesException();
 		
 	}
 
