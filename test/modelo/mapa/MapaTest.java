@@ -6,11 +6,11 @@ import modelo.PosicionFueraDeRangoException;
 import modelo.edificios.Castillo;
 import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
+import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -89,7 +89,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test07edificioSeColocaEnMapaYSeIntentaPonerUnidadEnMismoLugarLanzaExcepcion() {
+    public void test07plazaSeColocaEnMapaYSeIntentaPonerUnidadEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -101,7 +101,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test08edificioSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test08plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -113,7 +113,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test09edificioSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test09plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
@@ -124,7 +124,8 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test10edificioSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test10plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
+
         Mapa mapa = new Mapa(20, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
         Aldeano aldeano = new Aldeano(oro);
@@ -134,8 +135,30 @@ public class MapaTest {
         mapa.colocarUnidad(aldeano, 10, 11);
     }
 
+    @Test
+    public void test11castilloSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorCastilloDeberiaLanzar16Excepciones() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Castillo castillo = new Castillo(oro);
+        Aldeano aldeano = new Aldeano(oro);
+        mapa.colocarEdificio(castillo, 16, 10, 10);
+        int cantidadDeVecesLanzadaExcepcion = 0;
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                try {
+                    mapa.colocarUnidad(aldeano, 10 + i, 10 + j);
+                } catch (CasilleroOcupadoException error) {
+                    cantidadDeVecesLanzadaExcepcion++;
+                }
+            }
+        }
+
+        Assert.assertEquals(16, cantidadDeVecesLanzadaExcepcion);
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test11edificioSeColocaFueraDelRangoPositivoDelMapaLanzaExcepcion() {
+    public void test12plazaSeColocaFueraDelRangoPositivoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -144,7 +167,7 @@ public class MapaTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test12edificioSeColocaFueraDelRangoNegativoDelMapaLanzaExcepcion() {
+    public void test13plazaSeColocaFueraDelRangoNegativoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -153,7 +176,7 @@ public class MapaTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test13edificioSeColocaFueraDelRangoNuloDelMapaLanzaExcepcion() {
+    public void test14plazaSeColocaFueraDelRangoNuloDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -162,7 +185,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test14mapaColocaUnidadYSeColocaEdificioEnElMismoLugarLanzaExcepcion() {
+    public void test15mapaColocaUnidadYSeColocaEdificioEnElMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(50, 40);
         PlazaCentral plaza = new PlazaCentral(oro);
@@ -174,7 +197,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test15mapaMueveUnidadHaciaOtroLugarYSeIntentaColocarUnidadEnNuevoLugarLanzaExcepcion() {
+    public void test16mapaMueveUnidadHaciaOtroLugarYSeIntentaColocarUnidadEnNuevoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 25);
         Posicion posicion = new Posicion(5, 5);
@@ -189,7 +212,7 @@ public class MapaTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test16mapaMueveUnidadFueraDelRangoDelMapaLanzaExcepcion() {
+    public void test17mapaMueveUnidadFueraDelRangoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 30);
         Posicion posicion = new Posicion(10, 11);
@@ -202,7 +225,7 @@ public class MapaTest {
     }
 
     @Test(expected = PosicionFueraDeRangoException.class)
-    public void test17mapaMueveUnidadFueraDelRangoDeUnidadLanzaExcepcion() {
+    public void test18mapaMueveUnidadFueraDelRangoDeUnidadLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 30);
         Espadachin espadachin = new Espadachin(oro);
@@ -213,7 +236,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test18mapaMueveUnidadHaciaLugarOcupadoPorEdificioLanzaExcepcion() {
+    public void test19mapaMueveUnidadHaciaLugarOcupadoPorEdificioLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 36);
         Posicion posicion = new Posicion(3, 1);
@@ -228,7 +251,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test19mapaMueveUnidadHaciaLugarOcupadoPorOtraUnidadLanzaExcepcion() {
+    public void test20mapaMueveUnidadHaciaLugarOcupadoPorOtraUnidadLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 36);
         Posicion unaPosicion = new Posicion(3, 1);
@@ -245,7 +268,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test20mapaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
+    public void test21mapaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 40);
         Arquero arquero = new Arquero(oro);
@@ -259,7 +282,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test21mapaColocaYDescolocaEdificioYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
+    public void test22mapaColocaYDescolocaEdificioYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 40);
         Castillo castillo = new Castillo(oro);
@@ -273,4 +296,46 @@ public class MapaTest {
 
         mapa.colocarUnidad(new Aldeano(oro), 15, 10);
     }
+
+    @Test
+    public void test23mapaBuscaColocablesEnRangosValidosYDevuelveColocablesCorrectos() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Castillo castillo = new Castillo(oro);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarEdificio(castillo, 16, 10, 10);
+        mapa.colocarUnidad(unAldeano, 14, 14);
+        mapa.colocarUnidad(otroAldeano, 9, 9);
+
+        ArrayList<Colocable> colocablesEnRango = mapa.buscarColocablesEnRangoDe(10, 10, 3);
+
+        Assert.assertTrue(colocablesEnRango.contains(unAldeano));
+        Assert.assertTrue(colocablesEnRango.contains(otroAldeano));
+        Assert.assertTrue(colocablesEnRango.contains(castillo));
+    }
+
+    @Test
+    public void test24mapaBuscaColocablesEnRangoBordeDelMapaDevuelveColocablesCorrectos() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Castillo castillo = new Castillo(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+
+        mapa.colocarEdificio(castillo, 16, 1, 1);
+        mapa.colocarEdificio(plaza, 4, 5, 4);
+        mapa.colocarUnidad(unAldeano, 1, 5);
+        mapa.colocarUnidad(otroAldeano, 5, 1);
+
+        ArrayList<Colocable> colocablesEnRango = mapa.buscarColocablesEnRangoDe(1, 1, 3);
+
+        Assert.assertTrue(colocablesEnRango.contains(unAldeano));
+        Assert.assertTrue(colocablesEnRango.contains(otroAldeano));
+        Assert.assertTrue(colocablesEnRango.contains(castillo));
+        Assert.assertTrue(colocablesEnRango.contains(plaza));
+    }
+
 }

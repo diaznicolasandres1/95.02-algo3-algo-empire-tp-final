@@ -2,9 +2,12 @@ package modelo.mapa;
 
 import modelo.Posicion;
 import modelo.edificios.Edificio;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 
 import java.util.ArrayList;
+
+import static java.lang.Math.sqrt;
 
 public class Mapa {
 
@@ -19,8 +22,8 @@ public class Mapa {
             throw new TamanioInvalidoException();
         }
 
-        casilleros = new ArrayList<>();
-        filas = new ArrayList<>();
+        this.casilleros = new ArrayList<>();
+        this.filas = new ArrayList<>();
         this.base = base;
         this.altura = altura;
         this.agregarCasilleros();
@@ -34,10 +37,13 @@ public class Mapa {
 
     public void colocarEdificio(Edificio edificio, int tamanioEdificio, int filaInicio, int columnaInicio) {
 
-        int cantidadFilasAUtilizar = tamanioEdificio / 2;
+        double cantidadFilasAUtilizar = sqrt(tamanioEdificio);
+        double cantidadColumnasAUtilizar = sqrt(tamanioEdificio);
+
         for (int i = 0; i < cantidadFilasAUtilizar; i++) {
-            this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio);
-            this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + 1);
+            for (int j = 0; j < cantidadColumnasAUtilizar; j++) {
+                this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + j);
+            }
         }
     }
 
@@ -61,6 +67,36 @@ public class Mapa {
             this.buscarFila(filaInicio + i).descolocar(columnaInicio);
             this.buscarFila(filaInicio + i).descolocar(columnaInicio + 1);
         }
+    }
+
+    // Ugly code as f*ck incoming, no me juzguen D:
+    public ArrayList<Colocable> buscarColocablesEnRangoDe(int fila, int columna, int rango) {
+
+        int auxFila = fila - rango;
+        int auxColumna = columna - rango;
+        ArrayList<Colocable> colocablesEnRango = new ArrayList<>();
+
+        for (int i = 0; i < 6 + (rango * 2); i++) {
+            for (int j = 0; j < 5 + (rango * 2); j++) {
+                Colocable colocable;
+                try {
+                    colocable = this.buscarColocableEn(auxFila + i, auxColumna + j);
+                    if (colocable == null) {
+                        continue;
+                    } else if (colocablesEnRango.contains(colocable)) {
+                        continue;
+                    }
+                } catch (IndexOutOfBoundsException fueraDelRangoDelMapa) {
+                    continue;
+                }
+                colocablesEnRango.add(colocable);
+            }
+        }
+        return colocablesEnRango;
+    }
+
+    private Colocable buscarColocableEn(int fila, int columna) {
+        return this.buscarFila(fila).buscarColocableEn(columna);
     }
 
     private void agregarCasilleros() {
