@@ -28,7 +28,7 @@ public class CuartelTest {
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanioCuartel(50);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
 
         /* Avanzo 3 turnos y como esta creada recibe daño */
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanioCuartel(50);
         Assert.assertEquals(cuartel.getVida(), 200);
     }
 
@@ -54,7 +54,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanioCuartel(50);
         cuartel.repararseAsimismo();
 
         Assert.assertEquals(cuartel.getVida(), 250);
@@ -69,7 +69,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanioCuartel(50);
 
         cuartel.repararseAsimismo();
         cuartel.repararseAsimismo();

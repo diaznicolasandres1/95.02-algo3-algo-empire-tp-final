@@ -24,7 +24,7 @@ public class Estructuras {
 		ArrayList<Edificio> removibles = new ArrayList<>();
 		for (Edificio edificio : this.edificios) {
 			try {
-				edificio.recibirDanioConValor(0);
+				edificio.recibirDanio(0);
 			}catch(UnidadFueDestruidaException e) {
 				removibles.add(edificio);
 			}finally {

@@ -28,7 +28,7 @@ public class CastilloTest {
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
 
-        castillo.recibirDanioConValor(500);
+        castillo.recibirDanio(500);
 
         Assert.assertEquals(500, castillo.getVida());
     }
@@ -38,7 +38,7 @@ public class CastilloTest {
 
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
-        castillo.recibirDanioConValor(50);
+        castillo.recibirDanio(50);
 
         castillo.repararseAsimismo();
 
@@ -51,7 +51,7 @@ public class CastilloTest {
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
 
-        castillo.recibirDanioConValor(50);
+        castillo.recibirDanio(50);
 
         castillo.repararseAsimismo();
         castillo.repararseAsimismo();

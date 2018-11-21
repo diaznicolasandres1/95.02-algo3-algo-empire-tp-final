@@ -24,7 +24,7 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 	@Override
 	public void atacar(Edificio edificio) {
 		/*try: validar distancia*/
-		edificio.recibirDanioConValor(75);
+		edificio.recibirDanio(75);
 		/*catch lanzar excepcion fuera de rango*/
 	}
 	

@@ -15,7 +15,7 @@ public class EstadoArqueroDisponible implements EstadoArquero {
 	@Override
 	public void atacar(Edificio edificio) {
 		/*try: validar distancia*/
-		edificio.recibirDanioConValor(10);
+		edificio.recibirDanio(10);
 		/*catch lanzar excepcion fuera de rango*/
 		
 	}

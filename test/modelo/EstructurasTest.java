@@ -74,7 +74,7 @@ public class EstructurasTest {
 		estructuras.avanzarTurno();
 		estructuras.avanzarTurno();
 		estructuras.avanzarTurno();
-		plaza.recibirDanio(450);
+		plaza.recibirDanioPlazaCentral(450);
 		estructuras.avanzarTurno();
 		
 		Assert.assertEquals(0, estructuras.getCantidad());
@@ -91,7 +91,7 @@ public class EstructurasTest {
 		estructuras.avanzarTurno();
 		estructuras.avanzarTurno();
 		estructuras.avanzarTurno();
-		plaza2.recibirDanio(450);
+		plaza2.recibirDanioPlazaCentral(450);
 		estructuras.avanzarTurno();
 		
 		Assert.assertEquals(1, estructuras.getCantidad());
