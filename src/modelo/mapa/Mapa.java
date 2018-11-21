@@ -57,22 +57,8 @@ public class Mapa {
         casilleroOrigen.desocupar();
     }
 
-    /* TODO se puede hacer un unico metodo para edificios y unidades sabiendo que cada colocable tiene las posiciones que ocupan */
-
-    public void descolocarUnidad(int fila, int columna) {
+    public void descolocarColocable(int fila, int columna) {
         this.buscarFila(fila).descolocar(columna);
-    }
-
-    public void descolocarEdificio(int tamanioEdificio, int filaInicio, int columnaInicio) {
-
-        double cantidadFilasAUtilizar = sqrt(tamanioEdificio);
-        double cantidadColumnasAUtilizar = sqrt(tamanioEdificio);
-
-        for (int i = 0; i < cantidadFilasAUtilizar; i++) {
-            for (int j = 0; j < cantidadColumnasAUtilizar; j++) {
-                this.buscarFila(filaInicio + i).descolocar(columnaInicio + j);
-            }
-        }
     }
 
     // Ugly code as f*ck incoming, no me juzguen D:

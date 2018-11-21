@@ -33,12 +33,8 @@ public class Posicion {
         destino.moverUnidadConXeY(unidad, mapa, this.posX, this.posY);
     }
 
-    public void descolocarUnidadDe(Mapa mapa) {
-        mapa.descolocarUnidad(this.posY, this.posX);
-    }
-
-    public void descolocarEdificioDe(Mapa mapa, int tamanioEdificio) {
-        mapa.descolocarEdificio(tamanioEdificio, this.posY, this.posX);
+    public void descolocarColocable(Mapa mapa) {
+        mapa.descolocarColocable(this.posY, this.posX);
     }
 
     private void moverUnidadConXeY(Unidad unidad, Mapa mapa, int xDeOrigen, int yDeOrigen) {

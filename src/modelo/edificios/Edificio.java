@@ -49,7 +49,9 @@ public abstract class Edificio implements Colocable {
     
     @Override
     public void descolocarseDe(Mapa mapa) {
-        this.posiciones.get(0).descolocarEdificioDe(mapa, this.tamanio);
+        for (Posicion posicion : this.posiciones) {
+            posicion.descolocarColocable(mapa);
+        }
     }
     
     

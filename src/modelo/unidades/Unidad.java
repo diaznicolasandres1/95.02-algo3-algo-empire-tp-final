@@ -35,7 +35,7 @@ public abstract class Unidad implements Colocable {
 
     @Override
     public void descolocarseDe(Mapa mapa) {
-        this.posicion.descolocarUnidadDe(mapa);
+        this.posicion.descolocarColocable(mapa);
     }
 
     public void avanzarTurno() {

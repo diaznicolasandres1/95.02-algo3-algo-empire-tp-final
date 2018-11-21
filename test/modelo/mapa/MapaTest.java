@@ -275,7 +275,7 @@ public class MapaTest {
         Aldeano aldeano = new Aldeano(oro);
 
         mapa.colocarUnidad(arquero, 10, 10);
-        mapa.descolocarUnidad(10, 10);
+        mapa.descolocarColocable(10, 10);
         mapa.colocarUnidad(aldeano, 10, 10);
 
         mapa.colocarUnidad(arquero, 10, 10);
@@ -288,7 +288,12 @@ public class MapaTest {
         Castillo castillo = new Castillo(oro);
 
         mapa.colocarEdificio(castillo, 16, 10, 10);
-        mapa.descolocarEdificio(16, 10, 10);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                mapa.descolocarColocable(10 + i, 10 + j);
+            }
+        }
+
         for (int i = 0; i < 8; i++) {
             mapa.colocarUnidad(new Arquero(oro), 10 + i, 10);
             mapa.colocarUnidad(new Arquero(oro), 10 + i, 11);

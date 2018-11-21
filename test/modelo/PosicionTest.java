@@ -1,11 +1,9 @@
 
 package modelo;
 
-import modelo.edificios.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -102,27 +100,10 @@ public class PosicionTest {
         Oro oro = new Oro(5000);
 
         mapa.colocarUnidad(new Aldeano(oro), 10, 10);
-        posicion.descolocarUnidadDe(mapa);
+        posicion.descolocarColocable(mapa);
 
         mapa.colocarUnidad(new Aldeano(oro), 10, 10);
         mapa.colocarUnidad(new Aldeano(oro), 10, 10);
     }
 
-    @Test(expected = CasilleroOcupadoException.class)
-    public void test12posicionDescolocaEdificioDeMapaYSeColocaUnidadesEnElMismoLugarVariasVecesLanzaExcepcion() {
-
-        Oro oro = new Oro(5000);
-        Mapa mapa = new Mapa(20, 20);
-        Posicion posicion = new Posicion(10, 10);
-
-        mapa.colocarEdificio(new PlazaCentral(oro), 10, 10, 10);
-        posicion.descolocarEdificioDe(mapa, 4);
-
-        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
-        mapa.colocarUnidad(new Aldeano(oro), 11, 10);
-        mapa.colocarUnidad(new Aldeano(oro), 10, 11);
-        mapa.colocarUnidad(new Aldeano(oro), 11, 11);
-
-        mapa.colocarUnidad(new Aldeano(oro), 11, 11);
-    }
 }
