@@ -18,6 +18,10 @@ public class Casillero {
         this.colocable = null;
     }
 
+    public Colocable getColocable() {
+        return this.colocable;
+    }
+
     private boolean estaOcupado() {
         return this.colocable != null;
     }

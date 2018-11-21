@@ -68,4 +68,34 @@ public class CasilleroTest {
 
         casillero.colocar(plaza);
     }
+
+    @Test
+    public void test06casilleroSeCreaDesocupado() {
+
+        Casillero casillero = new Casillero();
+
+        Assert.assertNull(casillero.getColocable());
+    }
+
+    @Test
+    public void test07casilleroEsOcupadoPorUnidadYSeVerificaContenido() {
+
+        Casillero casillero = new Casillero();
+        Arquero arquero = new Arquero(oro);
+
+        casillero.colocar(arquero);
+
+        Assert.assertSame(arquero, casillero.getColocable());
+    }
+
+    @Test
+    public void test08casilleroEsOcupadoPorEdificioYSeVerificaContenido() {
+
+        Casillero casillero = new Casillero();
+        PlazaCentral plaza = new PlazaCentral(oro);
+
+        casillero.colocar(plaza);
+
+        Assert.assertSame(plaza, casillero.getColocable());
+    }
 }

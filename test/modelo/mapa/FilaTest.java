@@ -1,6 +1,7 @@
 package modelo.mapa;
 
 import modelo.Oro;
+import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
@@ -106,5 +107,75 @@ public class FilaTest {
         fila.colocar(espadachin, 10);
 
         fila.colocar(arquero, 10);
+    }
+
+    @Test
+    public void test07filaBuscaColocableEnColumnaConCasilleroVacioDevuelveNull() {
+
+        Fila fila = new Fila();
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            casilleros.add(new Casillero());
+        }
+
+        fila.agregarCasilleros(casilleros);
+
+        for (int i = 1; i <= 50; i++) {
+            Assert.assertNull(fila.buscarColocableEn(i));
+        }
+    }
+
+    @Test
+    public void test08filaBuscaColocableEnColumnaDevuelveColocableCorrecto() {
+
+        Fila fila = new Fila();
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        Aldeano aldeano = new Aldeano(oro);
+        for (int i = 0; i < 50; i++) {
+            Casillero casillero = new Casillero();
+            casillero.colocar(aldeano);
+            casilleros.add(casillero);
+        }
+        fila.agregarCasilleros(casilleros);
+
+        for (int i = 1; i <= 50; i++) {
+            Assert.assertSame(aldeano, fila.buscarColocableEn(i));
+        }
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test09filaBuscaColocableEnColumnaFueraDeRangoLanzaExcepcion() {
+
+        Fila fila = new Fila();
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            casilleros.add(new Casillero());
+        }
+
+        fila.buscarColocableEn(100);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test10filaBuscaColocableEnColumnaFueraDeRangoLanzaExcepcion() {
+
+        Fila fila = new Fila();
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            casilleros.add(new Casillero());
+        }
+
+        fila.buscarColocableEn(0);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void test11filaBuscaColocableEnColumnaFueraDeRangoLanzaExcepcion() {
+
+        Fila fila = new Fila();
+        ArrayList<Casillero> casilleros = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            casilleros.add(new Casillero());
+        }
+
+        fila.buscarColocableEn(-1000);
     }
 }

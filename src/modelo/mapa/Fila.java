@@ -29,4 +29,8 @@ public class Fila {
         this.buscarCasillero(columna).desocupar();
     }
 
+    public Colocable buscarColocableEn(int columna) {
+        return this.buscarCasillero(columna).getColocable();
+    }
+
 }
