@@ -16,28 +16,28 @@ import java.util.ArrayList;
 public class Civilizacion {
 
 	private Oro oro;
-	private ArrayList<Unidad> unidades;
+	private Poblacion poblacion;
+	private Estructuras estructuras;
 	private ArrayList<Edificio> edificios;
-	private int limitePoblacion = 50;
 	private int aldeanosIniciales = 3;
 	private Mapa mapa;
 
 	public Civilizacion(Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
 
 		this.oro = new Oro(275);
-		this.unidades = new ArrayList<>();
-		this.edificios = new ArrayList<>();
+		this.poblacion = new Poblacion();
+		this.estructuras = new Estructuras();
 		this.colocarCastillo(oro, castilloFil, castilloCol, mapa);
 		this.colocarPlaza(oro, plazaFil, plazaCol, mapa);
 		this.crearAldeanosIniciales(oro, plazaFil, plazaCol, mapa);
 	}
 
 	public int getPoblacion() {
-		return unidades.size();
+		return poblacion.getCantidad();
 	}
 
 	public int getCantidadDeEdificios() {
-		return edificios.size();
+		return estructuras.getCantidad();
 	}
 
 	public int getOro() {
@@ -45,53 +45,42 @@ public class Civilizacion {
 	}
 
 	public void crearAldeano(PlazaCentral plaza) {
-
-		if (this.verificarLimitePoblacion())
-			throw new LimiteDePoblacionAlcanzadoException();
-
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
-		unidades.add(aldeano);
+		this.poblacion.agregarUnidad(aldeano);
 	}
 	
 	public void crearEspadachin(Cuartel cuartel) {
 		Espadachin espadachin = cuartel.crearEspadachinDesdeCuartel();
-		unidades.add(espadachin);
+		this.poblacion.agregarUnidad(espadachin);
 	}
 	
 	public void crearArquero(Cuartel cuartel) {
 		Arquero arquero = cuartel.crearArqueroDesdeCuartel();
-		unidades.add(arquero);
+		this.poblacion.agregarUnidad(arquero);
 	}
 	
 	public void crearArmaDeAsedio(Castillo castillo) {
 		ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
-		unidades.add(armaDeAsedio);
+		this.poblacion.agregarUnidad(armaDeAsedio);
 	}
 
 	public void avanzarTurno() {
 
-		for (Edificio edificio : edificios) {
-			edificio.avanzarTurno();
-		}
-		for (Unidad unidad : unidades) {
-			unidad.avanzarTurno();
-		}
+		this.estructuras.avanzarTurno();
+		this.poblacion.avanzarTurno();
 	}
 
-	private boolean verificarLimitePoblacion() {
-		return unidades.size() >= limitePoblacion;
-	}
 
 	private void colocarPlaza(Oro oro, int fila, int columna, Mapa mapa) {
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.colocarseEn(mapa, fila, columna);
-		this.edificios.add(plaza);
+		this.estructuras.agregarEdificio(plaza);
 	}
 
 	private void colocarCastillo(Oro oro, int fila, int columna, Mapa mapa) {
 		Castillo castillo = new Castillo(oro);
 		castillo.colocarseEn(mapa, fila, columna);
-		this.edificios.add(castillo);
+		this.estructuras.agregarEdificio(castillo);
 	}
 
 	private void crearAldeanosIniciales(Oro oro, int plazaFil, int plazaCol, Mapa mapa) {
@@ -99,7 +88,7 @@ public class Civilizacion {
 		for (int i = 0; i < aldeanosIniciales; i++) {
 			Aldeano aldeano = new Aldeano(oro);
 			aldeano.colocarseEn(mapa, plazaFil + 2, plazaCol + i);
-			unidades.add(aldeano);
+			poblacion.agregarUnidad(aldeano);
 		}
 	}
 }

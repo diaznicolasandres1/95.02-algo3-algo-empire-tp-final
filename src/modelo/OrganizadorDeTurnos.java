@@ -17,11 +17,10 @@ public class OrganizadorDeTurnos {
 	}
 	
 	public Civilizacion cambiarTurno() {
-		civilizacionEnTurno.avanzarTurno();
-		civilizacionEnTurno.avanzarTurno();
 		Civilizacion aux = civilizacionEnTurno;
 		civilizacionEnTurno = civilizacionEnEspera;
 		civilizacionEnEspera = aux;
+		civilizacionEnTurno.avanzarTurno();
 		return civilizacionEnTurno;
 	}
 }
