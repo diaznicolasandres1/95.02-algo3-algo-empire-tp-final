@@ -4,6 +4,8 @@ import modelo.Posicion;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
+import modelo.unidades.armadeasedio.excepciones.ElArmaYaEstaDesmontadaException;
+import modelo.unidades.armadeasedio.excepciones.NoSePuedeAtacarArmaAsedioDesmontadaException;
 
 public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 
@@ -22,7 +24,6 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 
 	@Override
 	public void montarArma(ArmaDeAsedio armaDeAsedio) {
-		armaDeAsedio.montar();
 		
 	}
 
@@ -37,6 +38,14 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 	public void atacar(Unidad unidad) {
 		
 		
+	}
+
+
+
+	@Override
+	public EstadoArmaAsedio proximoEstado() {
+		
+		return null;
 	}
 
 }

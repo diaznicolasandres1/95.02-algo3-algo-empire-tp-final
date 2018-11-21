@@ -9,7 +9,7 @@ import modelo.unidades.Unidad;
 public interface EstadoArmaAsedio {
 
 	
-
+	
 	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
 
 	void atacar(Edificio edificio);
@@ -18,6 +18,8 @@ public interface EstadoArmaAsedio {
 	
 	void montarArma(ArmaDeAsedio armaDeAsedio);
 	void desmontarArma(ArmaDeAsedio armaDeAsedio);
+
+	EstadoArmaAsedio proximoEstado();
 
 	
 

@@ -1,4 +1,4 @@
-package modelo.unidades.armadeasedio;
+package modelo.unidades.armadeasedio.excepciones;
 
 public class TenesQueEsperarAlProximoTurnoParaAtacarException extends RuntimeException {
 

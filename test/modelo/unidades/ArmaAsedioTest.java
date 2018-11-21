@@ -10,14 +10,14 @@ import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
-import modelo.unidades.armadeasedio.ArmaDeAsedioNoPuedeAtacarUnidadesException;
-import modelo.unidades.armadeasedio.ElArmaYaEstaDesmontadaException;
-import modelo.unidades.armadeasedio.NoSePuedeAtacarArmaAsedioDesmontadaException;
-import modelo.unidades.armadeasedio.NoSePuedeMoverArmaAsedioMontadaException;
-import modelo.unidades.armadeasedio.TenesQueEsperarAlProximoTurnoParaAtacarException;
-import modelo.unidades.armadeasedio.TenesQueEsperarAlProximoTurnoParaDesmontarArmaException;
-import modelo.unidades.armadeasedio.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
-import modelo.unidades.armadeasedio.TenesQueEsperarAlProximoTurnoParaMoverElArmaException;
+import modelo.unidades.armadeasedio.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
+import modelo.unidades.armadeasedio.excepciones.ElArmaYaEstaDesmontadaException;
+import modelo.unidades.armadeasedio.excepciones.NoSePuedeAtacarArmaAsedioDesmontadaException;
+import modelo.unidades.armadeasedio.excepciones.NoSePuedeMoverArmaAsedioMontadaException;
+import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaAtacarException;
+import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaDesmontarArmaException;
+import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
+import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaMoverElArmaException;
 
 import org.junit.Test;
 
@@ -307,7 +307,7 @@ public class ArmaAsedioTest {
 		 Oro oro = new Oro(1000);
 	     ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);	  
 	     armaDeAsedio.desmontarArma();     
-	    		
+	       
 	}
 	
 	@Test(expected=TenesQueEsperarAlProximoTurnoParaMontarArmaException.class)

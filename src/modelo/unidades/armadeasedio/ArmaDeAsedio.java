@@ -6,44 +6,33 @@ import modelo.Posicion;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
+import modelo.unidades.armadeasedio.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 
 public class ArmaDeAsedio extends Unidad implements Ataque {
 	
 	
 	
 	EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
-	EstadoArmaAsedio proximoEstado;
+	
 	
 	public ArmaDeAsedio(Oro oro) {
 		vida = 150;
 		oro.restarOro(200);
 	}	
 
-	public void montarArma() {
+	public void montarArma() {		
 		estado.montarArma(this);
+		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioMontada());		
 		
-	}
-	
-	public void desmontarArma() { //Se desmonta y ya ese turno no puede hacer nada mas
+	}	
+	public void desmontarArma() { 
 		estado.desmontarArma(this);
+		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioMontada());	
+		
 	}
 	
 	public void avanzarTurno() {
-		estado = proximoEstado;
-	}
-	
-	
-	
-	public void montar() {
-		estado = new EstadoArmaAsedioEnPausa();
-		proximoEstado= new EstadoArmaAsedioMontada();
-		
-		
-	}
-	public void desmontar() {
-		estado = new EstadoArmaAsedioEnPausa();
-		proximoEstado = new EstadoArmaAsedioDesmontada();
-		
+		estado = estado.proximoEstado();
 	}
 	
 
