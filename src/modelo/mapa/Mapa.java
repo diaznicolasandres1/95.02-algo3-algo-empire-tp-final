@@ -43,6 +43,7 @@ public class Mapa {
         for (int i = 0; i < cantidadFilasAUtilizar; i++) {
             for (int j = 0; j < cantidadColumnasAUtilizar; j++) {
                 this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + j);
+                edificio.agregarPosicion(new Posicion(columnaInicio + j, filaInicio + i));
             }
         }
     }

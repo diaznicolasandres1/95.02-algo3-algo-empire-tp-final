@@ -59,14 +59,13 @@ public abstract class Edificio implements Colocable {
     @Override
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarEdificio(this, this.tamanio, fila, columna);
-        this.agregarPosicion(new Posicion(columna, fila));
     }
     
     
     
     /*-----Setear posicion de inicio-----*/
 
-    private void agregarPosicion(Posicion posicion) {
+    public void agregarPosicion(Posicion posicion) {
         this.posiciones.add(posicion);
     }
     
