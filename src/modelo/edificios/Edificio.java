@@ -4,6 +4,8 @@ import modelo.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 
+import java.util.ArrayList;
+
 public abstract class Edificio implements Colocable {
 
 	protected int vidaMaxima;
@@ -11,7 +13,7 @@ public abstract class Edificio implements Colocable {
 	protected int costo;
 	protected int tamanio;
 	protected int reparacion;
-    protected Posicion posicionInicio;
+    protected ArrayList<Posicion> posiciones;
 
 	public int getVida() {
 		return vida;
@@ -47,7 +49,7 @@ public abstract class Edificio implements Colocable {
     
     @Override
     public void descolocarseDe(Mapa mapa) {
-        this.posicionInicio.descolocarEdificioDe(mapa, this.tamanio);
+        this.posiciones.get(0).descolocarEdificioDe(mapa, this.tamanio);
     }
     
     
@@ -56,16 +58,16 @@ public abstract class Edificio implements Colocable {
 
     @Override
     public void colocarseEn(Mapa mapa, int fila, int columna) {
-        mapa.colocarEdificio(this, tamanio, fila, columna);
-        this.setPosicionInicio(new Posicion(columna, fila));
+        mapa.colocarEdificio(this, this.tamanio, fila, columna);
+        this.agregarPosicion(new Posicion(columna, fila));
     }
     
     
     
-    /*-----Setear posicion de inicio-----*/	
+    /*-----Setear posicion de inicio-----*/
 
-    private void setPosicionInicio(Posicion posicion) {
-        this.posicionInicio = posicion;
+    private void agregarPosicion(Posicion posicion) {
+        this.posiciones.add(posicion);
     }
     
     

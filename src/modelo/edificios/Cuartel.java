@@ -4,18 +4,21 @@ import modelo.Oro;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
+import java.util.ArrayList;
+
 public class Cuartel extends Edificio {
 
     Oro oro;
 	EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 	
 	public Cuartel(Oro nuevoOro) {
-		vidaMaxima = 250;
-		vida = 250;
-		reparacion = 50;
-		tamanio = 4;
-		oro = nuevoOro;
-		oro.restarOro(50);		
+		this.vidaMaxima = 250;
+		this.vida = 250;
+		this.reparacion = 50;
+		this.tamanio = 4;
+		this.oro = nuevoOro;
+		this.oro.restarOro(50);
+		this.posiciones = new ArrayList<>();
 	}
 	
 	

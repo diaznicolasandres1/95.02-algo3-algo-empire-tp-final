@@ -3,18 +3,21 @@ package modelo.edificios;
 import modelo.Oro;
 import modelo.unidades.aldeano.Aldeano;
 
+import java.util.ArrayList;
+
 public class PlazaCentral extends Edificio {
 
     Oro oro;
     EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
     public PlazaCentral(Oro oroInicio) {
-        vidaMaxima = 450;
-        reparacion = 25;
-        vida = 450;
-        tamanio = 4;
-        oro = oroInicio;
-        oro.restarOro(100);
+        this.vidaMaxima = 450;
+        this.reparacion = 25;
+        this.vida = 450;
+        this.tamanio = 4;
+        this.oro = oroInicio;
+        this.oro.restarOro(100);
+        this.posiciones = new ArrayList<>();
     }
 
     public void repararse() {
