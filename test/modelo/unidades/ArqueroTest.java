@@ -226,10 +226,14 @@ public class ArqueroTest {
     @Test 
     public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
 		Oro oro = new Oro(300);
+		Mapa mapa = new Mapa(20, 20);
         Arquero arquero1 = new Arquero(oro);
         Arquero arquero2 = new Arquero(oro);
-        
+        mapa.colocarUnidad(arquero1, 10, 10);
+        mapa.colocarUnidad(arquero2, 10, 11);
         arquero1.atacar(arquero2);
+        
+        
 		Assert.assertEquals(arquero2.getVida(), 65);
     
     }
@@ -237,8 +241,14 @@ public class ArqueroTest {
     @Test 
     public void test18ArqueroAtacaAldeanoYLeResta10deVida() {
 		Oro oro = new Oro(300);
+		Mapa mapa = new Mapa(20, 20);	
+		
+		
         Arquero arquero1 = new Arquero(oro);
       	Aldeano aldeano  = new Aldeano(oro);
+      	
+      	mapa.colocarUnidad(arquero1, 10, 10);
+      	mapa.colocarUnidad(aldeano, 10, 11);
         
         arquero1.atacar(aldeano);
 		Assert.assertEquals(aldeano.getVida(), 40);
@@ -248,8 +258,11 @@ public class ArqueroTest {
     @Test 
     public void test19ArqueroAtacaPlazaCentralYLeResta15deVida() {
 		Oro oro = new Oro(800);
-		 Arquero arquero1 = new Arquero(oro);
+		Arquero arquero1 = new Arquero(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
+		Mapa mapa = new Mapa(20, 20);
+		 mapa.colocarEdificio(plaza, 4, 10, 10);
+		 mapa.colocarUnidad(arquero1, 10, 14);
         
         arquero1.atacar(plaza);
 		Assert.assertEquals(plaza.getVida(), 440);
@@ -259,22 +272,31 @@ public class ArqueroTest {
     @Test(expected = ArqueroYaAtacoEnEsteTurnoException.class)
     public void test20ArqueroSoloPuedeAtacarUnaVezPorTurno() {
 		Oro oro = new Oro(800);
+		Mapa mapa = new Mapa(20, 20);
+		
 		Arquero arquero1 = new Arquero(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
+		
+		 mapa.colocarEdificio(plaza, 4, 10, 10);
+		 mapa.colocarUnidad(arquero1, 10, 14);
        
-       arquero1.atacar(plaza);
-       arquero1.atacar(plaza);
+		 arquero1.atacar(plaza);
+		 arquero1.atacar(plaza);
     }
     @Test
     public void test21ArqueroAtacaPasaElTurnoYPuedeVolverAAtacar() {
 		Oro oro = new Oro(800);
 		Arquero arquero1 = new Arquero(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
-       
+		Mapa mapa = new Mapa(20, 20);
+		mapa.colocarEdificio(plaza, 4, 10, 10);
+		mapa.colocarUnidad(arquero1, 10, 14);
 		arquero1.atacar(plaza);
 		arquero1.avanzarTurno();
 		arquero1.atacar(plaza);
     }
+    
+
     
     
 
