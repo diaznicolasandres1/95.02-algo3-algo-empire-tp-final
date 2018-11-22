@@ -179,7 +179,7 @@ public class CastilloTest {
          mapa.colocarUnidad(aldeano1, 13, 10);
          mapa.colocarUnidad(aldeano2, 13, 11);
          
-         castillo.atacarMapa(mapa);
+         castillo.atacarAlrededor(mapa);
          Assert.assertEquals(aldeano1.getVida(), 30);
          Assert.assertEquals(aldeano2.getVida(), 30);
          Assert.assertEquals(espadachin.getVida(), 80); 
@@ -195,7 +195,7 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, 9, 10);
         PlazaCentral plaza = new PlazaCentral(oro);
         mapa.colocarEdificio(plaza, 4, 13, 10);
-        castillo.atacarMapa(mapa);
+        castillo.atacarAlrededor(mapa);
         Assert.assertEquals(plaza.getVida(), 430); 
     	
     }
@@ -216,7 +216,7 @@ public class CastilloTest {
          mapa.colocarUnidad(aldeano1, 13, 10);
          mapa.colocarUnidad(aldeano2, 13, 11);
          
-         castillo.atacarMapa(mapa);
+         castillo.atacarAlrededor(mapa);
          Assert.assertEquals(aldeano1.getVida(), 30);
          Assert.assertEquals(aldeano2.getVida(), 30);
          Assert.assertEquals(espadachin.getVida(), 80); 
@@ -235,7 +235,7 @@ public class CastilloTest {
          Aldeano aldeano1= new Aldeano(oro);
          castillo.colocarseEn(mapa,2, 2);
          mapa.colocarUnidad(aldeano1, 20, 20);
-         castillo.atacarMapa(mapa);
+         castillo.atacarAlrededor(mapa);
          Assert.assertEquals(aldeano1.getVida(), 50);
          
     }

@@ -42,10 +42,12 @@ public class Castillo extends Edificio {
 		return armaDeAsedio;	
 	}	
 	
-	public void atacarMapa(Mapa mapa) {
+	public void atacarAlrededor(Mapa mapa) {
 		 ArrayList<Colocable> colocables = buscarColocablesEnRango(mapa);
 		 atacarAColocables(colocables);
-	}	
+	}
+	
+	
 	
 	private void atacarAColocables(ArrayList<Colocable> colocables) {
 		for(Colocable colocable: colocables) {
