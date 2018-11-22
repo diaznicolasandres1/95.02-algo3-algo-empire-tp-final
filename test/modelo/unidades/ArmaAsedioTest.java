@@ -408,6 +408,24 @@ public class ArmaAsedioTest {
 
         armaDeAsedio.atacar(plaza);
 	}
+	
+	 @Test(expected =TenesQueEsperarAlProximoTurnoParaAtacarException.class)
+	    public void test30SoloPuedeRealizarUnAtaquePorTurno() {
+
+	        Oro oro = new Oro(1000);
+	        Mapa mapa = new Mapa(20, 20);
+	        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
+	        Castillo castillo = new Castillo(oro);
+	        armaDeAsedio.colocarseEn(mapa, 1, 1);
+	        castillo.colocarseEn(mapa, 6, 6);
+
+	        armaDeAsedio.montarArma();
+	        armaDeAsedio.avanzarTurno();
+
+	        armaDeAsedio.atacar(castillo);
+	        armaDeAsedio.atacar(castillo);
+	        
+	    }
 }
 
 	

@@ -46,7 +46,8 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
 		estado.atacar(edificio,this);
-	}
+		estado = new EstadoArmaAsedioEnPausa(estado);	
+		}
 
 	@Override
 	public void atacar(Unidad unidad) {
