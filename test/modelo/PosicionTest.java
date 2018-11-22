@@ -106,4 +106,21 @@ public class PosicionTest {
         mapa.colocarUnidad(new Aldeano(oro), 10, 10);
     }
 
+    @Test
+    public void test12posicionCalculaDistanciaConOtraPosicionDevuelveValorCorrecto() {
+
+        Posicion unaPosicion = new Posicion(1, 1);
+        Posicion otraPosicion = new Posicion(6, 6);
+
+        Assert.assertEquals(5, unaPosicion.calcularDistanciaA(otraPosicion));
+    }
+
+    @Test
+    public void test13posicionCalculaDistanciaConOtraPosicionDevuelveValorCorrecto() {
+
+        Posicion unaPosicion = new Posicion(0, 0);
+        Posicion otraPosicion = new Posicion(11, 15);
+
+        Assert.assertEquals(15, unaPosicion.calcularDistanciaA(otraPosicion));
+    }
 }

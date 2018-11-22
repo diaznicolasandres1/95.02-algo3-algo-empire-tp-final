@@ -3,6 +3,9 @@ package modelo;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
+import static java.lang.Integer.max;
+import static java.lang.Math.abs;
+
 public class Posicion {
 
 	private int posX;
@@ -18,6 +21,7 @@ public class Posicion {
         this.posY = posY;
     }
 
+    /* TODO ver si conviene usar los metodos de calcular distancia o los de verificar si esta dentro del rango */
     public boolean estaDentroDelRango(Posicion otraPosicion, int rango) {
         if (!this.esRangoValido(rango)) {
             throw new RangoInvalidoException();
@@ -35,6 +39,14 @@ public class Posicion {
 
     public void descolocarColocable(Mapa mapa) {
         mapa.descolocarColocable(this.posY, this.posX);
+    }
+
+    public int calcularDistanciaA(Posicion posicion) {
+        return posicion.calcularDistanciaConXeY(this.posX, this.posY);
+    }
+
+    private int calcularDistanciaConXeY(int posX, int posY) {
+        return max(abs(posX - this.posX), abs(posY - this.posY));
     }
 
     private void moverUnidadConXeY(Unidad unidad, Mapa mapa, int xDeOrigen, int yDeOrigen) {

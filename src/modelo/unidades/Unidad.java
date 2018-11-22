@@ -38,6 +38,11 @@ public abstract class Unidad implements Colocable {
         this.posicion.descolocarColocable(mapa);
     }
 
+    @Override
+    public int calcularDistanciaA(Posicion posicion) {
+        return posicion.calcularDistanciaA(this.posicion);
+    }
+
     public void avanzarTurno() {
 
     }

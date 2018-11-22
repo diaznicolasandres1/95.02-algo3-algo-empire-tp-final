@@ -70,9 +70,17 @@ public abstract class Edificio implements Colocable {
     public void agregarPosicion(Posicion posicion) {
         this.posiciones.add(posicion);
     }
-    
-    
-    
+
+    /*-----Calcular distancia----*/
+    @Override
+    public int calcularDistanciaA(Posicion posicion) {
+        int distanciaMinima = Integer.MAX_VALUE;
+        for (Posicion unaPosicion : this.posiciones) {
+            distanciaMinima = Integer.min(distanciaMinima, posicion.calcularDistanciaA(unaPosicion));
+        }
+        return distanciaMinima;
+    }
+
 
 	protected abstract void terminoDeCrearse();
 	
