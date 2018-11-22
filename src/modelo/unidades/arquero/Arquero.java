@@ -24,7 +24,7 @@ public class Arquero extends Unidad implements Ataque {
 	@Override
 	public void atacar(Edificio edificio) {		
 		if(edificio.calcularDistanciaA(this.posicion) > 3) {
-			throw new rangoDeAtaqueInvalidoException();			
+			throw new RangoDeAtaqueInvalidoException();			
 		}		 
 		estado.atacar(edificio);
 		this.estarOcupado();
@@ -34,7 +34,7 @@ public class Arquero extends Unidad implements Ataque {
 	@Override
 	public void atacar(Unidad unidad) {
 		if(unidad.calcularDistanciaA(this.posicion) > 3) {
-			throw new rangoDeAtaqueInvalidoException();			
+			throw new RangoDeAtaqueInvalidoException();			
 		}	
 		estado.atacar(unidad);
 		this.estarOcupado();

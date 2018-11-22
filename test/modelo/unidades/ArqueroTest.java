@@ -11,6 +11,7 @@ import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.arquero.ArqueroYaAtacoEnEsteTurnoException;
+import modelo.unidades.arquero.RangoDeAtaqueInvalidoException;
 
 import org.junit.Test;
 
@@ -294,6 +295,28 @@ public class ArqueroTest {
 		arquero1.atacar(plaza);
 		arquero1.avanzarTurno();
 		arquero1.atacar(plaza);
+    }
+    
+    @Test(expected = RangoDeAtaqueInvalidoException.class)
+    public void test22ArqueroIntentaAtacarEdificioFueraDeRangoYLanzaExcepcion() {
+    	Oro oro = new Oro(800);
+		Arquero arquero1 = new Arquero(oro);
+		PlazaCentral plaza = new PlazaCentral(oro);
+		Mapa mapa = new Mapa(20, 20);
+		mapa.colocarEdificio(plaza, 4, 10, 10);
+		mapa.colocarUnidad(arquero1, 1,2);
+		arquero1.atacar(plaza);    	
+    }
+    
+    @Test(expected = RangoDeAtaqueInvalidoException.class)
+    public void test23ArqueroIntentaAtacarUnidadFueraDeRangoYLanzaExcepcion() {
+    	Oro oro = new Oro(800);
+		Arquero arquero1 = new Arquero(oro);
+		Aldeano aldeano = new Aldeano(oro);
+		Mapa mapa = new Mapa(20, 20);
+		mapa.colocarUnidad(aldeano, 10, 10);
+		mapa.colocarUnidad(arquero1, 1,2);
+		arquero1.atacar(aldeano);    	
     }
     
 
