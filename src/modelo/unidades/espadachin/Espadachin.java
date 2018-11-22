@@ -19,7 +19,7 @@ public class Espadachin extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Edificio edificio) {
-		if(edificio.calcularDistanciaA(this.posicion) > 3) {
+		if(edificio.calcularDistanciaA(this.posicion) > 1) {
 			throw new RangoDeAtaqueInvalidoException();			
 		}		
 		estado.atacar(edificio);
@@ -29,7 +29,7 @@ public class Espadachin extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Unidad unidad) {
-		if(unidad.calcularDistanciaA(this.posicion) > 3) {
+		if(unidad.calcularDistanciaA(this.posicion) > 1) {
 			throw new RangoDeAtaqueInvalidoException();			
 		}		
 		estado.atacar(unidad);

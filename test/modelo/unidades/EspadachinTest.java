@@ -237,9 +237,8 @@ public class EspadachinTest {
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		Mapa mapa = new Mapa(20, 20);
-      	mapa.colocarUnidad(espadachin, 12, 11);
-      	mapa.colocarEdificio(plaza, 4, 9, 10);
-		
+      	mapa.colocarUnidad(espadachin, 10, 12);
+      	mapa.colocarEdificio(plaza, 4, 10, 10);
 		
         
         espadachin.atacar(plaza);
@@ -253,8 +252,8 @@ public class EspadachinTest {
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		Mapa mapa = new Mapa(20, 20);
-      	mapa.colocarUnidad(espadachin, 12, 11);
-      	mapa.colocarEdificio(plaza, 4, 9, 10);
+      	mapa.colocarUnidad(espadachin, 10, 12);
+      	mapa.colocarEdificio(plaza, 4, 10, 10);
        
        espadachin.atacar(plaza);
        espadachin.atacar(plaza);
@@ -265,8 +264,8 @@ public class EspadachinTest {
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		Mapa mapa = new Mapa(20, 20);
-      	mapa.colocarUnidad(espadachin, 12, 11);
-      	mapa.colocarEdificio(plaza, 4, 9, 10);
+      	mapa.colocarUnidad(espadachin, 10, 12);
+      	mapa.colocarEdificio(plaza, 4, 10, 10);
 		espadachin.atacar(plaza);
 		espadachin.avanzarTurno(); 
 		
