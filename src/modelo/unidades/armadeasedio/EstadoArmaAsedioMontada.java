@@ -22,9 +22,9 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 	}
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
 		/*try: validar distancia*/
-		edificio.recibirDanio(75);
+		edificio.recibirDanio(arma);
 		/*catch lanzar excepcion fuera de rango*/
 	}
 	
@@ -35,7 +35,7 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 
 
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
 		
 	}
 

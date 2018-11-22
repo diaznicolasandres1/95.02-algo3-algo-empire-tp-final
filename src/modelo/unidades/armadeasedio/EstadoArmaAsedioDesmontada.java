@@ -17,7 +17,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
 		throw new NoSePuedeAtacarArmaAsedioDesmontadaException();
 		
 	}
@@ -35,7 +35,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
 	}
 	
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
 		
 		
 	}

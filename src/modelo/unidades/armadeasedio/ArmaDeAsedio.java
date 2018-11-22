@@ -45,7 +45,7 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 		if (edificio.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
-		estado.atacar(edificio);
+		estado.atacar(edificio,this);
 	}
 
 	@Override

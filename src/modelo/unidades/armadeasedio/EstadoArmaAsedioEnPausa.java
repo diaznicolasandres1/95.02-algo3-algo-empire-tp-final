@@ -25,13 +25,13 @@ public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 	}
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
 		throw new TenesQueEsperarAlProximoTurnoParaAtacarException();
 
 	}
 
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
 		
 
 	}
