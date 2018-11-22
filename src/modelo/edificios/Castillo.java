@@ -26,7 +26,7 @@ public class Castillo extends Edificio {
 	
 	
 	@Override
-	protected void terminoDeCrearse() {
+	public void terminoDeCrearse() {
 		//Ya empieza construido.
 		
 	}

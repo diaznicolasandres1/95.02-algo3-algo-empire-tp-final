@@ -1,8 +1,8 @@
 package modelo;
 
 import modelo.edificios.Castillo;
-import modelo.edificios.Cuartel;
 import modelo.edificios.PlazaCentral;
+import modelo.edificios.cuartel.Cuartel;
 import modelo.mapa.Mapa;
 import org.junit.Assert;
 import org.junit.Test;

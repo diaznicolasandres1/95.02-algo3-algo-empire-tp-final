@@ -1,9 +1,9 @@
 package modelo;
 
 import modelo.edificios.Castillo;
-import modelo.edificios.Cuartel;
 import modelo.edificios.Edificio;
 import modelo.edificios.PlazaCentral;
+import modelo.edificios.cuartel.Cuartel;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;

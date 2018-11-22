@@ -1,6 +1,7 @@
-package modelo.edificios;
+package modelo.edificios.cuartel;
 
 import modelo.Oro;
+import modelo.edificios.EstadoEdificio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 

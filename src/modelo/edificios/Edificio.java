@@ -98,8 +98,10 @@ public abstract class Edificio implements Colocable {
     }
 
 
-	protected abstract void terminoDeCrearse();
+	
 	
 	@Override
 	public void avanzarTurno() {}
+
+	public abstract void terminoDeCrearse();
 }
