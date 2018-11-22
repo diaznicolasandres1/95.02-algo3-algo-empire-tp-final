@@ -12,17 +12,17 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	}
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,Espadachin espadachin) {
 		/*try: validar distancia*/
-		edificio.recibirDanio(15);
+		edificio.recibirDanio(espadachin);
 		/*catch lanzar excepcion fuera de rango*/
 		
 	}
 
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,Espadachin espadachin) {
 		/*try: validar distancia*/
-		unidad.recibirDanio(25);
+		unidad.recibirDanio(espadachin);
 		/*catch lanzar excepcion fuera de rango*/
 		
 	}

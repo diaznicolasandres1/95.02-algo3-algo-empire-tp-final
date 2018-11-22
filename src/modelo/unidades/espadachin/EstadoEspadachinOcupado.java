@@ -12,13 +12,13 @@ public class EstadoEspadachinOcupado implements EstadoEspadachin {
 	}
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,Espadachin espadachin) {
 		throw new EspadachinYaAtacoEnEsteTurnoException();
 
 	}
 
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,Espadachin espadachin) {
 		throw new EspadachinYaAtacoEnEsteTurnoException();
 
 	}
