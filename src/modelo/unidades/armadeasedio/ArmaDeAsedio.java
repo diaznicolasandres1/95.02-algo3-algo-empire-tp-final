@@ -1,6 +1,7 @@
 package modelo.unidades.armadeasedio;
 
 import modelo.Ataque;
+import modelo.ColocableFueraDeRangoDeAtaqueException;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.edificios.Edificio;
@@ -9,12 +10,10 @@ import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 
 public class ArmaDeAsedio extends Unidad implements Ataque {
-	
-	
-	
-	EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
-	
-	
+
+	private static final int DISTANCIA_MAXIMA_ATAQUE = 5;
+	private EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
+
 	public ArmaDeAsedio(Oro oro) {
 		vida = 150;
 		oro.restarOro(200);
@@ -44,8 +43,10 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Edificio edificio) {
+		if (edificio.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
+			throw new ColocableFueraDeRangoDeAtaqueException();
+		}
 		estado.atacar(edificio);
-		
 	}
 
 	@Override
