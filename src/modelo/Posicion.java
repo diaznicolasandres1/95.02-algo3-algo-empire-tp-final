@@ -1,7 +1,10 @@
 package modelo;
 
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
+
+import java.util.ArrayList;
 
 import static java.lang.Integer.max;
 import static java.lang.Math.abs;
@@ -43,6 +46,10 @@ public class Posicion {
 
     public int calcularDistanciaA(Posicion posicion) {
         return posicion.calcularDistanciaConXeY(this.posX, this.posY);
+    }
+
+    public ArrayList<Colocable> buscarColocablesEnRangoDe(Mapa mapa, int rangoDeAtaque) {
+        return mapa.buscarColocablesEnRangoDe(this.posY, this.posX, rangoDeAtaque);
     }
 
     private int calcularDistanciaConXeY(int posX, int posY) {

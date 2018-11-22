@@ -33,8 +33,6 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 	public void avanzarTurno() {
 		estado = estado.proximoEstado();
 	}
-	
-
 
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
