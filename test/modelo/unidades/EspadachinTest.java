@@ -222,7 +222,10 @@ public class EspadachinTest {
 		Oro oro = new Oro(300);
         Espadachin espadachin = new Espadachin(oro);
       	Aldeano aldeano  = new Aldeano(oro);
-        
+      	Mapa mapa = new Mapa(20, 20);
+      	mapa.colocarUnidad(espadachin, 10, 11);
+      	mapa.colocarUnidad(aldeano, 10, 12);
+
         espadachin.atacar(aldeano);
 		Assert.assertEquals(aldeano.getVida(), 25);
     
@@ -233,6 +236,11 @@ public class EspadachinTest {
 		Oro oro = new Oro(800);
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
+		Mapa mapa = new Mapa(20, 20);
+      	mapa.colocarUnidad(espadachin, 12, 11);
+      	mapa.colocarEdificio(plaza, 4, 9, 10);
+		
+		
         
         espadachin.atacar(plaza);
 		Assert.assertEquals(plaza.getVida(), 435);
@@ -244,6 +252,9 @@ public class EspadachinTest {
 		Oro oro = new Oro(800);
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
+		Mapa mapa = new Mapa(20, 20);
+      	mapa.colocarUnidad(espadachin, 12, 11);
+      	mapa.colocarEdificio(plaza, 4, 9, 10);
        
        espadachin.atacar(plaza);
        espadachin.atacar(plaza);
@@ -253,12 +264,16 @@ public class EspadachinTest {
 		Oro oro = new Oro(800);
 		Espadachin espadachin = new Espadachin(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
+		Mapa mapa = new Mapa(20, 20);
+      	mapa.colocarUnidad(espadachin, 12, 11);
+      	mapa.colocarEdificio(plaza, 4, 9, 10);
 		espadachin.atacar(plaza);
 		espadachin.avanzarTurno(); 
 		
 		espadachin.atacar(plaza);
-		Assert.assertEquals(plaza.getVida(), 420);
-      
+		Assert.assertEquals(plaza.getVida(), 420);   
       
     }
+    
+    
 }

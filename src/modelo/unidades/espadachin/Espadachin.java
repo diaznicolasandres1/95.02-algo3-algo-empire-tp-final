@@ -2,6 +2,7 @@ package modelo.unidades.espadachin;
 
 import modelo.Ataque;
 import modelo.Oro;
+import modelo.RangoDeAtaqueInvalidoException;
 import modelo.edificios.Edificio;
 import modelo.unidades.Unidad;
 import modelo.unidades.arquero.EstadoArqueroDisponible;
@@ -18,6 +19,9 @@ public class Espadachin extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Edificio edificio) {
+		if(edificio.calcularDistanciaA(this.posicion) > 3) {
+			throw new RangoDeAtaqueInvalidoException();			
+		}		
 		estado.atacar(edificio);
 		this.estarOcupado();
 		
@@ -25,6 +29,9 @@ public class Espadachin extends Unidad implements Ataque {
 
 	@Override
 	public void atacar(Unidad unidad) {
+		if(unidad.calcularDistanciaA(this.posicion) > 3) {
+			throw new RangoDeAtaqueInvalidoException();			
+		}		
 		estado.atacar(unidad);
 		this.estarOcupado();
 		

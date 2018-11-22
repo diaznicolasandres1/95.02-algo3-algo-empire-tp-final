@@ -1,4 +1,4 @@
-package modelo.unidades.arquero;
+package modelo;
 
 public class RangoDeAtaqueInvalidoException extends RuntimeException {
 

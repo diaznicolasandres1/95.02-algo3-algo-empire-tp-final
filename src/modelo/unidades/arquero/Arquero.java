@@ -2,6 +2,7 @@ package modelo.unidades.arquero;
 
 import modelo.Ataque;
 import modelo.Oro;
+import modelo.RangoDeAtaqueInvalidoException;
 import modelo.edificios.Edificio;
 import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
