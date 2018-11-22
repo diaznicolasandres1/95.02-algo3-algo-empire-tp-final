@@ -214,16 +214,8 @@ public class EspadachinTest {
         mapa.colocarUnidad(new Espadachin(oro), 10, 10);
     }
     /*-----PRUEBAS DE ATAQUE A EDIFICIO Y UNIDAD-----*/
-    @Test 
-    public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
-		Oro oro = new Oro(300);
-        Arquero arquero1 = new Arquero(oro);
-        Arquero arquero2 = new Arquero(oro);
-        
-        arquero1.atacar(arquero2);
-		Assert.assertEquals(arquero2.getVida(), 65);
+
     
-    }
     
     @Test 
     public void test18EspadachinAtacaAldeanoYLeResta10deVida() {
