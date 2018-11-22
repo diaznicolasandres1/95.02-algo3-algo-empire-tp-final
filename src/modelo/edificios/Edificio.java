@@ -21,7 +21,7 @@ public abstract class Edificio implements Colocable {
 	
 	
 	/*-----Recibir danio-----*/	
-	
+	@Override
 	public void recibirDanio(int danio)   {
         if (vida <= 0) {
             throw new UnidadFueDestruidaException();

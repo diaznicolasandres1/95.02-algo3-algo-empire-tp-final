@@ -5,8 +5,12 @@ import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.espadachin.Espadachin;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -161,5 +165,28 @@ public class CastilloTest {
 
         mapa.colocarUnidad(new Aldeano(oro), 11, 10);
     }
+    @Test
+    public void test13CastilloAtacaAldeanoAlRededor() {
+    	 Mapa mapa = new Mapa(20, 20);
+         Oro oro = new Oro(10000);
+         Castillo castillo = new Castillo(oro);
+         castillo.colocarseEn(mapa, 9, 10);
+         Aldeano aldeano1= new Aldeano(oro);
+         Aldeano aldeano2= new Aldeano(oro);
+         Espadachin espadachin = new Espadachin(oro);
+         mapa.colocarUnidad(espadachin, 8, 10);
+         mapa.colocarUnidad(aldeano1, 13, 10);
+         mapa.colocarUnidad(aldeano2, 13, 11);
+         castillo.atacarMapa(mapa);
+         Assert.assertEquals(aldeano1.getVida(), 30);
+         Assert.assertEquals(aldeano2.getVida(), 30);
+         Assert.assertEquals(espadachin.getVida(), 80);
+         System.out.println(castillo.getVida());
+      
+     
+   
+         
+    }
+    
 
 }

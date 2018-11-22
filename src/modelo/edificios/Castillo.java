@@ -1,8 +1,10 @@
 package modelo.edificios;
 
+import modelo.Ataque;
 import modelo.Oro;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
+import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 public class Castillo extends Edificio {
 
     Oro oro;
-	EstadoCastilloConstruido estado;
+	
     private static final int RANGO_DE_ATAQUE = 5;
 	
 	public Castillo(Oro oro) {
@@ -18,8 +20,7 @@ public class Castillo extends Edificio {
 		this.vida = 1000;
 		this.reparacion = 15;
 		this.tamanio = 16;
-		this.oro = oro;
-		this.estado = new EstadoCastilloConstruido();
+		this.oro = oro;		
 		this.posiciones = new ArrayList<>();
 	}	
 	
@@ -39,8 +40,26 @@ public class Castillo extends Edificio {
 	public ArmaDeAsedio crearArmaDeAsedio() {
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;
 		return armaDeAsedio;	
-		
 	}
+	
+	public void atacarMapa(Mapa mapa) {
+		 ArrayList<Colocable> colocables = buscarColocablesEnRango(mapa);
+		 atacarAColocables(colocables);
+	}
+	
+	
+	
+	private void atacarAColocables(ArrayList<Colocable> colocables) {
+		for(Colocable colocable: colocables) {
+			colocable.recibirDanio(20);
+		}
+	}
+
+	
+	
+	
+
+	
 	
 
 }

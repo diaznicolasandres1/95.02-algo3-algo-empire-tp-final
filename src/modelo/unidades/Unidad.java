@@ -13,7 +13,7 @@ public abstract class Unidad implements Colocable {
 	public int getVida() {
 		return vida;
 	}
-	
+	@Override
 	public void recibirDanio(int danio)   {
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
