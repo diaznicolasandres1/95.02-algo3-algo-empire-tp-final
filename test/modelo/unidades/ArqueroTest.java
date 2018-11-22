@@ -235,12 +235,12 @@ public class ArqueroTest {
         arquero1.atacar(arquero2);
         
         
-		Assert.assertEquals(arquero2.getVida(), 65);
+		Assert.assertEquals(arquero2.getVida(), 60);
     
     }
     
     @Test 
-    public void test18ArqueroAtacaAldeanoYLeResta10deVida() {
+    public void test18ArqueroAtacaAldeanoYLeResta15deVida() {
 		Oro oro = new Oro(300);
 		Mapa mapa = new Mapa(20, 20);	
 		
@@ -252,7 +252,7 @@ public class ArqueroTest {
       	mapa.colocarUnidad(aldeano, 10, 11);
         
         arquero1.atacar(aldeano);
-		Assert.assertEquals(aldeano.getVida(), 40);
+		Assert.assertEquals(aldeano.getVida(), 35);
     
     }
     

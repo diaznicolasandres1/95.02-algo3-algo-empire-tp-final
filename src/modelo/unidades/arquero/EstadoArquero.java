@@ -7,8 +7,8 @@ import modelo.unidades.aldeano.Aldeano;
 public interface EstadoArquero {
 	
 	void avanzarTurno(Arquero arquero);
-	void atacar(Edificio edificio);
-	void atacar(Unidad unidad);
+	void atacar(Edificio edificio,Arquero arquero);
+	void atacar(Unidad unidad,Arquero arquero);
 	
 
 }

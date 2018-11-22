@@ -27,7 +27,7 @@ public class Arquero extends Unidad implements Ataque {
 		if(edificio.calcularDistanciaA(this.posicion) > 3) {
 			throw new RangoDeAtaqueInvalidoException();			
 		}		 
-		estado.atacar(edificio);
+		estado.atacar(edificio,this);
 		this.estarOcupado();
 		
 	}
@@ -37,7 +37,7 @@ public class Arquero extends Unidad implements Ataque {
 		if(unidad.calcularDistanciaA(this.posicion) > 3) {
 			throw new RangoDeAtaqueInvalidoException();			
 		}	
-		estado.atacar(unidad);
+		estado.atacar(unidad,this);
 		this.estarOcupado();
 		
 	}

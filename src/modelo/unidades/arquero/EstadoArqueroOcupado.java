@@ -13,13 +13,13 @@ public class EstadoArqueroOcupado implements EstadoArquero {
 	}
 
 	@Override
-	public void atacar(Edificio edificio) {
+	public void atacar(Edificio edificio,Arquero arquero) {
 		throw new ArqueroYaAtacoEnEsteTurnoException();
 		
 	}
 
 	@Override
-	public void atacar(Unidad unidad) {
+	public void atacar(Unidad unidad,Arquero arquero) {
 		throw new ArqueroYaAtacoEnEsteTurnoException();
 		
 	}

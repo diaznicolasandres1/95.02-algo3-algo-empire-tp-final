@@ -23,11 +23,11 @@ public abstract class Edificio implements Colocable {
 	}
 	
 	public void recibirDanio(Espadachin espadachin) {
-		this.recibirDanio(25);		
+		this.recibirDanio(15);		
 	}
 	
 	public void recibirDanio(Arquero arquero) {
-		this.recibirDanio(15);
+		this.recibirDanio(10);
 		
 	}
 	public void recibirDanio(Castillo castillo) {
