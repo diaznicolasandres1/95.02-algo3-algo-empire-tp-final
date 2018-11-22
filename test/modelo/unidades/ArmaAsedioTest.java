@@ -3,7 +3,7 @@ package modelo.unidades;
 import junit.framework.Assert;
 import modelo.*;
 import modelo.edificios.Castillo;
-import modelo.edificios.PlazaCentral;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;

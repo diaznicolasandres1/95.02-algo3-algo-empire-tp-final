@@ -1,6 +1,7 @@
-package modelo.edificios;
+package modelo.edificios.plazacentral;
 
 import modelo.Oro;
+import modelo.edificios.Edificio;
 import modelo.unidades.aldeano.Aldeano;
 
 import java.util.ArrayList;

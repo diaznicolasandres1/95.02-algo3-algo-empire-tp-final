@@ -6,7 +6,7 @@ import modelo.Oro;
 import modelo.Posicion;
 import modelo.PosicionFueraDeRangoException;
 import modelo.RangoDeAtaqueInvalidoException;
-import modelo.edificios.PlazaCentral;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;

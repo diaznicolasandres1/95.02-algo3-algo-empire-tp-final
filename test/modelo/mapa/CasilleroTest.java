@@ -1,7 +1,7 @@
 package modelo.mapa;
 
 import modelo.Oro;
-import modelo.edificios.PlazaCentral;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.unidades.arquero.Arquero;
 
 import org.junit.Assert;

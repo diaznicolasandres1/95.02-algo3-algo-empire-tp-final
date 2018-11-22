@@ -1,9 +1,9 @@
 package modelo;
 
 import modelo.Poblacion;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.aldeano.AldeanoEstaOcupadoException;
-import modelo.edificios.PlazaCentral;
 import modelo.Oro;
 import modelo.LimiteDePoblacionAlcanzadoException;
 import org.junit.Assert;

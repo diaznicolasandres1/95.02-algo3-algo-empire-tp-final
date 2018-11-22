@@ -2,8 +2,8 @@ package modelo.unidades.aldeano;
 
 import modelo.edificios.Edificio;
 import modelo.edificios.EdificioTieneVidaMaximaException;
-import modelo.edificios.PlazaCentral;
 import modelo.edificios.cuartel.Cuartel;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.Oro;
 import modelo.Posicion;
 import modelo.mapa.Mapa;

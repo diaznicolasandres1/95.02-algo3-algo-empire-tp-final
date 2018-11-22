@@ -2,8 +2,8 @@ package modelo;
 
 import modelo.Estructuras;
 import modelo.edificios.Edificio;
-import modelo.edificios.PlazaCentral;
-import modelo.edificios.PlazaCentralEnConstruccionException;
+import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.Oro;
 import modelo.Poblacion;

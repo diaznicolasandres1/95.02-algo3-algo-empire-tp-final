@@ -3,6 +3,7 @@ package modelo.edificios;
 import junit.framework.Assert;
 import modelo.NoTenesOroSuficienteException;
 import modelo.Oro;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
