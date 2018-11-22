@@ -6,6 +6,7 @@ import modelo.Oro;
 import modelo.Posicion;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 
@@ -53,4 +54,5 @@ public class ArmaDeAsedio extends Unidad implements Ataque {
 		
 	}
 
+	
 }

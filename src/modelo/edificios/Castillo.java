@@ -42,6 +42,10 @@ public class Castillo extends Edificio {
 		return armaDeAsedio;	
 	}
 	
+	
+	
+	
+	
 	public void atacarMapa(Mapa mapa) {
 		 ArrayList<Colocable> colocables = buscarColocablesEnRango(mapa);
 		 atacarAColocables(colocables);
@@ -51,11 +55,30 @@ public class Castillo extends Edificio {
 	
 	private void atacarAColocables(ArrayList<Colocable> colocables) {
 		for(Colocable colocable: colocables) {
-			colocable.recibirDanio(20);
+			colocable.recibirDanio(this);
 		}
+	}
+	
+	
+	public void atacar(Edificio edificio) {
+		edificio.recibirDanio(this);
+	}
+	public void atacar(Castillo castillo) {
+		castillo.recibirDanio(this);
+		
+	}
+	public void atacar(Unidad unidad) {
+		unidad.recibirDanio(this);
+		
 	}
 
 	
+	public void recibirDanio(Castillo castillo) {
+		//Castillo no recibe daño si lo ataca castillo
+	}
+	
+
+
 	
 	
 

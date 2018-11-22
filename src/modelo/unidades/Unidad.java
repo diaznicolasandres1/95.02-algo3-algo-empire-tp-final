@@ -1,7 +1,10 @@
 package modelo.unidades;
 
 import modelo.Posicion;
+import modelo.edificios.Castillo;
 import modelo.mapa.Mapa;
+import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 public abstract class Unidad implements Colocable {
 
@@ -13,7 +16,23 @@ public abstract class Unidad implements Colocable {
 	public int getVida() {
 		return vida;
 	}
-	@Override
+	
+	
+
+	public void recibirDanio(Espadachin espadachin) {
+		this.recibirDanio(25);
+		
+	}
+	
+	public void recibirDanio(Arquero arquero) {
+		this.recibirDanio(15);
+		
+	}
+	public void recibirDanio(Castillo castillo) {
+		this.recibirDanio(20);
+	}
+	
+	
 	public void recibirDanio(int danio)   {
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();

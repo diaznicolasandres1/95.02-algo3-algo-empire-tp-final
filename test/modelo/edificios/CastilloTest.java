@@ -181,7 +181,7 @@ public class CastilloTest {
          Assert.assertEquals(aldeano1.getVida(), 30);
          Assert.assertEquals(aldeano2.getVida(), 30);
          Assert.assertEquals(espadachin.getVida(), 80);
-         System.out.println(castillo.getVida());
+         
       
      
    

@@ -3,6 +3,9 @@ package modelo.edificios;
 import modelo.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.arquero.Arquero;
+import modelo.unidades.espadachin.Espadachin;
 
 import java.util.ArrayList;
 
@@ -19,9 +22,22 @@ public abstract class Edificio implements Colocable {
 		return vida;
 	}
 	
+	public void recibirDanio(Espadachin espadachin) {
+		this.recibirDanio(25);		
+	}
 	
-	/*-----Recibir danio-----*/	
-	@Override
+	public void recibirDanio(Arquero arquero) {
+		this.recibirDanio(15);
+		
+	}
+	public void recibirDanio(Castillo castillo) {
+		this.recibirDanio(20);
+	}
+	public void recibirDanio(ArmaDeAsedio armaAsedio) {
+		this.recibirDanio(75);		
+	}
+	
+	
 	public void recibirDanio(int danio)   {
         if (vida <= 0) {
             throw new UnidadFueDestruidaException();
