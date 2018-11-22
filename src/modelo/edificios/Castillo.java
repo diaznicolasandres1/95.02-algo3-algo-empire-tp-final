@@ -40,18 +40,12 @@ public class Castillo extends Edificio {
 	public ArmaDeAsedio crearArmaDeAsedio() {
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;
 		return armaDeAsedio;	
-	}
-	
-	
-	
-	
+	}	
 	
 	public void atacarMapa(Mapa mapa) {
 		 ArrayList<Colocable> colocables = buscarColocablesEnRango(mapa);
 		 atacarAColocables(colocables);
-	}
-	
-	
+	}	
 	
 	private void atacarAColocables(ArrayList<Colocable> colocables) {
 		for(Colocable colocable: colocables) {
