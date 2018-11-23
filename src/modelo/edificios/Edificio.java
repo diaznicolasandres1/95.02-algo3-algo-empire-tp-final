@@ -39,10 +39,10 @@ public abstract class Edificio implements Colocable {
 	
 	
 	public void recibirDanio(int danio)   {
+        vida -= danio;
         if (vida <= 0) {
             throw new UnidadFueDestruidaException();
         }
-        vida -= danio;
     }	
 	
 	
