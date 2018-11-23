@@ -33,11 +33,11 @@ public abstract class Unidad implements Colocable {
 	}
 	
 	
-	public void recibirDanio(int danio)   {
+	public void recibirDanio(int danio)   {        
+        vida -= danio;
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
-        vida -= danio;
     }
 
     public void moverHacia(Posicion destino, Mapa mapa) {
