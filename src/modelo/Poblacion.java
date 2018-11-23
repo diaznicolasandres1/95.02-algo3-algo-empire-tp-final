@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 import modelo.unidades.Unidad;
-import modelo.unidades.UnidadEstaMuertaException;
 
 
 public class Poblacion {
@@ -23,23 +22,17 @@ public class Poblacion {
 		this.unidades.add(unidad);
 	}
 	
+	public void removerUnidad(Unidad unidad) {
+		this.unidades.remove(unidad);
+	}
+	
 	private boolean verificarLimitePoblacion() {
 		return this.unidades.size() < limitePoblacion;
 	}
 	
 	public void avanzarTurno() {
-		ArrayList<Unidad> removibles = new ArrayList<>();
 		for (Unidad unidad : this.unidades) {
-			try {
-				unidad.recibirDanio(0);
-			}catch(UnidadEstaMuertaException e) {
-				removibles.add(unidad);
-			}finally {
-				unidad.avanzarTurno();
-			}
-		}
-		for (Unidad unidad : removibles) {
-			this.unidades.remove(unidad);
+			unidad.avanzarTurno();
 		}
 	}
 	

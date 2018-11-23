@@ -73,31 +73,18 @@ public class PoblacionTest {
 		Assert.assertNotNull(plaza);
 		
 	}
-	
+
 	@Test
-	public void test07AvanzarTurnoBorraUnidadesEliminadas() {
+	public void test07UnidadRemovidaYaNoPertenece() {
 		Poblacion poblacion = new Poblacion();
 		Oro oro = new Oro(25);
 		Aldeano aldeano = new Aldeano(oro);
 		poblacion.agregarUnidad(aldeano);
-		aldeano.recibirDanio(50);
-		poblacion.avanzarTurno();
+		poblacion.removerUnidad(aldeano);
 		
-		Assert.assertEquals(0, poblacion.getCantidad());
+		Assert.assertFalse(poblacion.perteneceUnidad(aldeano));
 	}
 	
-	@Test
-	public void test08AvanzarTurnoBorraSoloUnidadesEliminadas() {
-		Poblacion poblacion = new Poblacion();
-		Oro oro = new Oro(50);
-		Aldeano aldeano1 = new Aldeano(oro);
-		Aldeano aldeano2 = new Aldeano(oro);
-		poblacion.agregarUnidad(aldeano1);
-		poblacion.agregarUnidad(aldeano2);
-		aldeano2.recibirDanio(50);
-		poblacion.avanzarTurno();
-		
-		Assert.assertEquals(1, poblacion.getCantidad());
-	}
+
 	
 }

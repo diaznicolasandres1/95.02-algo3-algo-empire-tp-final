@@ -66,36 +66,16 @@ public class EstructurasTest {
 	}
 	
 	@Test
-	public void test06AvanzarTurnoBorraEdificiosDestruidos() {
+	public void test06EdificioRemovidoYaNoPertenece() {
 		Estructuras estructuras = new Estructuras();
 		Oro oro = new Oro(100);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		estructuras.agregarEdificio(plaza);
-		estructuras.avanzarTurno();
-		estructuras.avanzarTurno();
-		estructuras.avanzarTurno();
-		plaza.recibirDanioPlazaCentral(450);
-		estructuras.avanzarTurno();
+		estructuras.removerEdificio(plaza);
 		
-		Assert.assertEquals(0, estructuras.getCantidad());
+		Assert.assertFalse(estructuras.perteneceEdificio(plaza));
 	}
 	
-	@Test
-	public void test08AvanzarTurnoBorraSoloEdificiosDestruidos() {
-		Estructuras estructuras = new Estructuras();
-		Oro oro = new Oro(200);
-		PlazaCentral plaza1 = new PlazaCentral(oro);
-		PlazaCentral plaza2 = new PlazaCentral(oro);
-		estructuras.agregarEdificio(plaza1);
-		estructuras.agregarEdificio(plaza2);
-		estructuras.avanzarTurno();
-		estructuras.avanzarTurno();
-		estructuras.avanzarTurno();
-		plaza2.recibirDanioPlazaCentral(450);
-		estructuras.avanzarTurno();
-		
-		Assert.assertEquals(1, estructuras.getCantidad());
-	}
-
+	
 
 }
