@@ -7,32 +7,32 @@ import org.junit.Test;
 public class OrganizadorDeTurnosTest {
 
 	@Test
-	public void test01OrganizadorDeTurnosDevuelveUnaDeLasCivilizaciones() {
+	public void test01OrganizadorDeTurnosDevuelveUnaDeLasJugadores() {
 
 		Mapa mapa = new Mapa(20, 20);
-		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 5);
-		Civilizacion otraCiv = new Civilizacion(mapa, 1, 10, 1, 14);
+		Jugador unJugador = new Jugador(mapa, 1, 1, 1, 5);
+		Jugador otroJugador = new Jugador(mapa, 1, 10, 1, 14);
 
-		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unaCiv, otraCiv);
-		Civilizacion civilizacion = organizador.cambiarTurno();
-		Assert.assertTrue(civilizacion == unaCiv || civilizacion == otraCiv);
+		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unJugador, otroJugador);
+		Jugador jugador = organizador.cambiarTurno();
+		Assert.assertTrue(jugador == unJugador || jugador == otroJugador);
 	}
 
 	@Test
-	public void test02OAvanzarDevuelveLaSiguienteCivilizacion() {
+	public void test02OAvanzarDevuelveLaSiguienteJugador() {
 
 		Mapa mapa = new Mapa(20, 20);
-		Civilizacion unaCiv = new Civilizacion(mapa, 1, 1, 1, 5);
-		Civilizacion otraCiv = new Civilizacion(mapa, 1, 10, 1, 14);
-		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unaCiv, otraCiv);
+		Jugador unJugador = new Jugador(mapa, 1, 1, 1, 5);
+		Jugador otroJugador = new Jugador(mapa, 1, 10, 1, 14);
+		OrganizadorDeTurnos organizador = new OrganizadorDeTurnos(unJugador, otroJugador);
 
-		Civilizacion primerCiv = organizador.cambiarTurno();
-		Civilizacion segundoCiv = organizador.cambiarTurno();
+		Jugador primerJugador = organizador.cambiarTurno();
+		Jugador segundoJugador = organizador.cambiarTurno();
 
-		if (primerCiv == unaCiv) {
-			Assert.assertEquals(segundoCiv, otraCiv);
+		if (primerJugador == unJugador) {
+			Assert.assertEquals(segundoJugador, otroJugador);
 		} else {
-			Assert.assertEquals(segundoCiv, unaCiv);
+			Assert.assertEquals(segundoJugador, unJugador);
 		}
 	}
 }

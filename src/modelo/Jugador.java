@@ -21,7 +21,7 @@ import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
 
-public class Civilizacion {
+public class Jugador {
 
 	private Oro oro;
 	private Poblacion poblacion;
@@ -29,7 +29,7 @@ public class Civilizacion {
 	private int aldeanosIniciales = 3;
 	private Mapa mapa;
 
-	public Civilizacion(Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
+	public Jugador(Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
 
 		this.oro = new Oro(275);
 		this.poblacion = new Poblacion();
@@ -44,6 +44,9 @@ public class Civilizacion {
 	
 	private void colocarPlaza(Oro oro, int fila, int columna) {
 		PlazaCentral plaza = new PlazaCentral(oro);
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
 		plaza.colocarseEn(this.mapa, fila, columna);
 		this.estructuras.agregarEdificio(plaza);
 	}
@@ -187,7 +190,7 @@ public class Civilizacion {
     public void moverUnidadHacia(Unidad unidad, int fila, int columna) {
     	this.verificarUnidadEsAliada(unidad);
     	Posicion destino = new Posicion(fila,columna);
-    	unidad.moverHacia(destino, this.mapa);;
+    	unidad.moverHacia(destino, this.mapa);
     }
 
 	public void avanzarTurno() {
@@ -196,4 +199,12 @@ public class Civilizacion {
 		this.poblacion.avanzarTurno();
 	}
 
+	public void removerUnidad(Unidad unidad) {
+		this.poblacion.removerUnidad(unidad);
+	}
+	
+	public void removerEdificio(Edificio edificio) {
+		this.estructuras.removerEdificio(edificio);
+	}
+	
 }

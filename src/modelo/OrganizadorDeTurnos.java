@@ -3,24 +3,24 @@ package modelo;
 import java.util.Random;
 
 public class OrganizadorDeTurnos {
-	private Civilizacion civilizacionEnTurno;
-	private Civilizacion civilizacionEnEspera;
+	private Jugador JugadorEnTurno;
+	private Jugador JugadorEnEspera;
 	
-	public OrganizadorDeTurnos(Civilizacion civilizacion1, Civilizacion civilizacion2) {
+	public OrganizadorDeTurnos(Jugador Jugador1, Jugador Jugador2) {
 		if(new Random().nextBoolean()) {
-			civilizacionEnTurno = civilizacion1;
-			civilizacionEnEspera = civilizacion2;
+			JugadorEnTurno = Jugador1;
+			JugadorEnEspera = Jugador2;
 		}else {
-			civilizacionEnTurno = civilizacion2;
-			civilizacionEnEspera = civilizacion1;
+			JugadorEnTurno = Jugador2;
+			JugadorEnEspera = Jugador1;
 		}
 	}
 	
-	public Civilizacion cambiarTurno() {
-		Civilizacion aux = civilizacionEnTurno;
-		civilizacionEnTurno = civilizacionEnEspera;
-		civilizacionEnEspera = aux;
-		civilizacionEnTurno.avanzarTurno();
-		return civilizacionEnTurno;
+	public Jugador cambiarTurno() {
+		JugadorEnTurno.avanzarTurno();
+		Jugador aux = JugadorEnTurno;
+		JugadorEnTurno = JugadorEnEspera;
+		JugadorEnEspera = aux;
+		return JugadorEnTurno;
 	}
 }

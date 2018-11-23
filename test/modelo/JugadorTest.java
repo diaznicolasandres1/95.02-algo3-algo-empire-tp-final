@@ -1,6 +1,6 @@
 package modelo;
 
-import modelo.Civilizacion;
+import modelo.Jugador;
 import modelo.EdificioElegidoNoEsAliadoException;
 import modelo.LimiteDePoblacionAlcanzadoException;
 import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
@@ -12,12 +12,12 @@ import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.Oro;
 import modelo.unidades.aldeano.Aldeano;
-import modelo.unidades.espadachin.Espadachin;;
+import modelo.unidades.espadachin.Espadachin;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CivilizacionTest {
+public class JugadorTest {
 
 	/*-----Test inicializacion-----*/
 	
@@ -26,9 +26,9 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 
-		Assert.assertEquals(100, civilizacion.getOro());
+		Assert.assertEquals(100, jugador.getOro());
 	}
 
 	@Test
@@ -36,9 +36,9 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 
-		Assert.assertEquals(3, civilizacion.getPoblacion());
+		Assert.assertEquals(3, jugador.getPoblacion());
 	}
 
 	@Test
@@ -46,29 +46,29 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 
-		Assert.assertEquals(2, civilizacion.getCantidadDeEdificios());
+		Assert.assertEquals(2, jugador.getCantidadDeEdificios());
 	}
 	
 	@Test(expected = CasilleroOcupadoException.class)
 	public void test04PlazaInicialSeColocaCorrectamente() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		
-		civilizacion.agregarUnidadEn(aldeano, 1, 1);
+		jugador.agregarUnidadEn(aldeano, 1, 1);
 	}
 	
 	@Test(expected = CasilleroOcupadoException.class)
 	public void test05CastilloInicialSeColocaCorrectamente() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		
-		civilizacion.agregarUnidadEn(aldeano, 1, 5);
+		jugador.agregarUnidadEn(aldeano, 1, 5);
 	}
 
 	/*-----Test crear unidades-----*/
@@ -78,10 +78,10 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
 		
-		civilizacion.crearAldeano(plaza);
+		jugador.crearAldeano(plaza);
 	}
 	
 	@Test(expected = UnidadElegidaNoEsAliadaException.class)
@@ -89,10 +89,10 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		
-		civilizacion.construirPlazaCentral(aldeano, 2, 5);
+		jugador.construirPlazaCentral(aldeano, 2, 5);
 	}
 	
 	@Test(expected = LimiteDePoblacionAlcanzadoException.class)
@@ -100,15 +100,15 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
-		civilizacion.agregarEdificioEn(plaza, 5, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(plaza, 5, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 		
 		for (int i = 0; i < 50; i++) {
-			civilizacion.crearAldeano(plaza);
+			jugador.crearAldeano(plaza);
 		}
 	}
 		
@@ -117,16 +117,16 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
-		civilizacion.agregarEdificioEn(plaza, 5, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(plaza, 5, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 
-		civilizacion.crearAldeano(plaza);
+		jugador.crearAldeano(plaza);
 
-		Assert.assertEquals(4, civilizacion.getPoblacion());
+		Assert.assertEquals(4, jugador.getPoblacion());
 	}
 
 	@Test
@@ -134,16 +134,16 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Cuartel cuartel = new Cuartel(oro);
-		civilizacion.agregarEdificioEn(cuartel, 5, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(cuartel, 5, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 
-		civilizacion.crearEspadachin(cuartel);
+		jugador.crearEspadachin(cuartel);
 
-		Assert.assertEquals(4, civilizacion.getPoblacion());
+		Assert.assertEquals(4, jugador.getPoblacion());
 	}
 
 	@Test
@@ -151,16 +151,16 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Cuartel cuartel = new Cuartel(oro);
-		civilizacion.agregarEdificioEn(cuartel, 5, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(cuartel, 5, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 
-		civilizacion.crearArquero(cuartel);
+		jugador.crearArquero(cuartel);
 
-		Assert.assertEquals(4, civilizacion.getPoblacion());
+		Assert.assertEquals(4, jugador.getPoblacion());
 	}
 
 	@Test
@@ -168,13 +168,13 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Castillo castillo = new Castillo(oro);
-		civilizacion.agregarEdificioEn(castillo, 5, 1);
+		jugador.agregarEdificioEn(castillo, 5, 1);
 
-		civilizacion.crearArmaDeAsedio(castillo);
+		jugador.crearArmaDeAsedio(castillo);
 
-		Assert.assertEquals(4, civilizacion.getPoblacion());
+		Assert.assertEquals(4, jugador.getPoblacion());
 
 	}
 	
@@ -185,12 +185,12 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
-		civilizacion.agregarUnidadEn(aldeano, 5, 1);
-		civilizacion.construirPlazaCentral(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 5, 1);
+		jugador.construirPlazaCentral(aldeano, 2, 5);
 		
-		civilizacion.agregarUnidadEn(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 2, 5);
 	}
 	
 	@Test(expected = CasilleroOcupadoException.class)
@@ -198,12 +198,12 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
-		civilizacion.agregarUnidadEn(aldeano, 5, 1);
-		civilizacion.construirCuartel(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 5, 1);
+		jugador.construirCuartel(aldeano, 2, 5);
 		
-		civilizacion.agregarUnidadEn(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 2, 5);
 	}
 /*
 	@Test(expected = EdificioTieneVidaMaximaException.class)
@@ -211,16 +211,16 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		PlazaCentral plaza = new PlazaCentral(oro);
-		civilizacion.agregarUnidadEn(aldeano, 5, 1);
-		civilizacion.agregarEdificioEn(plaza, 5, 2);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarUnidadEn(aldeano, 5, 1);
+		jugador.agregarEdificioEn(plaza, 5, 2);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 		
-		civilizacion.repararEdificio(aldeano, plaza);
+		jugador.repararEdificio(aldeano, plaza);
 	}
 */
 	/*-----Test AvanzarTurno-----*/
@@ -229,10 +229,10 @@ public class CivilizacionTest {
 	public void testAvanzarTurnoAvanzaConstruccionDePlaza() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
-		civilizacion.agregarEdificioEn(plaza, 5, 1);
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(plaza, 5, 1);
+		jugador.avanzarTurno();
 		
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();	
 	}
@@ -241,12 +241,12 @@ public class CivilizacionTest {
 	public void testAvanzarTurnoAvanza3VecesTerminaConstruccionDePlaza() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza = new PlazaCentral(oro);
-		civilizacion.agregarEdificioEn(plaza, 5, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(plaza, 5, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
 		
 		Assert.assertNotNull(aldeano);
@@ -256,14 +256,14 @@ public class CivilizacionTest {
 	public void testAvanzarTurnoAvanza3VecesTerminaConstruccionDe2Plazas() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		PlazaCentral plaza1 = new PlazaCentral(oro);
 		PlazaCentral plaza2 = new PlazaCentral(oro);
-		civilizacion.agregarEdificioEn(plaza1, 5, 1);
-		civilizacion.agregarEdificioEn(plaza2, 10, 1);
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
-		civilizacion.avanzarTurno();
+		jugador.agregarEdificioEn(plaza1, 5, 1);
+		jugador.agregarEdificioEn(plaza2, 10, 1);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 		Aldeano aldeano1 = plaza1.crearAldeanoDesdePlaza();
 		Aldeano aldeano2 = plaza2.crearAldeanoDesdePlaza();
 		
@@ -278,13 +278,13 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Espadachin espadachin = new Espadachin(oro);
-		civilizacion.agregarUnidadEn(espadachin, 10, 1);
+		jugador.agregarUnidadEn(espadachin, 10, 1);
 		Cuartel cuartel = new Cuartel(oro);
-		civilizacion.agregarEdificioEn(cuartel, 10, 2);
+		jugador.agregarEdificioEn(cuartel, 10, 2);
 		
-		civilizacion.atacar(espadachin, cuartel);
+		jugador.atacar(espadachin, cuartel);
 	}
 	
 	@Test(expected = UnidadObjetivoEsAliadaException.class)
@@ -292,13 +292,13 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Espadachin espadachin1 = new Espadachin(oro);
 		Espadachin espadachin2 = new Espadachin(oro);
-		civilizacion.agregarUnidadEn(espadachin1, 5, 1);
-		civilizacion.agregarUnidadEn(espadachin2, 5, 2);
+		jugador.agregarUnidadEn(espadachin1, 5, 1);
+		jugador.agregarUnidadEn(espadachin2, 5, 2);
 		
-		civilizacion.atacar(espadachin1, espadachin2);
+		jugador.atacar(espadachin1, espadachin2);
 	}
 	
 	@Test(expected = UnidadElegidaNoEsAliadaException.class)
@@ -306,11 +306,11 @@ public class CivilizacionTest {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Espadachin espadachin1 = new Espadachin(oro);
 		Espadachin espadachin2 = new Espadachin(oro);
 		
-		civilizacion.atacar(espadachin1, espadachin2);
+		jugador.atacar(espadachin1, espadachin2);
 	}
 	
 	/*-----Test MoverHacia-----*/
@@ -319,25 +319,25 @@ public class CivilizacionTest {
 	public void testUnidadSeMueveAOtroCasillero() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano1 = new Aldeano(oro);
 		Aldeano aldeano2 = new Aldeano(oro);
-		civilizacion.agregarUnidadEn(aldeano1, 1, 5);
-		civilizacion.moverUnidadHacia(aldeano1, 2, 5);
+		jugador.agregarUnidadEn(aldeano1, 1, 5);
+		jugador.moverUnidadHacia(aldeano1, 2, 5);
 		
-		civilizacion.agregarUnidadEn(aldeano2, 2, 5);
+		jugador.agregarUnidadEn(aldeano2, 2, 5);
 	}
 	
 	public void testUnidadSeMueveYDejaCasilleroVacio() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
-		Civilizacion civilizacion = new Civilizacion(mapa, 1, 1, 1, 5);
+		Jugador jugador = new Jugador(mapa, 1, 1, 1, 5);
 		Aldeano aldeano1 = new Aldeano(oro);
 		Aldeano aldeano2 = new Aldeano(oro);
-		civilizacion.agregarUnidadEn(aldeano1, 1, 5);
-		civilizacion.moverUnidadHacia(aldeano1, 2, 5);
+		jugador.agregarUnidadEn(aldeano1, 1, 5);
+		jugador.moverUnidadHacia(aldeano1, 2, 5);
 		
-		civilizacion.agregarUnidadEn(aldeano2, 1, 5);
+		jugador.agregarUnidadEn(aldeano2, 1, 5);
 		
 	}
 	
