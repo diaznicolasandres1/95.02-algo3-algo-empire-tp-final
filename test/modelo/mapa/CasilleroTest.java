@@ -1,7 +1,8 @@
 package modelo.mapa;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.unidades.arquero.Arquero;
 
 import org.junit.Assert;

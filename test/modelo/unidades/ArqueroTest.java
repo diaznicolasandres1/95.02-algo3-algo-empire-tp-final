@@ -1,51 +1,44 @@
 package modelo.unidades;
 
 import junit.framework.Assert;
-import modelo.NoTenesOroSuficienteException;
-import modelo.Oro;
-import modelo.Posicion;
-import modelo.PosicionFueraDeRangoException;
-import modelo.RangoDeAtaqueInvalidoException;
+import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.*;
+import modelo.juego.Oro;
+import modelo.mapa.Posicion;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.mapa.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
-import modelo.unidades.arquero.ArqueroYaAtacoEnEsteTurnoException;
 
 import org.junit.Test;
 
 public class ArqueroTest {
-	
-	/*-----PRUEBAS DE CREACION-----*/
-	
-	@Test
-	public void test01CreacionDeArquero() {
 
-		Oro oro = new Oro(300);
+    @Test
+    public void test01CreacionDeArquero() {
+
+        Oro oro = new Oro(300);
         Arquero arquero = new Arquero(oro);
 
-		Assert.assertEquals(arquero.getVida(), 75);
+        Assert.assertEquals(arquero.getVida(), 75);
     }
-	
-	@Test 
-	public void test02CreacionDeArqueroCuestaOro() {
 
-		Oro oro = new Oro(300);
+    @Test
+    public void test02CreacionDeArqueroCuestaOro() {
+
+        Oro oro = new Oro(300);
         Arquero arquero = new Arquero(oro);
 
-		Assert.assertEquals(oro.getOro(), 225);
-	}
+        Assert.assertEquals(oro.getOro(), 225);
+    }
 
-	@Test(expected = NoTenesOroSuficienteException.class)
+    @Test(expected = OroInsuficienteException.class)
     public void test03CrearArqueroConOroInsuficiente() {
 
-		Oro oro = new Oro(5);
+        Oro oro = new Oro(5);
 
         Arquero arquero = new Arquero(oro);
     }
-	
-	/*-----PRUEBAS DE POSICION-----*/
 
     @Test(expected = PosicionFueraDeRangoException.class)
     public void test04arqueroSeMueveFueraDeRangoYLanzaExcepcion() {
@@ -216,111 +209,150 @@ public class ArqueroTest {
 
         mapa.colocarUnidad(new Arquero(oro), 10, 10);
     }
-    
-    
-    /*------PRUEBAS DE ATAQUE-----*/
-    
-    
-    
-    
-    /*-----PRUEBAS DE ATAQUE A EDIFICIO Y UNIDAD-----*/
+
     @Test 
     public void test17ArqueroAtacaOtroArqueroYLeResta15deVida() {
-		Oro oro = new Oro(300);
-		Mapa mapa = new Mapa(20, 20);
-        Arquero arquero1 = new Arquero(oro);
-        Arquero arquero2 = new Arquero(oro);
-        mapa.colocarUnidad(arquero1, 10, 10);
-        mapa.colocarUnidad(arquero2, 10, 11);
-        arquero1.atacar(arquero2);
-        
-        
-		Assert.assertEquals(arquero2.getVida(), 60);
-    
+        Oro oro = new Oro(300);
+        Mapa mapa = new Mapa(20, 20);
+        Arquero unArquero = new Arquero(oro);
+        Arquero otroArquero = new Arquero(oro);
+        mapa.colocarUnidad(unArquero, 10, 10);
+        mapa.colocarUnidad(otroArquero, 10, 13);
+
+        unArquero.atacar(otroArquero);
+
+        Assert.assertEquals(otroArquero.getVida(), 60);
     }
     
     @Test 
     public void test18ArqueroAtacaAldeanoYLeResta15deVida() {
-		Oro oro = new Oro(300);
-		Mapa mapa = new Mapa(20, 20);	
-		
-		
-        Arquero arquero1 = new Arquero(oro);
-      	Aldeano aldeano  = new Aldeano(oro);
-      	
-      	mapa.colocarUnidad(arquero1, 10, 10);
-      	mapa.colocarUnidad(aldeano, 10, 11);
-        
-        arquero1.atacar(aldeano);
-		Assert.assertEquals(aldeano.getVida(), 35);
-    
+
+        Oro oro = new Oro(300);
+        Mapa mapa = new Mapa(20, 20);
+        Arquero arquero = new Arquero(oro);
+        Aldeano aldeano = new Aldeano(oro);
+        mapa.colocarUnidad(arquero, 10, 10);
+        mapa.colocarUnidad(aldeano, 10, 11);
+
+        arquero.atacar(aldeano);
+
+        Assert.assertEquals(aldeano.getVida(), 35);
     }
     
     @Test 
     public void test19ArqueroAtacaPlazaCentralYLeResta15deVida() {
-		Oro oro = new Oro(800);
-		Arquero arquero1 = new Arquero(oro);
-		PlazaCentral plaza = new PlazaCentral(oro);
-		Mapa mapa = new Mapa(20, 20);
-		 mapa.colocarEdificio(plaza, 4, 10, 10);
-		 mapa.colocarUnidad(arquero1, 10, 14);
-        
-        arquero1.atacar(plaza);
-		Assert.assertEquals(plaza.getVida(), 440);
-    
+
+        Oro oro = new Oro(800);
+        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Mapa mapa = new Mapa(20, 20);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
+        mapa.colocarUnidad(arquero, 10, 14);
+
+        arquero.atacar(plaza);
+
+        Assert.assertEquals(plaza.getVida(), 440);
     }
-    
-    @Test(expected = ArqueroYaAtacoEnEsteTurnoException.class)
-    public void test20ArqueroSoloPuedeAtacarUnaVezPorTurno() {
-		Oro oro = new Oro(800);
-		Mapa mapa = new Mapa(20, 20);
-		
-		Arquero arquero1 = new Arquero(oro);
-		PlazaCentral plaza = new PlazaCentral(oro);
-		
-		 mapa.colocarEdificio(plaza, 4, 10, 10);
-		 mapa.colocarUnidad(arquero1, 10, 14);
-       
-		 arquero1.atacar(plaza);
-		 arquero1.atacar(plaza);
+
+    @Test(expected = ArqueroYaFueUtilizadoEnEsteTurnoException.class)
+    public void test20ArqueroSoloPuedeAtacarUnaVezPorTurnoLanzaExcepcion() {
+
+        Oro oro = new Oro(800);
+        Mapa mapa = new Mapa(20, 20);
+        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
+        mapa.colocarUnidad(arquero, 10, 14);
+
+        arquero.atacar(plaza);
+
+        arquero.atacar(plaza);
     }
+
+    @Test(expected = ArqueroYaFueUtilizadoEnEsteTurnoException.class)
+    public void test21arqueroSoloPuedeMoverseUnaVezPorTurnoLanzaExcepcion() {
+
+        Oro oro = new Oro(800);
+        Mapa mapa = new Mapa(20, 20);
+        Arquero arquero = new Arquero(oro);
+        mapa.colocarUnidad(arquero, 10, 14);
+
+        arquero.moverHacia(new Posicion(15, 10), mapa);
+
+        arquero.moverHacia(new Posicion(16, 10), mapa);
+    }
+
+    @Test(expected = ArqueroYaFueUtilizadoEnEsteTurnoException.class)
+    public void test22arqueroAtacaYSeIntentaMoverEnElMismoTurnoLanzaExcepcion() {
+
+        Oro oro = new Oro(800);
+        Mapa mapa = new Mapa(20, 20);
+        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        mapa.colocarUnidad(arquero, 10, 14);
+        mapa.colocarEdificio(plaza, 4, 11, 14);
+
+        arquero.atacar(plaza);
+
+        arquero.moverHacia(new Posicion(15, 10), mapa);
+    }
+
     @Test
-    public void test21ArqueroAtacaPasaElTurnoYPuedeVolverAAtacar() {
-		Oro oro = new Oro(800);
-		Arquero arquero1 = new Arquero(oro);
-		PlazaCentral plaza = new PlazaCentral(oro);
-		Mapa mapa = new Mapa(20, 20);
-		mapa.colocarEdificio(plaza, 4, 10, 10);
-		mapa.colocarUnidad(arquero1, 10, 14);
-		arquero1.atacar(plaza);
-		arquero1.avanzarTurno();
-		arquero1.atacar(plaza);
-    }
-    
-    @Test(expected = RangoDeAtaqueInvalidoException.class)
-    public void test22ArqueroIntentaAtacarEdificioFueraDeRangoYLanzaExcepcion() {
-    	Oro oro = new Oro(800);
-		Arquero arquero1 = new Arquero(oro);
-		PlazaCentral plaza = new PlazaCentral(oro);
-		Mapa mapa = new Mapa(20, 20);
-		mapa.colocarEdificio(plaza, 4, 10, 10);
-		mapa.colocarUnidad(arquero1, 1,2);
-		arquero1.atacar(plaza);    	
-    }
-    
-    @Test(expected = RangoDeAtaqueInvalidoException.class)
-    public void test23ArqueroIntentaAtacarUnidadFueraDeRangoYLanzaExcepcion() {
-    	Oro oro = new Oro(800);
-		Arquero arquero1 = new Arquero(oro);
-		Aldeano aldeano = new Aldeano(oro);
-		Mapa mapa = new Mapa(20, 20);
-		mapa.colocarUnidad(aldeano, 10, 10);
-		mapa.colocarUnidad(arquero1, 1,2);
-		arquero1.atacar(aldeano);    	
-    }
-    
+    public void test23ArqueroAtacaPasaElTurnoYPuedeVolverAAtacar() {
 
-    
-    
+        Oro oro = new Oro(800);
+        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Mapa mapa = new Mapa(20, 20);
+        mapa.colocarEdificio(plaza, 4, 10, 10);
+        mapa.colocarUnidad(arquero, 10, 14);
 
+        arquero.atacar(plaza);
+        arquero.avanzarTurno();
+
+        arquero.atacar(plaza);
+    }
+
+    @Test
+    public void test24arqueroAtacaACastilloConSoloUnCasilleroEnRangoYLeQuita10DeVida() {
+
+        Oro oro = new Oro(800);
+        Arquero arquero = new Arquero(oro);
+        Castillo castillo = new Castillo(oro);
+        Mapa mapa = new Mapa(20, 20);
+        mapa.colocarUnidad(arquero, 10, 10);
+        mapa.colocarEdificio(castillo, 16, 13, 13);
+
+        arquero.atacar(castillo);
+
+        Assert.assertEquals(990, castillo.getVida());
+    }
+
+    @Test(expected = ColocableFueraDeRangoDeAtaqueException.class)
+    public void test25ArqueroIntentaAtacarEdificioFueraDeRangoYLanzaExcepcion() {
+
+        Oro oro = new Oro(800);
+        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Mapa mapa = new Mapa(20, 20);
+
+        mapa.colocarEdificio(plaza, 4, 10, 10);
+        mapa.colocarUnidad(arquero, 1, 2);
+
+        arquero.atacar(plaza);
+    }
+
+    @Test(expected = ColocableFueraDeRangoDeAtaqueException.class)
+    public void test26ArqueroIntentaAtacarUnidadFueraDeRangoYLanzaExcepcion() {
+
+        Oro oro = new Oro(800);
+        Arquero arquero = new Arquero(oro);
+        Aldeano aldeano = new Aldeano(oro);
+        Mapa mapa = new Mapa(20, 20);
+
+        mapa.colocarUnidad(aldeano, 10, 10);
+        mapa.colocarUnidad(arquero, 1, 2);
+
+        arquero.atacar(aldeano);
+    }
 }

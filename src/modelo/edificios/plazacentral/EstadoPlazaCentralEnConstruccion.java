@@ -1,13 +1,14 @@
 package modelo.edificios.plazacentral;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.unidades.aldeano.Aldeano;
 
 public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 	
 	private int turnos = 3;
-	
+
+    @Override
 	public void avanzarTurno(Edificio plaza) {
 		turnos -=1;
 		if (turnos < 1) {
@@ -31,7 +32,5 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 		throw new PlazaCentralEnConstruccionException();
 		
 	}
-	
-	
 
 }

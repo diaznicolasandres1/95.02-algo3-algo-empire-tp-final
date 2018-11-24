@@ -1,47 +1,49 @@
 package modelo.unidades;
 
-import modelo.Posicion;
-import modelo.edificios.Castillo;
+import modelo.excepciones.UnidadNoPuedeSerAtacadaPorArmaDeAsedioException;
+import modelo.mapa.Posicion;
+import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.mapa.Mapa;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
 public abstract class Unidad implements Colocable {
 
+    private static final int DANIO_DE_ARQUERO = 15;
+    private static final int DANIO_DE_ESPADACHIN = 25;
+    private static final int DANIO_DE_CASTILLO = 20;
 	protected int vida;
 	protected int costo;
     protected Posicion posicion;
-    protected int rangoMovimiento = 1;
+    protected int distanciaDeMovimiento = 1;
 	
 	public int getVida() {
 		return vida;
 	}
-	
-	
 
 	public void recibirDanio(Espadachin espadachin) {
-		this.recibirDanio(25);
-		
+        this.reducirVida(DANIO_DE_ESPADACHIN);
 	}
 	
 	public void recibirDanio(Arquero arquero) {
-		this.recibirDanio(15);
-		
-	}
+        this.reducirVida(DANIO_DE_ARQUERO);
+    }
+
 	public void recibirDanio(Castillo castillo) {
-		this.recibirDanio(20);
-	}
-	
-	
-	public void recibirDanio(int danio)   {        
+        this.reducirVida(DANIO_DE_CASTILLO);
+    }
+
+    public void recibirDanio(ArmaDeAsedio armaDeAsedio) {
+        throw new UnidadNoPuedeSerAtacadaPorArmaDeAsedioException();
+    }
+
+    public void reducirVida(int danio) {
         vida -= danio;
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
-    }
-
-    public void moverHacia(Posicion destino, Mapa mapa) {
-        this.posicion.moverUnidadHacia(this, mapa, destino, rangoMovimiento);
     }
 
     public void setPosicion(Posicion posicion) {
@@ -62,7 +64,7 @@ public abstract class Unidad implements Colocable {
         return posicion.calcularDistanciaA(this.posicion);
     }
 
-    public void avanzarTurno() {
+    public abstract void avanzarTurno();
 
-    }
+    public abstract void moverHacia(Posicion destino, Mapa mapa);
 }

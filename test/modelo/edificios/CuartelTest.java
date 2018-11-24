@@ -1,11 +1,12 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
-import modelo.NoTenesOroSuficienteException;
-import modelo.Oro;
+import modelo.excepciones.EdificioTieneVidaMaximaException;
+import modelo.excepciones.OroInsuficienteException;
+import modelo.juego.Oro;
 import modelo.edificios.cuartel.Cuartel;
-import modelo.edificios.cuartel.CuartelCreandoseException;
-import modelo.mapa.CasilleroOcupadoException;
+import modelo.excepciones.CuartelCreandoseException;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
@@ -30,7 +31,7 @@ public class CuartelTest {
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
 
-        cuartel.recibirDanioCuartel(50);
+        cuartel.recibirDanio(50);
     }
 
     @Test
@@ -42,8 +43,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        /* Avanzo 3 turnos y como esta creada recibe daño */
-        cuartel.recibirDanioCuartel(50);
+        cuartel.recibirDanio(50);
         Assert.assertEquals(cuartel.getVida(), 200);
     }
 
@@ -56,7 +56,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        cuartel.recibirDanioCuartel(50);
+        cuartel.recibirDanio(50);
         cuartel.repararseAsimismo();
 
         Assert.assertEquals(cuartel.getVida(), 250);
@@ -71,12 +71,12 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        cuartel.recibirDanioCuartel(50);
+        cuartel.recibirDanio(50);
 
-        cuartel.repararseAsimismo();
-        cuartel.repararseAsimismo();
-        cuartel.repararseAsimismo();
-        cuartel.repararseAsimismo();
+        cuartel.repararse();
+        cuartel.repararse();
+        cuartel.repararse();
+        cuartel.repararse();
     }
 
     @Test
@@ -116,9 +116,11 @@ public class CuartelTest {
         Assert.assertEquals(oro.getOro(), 450);
     }
 
-    @Test(expected = NoTenesOroSuficienteException.class)
-    public void test09CrearCuartelConOroInsuficiente() {
+    @Test(expected = OroInsuficienteException.class)
+    public void test09CrearCuartelConOroInsuficienteLanzaExcepcion() {
+
         Oro oro = new Oro(5);
+
         Cuartel cuartel = new Cuartel(oro);
     }
 

@@ -1,6 +1,9 @@
 package modelo.edificios;
 
-import modelo.Posicion;
+import modelo.edificios.castillo.Castillo;
+import modelo.mapa.Posicion;
+import modelo.excepciones.EdificioTieneVidaMaximaException;
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
@@ -11,6 +14,10 @@ import java.util.ArrayList;
 
 public abstract class Edificio implements Colocable {
 
+    protected static final int DANIO_DE_ESPADACHIN = 15;
+    protected static final int DANIO_DE_ARQUERO = 10;
+    protected static final int DANIO_DE_CASTILLO = 20;
+    protected static final int DANIO_ARMA_DE_ASEDIO = 75;
 	protected int vidaMaxima;
 	protected int vida;
 	protected int costo;
@@ -23,33 +30,29 @@ public abstract class Edificio implements Colocable {
 	}
 	
 	public void recibirDanio(Espadachin espadachin) {
-		this.recibirDanio(15);		
+        this.reducirVida(DANIO_DE_ESPADACHIN);
 	}
 	
 	public void recibirDanio(Arquero arquero) {
-		this.recibirDanio(10);
-		
-	}
-	public void recibirDanio(Castillo castillo) {
-		this.recibirDanio(20);
-	}
-	public void recibirDanio(ArmaDeAsedio armaAsedio) {
-		this.recibirDanio(75);		
-	}
-	
-	
-	public void recibirDanio(int danio)   {
+        this.reducirVida(DANIO_DE_ARQUERO);
+    }
+
+    public void recibirDanio(ArmaDeAsedio armaAsedio) {
+        this.reducirVida(DANIO_ARMA_DE_ASEDIO);
+    }
+
+    public void recibirDanio(Castillo castillo) {
+        this.reducirVida(DANIO_DE_CASTILLO);
+    }
+
+    public void reducirVida(int danio) {
         vida -= danio;
         if (vida <= 0) {
             throw new UnidadFueDestruidaException();
         }
-    }	
-	
-	
-	/*-----Repararse a si mismo-----*/
+    }
 	
     public void repararseAsimismo() {
-
         if (vida == vidaMaxima) {
 			throw new EdificioTieneVidaMaximaException();
 		}
@@ -59,35 +62,22 @@ public abstract class Edificio implements Colocable {
 		}
 	}
     
-    
-    
-    /*-----Descolocarse-----*/	
-    
     @Override
     public void descolocarseDe(Mapa mapa) {
         for (Posicion posicion : this.posiciones) {
             posicion.descolocarColocable(mapa);
         }
     }
-    
-    
-    
-    /*-----Colocarse en-----*/	
 
     @Override
     public void colocarseEn(Mapa mapa, int fila, int columna) {
         mapa.colocarEdificio(this, this.tamanio, fila, columna);
     }
-    
-    
-    
-    /*-----Setear posicion de inicio-----*/
 
     public void agregarPosicion(Posicion posicion) {
         this.posiciones.add(posicion);
     }
 
-    /*-----Calcular distancia----*/
     @Override
     public int calcularDistanciaA(Posicion posicion) {
         int distanciaMinima = Integer.MAX_VALUE;
@@ -97,9 +87,6 @@ public abstract class Edificio implements Colocable {
         return distanciaMinima;
     }
 
-
-	
-	
 	@Override
 	public void avanzarTurno() {}
 

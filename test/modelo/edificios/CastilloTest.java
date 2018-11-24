@@ -1,17 +1,17 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
-import modelo.NoTenesOroSuficienteException;
-import modelo.Oro;
+import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.EdificioTieneVidaMaximaException;
+import modelo.excepciones.OroInsuficienteException;
+import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.mapa.CasilleroOcupadoException;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
-import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
-
-import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ public class CastilloTest {
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
 
-        castillo.recibirDanio(500);
+        castillo.reducirVida(500);
 
         Assert.assertEquals(500, castillo.getVida());
     }
@@ -43,7 +43,7 @@ public class CastilloTest {
 
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
-        castillo.recibirDanio(50);
+        castillo.reducirVida(50);
 
         castillo.repararseAsimismo();
 
@@ -56,7 +56,7 @@ public class CastilloTest {
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
 
-        castillo.recibirDanio(50);
+        castillo.reducirVida(50);
 
         castillo.repararseAsimismo();
         castillo.repararseAsimismo();
@@ -93,7 +93,7 @@ public class CastilloTest {
         Assert.assertEquals(arma.getVida(), 150);
     }
 
-    @Test(expected = NoTenesOroSuficienteException.class)
+    @Test(expected = OroInsuficienteException.class)
     public void test07CastilloCreaArmaDeAsedioHastaNoTenerDineroLanzaExcepcion() {
 
         Oro oro = new Oro(1000);
@@ -168,77 +168,82 @@ public class CastilloTest {
     }
     @Test
     public void test13CastilloAtacaUnidadesAlRededor() {
-    	 Mapa mapa = new Mapa(20, 20);
+
+        Mapa mapa = new Mapa(20, 20);
          Oro oro = new Oro(10000);
          Castillo castillo = new Castillo(oro);
-         castillo.colocarseEn(mapa, 9, 10);
-         Aldeano aldeano1= new Aldeano(oro);
-         Aldeano aldeano2= new Aldeano(oro);
+        Aldeano aldeano = new Aldeano(oro);
+        Arquero arquero = new Arquero(oro);
          Espadachin espadachin = new Espadachin(oro);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
+        castillo.colocarseEn(mapa, 9, 10);
          mapa.colocarUnidad(espadachin, 8, 10);
-         mapa.colocarUnidad(aldeano1, 13, 10);
-         mapa.colocarUnidad(aldeano2, 13, 11);
+        mapa.colocarUnidad(aldeano, 13, 10);
+        mapa.colocarUnidad(arquero, 13, 11);
+        mapa.colocarUnidad(armaDeAsedio, 8, 11);
          
          castillo.atacarAlrededor(mapa);
-         Assert.assertEquals(aldeano1.getVida(), 30);
-         Assert.assertEquals(aldeano2.getVida(), 30);
-         Assert.assertEquals(espadachin.getVida(), 80); 
-    
-         
+
+        Assert.assertEquals(30, aldeano.getVida());
+        Assert.assertEquals(80, espadachin.getVida());
+        Assert.assertEquals(55, arquero.getVida());
+        Assert.assertEquals(130, armaDeAsedio.getVida());
     }
     
     @Test
     public void test14CastilloAtacaEdificiosAlRededor() {
-    	Mapa mapa = new Mapa(20, 20);
+
+        Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(10000);
         Castillo castillo = new Castillo(oro);
-        castillo.colocarseEn(mapa, 9, 10);
         PlazaCentral plaza = new PlazaCentral(oro);
+        castillo.colocarseEn(mapa, 9, 10);
         mapa.colocarEdificio(plaza, 4, 13, 10);
+
         castillo.atacarAlrededor(mapa);
-        Assert.assertEquals(plaza.getVida(), 430); 
-    	
+
+        Assert.assertEquals(plaza.getVida(), 430);
     }
-    
+
     @Test
     public void test14CastilloAtacaUnidadesYEdificiosAlRededor() {
-    	 Mapa mapa = new Mapa(20, 20);
+
+        Mapa mapa = new Mapa(20, 20);
          Oro oro = new Oro(10000);
          Castillo castillo = new Castillo(oro);
-         castillo.colocarseEn(mapa, 9, 10);
-         Aldeano aldeano1= new Aldeano(oro);
-         Aldeano aldeano2= new Aldeano(oro);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
          PlazaCentral plaza = new PlazaCentral(oro);
          Espadachin espadachin = new Espadachin(oro);
+        castillo.colocarseEn(mapa, 9, 10);
          mapa.colocarEdificio(plaza, 4, 6, 10);
-       
          mapa.colocarUnidad(espadachin, 8, 10);
-         mapa.colocarUnidad(aldeano1, 13, 10);
-         mapa.colocarUnidad(aldeano2, 13, 11);
+        mapa.colocarUnidad(unAldeano, 13, 10);
+        mapa.colocarUnidad(otroAldeano, 13, 11);
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
          
          castillo.atacarAlrededor(mapa);
-         Assert.assertEquals(aldeano1.getVida(), 30);
-         Assert.assertEquals(aldeano2.getVida(), 30);
+
+        Assert.assertEquals(unAldeano.getVida(), 30);
+        Assert.assertEquals(otroAldeano.getVida(), 30);
          Assert.assertEquals(espadachin.getVida(), 80); 
          Assert.assertEquals(plaza.getVida(), 430);
-         
-    
-         
     }
     
     @Test
     public void test15CastilloAtacaPeroAldeanoEstaFueraDelRangoDeAtaqueYNoLeSacaVida() {
-    	 Mapa mapa = new Mapa(20, 20);
+
+        Mapa mapa = new Mapa(20, 20);
          Oro oro = new Oro(10000);
          Castillo castillo = new Castillo(oro);
-         
-         Aldeano aldeano1= new Aldeano(oro);
-         castillo.colocarseEn(mapa,2, 2);
-         mapa.colocarUnidad(aldeano1, 20, 20);
-         castillo.atacarAlrededor(mapa);
-         Assert.assertEquals(aldeano1.getVida(), 50);
-         
-    }
-    
+        Aldeano aldeano = new Aldeano(oro);
 
+         castillo.colocarseEn(mapa,2, 2);
+        mapa.colocarUnidad(aldeano, 20, 20);
+
+         castillo.atacarAlrededor(mapa);
+        Assert.assertEquals(aldeano.getVida(), 50);
+    }
 }

@@ -1,14 +1,14 @@
 package modelo.unidades.arquero;
 
-import modelo.edificios.Edificio;
-import modelo.unidades.Unidad;
-import modelo.unidades.aldeano.Aldeano;
+import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
+import modelo.unidades.Colocable;
 
 public interface EstadoArquero {
 	
 	void avanzarTurno(Arquero arquero);
-	void atacar(Edificio edificio,Arquero arquero);
-	void atacar(Unidad unidad,Arquero arquero);
-	
 
+    void atacar(Colocable colocable, Arquero arquero);
+
+    void moverArqueroDesdeHacia(Arquero arquero, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento);
 }

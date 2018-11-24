@@ -3,45 +3,45 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.Oro;
-import modelo.Posicion;
+import modelo.juego.Oro;
+import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
 public  class EstadoAldeanoDisponible implements EstadoAldeano {
-	
-	public void recolectarOro(Oro oro) {
-		oro.sumarOro(25);		
-	}
-	
-	public void avanzarTurno(Aldeano aldeano) {
-	}
 
-	@Override
-	public PlazaCentral construirPlazaCentral(Aldeano aldeano,int turnosOcupado, Oro oro) {
-		
-		PlazaCentral plaza = new PlazaCentral(oro);		
-		aldeano.estarOcupado(3);		
-		return plaza;
-	}
+    public void recolectarOro(Oro oro) {
+        oro.sumarOro(25);
+    }
 
-	@Override
-	public Cuartel construirCuartel(Aldeano aldeano,int turnosOcupado, Oro oro) {
-		Cuartel cuartel = new Cuartel(oro);
-		aldeano.estarOcupado(3);
-		return cuartel;
-	}
+    public void avanzarTurno(Aldeano aldeano) {
+    }
 
-	@Override
-	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
-		aldeano.estarEnReparacion();
-		aldeano.aldeanoRepararEdificio(edificio);
-	}
+    @Override
+    public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
 
-	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
-		origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
-	}
+        PlazaCentral plaza = new PlazaCentral(oro);
+        aldeano.estarOcupado(3);
+        return plaza;
+    }
+
+    @Override
+    public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
+        Cuartel cuartel = new Cuartel(oro);
+        aldeano.estarOcupado(3);
+        return cuartel;
+    }
+
+    @Override
+    public void repararEdificio(Aldeano aldeano, Edificio edificio) {
+        aldeano.estarEnReparacion();
+        aldeano.aldeanoRepararEdificio(edificio);
+    }
+
+    @Override
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+        origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
+    }
 }
 
-	
+

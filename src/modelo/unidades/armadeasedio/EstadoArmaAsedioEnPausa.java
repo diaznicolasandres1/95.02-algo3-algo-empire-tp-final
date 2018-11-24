@@ -1,57 +1,46 @@
 package modelo.unidades.armadeasedio;
 
-import modelo.Posicion;
+import modelo.mapa.Posicion;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
-import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaAtacarException;
-import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaDesmontarArmaException;
-import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
-import modelo.unidades.armadeasedio.excepciones.TenesQueEsperarAlProximoTurnoParaMoverElArmaException;
+import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaAtacarException;
+import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaDesmontarArmaException;
+import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
+import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaMoverElArmaException;
 
 public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
-	EstadoArmaAsedio proximoEstado;
-	
-	public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado){
+
+	private EstadoArmaAsedio proximoEstado;
+
+	public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado) {
 		this.proximoEstado = proximoEstado;
-		
 	}
-		
+
 	@Override
 	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen,
-			int rangoMovimiento) {
+									  int distanciaDeMovimiento) {
 		throw new TenesQueEsperarAlProximoTurnoParaMoverElArmaException();
-
 	}
 
 	@Override
-	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
+	public void atacar(Colocable colocable, ArmaDeAsedio arma) {
 		throw new TenesQueEsperarAlProximoTurnoParaAtacarException();
-
-	}
-
-	@Override
-	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
-		
 
 	}
 
 	@Override
 	public void montarArma(ArmaDeAsedio armaDeAsedio) {
 		throw new TenesQueEsperarAlProximoTurnoParaMontarArmaException();
-		
 	}
 
 	@Override
 	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
 		throw new TenesQueEsperarAlProximoTurnoParaDesmontarArmaException();
-		
 	}
 
 	public EstadoArmaAsedio proximoEstado() {
 		return proximoEstado;
 	}
-
-
-
 }

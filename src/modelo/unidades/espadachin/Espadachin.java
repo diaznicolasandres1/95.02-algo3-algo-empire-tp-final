@@ -1,52 +1,48 @@
 package modelo.unidades.espadachin;
 
-import modelo.Ataque;
-import modelo.Oro;
-import modelo.RangoDeAtaqueInvalidoException;
-import modelo.edificios.Edificio;
+import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
+import modelo.unidades.Atacante;
+import modelo.excepciones.ColocableFueraDeRangoDeAtaqueException;
+import modelo.juego.Oro;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
-import modelo.unidades.arquero.EstadoArqueroDisponible;
-import modelo.unidades.arquero.EstadoArqueroOcupado;
 
-public class Espadachin extends Unidad implements Ataque {
+public class Espadachin extends Unidad implements Atacante {
 
-	EstadoEspadachin estado = new EstadoEspadachinDisponible();
-	
-	public Espadachin(Oro oro) {
-		vida = 100;
-		oro.restarOro(50);
-	}
+    private EstadoEspadachin estado = new EstadoEspadachinDisponible();
+    private static final int RANGO_DE_ATAQUE = 1;
 
-	@Override
-	public void atacar(Edificio edificio) {
-		if(edificio.calcularDistanciaA(this.posicion) > 1) {
-			throw new RangoDeAtaqueInvalidoException();			
-		}		
-		estado.atacar(edificio,this);
-		this.estarOcupado();
-		
-	}
+    public Espadachin(Oro oro) {
+        this.vida = 100;
+        this.costo = 50;
+        oro.restarOro(costo);
+    }
 
-	@Override
-	public void atacar(Unidad unidad) {
-		if(unidad.calcularDistanciaA(this.posicion) > 1) {
-			throw new RangoDeAtaqueInvalidoException();			
-		}		
-		estado.atacar(unidad,this);
-		this.estarOcupado();
-		
-	}
-	
-	public void avanzarTurno() {
-		estado.avanzarTurno(this);
-	}
-	
+    @Override
+    public void atacar(Colocable colocable) {
+        if (colocable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
+            throw new ColocableFueraDeRangoDeAtaqueException();
+        }
+        estado.atacar(colocable, this);
+        this.estarOcupado();
+    }
 
-	public void estarDisponible() {
-		 estado = new EstadoEspadachinDisponible();		
-	}
-	
-	public void estarOcupado() {
-		 estado = new EstadoEspadachinOcupado();		
-}
+    @Override
+    public void moverHacia(Posicion destino, Mapa mapa) {
+        estado.moverEspadachinDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
+        this.estarOcupado();
+    }
+
+    public void avanzarTurno() {
+        estado.avanzarTurno(this);
+    }
+
+    public void estarDisponible() {
+        estado = new EstadoEspadachinDisponible();
+    }
+
+    public void estarOcupado() {
+        estado = new EstadoEspadachinOcupado();
+    }
 }

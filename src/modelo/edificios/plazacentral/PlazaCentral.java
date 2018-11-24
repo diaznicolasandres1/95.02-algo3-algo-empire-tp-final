@@ -1,6 +1,6 @@
 package modelo.edificios.plazacentral;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.unidades.aldeano.Aldeano;
 
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 
-    Oro oro;
-    EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
+    private Oro oro;
+    private EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
     public PlazaCentral(Oro oroInicio) {
         this.vidaMaxima = 450;
@@ -17,7 +17,8 @@ public class PlazaCentral extends Edificio {
         this.vida = 450;
         this.tamanio = 4;
         this.oro = oroInicio;
-        this.oro.restarOro(100);
+        this.costo = 100;
+        this.oro.restarOro(costo);
         this.posiciones = new ArrayList<>();
     }
 
@@ -25,7 +26,7 @@ public class PlazaCentral extends Edificio {
         estado.repararse(this);
     }
 
-    public void recibirDanioPlazaCentral(int valorDanio) {
+    public void recibirDanio(int valorDanio) {
         estado.recibirDanio(this, valorDanio);
     }
 
@@ -33,13 +34,13 @@ public class PlazaCentral extends Edificio {
         return estado.crearAldeano(oro);
     }
 
-    /**/
+    @Override
     public void terminoDeCrearse() {
         estado = new EstadoPlazaCentralCreada();
     }
 
+    @Override
     public void avanzarTurno() {
         estado.avanzarTurno(this);
     }
-
 }

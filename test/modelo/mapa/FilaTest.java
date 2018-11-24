@@ -1,6 +1,7 @@
 package modelo.mapa;
 
-import modelo.Oro;
+import modelo.juego.Oro;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;

@@ -1,7 +1,7 @@
 package modelo.mapa;
 
-import modelo.Posicion;
 import modelo.edificios.Edificio;
+import modelo.excepciones.TamanioInvalidoException;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 

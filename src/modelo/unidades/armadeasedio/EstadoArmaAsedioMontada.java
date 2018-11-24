@@ -1,52 +1,34 @@
 package modelo.unidades.armadeasedio;
 
-import modelo.Posicion;
+import modelo.mapa.Posicion;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
-import modelo.unidades.armadeasedio.excepciones.NoSePuedeMoverArmaAsedioMontadaException;
+import modelo.excepciones.NoSePuedeMoverArmaAsedioMontadaException;
 
 public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 
-	
-	
-	
-	@Override
-	public EstadoArmaAsedio proximoEstado() {
-		return null;
-	}
-	
-	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) throws NoSePuedeMoverArmaAsedioMontadaException {
-		throw new NoSePuedeMoverArmaAsedioMontadaException();
-	}
+    @Override
+    public EstadoArmaAsedio proximoEstado() {
+        return null;
+    }
 
-	@Override
-	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
-		/*try: validar distancia*/
-		edificio.recibirDanio(arma);
-		/*catch lanzar excepcion fuera de rango*/
-	}
-	
-	@Override
-	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
-		
-	}
+    @Override
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaDeMovimiento) throws NoSePuedeMoverArmaAsedioMontadaException {
+        throw new NoSePuedeMoverArmaAsedioMontadaException();
+    }
 
+    @Override
+    public void atacar(Colocable colocable, ArmaDeAsedio arma) {
+        colocable.recibirDanio(arma);
+    }
 
-	@Override
-	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
-		
-	}
+    @Override
+    public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+    }
 
-	@Override
-	public void montarArma(ArmaDeAsedio armaDeAsedio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
-
-
+    @Override
+    public void montarArma(ArmaDeAsedio armaDeAsedio) {
+    }
 }

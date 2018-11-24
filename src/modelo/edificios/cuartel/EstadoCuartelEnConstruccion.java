@@ -1,38 +1,31 @@
 package modelo.edificios.cuartel;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.Edificio;
+import modelo.excepciones.CuartelCreandoseException;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
 public class EstadoCuartelEnConstruccion implements EstadoCuartel {
-	int turnos =3 ;
+
+    private int turnos = 3;
 	
 	public void avanzarTurno(Edificio cuartel) {
-		turnos -=1;
+        turnos -= 1;
 		if (turnos < 1) {
 			cuartel.terminoDeCrearse();			
 		}
 	}
-	
-	
-	
-	/*En estadoEnConstruccion no se puede realizar lo siguiente
-	 * lanzar excepciones!!!*/
 
 	@Override
 	public void repararse(Edificio cuartel) {
 		throw new CuartelCreandoseException();
-		
 	}
 
 	@Override
 	public void recibirDanio(Edificio cuartel, int danio) {	
 		throw new CuartelCreandoseException();
-		
 	}
-
-	
 
 	@Override
 	public Espadachin crearEspadachin(Oro oro) {		
@@ -43,10 +36,4 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 	public Arquero crearArquero(Oro oro) {		
 		throw new CuartelCreandoseException();
 	}
-
-
-
-
-	
-
 }

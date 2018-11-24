@@ -3,8 +3,8 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.Oro;
-import modelo.Posicion;
+import modelo.juego.Oro;
+import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
@@ -14,16 +14,15 @@ public class Aldeano extends Unidad {
     private EstadoAldeano estado = new EstadoAldeanoDisponible();
 
     public Aldeano(Oro oroNuevo) {
-        vida = 50;
-        oro = oroNuevo;
-        oro.restarOro(25);
+        this.vida = 50;
+        this.oro = oroNuevo;
+        this.costo = 25;
+        oro.restarOro(costo);
     }
 
     public void aldeanoRepararEdificio(Edificio edificio) {
         estado.repararEdificio(this, edificio);
     }
-    
-    /*-----Cambio de estados-----*/	
 
     public void estarOcupado(int turnosOcupado) {
         estado = new EstadoAldeanoOcupado(turnosOcupado);
@@ -36,8 +35,6 @@ public class Aldeano extends Unidad {
     public void estarDisponible() {
         estado = new EstadoAldeanoDisponible();
     }
-    
-    /*-----El aldeano construye cuartel y plaza central-----*/	
 
     public Cuartel construirCuartel() {
         return estado.construirCuartel(this, 3, oro);
@@ -46,10 +43,6 @@ public class Aldeano extends Unidad {
     public PlazaCentral construirPlazaCentral() {
         return estado.construirPlazaCentral(this, 3, oro);
     }
-    
-    /*----------------------------------------------------*/	
-
- 
 
     @Override
     public void avanzarTurno() {
@@ -57,9 +50,9 @@ public class Aldeano extends Unidad {
         estado.avanzarTurno(this);
     }
 
-
     @Override
     public void moverHacia(Posicion destino, Mapa mapa) {
-        estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, rangoMovimiento);
+        estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, distanciaDeMovimiento);
+        this.estarOcupado(1);
     }
 }

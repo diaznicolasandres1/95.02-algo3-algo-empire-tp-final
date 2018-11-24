@@ -1,8 +1,9 @@
 package modelo.unidades;
 
-import modelo.Posicion;
-import modelo.edificios.Castillo;
+import modelo.mapa.Posicion;
+import modelo.edificios.castillo.Castillo;
 import modelo.mapa.Mapa;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
@@ -12,11 +13,14 @@ public interface Colocable {
     void avanzarTurno();
     void descolocarseDe(Mapa mapa);
     int calcularDistanciaA(Posicion posicion);
-	void recibirDanio(int i);
-	void recibirDanio(Castillo castillo);
 
-    
+    void reducirVida(int danio);
 
-    
-    
+    void recibirDanio(Castillo castillo);
+
+    void recibirDanio(Arquero arquero);
+
+    void recibirDanio(ArmaDeAsedio armaDeAsedio);
+
+    void recibirDanio(Espadachin espadachin);
 }

@@ -1,45 +1,35 @@
 package modelo.edificios.cuartel;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
 public class EstadoCuartelConstruido implements EstadoCuartel {
 
-	
-
 	@Override
 	public void recibirDanio(Edificio cuartel, int danio) {
-		cuartel.recibirDanio(danio);		
+        cuartel.reducirVida(danio);
 	}
-
 
 	@Override
 	public Espadachin crearEspadachin(Oro oro) {
-		Espadachin espadachin = new Espadachin(oro);
-		return espadachin;
-		
+        return new Espadachin(oro);
 	}
 
 	@Override
 	public Arquero crearArquero(Oro oro) {
-		Arquero arquero = new Arquero(oro);
-		return arquero;
-		
+        return new Arquero(oro);
 	}
 	
 	@Override
 	public void avanzarTurno(Edificio cuartel) {
-		// TODO Auto-generated method stub
-	}		
-
+        // Cuartel no pasa turnos mientras esta construido.
+    }
 
 	@Override
 	public void repararse(Edificio cuartel) {
 		cuartel.repararseAsimismo();
-		
-		
 	}
 
 

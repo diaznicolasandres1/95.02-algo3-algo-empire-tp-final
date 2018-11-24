@@ -1,8 +1,8 @@
 package modelo.unidades.espadachin;
 
-import modelo.edificios.Edificio;
-import modelo.unidades.Unidad;
-import modelo.unidades.arquero.EstadoArquero;
+import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
+import modelo.unidades.Colocable;
 
 public class EstadoEspadachinDisponible implements EstadoEspadachin {
 
@@ -12,19 +12,12 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	}
 
 	@Override
-	public void atacar(Edificio edificio,Espadachin espadachin) {
-		/*try: validar distancia*/
-		edificio.recibirDanio(espadachin);
-		/*catch lanzar excepcion fuera de rango*/
-		
+    public void atacar(Colocable colocable, Espadachin espadachin) {
+        colocable.recibirDanio(espadachin);
 	}
 
 	@Override
-	public void atacar(Unidad unidad,Espadachin espadachin) {
-		/*try: validar distancia*/
-		unidad.recibirDanio(espadachin);
-		/*catch lanzar excepcion fuera de rango*/
-		
-	}
-
+    public void moverEspadachinDesdeHacia(Espadachin espadachin, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento) {
+        origen.moverUnidadHacia(espadachin, mapa, destino, distanciaDeMovimiento);
+    }
 }

@@ -3,52 +3,49 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.Oro;
-import modelo.Posicion;
+import modelo.juego.Oro;
+import modelo.mapa.Posicion;
+import modelo.excepciones.AldeanoEstaOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
 public class EstadoAldeanoOcupado implements EstadoAldeano{
-	
-	int turnos;
-	
-	public EstadoAldeanoOcupado(int turnosOcupado) {
-		turnos = turnosOcupado;
-	}	
-	
-	public void recolectarOro(Oro oro) {
-		
-	}
-	
-	/*-----Override -----*/
 
-	@Override
-	public void avanzarTurno(Aldeano aldeano) {
-		turnos -=1;
-		if (turnos < 1) {
-			aldeano.estarDisponible();	
-		}
-	}
+    private int turnos;
 
-	@Override
-	public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
-		throw new AldeanoEstaOcupadoException();
-		
-	}
+    public EstadoAldeanoOcupado(int turnosOcupado) {
+        this.turnos = turnosOcupado;
+    }
 
-	@Override
-	public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
-		throw new AldeanoEstaOcupadoException();
-	}
+    public void recolectarOro(Oro oro) {
+    }
 
-	@Override
-	public void repararEdificio(Aldeano aldeano,Edificio edificio) {
-		throw new AldeanoEstaOcupadoException();
-		
-	}
+    @Override
+    public void avanzarTurno(Aldeano aldeano) {
+        turnos -= 1;
+        if (turnos < 1) {
+            aldeano.estarDisponible();
+        }
+    }
 
-	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
-		throw new AldeanoEstaOcupadoException();
-	}
+    @Override
+    public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
+        throw new AldeanoEstaOcupadoException();
+    }
+
+    @Override
+    public Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro) {
+        throw new AldeanoEstaOcupadoException();
+    }
+
+    @Override
+    public void repararEdificio(Aldeano aldeano, Edificio edificio) {
+        throw new AldeanoEstaOcupadoException();
+
+    }
+
+    @Override
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+        throw new AldeanoEstaOcupadoException();
+    }
 }

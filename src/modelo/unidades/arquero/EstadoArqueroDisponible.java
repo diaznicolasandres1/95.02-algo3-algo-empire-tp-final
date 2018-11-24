@@ -1,31 +1,23 @@
 package modelo.unidades.arquero;
 
-import modelo.edificios.Edificio;
-import modelo.unidades.Unidad;
-import modelo.unidades.aldeano.Aldeano;
+import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
+import modelo.unidades.Colocable;
 
 public class EstadoArqueroDisponible implements EstadoArquero {
 
 	@Override
 	public void avanzarTurno(Arquero arquero) {
 		arquero.estarDisponible();
-		
 	}
 
 	@Override
-	public void atacar(Edificio edificio,Arquero arquero) {
-		/*try: validar distancia*/
-		edificio.recibirDanio(arquero);
-		/*catch lanzar excepcion fuera de rango*/
-		
+    public void atacar(Colocable colocable, Arquero arquero) {
+        colocable.recibirDanio(arquero);
 	}
 
 	@Override
-	public void atacar(Unidad unidad,Arquero arquero) {
-		/*try: validar distancia*/
-		unidad.recibirDanio(arquero);
-		/*catch lanzar excepcion fuera de rango*/
-		
+    public void moverArqueroDesdeHacia(Arquero arquero, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento) {
+        origen.moverUnidadHacia(arquero, mapa, destino, distanciaDeMovimiento);
 	}
-
 }

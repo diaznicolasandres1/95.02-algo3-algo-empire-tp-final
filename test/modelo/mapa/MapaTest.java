@@ -1,11 +1,12 @@
 package modelo.mapa;
 
-import modelo.Oro;
-import modelo.Posicion;
-import modelo.PosicionFueraDeRangoException;
-import modelo.edificios.Castillo;
+import modelo.juego.Oro;
+import modelo.excepciones.CasilleroOcupadoException;
+import modelo.excepciones.PosicionFueraDeRangoException;
+import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.excepciones.TamanioInvalidoException;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
@@ -17,7 +18,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class MapaTest {
-	Oro oro = new Oro(10000);
+    Oro oro = new Oro(10000);
 
     @Test(expected = TamanioInvalidoException.class)
     public void test01crearMapaConMedidasNegativasLanzaExcepcion() {

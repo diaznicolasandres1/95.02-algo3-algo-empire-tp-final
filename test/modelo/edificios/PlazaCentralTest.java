@@ -1,10 +1,11 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
-import modelo.NoTenesOroSuficienteException;
-import modelo.Oro;
+import modelo.excepciones.EdificioTieneVidaMaximaException;
+import modelo.excepciones.OroInsuficienteException;
+import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.mapa.CasilleroOcupadoException;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 
@@ -24,7 +25,7 @@ public class PlazaCentralTest {
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
         try {
-            plaza.recibirDanioPlazaCentral(50);
+            plaza.reducirVida(50);
         } catch (Exception e) {
             Assert.assertEquals(plaza.getVida(), 450);
         }
@@ -40,7 +41,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
         /* Avanzo 3 turnos y como esta creada recibe daño */
-        plaza.recibirDanioPlazaCentral(50);
+        plaza.reducirVida(50);
 
         Assert.assertEquals(plaza.getVida(), 400);
     }
@@ -54,11 +55,9 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
 
-        plaza.recibirDanioPlazaCentral(50);
+        plaza.reducirVida(50);
         plaza.repararseAsimismo();
         Assert.assertEquals(plaza.getVida(), 425);
-
-
     }
 
     @Test(expected = EdificioTieneVidaMaximaException.class)
@@ -70,7 +69,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
         plaza.avanzarTurno();
 
-        plaza.recibirDanioPlazaCentral(50);
+        plaza.reducirVida(50);
 
         plaza.repararseAsimismo();
         plaza.repararseAsimismo();
@@ -102,7 +101,7 @@ public class PlazaCentralTest {
         Assert.assertEquals(oro.getOro(), 400);
     }
 
-    @Test(expected = NoTenesOroSuficienteException.class)
+    @Test(expected = OroInsuficienteException.class)
     public void test08CrearPlazaConOroInsuficiente() {
         Oro oro = new Oro(50);
         PlazaCentral plaza = new PlazaCentral(oro);

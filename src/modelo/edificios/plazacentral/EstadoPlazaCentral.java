@@ -1,6 +1,6 @@
 package modelo.edificios.plazacentral;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.EstadoEdificio;
 import modelo.unidades.aldeano.Aldeano;
 

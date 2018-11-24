@@ -1,6 +1,6 @@
 package modelo.edificios.plazacentral;
 
-import modelo.Oro;
+import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.unidades.aldeano.Aldeano;
 
@@ -19,13 +19,11 @@ public class EstadoPlazaCentralCreada implements EstadoPlazaCentral{
 
 	@Override
 	public void recibirDanio(Edificio plazaCentral, int danio) {
-		plazaCentral.recibirDanio(danio);		
+		plazaCentral.reducirVida(danio);
 	}
 
 	@Override
-	public void avanzarTurno(Edificio plazaCentral) {	
-		
+	public void avanzarTurno(Edificio plazaCentral) {
+		// Plaza central creada no maneja turnos
 	}
-
-	
 }

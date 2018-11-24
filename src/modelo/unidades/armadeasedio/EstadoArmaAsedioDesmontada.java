@@ -1,51 +1,36 @@
 package modelo.unidades.armadeasedio;
 
-import modelo.Posicion;
-import modelo.edificios.Edificio;
+import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
-import modelo.unidades.armadeasedio.excepciones.ElArmaYaEstaDesmontadaException;
-import modelo.unidades.armadeasedio.excepciones.NoSePuedeAtacarArmaAsedioDesmontadaException;
+import modelo.excepciones.ArmaDeAsedioYaSeEncuentraDesmontadaException;
+import modelo.excepciones.NoSePuedeAtacarConArmaAsedioDesmontadaException;
 
-public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio{
+public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
 
-	
-	
-	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
-		origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
-	}
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaDeMovimiento) {
+        origen.moverUnidadHacia(unidad, mapa, destino, distanciaDeMovimiento);
+    }
 
+    @Override
+    public void atacar(Colocable colocable, ArmaDeAsedio arma) {
+        throw new NoSePuedeAtacarConArmaAsedioDesmontadaException();
+    }
 
-	@Override
-	public void atacar(Edificio edificio,ArmaDeAsedio arma) {
-		throw new NoSePuedeAtacarArmaAsedioDesmontadaException();
-		
-	}
+    @Override
+    public void montarArma(ArmaDeAsedio armaDeAsedio) {
 
-	@Override
-	public void montarArma(ArmaDeAsedio armaDeAsedio) {
-		
-	}
+    }
 
+    @Override
+    public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+        throw new ArmaDeAsedioYaSeEncuentraDesmontadaException();
+    }
 
-	@Override
-	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
-		throw new ElArmaYaEstaDesmontadaException();
-		
-	}
-	
-	@Override
-	public void atacar(Unidad unidad,ArmaDeAsedio arma) {
-		
-		
-	}
-
-
-
-	@Override
-	public EstadoArmaAsedio proximoEstado() {
-		
-		return null;
-	}
+    @Override
+    public EstadoArmaAsedio proximoEstado() {
+        return null;
+    }
 
 }

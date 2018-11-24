@@ -1,5 +1,6 @@
 package modelo.mapa;
 
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.unidades.Colocable;
 
 public class Casillero {
