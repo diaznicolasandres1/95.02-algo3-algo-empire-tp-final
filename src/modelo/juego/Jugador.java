@@ -4,8 +4,10 @@ import modelo.unidades.Atacante;
 import modelo.excepciones.EdificioElegidoNoEsAliadoException;
 import modelo.excepciones.EdificioObjetivoEsAliadoException;
 import modelo.excepciones.UnidadElegidaNoEsAliadaException;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.excepciones.UnidadObjetivoEsAliadaException;
 import modelo.edificios.castillo.Castillo;
+
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
@@ -20,32 +22,35 @@ import modelo.unidades.espadachin.Espadachin;
 
 public class Jugador {
 
+	private String nombre;
 	private Oro oro;
 	private Poblacion poblacion;
 	private Estructuras estructuras;
 	private int aldeanosIniciales = 3;
 	private Mapa mapa;
+	private Jugador oponente;
 
-	public Jugador(Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
+	public Jugador(String nombre, Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
 
+		this.nombre = nombre;
 		this.oro = new Oro(275);
 		this.poblacion = new Poblacion();
 		this.estructuras = new Estructuras();
 		this.mapa = mapa;
 		this.colocarCastillo(oro, castilloFil, castilloCol);
-		this.colocarPlaza(oro, plazaFil, plazaCol);
-		this.crearAldeanosIniciales(oro, plazaFil, plazaCol);
+		this.colocarPlazaYAldeanos(oro, plazaFil, plazaCol);
 	}
 
 	/*-----Inicializadores-----*/
 	
-	private void colocarPlaza(Oro oro, int fila, int columna) {
+	private void colocarPlazaYAldeanos(Oro oro, int fila, int columna) {
 		PlazaCentral plaza = new PlazaCentral(oro);
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.colocarseEn(this.mapa, fila, columna);
 		this.estructuras.agregarEdificio(plaza);
+		this.crearAldeanosIniciales(oro, plaza);
 	}
 
 	private void colocarCastillo(Oro oro, int fila, int columna) {
@@ -54,12 +59,12 @@ public class Jugador {
 		this.estructuras.agregarEdificio(castillo);
 	}
 
-	private void crearAldeanosIniciales(Oro oro, int plazaFil, int plazaCol) {
+	private void crearAldeanosIniciales(Oro oro, PlazaCentral plaza) {
 
 		for (int i = 0; i < aldeanosIniciales; i++) {
 			Aldeano aldeano = new Aldeano(oro);
-			aldeano.colocarseEn(this.mapa, plazaFil + 2, plazaCol + i);
-			poblacion.agregarUnidad(aldeano);
+			plaza.colocarAlrededor(mapa, aldeano);
+			this.poblacion.agregarUnidad(aldeano);
 		}
 	}
 	
@@ -75,48 +80,55 @@ public class Jugador {
 			throw new EdificioElegidoNoEsAliadoException();
 	}
 	
-	/*-----Metodos getters-----*/
+	/*-----Metodos setters y getters-----*/
+	
+	public void setOpenente(Jugador oponente) {
+		this.oponente = oponente;
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
 	
 	public int getPoblacion() {
-		return poblacion.getCantidad();
+		return this.poblacion.getCantidad();
 	}
 
 	public int getCantidadDeEdificios() {
-		return estructuras.getCantidad();
+		return this.estructuras.getCantidad();
 	}
 
 	public int getOro() {
-		return oro.getOro();
+		return this.oro.getOro();
 	}
 
 	/*-----Metodos de Edificios-----*/
-	// Aun no se colocan, falta implementar buscador de casilleros disponibles
 	
 	public void crearAldeano(PlazaCentral plaza) {
 		this.verificarEdificioEsAliado(plaza);
 		Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
-		//aldeano.colocarseEn(this.mapa, fila, columna);
+		plaza.colocarAlrededor(mapa, aldeano);
 		this.poblacion.agregarUnidad(aldeano);
 	}
 	
 	public void crearEspadachin(Cuartel cuartel) {
 		this.verificarEdificioEsAliado(cuartel);
 		Espadachin espadachin = cuartel.crearEspadachinDesdeCuartel();
-		//espadachin.colocarseEn(this.mapa, fila, columna);
+		cuartel.colocarAlrededor(mapa, espadachin);
 		this.poblacion.agregarUnidad(espadachin);
 	}
 	
 	public void crearArquero(Cuartel cuartel) {
 		this.verificarEdificioEsAliado(cuartel);
 		Arquero arquero = cuartel.crearArqueroDesdeCuartel();
-		//arquero.colocarseEn(this.mapa, fila, columna);
+		cuartel.colocarAlrededor(mapa, arquero);
 		this.poblacion.agregarUnidad(arquero);
 	}
 	
 	public void crearArmaDeAsedio(Castillo castillo) {
 		this.verificarEdificioEsAliado(castillo);
 		ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
-		//armaDeAsedio.colocarseEn(this.mapa, fila, columna);
+		castillo.colocarAlrededor(mapa, armaDeAsedio);
 		this.poblacion.agregarUnidad(armaDeAsedio);
 	}
 	
@@ -148,14 +160,22 @@ public class Jugador {
 		this.verificarUnidadEsAliada((Unidad) atacante);
 		if(this.poblacion.perteneceUnidad(objetivo))
 			throw new UnidadObjetivoEsAliadaException();
-		atacante.atacar(objetivo);
+		try {
+			atacante.atacar(objetivo);
+		} catch(UnidadEstaMuertaException e) {
+			this.oponente.removerUnidad(objetivo);
+		}
 	}
 
 	public void atacar(Atacante atacante, Edificio objetivo) {
 		this.verificarUnidadEsAliada((Unidad) atacante);
 		if(this.estructuras.perteneceEdificio(objetivo))
 			throw new EdificioObjetivoEsAliadoException();
-		atacante.atacar(objetivo);
+		try {
+			atacante.atacar(objetivo);
+		} catch(UnidadEstaMuertaException e) {
+			this.oponente.removerEdificio(objetivo);
+		}
 	}
 	
 	/*-----Metodos de Arma de Asedio-----*/
@@ -190,10 +210,11 @@ public class Jugador {
     	unidad.moverHacia(destino, this.mapa);
     }
 
-	public void avanzarTurno() {
+	public Jugador avanzarTurno() {
 
 		this.estructuras.avanzarTurno();
 		this.poblacion.avanzarTurno();
+		return this.oponente;
 	}
 
 	public void removerUnidad(Unidad unidad) {
