@@ -87,7 +87,29 @@ public class Mapa {
         return colocablesEnRango;
     }
 
-    private Colocable buscarColocableEn(int fila, int columna) {
+    public void colocarAlrededor(int fila, int columna, int tamanio, Unidad unidad) {
+
+        int auxFila = fila - 1;
+        int auxColumna = columna - 1;
+        double altura = sqrt(tamanio);
+        double base = sqrt(tamanio);
+        
+        for (int i = 0; i < base + 2; i++) {
+            for (int j = 0; j < altura + 2; j++) {
+                try {
+                    if(this.buscarColocableEn(auxFila + i, auxColumna + j) == null) {
+                        this.buscarCasillero(auxFila + i, auxColumna + j).colocar(unidad);
+                        unidad.setPosicion(new Posicion (columna + j, fila + i));
+                        return;
+                    }
+                } catch (IndexOutOfBoundsException fueraDelRangoDelMapa) {
+                    continue;
+                }
+            }
+        }
+    }
+    
+    public Colocable buscarColocableEn(int fila, int columna) {
         return this.buscarFila(fila).buscarColocableEn(columna);
     }
 

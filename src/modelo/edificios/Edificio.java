@@ -6,6 +6,7 @@ import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
+import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
@@ -91,4 +92,8 @@ public abstract class Edificio implements Colocable {
 	public void avanzarTurno() {}
 
 	public abstract void terminoDeCrearse();
+	
+	public void colocarAlrededor(Mapa mapa, Unidad unidad) {
+		this.posiciones.get(0).colocarAlrededor(mapa, this.tamanio, unidad);
+	}
 }

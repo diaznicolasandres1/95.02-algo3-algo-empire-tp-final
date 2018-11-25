@@ -1,6 +1,7 @@
 package modelo.mapa;
 
 import modelo.juego.Oro;
+import modelo.mapa.Casillero;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.excepciones.PosicionFueraDeRangoException;
 import modelo.edificios.castillo.Castillo;
@@ -342,6 +343,51 @@ public class MapaTest {
         Assert.assertTrue(colocablesEnRango.contains(otroAldeano));
         Assert.assertTrue(colocablesEnRango.contains(castillo));
         Assert.assertTrue(colocablesEnRango.contains(plaza));
+    }
+    
+    @Test
+    public void test25mapaColocarAlrededorConTamanio1UbicaUnidadCorrectamente() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Aldeano aldeano1 = new Aldeano(oro);
+        Aldeano aldeano2 = new Aldeano(oro);
+        mapa.colocarUnidad(aldeano2, 1, 1);
+        mapa.colocarAlrededor(1, 1, 4, aldeano1);
+                
+        Assert.assertEquals(aldeano1, mapa.buscarColocableEn(1, 2));
+        Assert.assertNull(mapa.buscarColocableEn(2, 2));
+        Assert.assertNull(mapa.buscarColocableEn(2, 1));
+        }
+    
+    @Test
+    public void test26mapaColocarAlrededorConTamanio9UbicaUnidadCorrectamente() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        mapa.colocarEdificio(plaza, 9, 1, 1);
+        mapa.colocarAlrededor(1, 1, 9, aldeano);
+                
+        Assert.assertEquals(aldeano, mapa.buscarColocableEn(1, 4));
+        Assert.assertNull(mapa.buscarColocableEn(2, 4));
+        Assert.assertNull(mapa.buscarColocableEn(3, 4));
+        Assert.assertNull(mapa.buscarColocableEn(4, 4));
+        Assert.assertNull(mapa.buscarColocableEn(4, 3));
+        Assert.assertNull(mapa.buscarColocableEn(4, 2));
+        Assert.assertNull(mapa.buscarColocableEn(4, 1));
+        }
+    
+    @Test
+    public void test27mapaColocarAlrededorConEspacioOcupadoUbicaUnidadCorrectmente() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        mapa.colocarEdificio(plaza, 4, 1, 1);
+        mapa.colocarEdificio(plaza, 4, 3, 1);
+        mapa.colocarAlrededor(1, 1, 4, aldeano);
+        
+        Assert.assertEquals(aldeano, mapa.buscarColocableEn(1, 3));
     }
 
 }

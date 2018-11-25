@@ -78,5 +78,9 @@ public class Posicion {
         boolean enRangoY = (diferenciaEnY <= rango) && (diferenciaEnY >= -rango);
         return enRangoX && enRangoY;
     }
+
+	public void colocarAlrededor(Mapa mapa, int tamanio, Unidad unidad) {
+		mapa.colocarAlrededor(this.posY, this.posX, tamanio, unidad);
+	}
 }
 
