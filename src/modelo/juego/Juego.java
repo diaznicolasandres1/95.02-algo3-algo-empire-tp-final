@@ -1,54 +1,96 @@
 package modelo.juego;
 
 import modelo.unidades.Atacante;
+import modelo.unidades.Colocable;
 import modelo.edificios.Edificio;
+import modelo.edificios.castillo.Castillo;
+import modelo.edificios.cuartel.Cuartel;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
-import modelo.excepciones.UnidadEstaMuertaException;
+import modelo.unidades.aldeano.Aldeano;
 
 import java.util.Random;
 
 public class Juego {
 	private	Jugador jugador;
-	private Jugador oponente;
 	private Mapa mapa;
-	private int baseMapa = 50;
-	private int alturaMapa = 50;
+	private static final int BASE_MAPA = 50;
+	private static final int ALTURA_MAPA = 50;
 	
-	public Juego() {
-		this.mapa = new Mapa(baseMapa, alturaMapa);
-		Jugador jugador1 = new Jugador(this.mapa, 1, 1, 1, 6);
-		Jugador jugador2 = new Jugador(this.mapa, this.baseMapa-3, this.alturaMapa-3, this.baseMapa-6, this.alturaMapa-1);
+	public Juego(String nombre1, String nombre2) {
+		this.mapa = new Mapa(BASE_MAPA, ALTURA_MAPA);
+		Jugador jugador1 = new Jugador(nombre1, this.mapa, 1, 1, 1, 6);
+		Jugador jugador2 = new Jugador(nombre2, this.mapa, BASE_MAPA-3, ALTURA_MAPA-3, BASE_MAPA-6, ALTURA_MAPA-1);
+		jugador1.setOpenente(jugador2);
+		jugador2.setOpenente(jugador1);
 		if(new Random().nextBoolean()) {
 			this.jugador = jugador1;
-			this.oponente = jugador2;
 		}else {
 			this.jugador = jugador2;
-			this.oponente = jugador1;
 		}
 	}
 	
-	public void cambiarTurno() {
-		this.jugador.avanzarTurno();
-		Jugador aux = this.jugador;
-		this.jugador = this.oponente;
-		this.oponente = aux;
+	/*-----Metodos getter-----*/
+	
+	public String getNombreJugadorActual() {
+		return this.jugador.getNombre();
 	}
+	
+	public Colocable obtenerObjeto(int fila, int columna) {
+		return this.mapa.buscarColocableEn(fila, columna);
+	}
+	
+	/*-----Metodos de Edificios-----*/
+	
+	public void crearAldeano(PlazaCentral plaza) {
+		jugador.crearAldeano(plaza);
+	}
+	
+	public void crearEspadachin(Cuartel cuartel) {
+		jugador.crearEspadachin(cuartel);
+	}
+	
+	public void crearArquero(Cuartel cuartel) {
+		this.jugador.crearArquero(cuartel);
+	}
+	
+	public void crearArmaDeAsedio(Castillo castillo) {
+		this.jugador.crearArmaDeAsedio(castillo);
+	}
+	
+/*-----Metodos de Aldeano-----*/
+	
+	public void construirCuartel(Aldeano aldeano, int fila, int columna) {
+		this.jugador.construirCuartel(aldeano, fila, columna);
+    }
+
+    public void construirPlazaCentral(Aldeano aldeano, int fila, int columna) {
+    	this.jugador.construirPlazaCentral(aldeano, fila, columna);
+    }
+    
+    public void repararEdificio(Aldeano aldeano, Edificio edificio) {
+    	this.jugador.repararEdificio(aldeano, edificio);
+    }
+	
+    /*-----Metodos de Atacante-----*/
 
 	public void atacar(Atacante atacante, Unidad objetivo) {
-		try {
-			jugador.atacar(atacante, objetivo);
-		} catch(UnidadEstaMuertaException e) {
-			oponente.removerUnidad(objetivo);
-		}
+		this.jugador.atacar(atacante, objetivo);
 	}
 
 	public void atacar(Atacante atacante, Edificio objetivo) {
-		try {
-			jugador.atacar(atacante, objetivo);
-		} catch(UnidadEstaMuertaException e) {
-			oponente.removerEdificio(objetivo);
-		}
+		jugador.atacar(atacante, objetivo);
+	}
+	
+	/*-----Metodos Otros-----*/
+	
+	public void moverUnidadHacia(Unidad unidad, int fila, int columna) {
+		this.jugador.moverUnidadHacia(unidad, fila, columna);
+	}
+	
+	public void cambiarTurno() {
+		this.jugador = this.jugador.avanzarTurno();
 	}
 
 	
