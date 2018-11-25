@@ -94,7 +94,7 @@ public class JugadorTest {
 	}
 	
 	@Test(expected = LimiteDePoblacionAlcanzadoException.class)
-	public void test04CrearUnidadConLimiteDePoblacionAlcanzadoLanzaExcepcion() {
+	public void test08CrearUnidadConLimiteDePoblacionAlcanzadoLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -111,7 +111,7 @@ public class JugadorTest {
 	}
 		
 	@Test
-	public void test04CrearAldeanoDesdePlazaAumentaPoblacion() {
+	public void test09CrearAldeanoDesdePlazaAumentaPoblacion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -128,7 +128,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void test05CrearEspadachinDesdeCuartelAumentaPoblacion() {
+	public void test10CrearEspadachinDesdeCuartelAumentaPoblacion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -145,7 +145,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void test06CrearArqueroDesdeCuartelAumentaPoblacion() {
+	public void test11CrearArqueroDesdeCuartelAumentaPoblacion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -162,7 +162,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testCrearArmaDeAsedioDesdeCastilloAumentaPoblacion() {
+	public void test12CrearArmaDeAsedioDesdeCastilloAumentaPoblacion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -179,7 +179,7 @@ public class JugadorTest {
 	/*-----Test crear Edificios-----*/
 	
 	@Test(expected = CasilleroOcupadoException.class)
-	public void testContruirPlazaLoUbicaCorrectamente() {
+	public void test13ContruirPlazaLoUbicaCorrectamente() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -192,7 +192,7 @@ public class JugadorTest {
 	}
 	
 	@Test(expected = CasilleroOcupadoException.class)
-	public void testContruirCuartelLoUbicaCorrectamente() {
+	public void test14ContruirCuartelLoUbicaCorrectamente() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -206,7 +206,7 @@ public class JugadorTest {
 
 /*
 	@Test(expected = EdificioTieneVidaMaximaException.class)
-	public void testAldeanoReparaEdificioConVidaLlena() {
+	public void test15AldeanoReparaEdificioConVidaLlena() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -227,7 +227,7 @@ public class JugadorTest {
 	/*-----Test AvanzarTurno-----*/
 	
 	@Test(expected = PlazaCentralEnConstruccionException.class)
-	public void testAvanzarTurnoAvanzaConstruccionDePlaza() {
+	public void test16AvanzarTurnoAvanzaConstruccionDePlaza() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
@@ -239,7 +239,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testAvanzarTurnoAvanza3VecesTerminaConstruccionDePlaza() {
+	public void test17AvanzarTurnoAvanza3VecesTerminaConstruccionDePlaza() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
@@ -254,7 +254,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testAvanzarTurnoAvanza3VecesTerminaConstruccionDe2Plazas() {
+	public void test18AvanzarTurnoAvanza3VecesTerminaConstruccionDe2Plazas() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
@@ -275,7 +275,7 @@ public class JugadorTest {
 	/*-----Test Atacar------*/
 
 	@Test(expected = EdificioObjetivoEsAliadoException.class)
-	public void testEspadachinAliadoAtacarEdificioAliadoLanzaExcepcion() {
+	public void test19EspadachinAliadoAtacarEdificioAliadoLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -289,7 +289,7 @@ public class JugadorTest {
 	}
 	
 	@Test(expected = UnidadObjetivoEsAliadaException.class)
-	public void testEspadachinAliadoAtacarEspadachinAliadoLanzaExcepcion() {
+	public void test20EspadachinAliadoAtacarEspadachinAliadoLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -303,7 +303,7 @@ public class JugadorTest {
 	}
 	
 	@Test(expected = UnidadElegidaNoEsAliadaException.class)
-	public void testEspadachinEnemigoAtacarLanzaExcepcion() {
+	public void test21EspadachinEnemigoAtacarLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
@@ -314,7 +314,7 @@ public class JugadorTest {
 		jugador.atacar(espadachin1, espadachin2);
 	}
 	
-	public void testEspadachinAsesinadoSeBorraDePoblacionEnemigo() {
+	public void test22EspadachinAsesinadoSeBorraDePoblacionEnemigo() {
 		
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(30, 30);
@@ -336,7 +336,7 @@ public class JugadorTest {
 	/*-----Test MoverHacia-----*/
 	
 	@Test(expected = CasilleroOcupadoException.class)
-	public void testUnidadSeMueveAOtroCasillero() {
+	public void test23UnidadSeMueveAOtroCasillero() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
@@ -348,7 +348,7 @@ public class JugadorTest {
 		jugador.agregarUnidadEn(aldeano2, 2, 5);
 	}
 	
-	public void testUnidadSeMueveYDejaCasilleroVacio() {
+	public void test24UnidadSeMueveYDejaCasilleroVacio() {
 		Oro oro = new Oro(2000);
 		Mapa mapa = new Mapa(15, 15);
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
