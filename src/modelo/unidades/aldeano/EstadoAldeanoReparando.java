@@ -37,6 +37,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
 
     @Override
     public void recolectarOro(Oro oro) {
+        //Si esta reparando no recolecta oro
     }
 
     @Override

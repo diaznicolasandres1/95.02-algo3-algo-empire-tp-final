@@ -20,6 +20,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
 
     @Override
     public void montarArma(ArmaDeAsedio armaDeAsedio) {
+        //Este cambio lo realiza arma de asedio en pausa
 
     }
 

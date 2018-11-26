@@ -18,6 +18,7 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
     }
 
     public void recolectarOro(Oro oro) {
+        //En turno ocupado no recolecta oro
     }
 
     @Override

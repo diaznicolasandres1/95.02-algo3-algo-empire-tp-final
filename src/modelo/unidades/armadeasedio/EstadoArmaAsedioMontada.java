@@ -1,5 +1,6 @@
 package modelo.unidades.armadeasedio;
 
+import modelo.excepciones.ArmaDeAsedioYaSeEncuentraMontadaException;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
@@ -25,9 +26,12 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 
     @Override
     public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+        //Este cambio lo realiza arma de asedio en pausa
+
     }
 
     @Override
     public void montarArma(ArmaDeAsedio armaDeAsedio) {
+        throw new ArmaDeAsedioYaSeEncuentraMontadaException();
     }
 }
