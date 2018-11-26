@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class CasilleroTest {
 
-    Oro oro = new Oro(5000);
+    private Oro oro = new Oro(5000);
 
     @Test
     public void test01crearCasillero() {

@@ -1,7 +1,6 @@
 package modelo.unidades.armadeasedio;
 
 import modelo.mapa.Posicion;
-import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;

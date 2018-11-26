@@ -44,6 +44,7 @@ public abstract class Unidad implements Colocable {
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
+        // TODO aca deberia sacarse la unidad sola del mapa
     }
 
     public void setPosicion(Posicion posicion) {

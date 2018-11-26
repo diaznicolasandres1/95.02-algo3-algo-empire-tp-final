@@ -6,8 +6,6 @@ import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.CasilleroOcupadoException;
-import modelo.juego.Jugador;
-import modelo.juego.Oro;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.espadachin.Espadachin;
@@ -70,8 +68,8 @@ public class JugadorTest {
 	}
 
 	/*-----Test crear unidades-----*/
-	
-	@Test(expected = EdificioElegidoNoEsAliadoException.class)
+
+	@Test(expected = EdificioSeleccionadoNoPerteneceAJugadorException.class)
 	public void test06CrearAldeanoDesdePlazaNoAliadaLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
@@ -81,8 +79,8 @@ public class JugadorTest {
 		
 		jugador.crearAldeano(plaza);
 	}
-	
-	@Test(expected = UnidadElegidaNoEsAliadaException.class)
+
+	@Test(expected = UnidadSeleccionadaNoPerteneceAJugadorException.class)
 	public void test07ContruirPLazaDesdeAldeanoNoAliadoLanzaException() {
 
 		Oro oro = new Oro(2000);
@@ -274,7 +272,7 @@ public class JugadorTest {
 	
 	/*-----Test Atacar------*/
 
-	@Test(expected = EdificioObjetivoEsAliadoException.class)
+	@Test(expected = EdificioObjetivoEsPropioException.class)
 	public void test19EspadachinAliadoAtacarEdificioAliadoLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
@@ -287,8 +285,8 @@ public class JugadorTest {
 		
 		jugador.atacar(espadachin, cuartel);
 	}
-	
-	@Test(expected = UnidadObjetivoEsAliadaException.class)
+
+	@Test(expected = UnidadObjetivoEsPropiaException.class)
 	public void test20EspadachinAliadoAtacarEspadachinAliadoLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);
@@ -301,8 +299,8 @@ public class JugadorTest {
 		
 		jugador.atacar(espadachin1, espadachin2);
 	}
-	
-	@Test(expected = UnidadElegidaNoEsAliadaException.class)
+
+	@Test(expected = UnidadSeleccionadaNoPerteneceAJugadorException.class)
 	public void test21EspadachinEnemigoAtacarLanzaExcepcion() {
 
 		Oro oro = new Oro(2000);

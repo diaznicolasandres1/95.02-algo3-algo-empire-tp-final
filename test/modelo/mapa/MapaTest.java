@@ -19,7 +19,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class MapaTest {
-    Oro oro = new Oro(10000);
+
+    private Oro oro = new Oro(10000);
 
     @Test(expected = TamanioInvalidoException.class)
     public void test01crearMapaConMedidasNegativasLanzaExcepcion() {
@@ -73,7 +74,9 @@ public class MapaTest {
     @Test(expected = CasilleroOcupadoException.class)
     public void test06mapaColocaUnidadConMapaCompletoLanzaExcepcion() {
 
-        int altura = 20, base = 14, indice = 0;
+        int altura = 20;
+        int base = 14;
+        int indice = 0;
         Mapa mapa = new Mapa(base, altura);
         ArrayList<Aldeano> aldeanos = new ArrayList<>();
         Aldeano ultimoAldeano = new Aldeano(oro);
@@ -346,48 +349,54 @@ public class MapaTest {
     }
     
     @Test
-    public void test25mapaColocarAlrededorConTamanio1UbicaUnidadCorrectamente() {
-
-        Mapa mapa = new Mapa(20, 20);
-        Aldeano aldeano1 = new Aldeano(oro);
-        Aldeano aldeano2 = new Aldeano(oro);
-        mapa.colocarUnidad(aldeano2, 1, 1);
-        mapa.colocarAlrededor(1, 1, 4, aldeano1);
-                
-        Assert.assertEquals(aldeano1, mapa.buscarColocableEn(1, 2));
-        Assert.assertNull(mapa.buscarColocableEn(2, 2));
-        Assert.assertNull(mapa.buscarColocableEn(2, 1));
-        }
-    
-    @Test
-    public void test26mapaColocarAlrededorConTamanio9UbicaUnidadCorrectamente() {
+    public void test25mapaColocaAlrededorDePlazaCorrectamente() {
 
         Mapa mapa = new Mapa(20, 20);
         Aldeano aldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
-        mapa.colocarEdificio(plaza, 9, 1, 1);
-        mapa.colocarAlrededor(1, 1, 9, aldeano);
-                
+
+        mapa.colocarEdificio(plaza, 8, 1, 1);
+        mapa.colocarAlrededor(1, 1, 8, aldeano);
+
         Assert.assertEquals(aldeano, mapa.buscarColocableEn(1, 4));
-        Assert.assertNull(mapa.buscarColocableEn(2, 4));
-        Assert.assertNull(mapa.buscarColocableEn(3, 4));
-        Assert.assertNull(mapa.buscarColocableEn(4, 4));
-        Assert.assertNull(mapa.buscarColocableEn(4, 3));
-        Assert.assertNull(mapa.buscarColocableEn(4, 2));
-        Assert.assertNull(mapa.buscarColocableEn(4, 1));
-        }
+    }
     
     @Test
-    public void test27mapaColocarAlrededorConEspacioOcupadoUbicaUnidadCorrectmente() {
+    public void test26mapaColocaUnidadAlrededorDeCastilloCorrectamente() {
 
         Mapa mapa = new Mapa(20, 20);
         Aldeano aldeano = new Aldeano(oro);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        mapa.colocarEdificio(plaza, 4, 1, 1);
-        mapa.colocarEdificio(plaza, 4, 3, 1);
-        mapa.colocarAlrededor(1, 1, 4, aldeano);
-        
-        Assert.assertEquals(aldeano, mapa.buscarColocableEn(1, 3));
+        Castillo castillo = new Castillo(oro);
+
+        mapa.colocarEdificio(castillo, 16, 1, 1);
+        mapa.colocarAlrededor(1, 1, 16, aldeano);
+
+        Assert.assertEquals(aldeano, mapa.buscarColocableEn(1, 5));
     }
 
+    @Test
+    public void test27mapaColocaUnidadEnElUnicoLugarLibreAlrededorDeCastillo() {
+
+        Mapa mapa = new Mapa(20, 20);
+        Castillo castillo = new Castillo(oro);
+        Aldeano aldeano = new Aldeano(oro);
+
+        castillo.colocarseEn(mapa, 5, 5);
+        for (int i = 0; i < 6; i++) {
+            mapa.colocarUnidad(new Aldeano(oro), 4, 4 + i);
+        }
+        for (int i = 1; i < 6; i++) {
+            mapa.colocarUnidad(new Aldeano(oro), 4 + i, 4);
+        }
+        for (int i = 0; i < 4; i++) {
+            mapa.colocarUnidad(new Aldeano(oro), 9, 5 + i);
+        }
+        for (int i = 0; i < 4; i++) {
+            mapa.colocarUnidad(new Aldeano(oro), 5 + i, 9);
+        }
+
+        mapa.colocarAlrededor(5, 5, 16, aldeano);
+
+        Assert.assertEquals(aldeano, mapa.buscarColocableEn(9, 9));
+    }
 }

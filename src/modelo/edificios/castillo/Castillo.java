@@ -22,6 +22,11 @@ public class Castillo extends Edificio implements Atacante {
         this.oro = oro;
 		this.posiciones = new ArrayList<>();
     }
+
+    @Override
+    public void avanzarTurno() {
+        // Castillo no maneja turnos.
+    }
 	
 	@Override
 	public void terminoDeCrearse() {

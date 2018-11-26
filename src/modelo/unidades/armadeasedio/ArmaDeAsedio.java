@@ -14,28 +14,27 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 	private EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
 
 	public ArmaDeAsedio(Oro oro) {
-		vida = 150;
+		this.vida = 150;
 		oro.restarOro(200);
 	}
 
 	public void montarArma() {
-		estado.montarArma(this);
-		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioMontada());
-
+		this.estado.montarArma(this);
+		this.estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioMontada());
 	}
 
 	public void desmontarArma() {
-		estado.desmontarArma(this);
-		estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());
+		this.estado.desmontarArma(this);
+		this.estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());
 	}
 
 	public void avanzarTurno() {
-		estado = estado.proximoEstado();
+		this.estado = this.estado.proximoEstado();
 	}
 
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
-		estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, distanciaDeMovimiento);
+		this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, distanciaDeMovimiento);
 	}
 
 	@Override
@@ -43,7 +42,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 		if (colocable.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
-		estado.atacar(colocable, this);
-		estado = new EstadoArmaAsedioEnPausa(estado);
+		this.estado.atacar(colocable, this);
+		this.estado = new EstadoArmaAsedioEnPausa(estado);
 	}
 }

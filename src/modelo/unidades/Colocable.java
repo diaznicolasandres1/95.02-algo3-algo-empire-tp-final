@@ -13,14 +13,9 @@ public interface Colocable {
     void avanzarTurno();
     void descolocarseDe(Mapa mapa);
     int calcularDistanciaA(Posicion posicion);
-
     void reducirVida(int danio);
-
     void recibirDanio(Castillo castillo);
-
     void recibirDanio(Arquero arquero);
-
     void recibirDanio(ArmaDeAsedio armaDeAsedio);
-
     void recibirDanio(Espadachin espadachin);
 }

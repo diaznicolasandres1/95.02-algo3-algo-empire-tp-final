@@ -5,31 +5,31 @@ import modelo.edificios.Edificio;
 
 public class Estructuras {
 
-	private ArrayList<Edificio> edificios;
-	
-	public Estructuras() {
-		this.edificios = new ArrayList<>();
-	}
+    private ArrayList<Edificio> edificios;
 
-	public int getCantidad() {
-		return this.edificios.size();
-	}
+    public Estructuras() {
+        this.edificios = new ArrayList<>();
+    }
 
-	public void agregarEdificio(Edificio edificio) {
-		this.edificios.add(edificio);
-	}
+    public int getCantidad() {
+        return this.edificios.size();
+    }
 
-	public void avanzarTurno() {
-		for (Edificio edificio : this.edificios) {
-			edificio.avanzarTurno();
-		}
-	}
-	
-	public boolean perteneceEdificio(Edificio edificio) {
-		return this.edificios.contains(edificio);
-	}
-	
-	public void removerEdificio(Edificio edificio) {
-		this.edificios.remove(edificio);
-	}
+    public void agregarEdificio(Edificio edificio) {
+        this.edificios.add(edificio);
+    }
+
+    public void avanzarTurno() {
+        for (Edificio edificio : this.edificios) {
+            edificio.avanzarTurno();
+        }
+    }
+
+    public boolean perteneceEdificio(Edificio edificio) {
+        return this.edificios.contains(edificio);
+    }
+
+    public void removerEdificio(Edificio edificio) {
+        this.edificios.remove(edificio);
+    }
 }

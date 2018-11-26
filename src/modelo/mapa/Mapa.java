@@ -1,6 +1,7 @@
 package modelo.mapa;
 
 import modelo.edificios.Edificio;
+import modelo.excepciones.CasilleroOcupadoException;
 import modelo.excepciones.TamanioInvalidoException;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
@@ -87,22 +88,20 @@ public class Mapa {
         return colocablesEnRango;
     }
 
-    public void colocarAlrededor(int fila, int columna, int tamanio, Unidad unidad) {
+    public void colocarAlrededor(int fila, int columna, int tamanioEdificio, Unidad unidad) {
 
         int auxFila = fila - 1;
         int auxColumna = columna - 1;
-        double altura = sqrt(tamanio);
-        double base = sqrt(tamanio);
-        
-        for (int i = 0; i < base + 2; i++) {
-            for (int j = 0; j < altura + 2; j++) {
+        double filas = sqrt(tamanioEdificio);
+        double columnas = sqrt(tamanioEdificio);
+        boolean estaColocado = false;
+
+        for (int i = 0; i < columnas + 2 && !estaColocado; i++) {
+            for (int j = 0; j < filas + 2 && !estaColocado; j++) {
                 try {
-                    if(this.buscarColocableEn(auxFila + i, auxColumna + j) == null) {
-                        this.buscarCasillero(auxFila + i, auxColumna + j).colocar(unidad);
-                        unidad.setPosicion(new Posicion (columna + j, fila + i));
-                        return;
-                    }
-                } catch (IndexOutOfBoundsException fueraDelRangoDelMapa) {
+                    this.colocarUnidad(unidad, auxFila + i, auxColumna + j);
+                    estaColocado = true;
+                } catch (IndexOutOfBoundsException | CasilleroOcupadoException e) {
                     continue;
                 }
             }

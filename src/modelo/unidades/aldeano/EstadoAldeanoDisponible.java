@@ -15,6 +15,7 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
     }
 
     public void avanzarTurno(Aldeano aldeano) {
+        // Aldeano no maneja turnos mientras se encuentra en este estado
     }
 
     @Override
@@ -35,7 +36,7 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
     @Override
     public void repararEdificio(Aldeano aldeano, Edificio edificio) {
         aldeano.estarEnReparacion();
-        aldeano.aldeanoRepararEdificio(edificio);
+        aldeano.repararEdificio(edificio);
     }
 
     @Override

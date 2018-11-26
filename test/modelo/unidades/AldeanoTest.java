@@ -85,7 +85,9 @@ public class AldeanoTest {
     @Test
     public void test07CrearAldeanoRestaOro() {
         Oro oro = new Oro(100);
+
         Aldeano aldeano = new Aldeano(oro);
+
         Assert.assertEquals(75, oro.getOro());
     }
 
@@ -111,7 +113,7 @@ public class AldeanoTest {
         cuartel.avanzarTurno();
 
         cuartel.reducirVida(100); //Ya se construyo se le puede hacer daño
-        aldeano.aldeanoRepararEdificio(cuartel); //No Genera oro en este turno
+        aldeano.repararEdificio(cuartel); //No Genera oro en este turno
         aldeano.avanzarTurno();
 
         int cantidadOro = oro.getOro();
@@ -346,7 +348,7 @@ public class AldeanoTest {
         plaza.avanzarTurno();// Edificio construido
 
         plaza.reducirVida(100); //Ya se construyo se le puede hacer daño
-        aldeano.aldeanoRepararEdificio(plaza);
+        aldeano.repararEdificio(plaza);
         aldeano.avanzarTurno();       
         aldeano.avanzarTurno();
         aldeano.avanzarTurno();

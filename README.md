@@ -8,10 +8,10 @@ Segundo cuatrimestre año 2018 - FIUBA.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Intregrantes
--  Balladares, Alejandro, 101118
--  Diaz, Nicolas Andres, 101369
--  Galvan Perez, Jonathan, 101250
--  Mastricchio, Facundo Rodrigo, 100874
+- [Balladares, Alejandro](https://github.com/AlejandroBalladares)
+- [Diaz, Nicolas Andres](https://github.com/diaznicolasandres1)
+- [Galvan Perez, Jonathan](https://github.com/JonathanGalvanPerez)
+- [Mastricchio, Facundo Rodrigo](https://github.com/FacuMastri)
 
 ---
 ## Pasos para trabajar

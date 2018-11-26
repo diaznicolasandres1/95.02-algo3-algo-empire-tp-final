@@ -20,7 +20,7 @@ public class Aldeano extends Unidad {
         oro.restarOro(costo);
     }
 
-    public void aldeanoRepararEdificio(Edificio edificio) {
+    public void repararEdificio(Edificio edificio) {
         estado.repararEdificio(this, edificio);
     }
 
