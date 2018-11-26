@@ -311,7 +311,7 @@ public class ArqueroTest {
         arquero.avanzarTurno();
 
         arquero.atacar(plaza);
-        Assert.assertEquals(440, plaza.getVida());
+        Assert.assertEquals(430, plaza.getVida());
     }
 
     @Test
