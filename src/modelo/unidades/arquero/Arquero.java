@@ -4,6 +4,7 @@ import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.Atacante;
 import modelo.excepciones.ColocableFueraDeRangoDeAtaqueException;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.juego.Oro;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
@@ -45,4 +46,9 @@ public class Arquero extends Unidad implements Atacante {
 	public void estarOcupado() {
 		 estado = new EstadoArqueroOcupado();		
 	}
+	
+    @Override
+    public void unidadMuerta(){
+        throw new UnidadEstaMuertaException();
+    }
 }
