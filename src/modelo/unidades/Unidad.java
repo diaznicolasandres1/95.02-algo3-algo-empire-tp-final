@@ -42,7 +42,7 @@ public abstract class Unidad implements Colocable {
     public void reducirVida(int danio) {
         vida -= danio;
         if (vida <= 0) {
-            throw new UnidadEstaMuertaException();
+            this.unidadMuerta();
         }
         // TODO aca deberia sacarse la unidad sola del mapa
     }
@@ -68,4 +68,6 @@ public abstract class Unidad implements Colocable {
     public abstract void avanzarTurno();
 
     public abstract void moverHacia(Posicion destino, Mapa mapa);
+
+    public abstract void unidadMuerta();
 }

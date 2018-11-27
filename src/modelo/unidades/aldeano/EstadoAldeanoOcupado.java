@@ -6,6 +6,7 @@ import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.AldeanoEstaOcupadoException;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
@@ -48,5 +49,10 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
     @Override
     public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
         throw new AldeanoEstaOcupadoException();
+    }
+
+    @Override
+    public void unidadMuerta(){
+        throw new UnidadEstaMuertaException();
     }
 }

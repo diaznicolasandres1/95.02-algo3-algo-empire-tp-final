@@ -4,12 +4,14 @@ import modelo.edificios.castillo.Castillo;
 import modelo.mapa.Posicion;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.UnidadFueDestruidaException;
+import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
+import modelo.unidades.aldeano.Aldeano;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public abstract class Edificio implements Colocable {
 	protected int tamanio;
 	protected int reparacion;
     protected ArrayList<Posicion> posiciones;
+    protected Aldeano unidadReparando; 
 
 	public int getVida() {
 		return vida;
@@ -54,15 +57,36 @@ public abstract class Edificio implements Colocable {
     }
 	
     public void repararseAsimismo() {
-        if (vida == vidaMaxima) {
-			throw new EdificioTieneVidaMaximaException();
-		}
+       
 		vida += reparacion;
-		if (vida >= vidaMaxima) {
+		if (vida > vidaMaxima) {
 			vida = vidaMaxima;
+            throw new EdificioTieneVidaMaximaException();
 		}
 	}
-    
+
+    public void repararseAsimismo(Aldeano aldeano) {
+        if (unidadReparando == null){
+            unidadReparando = aldeano;
+        }
+        if (aldeano != unidadReparando)
+            throw new YaEstanReparandoEsteEdificioException();
+        
+        vida += reparacion;
+        if (vida >= vidaMaxima) {
+            vida = vidaMaxima;
+            this.vaciarAldeano();
+            throw new EdificioTieneVidaMaximaException();
+        }
+    }
+
+
+
+    public void vaciarAldeano() {
+        this.unidadReparando = null;
+    }
+
+
     @Override
     public void descolocarseDe(Mapa mapa) {
         for (Posicion posicion : this.posiciones) {

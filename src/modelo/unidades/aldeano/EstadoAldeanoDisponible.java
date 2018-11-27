@@ -3,6 +3,7 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
@@ -43,6 +44,9 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
     public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
         origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
     }
+
+    @Override
+    public void unidadMuerta(){
+        throw new UnidadEstaMuertaException();
+    }
 }
-
-

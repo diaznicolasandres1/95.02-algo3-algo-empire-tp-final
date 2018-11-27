@@ -20,5 +20,7 @@ public interface EstadoAldeano {
 
 	PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
 
+	void unidadMuerta();
+
 	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
 }

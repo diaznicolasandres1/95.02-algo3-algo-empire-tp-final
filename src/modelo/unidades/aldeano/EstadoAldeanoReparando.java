@@ -2,11 +2,13 @@ package modelo.unidades.aldeano;
 
 import modelo.edificios.Edificio;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
+import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.AldeanoEstaOcupadoException;
+import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
@@ -18,11 +20,13 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
     public void repararEdificio(Aldeano aldeano, Edificio edificio) {
         this.edificio = edificio;
         try {
-            edificio.repararseAsimismo();
-
+//            edificio.repararseAsimismo();
+              edificio.repararseAsimismo(aldeano);
         } catch (EdificioTieneVidaMaximaException e) {
             aldeano.estarDisponible();
         }
+         catch (YaEstanReparandoEsteEdificioException e){
+            aldeano.estarDisponible();}
     }
 
     @Override
@@ -48,5 +52,11 @@ public class EstadoAldeanoReparando implements EstadoAldeano{
     @Override
     public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
         throw new AldeanoEstaOcupadoException();
+    }
+
+    @Override
+    public void unidadMuerta(){
+        this.edificio.vaciarAldeano();
+        throw new UnidadEstaMuertaException();
     }
 }

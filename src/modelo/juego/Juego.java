@@ -9,6 +9,7 @@ import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
 import java.util.Random;
 
@@ -95,5 +96,12 @@ public class Juego {
         this.jugadorActual = this.jugadorActual.avanzarTurno();
     }
 
+    public void montarArma(ArmaDeAsedio arma){
+        this.jugadorActual.montarArma(arma);
+    }
+
+    public void desmontarArma(ArmaDeAsedio arma){
+        this.jugadorActual.desmontarArma(arma);
+    }
 
 }
