@@ -21,6 +21,7 @@ public class Cuartel extends Edificio {
         this.costo = 50;
         this.oro.restarOro(costo);
 		this.posiciones = new ArrayList<>();
+		this.unidadReparando = null;
 	}
 	
 	public void repararse() {

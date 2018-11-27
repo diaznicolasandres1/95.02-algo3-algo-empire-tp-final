@@ -21,6 +21,7 @@ public class Castillo extends Edificio implements Atacante {
 		this.tamanio = 16;
         this.oro = oro;
 		this.posiciones = new ArrayList<>();
+        this.unidadReparando = null;
     }
 
     @Override

@@ -20,6 +20,7 @@ public class PlazaCentral extends Edificio {
         this.costo = 100;
         this.oro.restarOro(costo);
         this.posiciones = new ArrayList<>();
+        this.unidadReparando = null;
     }
 
     public void repararse() {
