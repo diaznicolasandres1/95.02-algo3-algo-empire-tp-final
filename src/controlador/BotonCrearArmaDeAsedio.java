@@ -26,6 +26,5 @@ public class BotonCrearArmaDeAsedio  implements EventHandler<ActionEvent> {
             alert.setContentText("No tienes oro suficiente para crear una arma de asedio");
             alert.show();
         }
-
     }
 }
