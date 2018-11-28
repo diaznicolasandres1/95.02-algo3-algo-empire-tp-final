@@ -25,13 +25,13 @@ public class BotonConstruirCuartel implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try{
-            juego.construirPlazaCentral(aldeano,fila,columna);
+            juego.construirCuartel(aldeano,fila,columna);
         }catch(OroInsuficienteException e){
-            alert.setTitle("Error al construir plaza central");
-            alert.setContentText("No tienes oro suficiente para crear una plaza central");
+            alert.setTitle("Error al construir cuartel");
+            alert.setContentText("No tienes oro suficiente para crear un cuartel");
             alert.show();
         }catch(AldeanoEstaOcupadoException e) {
-            alert.setTitle("Error al construir plaza central");
+            alert.setTitle("Error al construir cuartel");
             alert.setContentText("El aldeano esta ocupado");
             alert.show();
         }
