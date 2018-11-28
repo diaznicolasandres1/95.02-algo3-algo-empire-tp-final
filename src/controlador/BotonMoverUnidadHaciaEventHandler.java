@@ -10,14 +10,14 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import modelo.unidades.Unidad;
 
-public class BotonMoverUnidadHacia   implements EventHandler<ActionEvent> {
+public class BotonMoverUnidadHaciaEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Unidad unidad;
     private int fila;
     private int columna;
 
-    public BotonMoverUnidadHacia(Juego juego, Unidad unidad,int fila, int columna){
+    public BotonMoverUnidadHaciaEventHandler(Juego juego, Unidad unidad, int fila, int columna){
         this.juego = juego;
         this.unidad = unidad;
         this.fila = fila;

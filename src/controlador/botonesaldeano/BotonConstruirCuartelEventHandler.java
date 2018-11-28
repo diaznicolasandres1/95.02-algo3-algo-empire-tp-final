@@ -8,13 +8,13 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 
-public class BotonConstruirCuartel implements EventHandler<ActionEvent> {
+public class BotonConstruirCuartelEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private Aldeano aldeano;
     private int fila;
     private int columna;
 
-    public BotonConstruirCuartel(Juego juego, Aldeano aldeano, int fila, int columna){
+    public BotonConstruirCuartelEventHandler(Juego juego, Aldeano aldeano, int fila, int columna){
         this.aldeano = aldeano;
         this.fila = fila;
         this.columna = columna;

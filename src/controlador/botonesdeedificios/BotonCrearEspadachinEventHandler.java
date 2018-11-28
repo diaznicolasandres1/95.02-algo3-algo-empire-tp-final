@@ -9,12 +9,12 @@ import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 
-public class BotonCrearEspadachin implements EventHandler<ActionEvent> {
+public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Cuartel cuartel;
 
-    public BotonCrearEspadachin(Juego juego, Cuartel cuartel){
+    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel){
         this.juego = juego;
         this.cuartel = cuartel;
     }

@@ -7,12 +7,12 @@ import modelo.edificios.castillo.Castillo;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 
-public class BotonCrearArmaDeAsedio  implements EventHandler<ActionEvent> {
+public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Castillo castillo;
 
-    public BotonCrearArmaDeAsedio(Juego juego, Castillo castillo){
+    public BotonCrearArmaDeAsedioEventHandler(Juego juego, Castillo castillo){
         this.juego = juego;
         this.castillo = castillo;
     }

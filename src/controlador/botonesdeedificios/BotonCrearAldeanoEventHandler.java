@@ -10,10 +10,10 @@ import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 
-public class BotonCrearAldeano implements EventHandler<ActionEvent> {
+public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private PlazaCentral plaza;
-    public BotonCrearAldeano( Juego juego, PlazaCentral plaza){
+    public BotonCrearAldeanoEventHandler(Juego juego, PlazaCentral plaza){
         this.juego = juego;
         this.plaza = plaza;
     }

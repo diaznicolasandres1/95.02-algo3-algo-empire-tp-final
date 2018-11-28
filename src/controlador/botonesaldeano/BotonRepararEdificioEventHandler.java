@@ -12,13 +12,13 @@ import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 
-public class BotonRepararEdificio implements EventHandler<ActionEvent> {
+public class BotonRepararEdificioEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Aldeano aldeano;
     private Edificio edificio;
 
-    public BotonRepararEdificio(Juego juego, Aldeano aldeano, Edificio edificio) {
+    public BotonRepararEdificioEventHandler(Juego juego, Aldeano aldeano, Edificio edificio) {
         this.juego = juego;
         this.aldeano = aldeano;
         this.edificio = edificio;
