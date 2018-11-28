@@ -13,8 +13,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import modelo.edificios.Edificio;
+import modelo.edificios.castillo.Castillo;
+import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Mapa;
+import modelo.unidades.Colocable;
+import modelo.unidades.Unidad;
+import modelo.unidades.aldeano.Aldeano;
 
 public class ContenedorPrincipal extends BorderPane {
 
@@ -31,7 +37,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
-        this.setMapa();
+        this.dibujarMapa();
         this.setCostados();
         this.setBottom();
     }
@@ -70,24 +76,10 @@ public class ContenedorPrincipal extends BorderPane {
 
 
     }
-    private void setMapa() {
-
-        Mapa mapa = this.juego.getMapa();
-        int base = mapa.getBase();
-        int altura = mapa.getAltura();
-
-
-        for (int i = 0; i < altura; i++) {
-            for (int j = 0; j < base; j++) {
-                Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1));
-                botonCasillero.setPrefSize(30, 30);
-                tablero.add(botonCasillero, j, i, 1, 1);
-            }
-        }
+    private void dibujarMapa() {
+        DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
+        dibujadorDeMapa.dibujarMapa();
         this.setCenter(tablero);
-
-
-
     }
 
 }

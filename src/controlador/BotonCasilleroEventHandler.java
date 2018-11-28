@@ -22,6 +22,7 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
         Colocable colocable = this.juego.getColocable(this.fila, this.columna);
         // Como el handler no puede devolver nada, habria que mandar este colocable
         // para otro lado para que maneje lo que se tenga que hacer
+        //Mostra vista de acciones disponibles
     }
 
 }
