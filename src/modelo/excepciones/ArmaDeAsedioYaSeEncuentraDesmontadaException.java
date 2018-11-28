@@ -2,7 +2,7 @@ package modelo.excepciones;
 
 public class ArmaDeAsedioYaSeEncuentraDesmontadaException extends ArmaDeAsedioException {
 
-    public ArmaDeAsedioYaSeEncuentraDesmontadaException(String s) {
+    public ArmaDeAsedioYaSeEncuentraDesmontadaException() {
         super("El arma de asedio ya se encuentra desmontada");
     }
 }
