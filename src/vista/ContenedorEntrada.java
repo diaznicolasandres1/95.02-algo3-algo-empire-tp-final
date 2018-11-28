@@ -41,22 +41,18 @@ public class ContenedorEntrada extends VBox {
         titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         titulo.setTextAlignment(TextAlignment.CENTER);
         titulo.setTextFill(Color.web("000000"));
-        Label subtitulo = new Label("Probando 12345");
-        subtitulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        subtitulo.setTextAlignment(TextAlignment.CENTER);
-        subtitulo.setTextFill(Color.web("000000"));
 
         Image imagen = new Image("file:src/vista/imagenes/imagen_inicio_aoe.png", 1500, 150, true, true);
         ImageView imagenVista = new ImageView(imagen);
 
-        this.getChildren().addAll(titulo, imagenVista, subtitulo, vBox);
+        this.getChildren().addAll(titulo, imagenVista, vBox);
     }
 
     public void setBotonJugar(Stage stage, Scene proximaEscena) {
         BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, proximaEscena, jugadores);
         BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
-        Boton botonEntrar = new Boton("Jugar", botonJugarEventHandler);
+        Boton botonJugar = new Boton("Jugar", botonJugarEventHandler);
         Boton botonSalir = new Boton("Salir", botonSalirEventHandler);
-        this.getChildren().addAll(botonEntrar, botonSalir);
+        this.getChildren().addAll(botonJugar, botonSalir);
     }
 }
