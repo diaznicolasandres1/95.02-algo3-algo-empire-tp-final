@@ -29,7 +29,7 @@ public class BotonConstruirPlazaCentral implements EventHandler<ActionEvent> {
             juego.construirPlazaCentral(aldeano,fila,columna);
         }catch(OroInsuficienteException e){
             alert.setTitle("Error al construir plaza central");
-            alert.setContentText("No tienes oro suficiente para crear una plaza central);
+            alert.setContentText("No tienes oro suficiente para crear una plaza central");
             alert.show();
         }catch(AldeanoEstaOcupadoException e) {
             alert.setTitle("Error al construir plaza central");
