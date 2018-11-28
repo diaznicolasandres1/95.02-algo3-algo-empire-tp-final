@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
+import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 
@@ -17,13 +19,24 @@ public class BotonCrearAldeano implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try{
             juego.crearAldeano(plaza);
         }catch(OroInsuficienteException e){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
             alert.setTitle("Error al crear aldeano");
             alert.setContentText("No tienes oro suficiente para crear un aldeano");
             alert.show();
+        }
+        catch(PlazaCentralEnConstruccionException e){
+            alert.setTitle("Error al crear aldeano");
+            alert.setContentText("La plaza central  se encuentra en construccion");
+            alert.show();
+        }catch (LimiteDePoblacionAlcanzadoException e){
+            alert.setTitle("Error al crear aldeano");
+            alert.setContentText("Limite de poblacion alcanzado");
+            alert.show();
+
         }
 
     }
