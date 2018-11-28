@@ -1,4 +1,4 @@
-package controlador;
+package controlador.botonesdeedificios;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

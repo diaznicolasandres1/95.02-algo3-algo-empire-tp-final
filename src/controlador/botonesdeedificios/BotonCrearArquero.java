@@ -1,30 +1,32 @@
-package controlador;
+package controlador.botonesdeedificios;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-
+import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 
-public class BotonCrearAldeano implements EventHandler<ActionEvent> {
+public class BotonCrearArquero  implements EventHandler<ActionEvent> {
     private Juego juego;
-    private PlazaCentral plaza;
-    public BotonCrearAldeano( Juego juego, PlazaCentral plaza){
+    private Cuartel cuartel;
+
+    public BotonCrearArquero( Juego juego, Cuartel cuartel){
         this.juego = juego;
-        this.plaza = plaza;
+        this.cuartel = cuartel;
     }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         try{
-            juego.crearAldeano(plaza);
+            juego.crearArquero(cuartel);
         }catch(OroInsuficienteException e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al crear aldeano");
-            alert.setContentText("No tienes oro suficiente para crear un aldeano");
+            alert.setTitle("Error al crear arquero");
+            alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
         }
-
     }
 }
+
