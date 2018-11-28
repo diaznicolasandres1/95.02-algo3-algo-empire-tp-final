@@ -29,13 +29,9 @@ public class BotonMoverUnidadHaciaEventHandler implements EventHandler<ActionEve
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try{
             juego.moverUnidadHacia(unidad,fila,columna);
-        }catch(CasilleroOcupadoException e){
+        }catch(CasilleroOcupadoException e) {
             alert.setTitle("Error al mover unidad");
             alert.setContentText("Ese casillero ya esta ocupado");
-            alert.show();
-        }catch (EdificioSeleccionadoNoPerteneceAJugadorException e){
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("No podes mover un edificio que no te pertenece");
             alert.show();
         }
 

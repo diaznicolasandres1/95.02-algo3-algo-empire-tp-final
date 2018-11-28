@@ -22,23 +22,18 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al crear Espadachin");
         try{
             juego.crearEspadachin(this.cuartel);
         }catch(OroInsuficienteException e){
-            alert.setTitle("Error al crear Espadachin");
             alert.setContentText("No tienes oro suficiente para crear un Espadachin");
             alert.show();
         }catch(CuartelCreandoseException e){
-            alert.setTitle("Error al crear Espadachin");
             alert.setContentText("El cuartel  se encuentra en construccion");
             alert.show();
         }catch (LimiteDePoblacionAlcanzadoException e){
-            alert.setTitle("Error al crear Espadachin");
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
-
         }
-
-
     }
 }

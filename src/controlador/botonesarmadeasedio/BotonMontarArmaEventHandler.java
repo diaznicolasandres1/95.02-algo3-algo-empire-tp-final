@@ -3,8 +3,8 @@ package controlador.botonesarmadeasedio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.excepciones.ArmaDeAsedioYaSeEncuentraMontadaException;
-import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
+import modelo.excepciones.ArmaDeAsedioException;
+
 import modelo.juego.Juego;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
@@ -20,17 +20,14 @@ public class BotonMontarArmaEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try{
             juego.montarArma(armaDeAsedio);
-        }catch(ArmaDeAsedioYaSeEncuentraMontadaException e){
+        } catch (ArmaDeAsedioException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error al montar arma");
-            alert.setContentText("El arma ya se encuentra montada");
-            alert.show();
-        }catch(TenesQueEsperarAlProximoTurnoParaMontarArmaException e){
-            alert.setTitle("Error al montar arma");
-            alert.setContentText("Tenes que esperar al proximo turno para montar el arma");
+            alert.setContentText(e.getMessage());
             alert.show();
         }
     }
+
 }

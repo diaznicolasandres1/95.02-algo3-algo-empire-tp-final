@@ -39,7 +39,6 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
             alert.setTitle("Error al crear arquero");
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
-
         }
     }
 }
