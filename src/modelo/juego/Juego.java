@@ -17,8 +17,8 @@ public class Juego {
 
     private Jugador jugadorActual;
     private Mapa mapa;
-    private static final int BASE_MAPA = 50;
-    private static final int ALTURA_MAPA = 50;
+    private static final int BASE_MAPA = 25;
+    private static final int ALTURA_MAPA = 25;
 
     public Juego(String nombre1, String nombre2) {
 
@@ -104,4 +104,7 @@ public class Juego {
         this.jugadorActual.desmontarArma(arma);
     }
 
+    public Mapa getMapa() {
+        return this.mapa;
+    }
 }

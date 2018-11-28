@@ -123,14 +123,14 @@ public class Mapa {
     }
 
     private void agregarFilas() {
-        for (int i = 1; i <= altura; i++) {
+        for (int i = 1; i <= this.altura; i++) {
             ArrayList<Casillero> casillerosEnFila = new ArrayList<>();
-            for (int j = (i - 1) * base; j < i * base; j++) {
+            for (int j = (i - 1) * this.base; j < i * this.base; j++) {
                 casillerosEnFila.add(casilleros.get(j));
             }
             Fila fila = new Fila();
             fila.agregarCasilleros(casillerosEnFila);
-            filas.add(fila);
+            this.filas.add(fila);
         }
     }
 
@@ -147,5 +147,13 @@ public class Mapa {
     private boolean esTamanioValido(int base, int altura) {
 
         return (base >= 12 && altura >= 12);
+    }
+
+    public int getBase() {
+        return this.base;
+    }
+
+    public int getAltura() {
+        return this.altura;
     }
 }

@@ -1,7 +1,6 @@
 package modelo.mapa;
 
 import modelo.juego.Oro;
-import modelo.mapa.Casillero;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.excepciones.PosicionFueraDeRangoException;
 import modelo.edificios.castillo.Castillo;
