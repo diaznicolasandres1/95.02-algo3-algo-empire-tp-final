@@ -1,5 +1,6 @@
 package modelo.edificios;
 
+import javafx.application.Platform;
 import junit.framework.Assert;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
@@ -8,6 +9,7 @@ import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
 
 import org.junit.Test;
@@ -181,6 +183,19 @@ public class PlazaCentralTest {
         plaza.repararse(new Aldeano(oro));
 
         plaza.repararse(new Aldeano(oro));
+    }
+
+    @Test
+    public void test16plazaCalculaDistanciaHaciaOtraPosicionDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(2000);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Mapa mapa = new Mapa(20, 20);
+        Posicion posicion = new Posicion(15, 15);
+
+        plaza.colocarseEn(mapa, 10, 10);
+
+        Assert.assertEquals(4, plaza.calcularDistanciaA(posicion));
     }
 }
 

@@ -2,7 +2,7 @@ package modelo.mapa;
 
 import modelo.excepciones.CoordenadasInvalidasException;
 import modelo.excepciones.PosicionFueraDeRangoException;
-import modelo.excepciones.RangoInvalidoException;
+import modelo.excepciones.DistanciaInvalidaException;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 
@@ -21,22 +21,15 @@ public class Posicion {
         if (!this.sonCoordenadasValidas(posX, posY)) {
             throw new CoordenadasInvalidasException();
         }
-
         this.posX = posX;
         this.posY = posY;
     }
 
-    /* TODO ver si conviene usar los metodos de calcular distancia o los de verificar si esta dentro del rango */
-    public boolean estaDentroDelRango(Posicion otraPosicion, int rango) {
-        if (!this.esRangoValido(rango)) {
-            throw new RangoInvalidoException();
+    public void moverUnidadHacia(Unidad unidad, Mapa mapa, Posicion destino, int distanciaMaxima) {
+        if (!this.esDistanciaValida(distanciaMaxima)) {
+            throw new DistanciaInvalidaException();
         }
-        return otraPosicion.estaDentroDelRangoConXeY(this.posX, this.posY, rango);
-    }
-
-    public void moverUnidadHacia(Unidad unidad, Mapa mapa, Posicion destino, int rangoMovimiento) {
-
-        if (!this.estaDentroDelRango(destino, rangoMovimiento)) {
+        if (!this.estaDentroDeDistanciaMaxima(destino, distanciaMaxima)) {
             throw new PosicionFueraDeRangoException();
         }
         destino.moverUnidadConXeY(unidad, mapa, this.posX, this.posY);
@@ -50,8 +43,16 @@ public class Posicion {
         return posicion.calcularDistanciaConXeY(this.posX, this.posY);
     }
 
-    public ArrayList<Colocable> buscarColocablesEnRangoDe(Mapa mapa, int rangoDeAtaque) {
-        return mapa.buscarColocablesEnRangoDe(this.posY, this.posX, rangoDeAtaque);
+    public ArrayList<Colocable> buscarColocablesEnRangoDe(Mapa mapa, int rango) {
+        return mapa.buscarColocablesEnRangoDe(this.posY, this.posX, rango);
+    }
+
+    public void colocarAlrededor(Mapa mapa, int tamanio, Unidad unidad) {
+        mapa.colocarAlrededor(this.posY, this.posX, tamanio, unidad);
+    }
+
+    private boolean estaDentroDeDistanciaMaxima(Posicion otraPosicion, int distanciaMaxima) {
+        return this.calcularDistanciaA(otraPosicion) <= distanciaMaxima;
     }
 
     private int calcularDistanciaConXeY(int posX, int posY) {
@@ -62,25 +63,13 @@ public class Posicion {
         mapa.moverUnidadDesdeHasta(unidad, yDeOrigen, xDeOrigen, this.posY, this.posX);
     }
 
-    private boolean esRangoValido(int rango) {
-        return rango > 0;
+    private boolean esDistanciaValida(int distancia) {
+        return distancia > 0;
     }
 
     private boolean sonCoordenadasValidas(int posX, int posY) {
         return (posX >= 0 && posY >= 0);
     }
 
-    private boolean estaDentroDelRangoConXeY(int posX, int posY, int rango) {
-
-        int diferenciaEnX = this.posX - posX;
-        int diferenciaEnY = this.posY - posY;
-        boolean enRangoX = (diferenciaEnX <= rango) && (diferenciaEnX >= -rango);
-        boolean enRangoY = (diferenciaEnY <= rango) && (diferenciaEnY >= -rango);
-        return enRangoX && enRangoY;
-    }
-
-	public void colocarAlrededor(Mapa mapa, int tamanio, Unidad unidad) {
-		mapa.colocarAlrededor(this.posY, this.posX, tamanio, unidad);
-	}
 }
 

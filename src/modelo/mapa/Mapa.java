@@ -88,12 +88,12 @@ public class Mapa {
         return colocablesEnRango;
     }
 
-    public void colocarAlrededor(int fila, int columna, int tamanioEdificio, Unidad unidad) {
+    public void colocarAlrededor(int fila, int columna, int tamanioColocable, Unidad unidad) {
 
         int auxFila = fila - 1;
         int auxColumna = columna - 1;
-        double filas = sqrt(tamanioEdificio);
-        double columnas = sqrt(tamanioEdificio);
+        double filas = sqrt(tamanioColocable);
+        double columnas = sqrt(tamanioColocable);
         boolean estaColocado = false;
 
         for (int i = 0; i < columnas + 2 && !estaColocado; i++) {
