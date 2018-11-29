@@ -10,6 +10,7 @@ import controlador.botonesarmadeasedio.BotonDesmontarArmaEventHandler;
 import controlador.botonesarmadeasedio.BotonMontarArmaEventHandler;
 import controlador.botonesataque.BotonAtacarInicioEventHandler;
 import controlador.botonesdeedificios.BotonCrearAldeanoEventHandler;
+import controlador.botonesdeedificios.BotonCrearArmaDeAsedioEventHandler;
 import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
 import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
 import javafx.event.ActionEvent;
@@ -190,6 +191,16 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
+    public void dibujarMetodosCastillo(Castillo castillo) {
+        this.bottom = new VBox(); //Reinicio el vbox de bottom
+        BotonCrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new BotonCrearArmaDeAsedioEventHandler(juego,castillo,this);
+        Boton crearArmaDeAsedio = new Boton("Crear arma de asedio",armaDeAsedioEventHandler);
+        setjugadorActual();
+        bottom.getChildren().addAll(crearArmaDeAsedio);
+        this.setBottom(bottom);
+        bottom.setAlignment(Pos.CENTER);
+    }
+
 
 
 
@@ -217,6 +228,8 @@ public class ContenedorPrincipal extends BorderPane {
         cambiadorDeHandler.cambiarHandlerAtaque(atacante);
 
     }
+
+
 }
 
 
