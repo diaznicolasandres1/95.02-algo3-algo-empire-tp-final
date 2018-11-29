@@ -254,7 +254,7 @@ public class ArmaAsedioTest {
         Assert.assertEquals(plaza.getVida(), 375);
     }
 
-    @Test(expected = TenesQueEsperarAlProximoTurnoParaAtacarException.class)
+    @Test(expected = NoSePuedeAtacarConArmaDeAsedioEnPausaException.class)
     public void test20ArmaDeAsedioTrataDeAtacarApenasMontaArmaYLanzaExcepcion() {
 
         Oro oro = new Oro(1000);
@@ -315,7 +315,7 @@ public class ArmaAsedioTest {
         armaDeAsedio.atacar(arquero);
     }
 
-    @Test(expected = TenesQueEsperarAlProximoTurnoParaMoverElArmaException.class)
+    @Test(expected = NoSePuedeMoverArmaDeAsedioEnPausaException.class)
     public void test24AlDesmontarElArmaHayQueEsperarUnTurnoParaMoverArmaDespuesDeDesmontarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -366,7 +366,7 @@ public class ArmaAsedioTest {
     }
 
 
-    @Test(expected = TenesQueEsperarAlProximoTurnoParaDesmontarArmaException.class)
+    @Test(expected = NoSePuedeDesmontarArmaDeAsedioEnPausaException.class)
     public void test27NoSePuedeMontarYDesmontarEnElMismoTurnoLanzaExcepcion() {
         Oro oro = new Oro(1000);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
@@ -384,7 +384,7 @@ public class ArmaAsedioTest {
         armaDeAsedio.desmontarArma();
     }
 
-    @Test(expected = TenesQueEsperarAlProximoTurnoParaMontarArmaException.class)
+    @Test(expected = NoSePuedeMontarArmaDeAsedioEnPausaException.class)
     public void test29NoSePuedeDesmontarYMontarEnElMismoTurnoLanzaExcepcion() {
         Oro oro = new Oro(1000);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
@@ -448,7 +448,7 @@ public class ArmaAsedioTest {
         armaDeAsedio.atacar(plaza);
     }
 
-    @Test(expected = TenesQueEsperarAlProximoTurnoParaAtacarException.class)
+    @Test(expected = NoSePuedeAtacarConArmaDeAsedioEnPausaException.class)
     public void test32SoloPuedeRealizarUnAtaquePorTurno() {
 
         Oro oro = new Oro(1000);

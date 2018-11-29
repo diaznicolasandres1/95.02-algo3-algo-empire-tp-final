@@ -5,10 +5,10 @@ import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 
-import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaAtacarException;
-import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaDesmontarArmaException;
-import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaMontarArmaException;
-import modelo.excepciones.TenesQueEsperarAlProximoTurnoParaMoverElArmaException;
+import modelo.excepciones.NoSePuedeAtacarConArmaDeAsedioEnPausaException;
+import modelo.excepciones.NoSePuedeDesmontarArmaDeAsedioEnPausaException;
+import modelo.excepciones.NoSePuedeMontarArmaDeAsedioEnPausaException;
+import modelo.excepciones.NoSePuedeMoverArmaDeAsedioEnPausaException;
 
 public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 
@@ -21,23 +21,23 @@ public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 	@Override
 	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen,
 									  int distanciaDeMovimiento) {
-		throw new TenesQueEsperarAlProximoTurnoParaMoverElArmaException();
+		throw new NoSePuedeMoverArmaDeAsedioEnPausaException();
 	}
 
 	@Override
 	public void atacar(Colocable colocable, ArmaDeAsedio arma) {
-		throw new TenesQueEsperarAlProximoTurnoParaAtacarException();
+		throw new NoSePuedeAtacarConArmaDeAsedioEnPausaException();
 
 	}
 
 	@Override
 	public void montarArma(ArmaDeAsedio armaDeAsedio) {
-		throw new TenesQueEsperarAlProximoTurnoParaMontarArmaException();
+		throw new NoSePuedeMontarArmaDeAsedioEnPausaException();
 	}
 
 	@Override
 	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
-		throw new TenesQueEsperarAlProximoTurnoParaDesmontarArmaException();
+		throw new NoSePuedeDesmontarArmaDeAsedioEnPausaException();
 	}
 
 	public EstadoArmaAsedio proximoEstado() {
