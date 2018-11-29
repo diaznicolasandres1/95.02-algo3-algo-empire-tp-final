@@ -21,7 +21,7 @@ public class DibujadorDeMapa {
 
     }
 
-    public void dibujarMapa(ContenedorPrincipal contenedor){
+    public void dibujarMapaConCasilleroHandler(ContenedorPrincipal contenedor){
         Mapa mapa = this.juego.getMapa();
         int base = mapa.getBase();
         int altura = mapa.getAltura();

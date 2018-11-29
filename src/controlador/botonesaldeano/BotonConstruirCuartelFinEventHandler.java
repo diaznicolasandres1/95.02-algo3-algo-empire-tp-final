@@ -3,8 +3,6 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.juego.Juego;
-import modelo.mapa.Mapa;
-import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
@@ -27,6 +25,6 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
     public void handle(ActionEvent actionEvent) {
         juego.construirCuartel(constructor,fila,columna);
         System.out.println("Se creo el cuartel");
-        contenedor.dibujarMapa();
+        contenedor.dibujarMapaConCasilleroHandler();
     }
 }

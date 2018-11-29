@@ -1,12 +1,9 @@
 package vista;
 
-import controlador.BotonCasilleroEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -38,7 +35,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
-        this.dibujarMapa();
+        this.dibujarMapaConCasilleroHandler();
         this.setCostados();
         this.setBottom();
     }
@@ -76,9 +73,9 @@ public class ContenedorPrincipal extends BorderPane {
 
 
     }
-    public void dibujarMapa() {
+    public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
-        dibujadorDeMapa.dibujarMapa(this);
+        dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
         this.setCenter(tablero);
     }
 
@@ -101,18 +98,16 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void cambiarElHandleryRecibeCambiador(Aldeano aldeano){
+    public void cambiarHandlerCuartelFin(Aldeano aldeano){
         Mapa mapa = this.juego.getMapa();
         int base = mapa.getBase();
         int altura = mapa.getAltura();
 
         for (int i = 0; i < altura; i++) {
             for (int j = 0; j < base; j++) {
-
                 Colocable colocable = juego.getColocable(i+1,j+1);
-                BotonConstruirCuartelFinEventHandler handle = new BotonConstruirCuartelFinEventHandler(juego,aldeano, i+1,j+1,this);
-                Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1,this));
-                botonCasillero.setHandler(handle);
+                
+                Boton botonCasillero = new Boton("", new BotonConstruirCuartelFinEventHandler(juego,aldeano, i+1,j+1,this));
 
                 if(colocable instanceof Aldeano){
                    botonCasillero.setTexto("A");
@@ -133,6 +128,7 @@ public class ContenedorPrincipal extends BorderPane {
                 this.tablero.add(botonCasillero, j, i, 1, 1);
                 botonCasillero.setPrefSize(30, 30);
             }
+
         }
     }
 }
