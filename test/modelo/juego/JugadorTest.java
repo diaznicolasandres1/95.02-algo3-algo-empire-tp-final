@@ -183,9 +183,9 @@ public class JugadorTest {
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		jugador.agregarUnidadEn(aldeano, 5, 1);
-		jugador.construirPlazaCentral(aldeano, 2, 5);
+		jugador.construirPlazaCentral(aldeano, 6, 1);
 		
-		jugador.agregarUnidadEn(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 6, 1);
 	}
 	
 	@Test(expected = CasilleroOcupadoException.class)
@@ -196,9 +196,9 @@ public class JugadorTest {
 		Jugador jugador = new Jugador("Alfa", mapa, 1, 1, 1, 5);
 		Aldeano aldeano = new Aldeano(oro);
 		jugador.agregarUnidadEn(aldeano, 5, 1);
-		jugador.construirCuartel(aldeano, 2, 5);
+		jugador.construirCuartel(aldeano, 6, 1);
 		
-		jugador.agregarUnidadEn(aldeano, 2, 5);
+		jugador.agregarUnidadEn(aldeano, 6, 1);
 	}
 
 /*
