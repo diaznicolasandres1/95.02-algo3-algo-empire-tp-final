@@ -10,6 +10,7 @@ import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 import vista.ContenedorPrincipal;
 
@@ -43,7 +44,10 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
             contenedor.dibujarMetodosPlazaCentral((PlazaCentral) colocable);
 
         } else if (colocable instanceof Espadachin) {
-            contenedor.dibujarMetodoEspadachin((Espadachin) colocable);
+            contenedor.dibujarMetodoEspadachinOArquero((Espadachin) colocable);
+        }
+        else if (colocable instanceof Arquero) {
+            contenedor.dibujarMetodoEspadachinOArquero((Arquero) colocable);
         }
     }
 }

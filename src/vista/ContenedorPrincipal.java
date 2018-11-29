@@ -33,6 +33,7 @@ import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
 import java.util.ArrayList;
@@ -165,6 +166,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosPlazaCentral(PlazaCentral plaza){
+        this.bottom = new VBox(); //Reinicio el vbox de bottom
         BotonCrearAldeanoEventHandler crearAldeanoEventHandler  = new BotonCrearAldeanoEventHandler(juego,plaza,this);
         Boton crearAldeano = new Boton("Crear Aldeano",crearAldeanoEventHandler);
         setjugadorActual();
@@ -173,12 +175,13 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void dibujarMetodoEspadachin(Espadachin espadachin){
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,espadachin,this);
+    public void dibujarMetodoEspadachinOArquero(Atacante atacante){
+        this.bottom = new VBox(); //Reinicio el vbox de bottom
+        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,atacante,this);
         Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,espadachin,this);
-        Boton moverEspadachin = new Boton("Mover espadachin",moverHandler);
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)atacante,this);
+        Boton moverEspadachin = new Boton("Mover unidad",moverHandler);
 
         setjugadorActual();
         bottom.getChildren().addAll(atacar,moverEspadachin);
@@ -186,6 +189,10 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
 
     }
+
+
+
+
 
 
     /*Cambiadores de handlers*/
