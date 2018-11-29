@@ -8,7 +8,7 @@ import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
-import modelo.unidades.Colocable;;
+import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
