@@ -3,11 +3,11 @@ package modelo.juego;
 import java.util.ArrayList;
 
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
-import modelo.unidades.Unidad;
+import modelo.unidades.Colocable;
 
 public class Poblacion {
 
-    private ArrayList<Unidad> unidades;
+    private ArrayList<Colocable> unidades;
     private static final int LIMITE_POBLACION = 50;
 
     public Poblacion() {
@@ -18,13 +18,13 @@ public class Poblacion {
         return this.unidades.size();
     }
 
-    public void agregarUnidad(Unidad unidad) {
+    public void agregarUnidad(Colocable unidad) {
         if (!this.esCantidadDePoblacionValida())
             throw new LimiteDePoblacionAlcanzadoException();
         this.unidades.add(unidad);
     }
 
-    public void removerUnidad(Unidad unidad) {
+    public void removerUnidad(Colocable unidad) {
         this.unidades.remove(unidad);
     }
 
@@ -33,12 +33,12 @@ public class Poblacion {
     }
 
     public void avanzarTurno() {
-        for (Unidad unidad : this.unidades) {
+        for (Colocable unidad : this.unidades) {
             unidad.avanzarTurno();
         }
     }
 
-    public boolean perteneceUnidad(Unidad unidad) {
+    public boolean perteneceUnidad(Colocable unidad) {
         return this.unidades.contains(unidad);
     }
 

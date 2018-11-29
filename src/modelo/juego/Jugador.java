@@ -8,12 +8,15 @@ import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.excepciones.UnidadObjetivoEsPropiaException;
 import modelo.edificios.castillo.Castillo;
 
+import java.util.ArrayList;
+
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.Unidad;
+import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
@@ -25,7 +28,7 @@ public class Jugador {
 	private String nombre;
 	private Oro oro;
 	private Poblacion poblacion;
-	private Estructuras estructuras;
+	private ArrayList<Colocable> estructuras;
 	private static final int ALDEANOS_INICIALES = 3;
 	private Mapa mapa;
 	private Jugador oponente;
@@ -35,7 +38,7 @@ public class Jugador {
 		this.nombre = nombre;
 		this.oro = new Oro(275);
 		this.poblacion = new Poblacion();
-		this.estructuras = new Estructuras();
+		this.estructuras = new ArrayList<>();
 		this.mapa = mapa;
 		this.colocarCastillo(oro, castilloFil, castilloCol);
 		this.colocarPlazaYAldeanos(oro, plazaFil, plazaCol);
@@ -49,14 +52,14 @@ public class Jugador {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.colocarseEn(this.mapa, fila, columna);
-		this.estructuras.agregarEdificio(plaza);
+		this.estructuras.add(plaza);
 		this.crearAldeanosIniciales(oro, plaza);
 	}
 
 	private void colocarCastillo(Oro oro, int fila, int columna) {
 		Castillo castillo = new Castillo(oro);
 		castillo.colocarseEn(this.mapa, fila, columna);
-		this.estructuras.agregarEdificio(castillo);
+		this.estructuras.add(castillo);
 	}
 
 	private void crearAldeanosIniciales(Oro oro, PlazaCentral plaza) {
@@ -69,13 +72,13 @@ public class Jugador {
 
 	/*-----Verificadores-----*/
 
-	private void esUnidadPropia(Unidad unidad) {
+	private void esUnidadPropia(Colocable unidad) {
 		if (!this.poblacion.perteneceUnidad(unidad))
 			throw new UnidadSeleccionadaNoPerteneceAJugadorException();
 	}
 
-	private void esEdificioPropio(Edificio edificio) {
-		if (!this.estructuras.perteneceEdificio(edificio))
+	private void esEdificioPropio(Colocable edificio) {
+		if (!this.estructuras.contains(edificio))
 			throw new EdificioSeleccionadoNoPerteneceAJugadorException();
 	}
 
@@ -94,7 +97,7 @@ public class Jugador {
 	}
 
 	public int getCantidadDeEdificios() {
-		return this.estructuras.getCantidad();
+		return this.estructuras.size();
 	}
 
 	public int getOro() {
@@ -137,14 +140,14 @@ public class Jugador {
 		this.esUnidadPropia(aldeano);
         Cuartel cuartel = aldeano.construirCuartel();
         cuartel.colocarseEn(this.mapa, fila, columna);
-        this.estructuras.agregarEdificio(cuartel);
+        this.estructuras.add(cuartel);
     }
 
     public void construirPlazaCentral(Aldeano aldeano, int fila, int columna) {
 		this.esUnidadPropia(aldeano);
         PlazaCentral plaza = aldeano.construirPlazaCentral();
         plaza.colocarseEn(this.mapa, fila, columna);
-        this.estructuras.agregarEdificio(plaza);
+        this.estructuras.add(plaza);
     }
     
     public void repararEdificio(Aldeano aldeano, Edificio edificio) {
@@ -155,25 +158,16 @@ public class Jugador {
 
 	/*-----Metodos de Atacante-----*/
 
-	public void atacar(Atacante atacante, Unidad objetivo) {
+	public void atacar(Atacante atacante, Colocable objetivo) {
 		this.esUnidadPropia((Unidad) atacante);
 		if (this.poblacion.perteneceUnidad(objetivo))
 			throw new UnidadObjetivoEsPropiaException();
-		try {
-			atacante.atacar(objetivo);
-		} catch (UnidadEstaMuertaException e) {
-			this.oponente.removerUnidad(objetivo);
-		}
-	}
-
-	public void atacar(Atacante atacante, Edificio objetivo) {
-		this.esUnidadPropia((Unidad) atacante);
-		if (this.estructuras.perteneceEdificio(objetivo))
+		if (this.estructuras.contains(objetivo))
 			throw new EdificioObjetivoEsPropioException();
 		try {
 			atacante.atacar(objetivo);
 		} catch (UnidadEstaMuertaException e) {
-			this.oponente.removerEdificio(objetivo);
+			this.oponente.removerColocable(objetivo);
 		}
 	}
 
@@ -197,7 +191,7 @@ public class Jugador {
 	}
 
 	public void agregarEdificioEn(Edificio edificio, int fila, int columna) {
-		this.estructuras.agregarEdificio(edificio);
+		this.estructuras.add(edificio);
 		edificio.colocarseEn(this.mapa, fila, columna);
 	}
 
@@ -210,17 +204,15 @@ public class Jugador {
     }
 
 	public Jugador avanzarTurno() {
-
-		this.estructuras.avanzarTurno();
+		for (Colocable edificio : this.estructuras) {
+            edificio.avanzarTurno();
+        }
 		this.poblacion.avanzarTurno();
 		return this.oponente;
 	}
 
-	public void removerUnidad(Unidad unidad) {
-		this.poblacion.removerUnidad(unidad);
-	}
-
-	public void removerEdificio(Edificio edificio) {
-		this.estructuras.removerEdificio(edificio);
+	private void removerColocable(Colocable colocable) {
+		this.poblacion.removerUnidad(colocable);
+		this.estructuras.remove(colocable);
 	}
 }

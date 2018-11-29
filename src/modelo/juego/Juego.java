@@ -8,6 +8,7 @@ import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
+import modelo.unidades.Colocable;;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
@@ -24,7 +25,7 @@ public class Juego {
 
         this.mapa = new Mapa(BASE_MAPA, ALTURA_MAPA);
         Jugador unJugador = new Jugador(nombre1, this.mapa, 1, 1, 1, 6);
-        Jugador otroJugador = new Jugador(nombre2, this.mapa, BASE_MAPA - 3, ALTURA_MAPA - 3, BASE_MAPA - 6, ALTURA_MAPA - 1);
+        Jugador otroJugador = new Jugador(nombre2, this.mapa, ALTURA_MAPA - 3, BASE_MAPA - 3, ALTURA_MAPA - 1, BASE_MAPA - 6);
         unJugador.setOponente(otroJugador);
         otroJugador.setOponente(unJugador);
         if (new Random().nextBoolean()) {
@@ -78,13 +79,10 @@ public class Juego {
 
     /*-----Metodos de Atacante-----*/
 
-    public void atacar(Atacante atacante, Unidad objetivo) {
+    public void atacar(Atacante atacante, Colocable objetivo) {
         this.jugadorActual.atacar(atacante, objetivo);
     }
 
-    public void atacar(Atacante atacante, Edificio objetivo) {
-        jugadorActual.atacar(atacante, objetivo);
-    }
 
     /*-----Metodos Otros-----*/
 
