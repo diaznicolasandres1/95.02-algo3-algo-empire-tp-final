@@ -1,6 +1,5 @@
 package modelo.edificios;
 
-import javafx.application.Platform;
 import junit.framework.Assert;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
@@ -197,5 +196,6 @@ public class PlazaCentralTest {
 
         Assert.assertEquals(4, plaza.calcularDistanciaA(posicion));
     }
+
 }
 

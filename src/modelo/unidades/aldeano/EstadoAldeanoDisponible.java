@@ -3,7 +3,6 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;

@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.juego.Juego;
 import modelo.unidades.Unidad;
-import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
 public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<ActionEvent> {
@@ -16,23 +15,24 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
     private int columna;
     private ContenedorPrincipal contenedorPrincipal;
 
-public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal){
-    this.movible = unidad;
-    this.juego   = juego;
-    this.fila = fila;
-    this.columna = columna;
-    this.contenedorPrincipal = contenedorPrincipal;
-}
+    public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
+        this.movible = unidad;
+        this.juego = juego;
+        this.fila = fila;
+        this.columna = columna;
+        this.contenedorPrincipal = contenedorPrincipal;
+    }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        try{
+        try {
             juego.moverUnidadHacia(movible,columna,fila);
-            contenedorPrincipal.dibujarMapaConCasilleroHandler();
-        }catch(CasilleroOcupadoException e) {
+        } catch (CasilleroOcupadoException e) {
             alert.setTitle("Error al mover unidad");
             alert.setContentText("Ese casillero ya esta ocupado");
             alert.show();
         }
+        contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

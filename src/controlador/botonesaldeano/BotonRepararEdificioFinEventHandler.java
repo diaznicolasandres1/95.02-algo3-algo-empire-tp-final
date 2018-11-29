@@ -3,7 +3,11 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import javafx.scene.control.Alert;
 import modelo.edificios.Edificio;
+import modelo.excepciones.ColocableSeleccionadoException;
+import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
+import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
@@ -27,7 +31,14 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable edificio = juego.getColocable(fila,columna);
-        juego.repararEdificio(reparador,(Edificio)edificio);
+        try {
+            juego.repararEdificio(reparador, (Edificio) edificio);
+        } catch (ColocableSeleccionadoException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error al seleccionar edificio/aldeano");
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
         contenedor.dibujarMapaConCasilleroHandler();
     }
 }

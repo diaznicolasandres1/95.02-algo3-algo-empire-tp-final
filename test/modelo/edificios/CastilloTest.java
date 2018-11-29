@@ -14,7 +14,6 @@ import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
-
 import org.junit.Test;
 
 
@@ -273,5 +272,4 @@ public class CastilloTest {
 
         Assert.assertEquals(2, castillo.calcularDistanciaA(posicion));
     }
-
 }

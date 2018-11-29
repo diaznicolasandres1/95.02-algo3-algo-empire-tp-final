@@ -1,11 +1,7 @@
 package modelo.juego;
 
+import modelo.excepciones.*;
 import modelo.unidades.Atacante;
-import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
-import modelo.excepciones.EdificioObjetivoEsPropioException;
-import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
-import modelo.excepciones.UnidadEstaMuertaException;
-import modelo.excepciones.UnidadObjetivoEsPropiaException;
 import modelo.edificios.castillo.Castillo;
 
 import java.util.ArrayList;
@@ -166,7 +162,7 @@ public class Jugador {
             throw new EdificioObjetivoEsPropioException();
         try {
             atacante.atacar(objetivo);
-        } catch (UnidadEstaMuertaException e) {
+        } catch (UnidadFueDestruidaException e) {
             this.oponente.removerColocable(objetivo);
         }
     }

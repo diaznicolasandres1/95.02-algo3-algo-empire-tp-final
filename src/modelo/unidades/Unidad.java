@@ -4,7 +4,6 @@ import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.excepciones.UnidadNoPuedeSerAtacadaPorArmaDeAsedioException;
 import modelo.mapa.Posicion;
 import modelo.edificios.castillo.Castillo;
-import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
