@@ -1,7 +1,6 @@
 package modelo.juego;
 
 import modelo.excepciones.*;
-import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;

@@ -1,6 +1,7 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
+import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Oro;
@@ -56,7 +57,7 @@ public class PlazaCentralTest {
         plaza.avanzarTurno();
 
         plaza.reducirVida(50);
-        plaza.repararse();
+        plaza.incrementarVida();
         Assert.assertEquals(plaza.getVida(), 425);
     }
 
@@ -71,11 +72,11 @@ public class PlazaCentralTest {
 
         plaza.recibirDanio(50);
 
-        plaza.repararse();
-        plaza.repararse();
-        plaza.repararse();
-        plaza.repararse();
-        plaza.repararse();
+        plaza.incrementarVida();
+        plaza.incrementarVida();
+        plaza.incrementarVida();
+        plaza.incrementarVida();
+        plaza.incrementarVida();
     }
 
     @Test
@@ -165,6 +166,21 @@ public class PlazaCentralTest {
         mapa.colocarUnidad(new Aldeano(oro), 11, 11);
 
         mapa.colocarUnidad(new Aldeano(oro), 11, 10);
+    }
+
+    @Test(expected = EdificioSiendoReparadoException.class)
+    public void test15plazaSeIntentaRepararPorDosAldeanosDiferentesLanzaExcepcion() {
+
+        Oro oro = new Oro(1000);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+
+        plaza.reducirVida(100);
+        plaza.repararse(new Aldeano(oro));
+
+        plaza.repararse(new Aldeano(oro));
     }
 }
 

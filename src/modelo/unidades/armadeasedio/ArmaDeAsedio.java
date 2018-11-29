@@ -2,7 +2,6 @@ package modelo.unidades.armadeasedio;
 
 import modelo.unidades.Atacante;
 import modelo.excepciones.ColocableFueraDeRangoDeAtaqueException;
-import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
@@ -47,8 +46,4 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 		this.estado = new EstadoArmaAsedioEnPausa(estado);
 	}
 
-    @Override
-    public void unidadMuerta(){
-        throw new UnidadEstaMuertaException();
-    }
 }

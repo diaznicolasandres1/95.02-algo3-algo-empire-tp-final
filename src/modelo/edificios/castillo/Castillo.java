@@ -1,10 +1,12 @@
 package modelo.edificios.castillo;
 
+import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.unidades.Atacante;
 import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
+import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class Castillo extends Edificio implements Atacante {
 		this.tamanio = 16;
         this.oro = oro;
 		this.posiciones = new ArrayList<>();
-        this.unidadReparando = null;
+        this.aldeanoReparando = null;
     }
 
     @Override
@@ -46,6 +48,17 @@ public class Castillo extends Edificio implements Atacante {
 
     public void atacar(Colocable colocable) {
         colocable.recibirDanio(this);
+    }
+
+    @Override
+    public void repararse(Aldeano aldeano) {
+        if (this.aldeanoReparando == null) {
+            this.aldeanoReparando = aldeano;
+        }
+        if (this.aldeanoReparando != aldeano) {
+            throw new EdificioSiendoReparadoException();
+        }
+        this.incrementarVida();
     }
 
     @Override

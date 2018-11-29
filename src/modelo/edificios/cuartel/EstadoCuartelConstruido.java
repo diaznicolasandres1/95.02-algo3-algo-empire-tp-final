@@ -27,9 +27,8 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
         // Cuartel no pasa turnos mientras esta construido.
     }
 
-	@Override
-	public void repararse(Edificio cuartel) {
-		cuartel.repararseAsimismo();
+	public void reparar(Edificio cuartel) {
+		cuartel.incrementarVida();
 	}
 
 

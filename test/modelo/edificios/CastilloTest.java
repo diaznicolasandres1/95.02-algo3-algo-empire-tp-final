@@ -2,6 +2,7 @@ package modelo.edificios;
 
 import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Oro;
@@ -45,7 +46,7 @@ public class CastilloTest {
         Castillo castillo = new Castillo(oro);
         castillo.reducirVida(50);
 
-        castillo.repararseAsimismo();
+        castillo.incrementarVida();
 
         Assert.assertEquals(965, castillo.getVida());
     }
@@ -58,17 +59,17 @@ public class CastilloTest {
 
         castillo.reducirVida(50);
 
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
-        castillo.repararseAsimismo();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
+        castillo.incrementarVida();
     }
 
     @Test
@@ -170,14 +171,14 @@ public class CastilloTest {
     public void test13CastilloAtacaUnidadesAlRededor() {
 
         Mapa mapa = new Mapa(20, 20);
-         Oro oro = new Oro(10000);
-         Castillo castillo = new Castillo(oro);
+        Oro oro = new Oro(10000);
+        Castillo castillo = new Castillo(oro);
         Aldeano aldeano = new Aldeano(oro);
         Arquero arquero = new Arquero(oro);
-         Espadachin espadachin = new Espadachin(oro);
+        Espadachin espadachin = new Espadachin(oro);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
         castillo.colocarseEn(mapa, 9, 10);
-         mapa.colocarUnidad(espadachin, 8, 10);
+        mapa.colocarUnidad(espadachin, 8, 10);
         mapa.colocarUnidad(aldeano, 13, 10);
         mapa.colocarUnidad(arquero, 13, 11);
         mapa.colocarUnidad(armaDeAsedio, 8, 11);
@@ -209,41 +210,53 @@ public class CastilloTest {
     public void test14CastilloAtacaUnidadesYEdificiosAlRededor() {
 
         Mapa mapa = new Mapa(20, 20);
-         Oro oro = new Oro(10000);
-         Castillo castillo = new Castillo(oro);
+        Oro oro = new Oro(10000);
+        Castillo castillo = new Castillo(oro);
         Aldeano unAldeano = new Aldeano(oro);
         Aldeano otroAldeano = new Aldeano(oro);
-         PlazaCentral plaza = new PlazaCentral(oro);
-         Espadachin espadachin = new Espadachin(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Espadachin espadachin = new Espadachin(oro);
         castillo.colocarseEn(mapa, 9, 10);
-         mapa.colocarEdificio(plaza, 4, 6, 10);
-         mapa.colocarUnidad(espadachin, 8, 10);
+        mapa.colocarEdificio(plaza, 4, 6, 10);
+        mapa.colocarUnidad(espadachin, 8, 10);
         mapa.colocarUnidad(unAldeano, 13, 10);
         mapa.colocarUnidad(otroAldeano, 13, 11);
         plaza.avanzarTurno();
         plaza.avanzarTurno();
         plaza.avanzarTurno();
-         
-         castillo.atacarAlrededor(mapa);
+
+        castillo.atacarAlrededor(mapa);
 
         Assert.assertEquals(unAldeano.getVida(), 30);
         Assert.assertEquals(otroAldeano.getVida(), 30);
-         Assert.assertEquals(espadachin.getVida(), 80); 
-         Assert.assertEquals(plaza.getVida(), 430);
+        Assert.assertEquals(espadachin.getVida(), 80);
+        Assert.assertEquals(plaza.getVida(), 430);
     }
     
     @Test
     public void test15CastilloAtacaPeroAldeanoEstaFueraDelRangoDeAtaqueYNoLeSacaVida() {
-
         Mapa mapa = new Mapa(20, 20);
-         Oro oro = new Oro(10000);
-         Castillo castillo = new Castillo(oro);
+        Oro oro = new Oro(10000);
+        Castillo castillo = new Castillo(oro);
         Aldeano aldeano = new Aldeano(oro);
 
-         castillo.colocarseEn(mapa,2, 2);
+        castillo.colocarseEn(mapa, 2, 2);
         mapa.colocarUnidad(aldeano, 20, 20);
 
-         castillo.atacarAlrededor(mapa);
+        castillo.atacarAlrededor(mapa);
         Assert.assertEquals(aldeano.getVida(), 50);
     }
+
+    @Test(expected = EdificioSiendoReparadoException.class)
+    public void test16castilloSeIntentaRepararPorDosAldeanosDiferentesLanzaExcepcion() {
+
+        Oro oro = new Oro(1000);
+        Castillo castillo = new Castillo(oro);
+
+        castillo.reducirVida(100);
+        castillo.repararse(new Aldeano(oro));
+
+        castillo.repararse(new Aldeano(oro));
+    }
+
 }

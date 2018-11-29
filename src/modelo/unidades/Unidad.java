@@ -1,5 +1,6 @@
 package modelo.unidades;
 
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.excepciones.UnidadNoPuedeSerAtacadaPorArmaDeAsedioException;
 import modelo.mapa.Posicion;
 import modelo.edificios.castillo.Castillo;
@@ -14,24 +15,24 @@ public abstract class Unidad implements Colocable {
     private static final int DANIO_DE_ARQUERO = 15;
     private static final int DANIO_DE_ESPADACHIN = 25;
     private static final int DANIO_DE_CASTILLO = 20;
-	protected int vida;
-	protected int costo;
+    protected int vida;
+    protected int costo;
     protected Posicion posicion;
     protected int distanciaDeMovimiento = 1;
-	
-	public int getVida() {
-		return vida;
-	}
 
-	public void recibirDanio(Espadachin espadachin) {
+    public int getVida() {
+        return vida;
+    }
+
+    public void recibirDanio(Espadachin espadachin) {
         this.reducirVida(DANIO_DE_ESPADACHIN);
-	}
-	
-	public void recibirDanio(Arquero arquero) {
+    }
+
+    public void recibirDanio(Arquero arquero) {
         this.reducirVida(DANIO_DE_ARQUERO);
     }
 
-	public void recibirDanio(Castillo castillo) {
+    public void recibirDanio(Castillo castillo) {
         this.reducirVida(DANIO_DE_CASTILLO);
     }
 
@@ -40,11 +41,10 @@ public abstract class Unidad implements Colocable {
     }
 
     public void reducirVida(int danio) {
-        vida -= danio;
-        if (vida <= 0) {
-            this.unidadMuerta();
+        this.vida -= danio;
+        if (this.vida <= 0) {
+            this.matar();
         }
-        // TODO aca deberia sacarse la unidad sola del mapa
     }
 
     public void setPosicion(Posicion posicion) {
@@ -69,5 +69,8 @@ public abstract class Unidad implements Colocable {
 
     public abstract void moverHacia(Posicion destino, Mapa mapa);
 
-    public abstract void unidadMuerta();
+    public void matar() {
+        throw new UnidadFueDestruidaException();
+    }
+
 }

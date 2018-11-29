@@ -3,11 +3,10 @@ package controlador.botonesdeedificios;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.PlazaCentralEnConstruccionException;
 import modelo.juego.Juego;
 
 public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> {
