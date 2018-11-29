@@ -65,8 +65,9 @@ public class Aldeano extends Unidad {
 
     public void colocarEdificio(Edificio edificio, Mapa mapa, int fila, int columna) {
         edificio.colocarseEn(mapa, fila, columna);
-        if(edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
+        if (edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
             this.estarDisponible();
+            edificio.descolocarseDe(mapa);
             throw new ConstruccionFueraDeRangoException();
         }
     }

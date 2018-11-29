@@ -416,7 +416,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = ConstruccionFueraDeRangoException.class)
-    public void test30aldeanoIntentaContruirPlazaLejosLanzaException() {
+    public void test30aldeanoIntentaContruirPlazaFueraDeSuRangoLanzaException() {
 
         Oro oro = new Oro(6000);
         Aldeano aldeano = new Aldeano(oro);
@@ -426,21 +426,23 @@ public class AldeanoTest {
         
         aldeano.colocarEdificio(plaza, mapa, 20, 20);
     }
-    
-    @Test
-    public void test31aldeanoIntentaContruirPlazaLejosVuelveAEstarDisponible() {
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test31aldeanoIntentaContruirPlazaFueraDeSuRangoVuelveAEstarDisponibleSeMueveYSeColocaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Oro oro = new Oro(6000);
         Aldeano aldeano = new Aldeano(oro);
         Mapa mapa = new Mapa(25, 25);
         mapa.colocarUnidad(aldeano, 10, 10);
         PlazaCentral plaza = aldeano.construirPlazaCentral();
-        try{
+
+        try {
             aldeano.colocarEdificio(plaza, mapa, 20, 20);
-        }catch(ConstruccionFueraDeRangoException e) {}
-        Cuartel cuartel = aldeano.construirCuartel();
-        
-        Assert.assertNotNull(cuartel);
+        } catch (ConstruccionFueraDeRangoException e) {
+            aldeano.moverHacia(new Posicion(11, 11), mapa);
+        }
+
+        mapa.colocarUnidad(new Aldeano(oro), 11, 11);
     }
     
 }

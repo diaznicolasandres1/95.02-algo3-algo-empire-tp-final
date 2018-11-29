@@ -7,7 +7,6 @@ import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.AldeanoEstaOcupadoException;
-import modelo.excepciones.UnidadEstaMuertaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
