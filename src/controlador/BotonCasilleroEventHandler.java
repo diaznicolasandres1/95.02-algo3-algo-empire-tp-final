@@ -13,7 +13,7 @@ import vista.ContenedorPrincipal;
 
 public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
 
-    private  ContenedorPrincipal contenedor;
+    private ContenedorPrincipal contenedor;
     private int fila;
     private int columna;
     private Juego juego;
@@ -28,11 +28,9 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable colocable = this.juego.getColocable(this.fila, this.columna);
-        // Como el handler no puede devolver nada, habria que mandar este colocable
-        // para otro lado para que maneje lo que se tenga que hacer
-        //Mostra vista de acciones disponibles
+        // Muestra vista de acciones disponibles
         if(colocable instanceof Aldeano){
-            contenedor.dibujarMetodosAldeano(juego,(Aldeano)colocable);
+            contenedor.dibujarMetodosAldeano(juego, (Aldeano) colocable);
 
 
         } else if (colocable instanceof Cuartel) {
