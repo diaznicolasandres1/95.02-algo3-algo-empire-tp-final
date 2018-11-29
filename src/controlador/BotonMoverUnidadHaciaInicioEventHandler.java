@@ -9,32 +9,27 @@ import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import modelo.unidades.Unidad;
+import vista.ContenedorPrincipal;
 
-public class BotonMoverUnidadHaciaEventHandler implements EventHandler<ActionEvent> {
+public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Unidad unidad;
-    private int fila;
-    private int columna;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonMoverUnidadHaciaEventHandler(Juego juego, Unidad unidad, int fila, int columna){
+    public BotonMoverUnidadHaciaInicioEventHandler(Juego juego, Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.unidad = unidad;
-        this.fila = fila;
-        this.columna = columna;
+        this.contenedorPrincipal = contenedorPrincipal;
+
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        try{
-            juego.moverUnidadHacia(unidad,fila,columna);
-        }catch(CasilleroOcupadoException e) {
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("Ese casillero ya esta ocupado");
-            alert.show();
-        }
-
-
+        alert.setTitle("");
+        alert.setContentText("Haz click en el lugar donde deseas mover la unidad");
+        alert.show();
+        contenedorPrincipal.cambiarHandlerMoverUnidad(unidad);
     }
 }

@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.BotonMoverUnidadHaciaFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralFinEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioFinEventHandler;
@@ -7,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import modelo.juego.Juego;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
+import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 
 public class CambiadorDeHandler {
@@ -65,5 +67,16 @@ public class CambiadorDeHandler {
             }
         }
 
+    }
+
+    public void cambiadorMoverUnidad(Unidad unidad) {
+        for (int i = 0; i < altura; i++) {
+            for (int j = 0; j < base; j++) {
+                Colocable colocable = juego.getColocable(i + 1, j + 1);
+                Boton botonCasillero = new Boton("", new BotonMoverUnidadHaciaFinEventHandler(juego,unidad,i+1,j+1,contenedorPrincipal));
+                dibujador.dibujarColocable(colocable,botonCasillero);
+                this.tablero.add(botonCasillero, j, i, 1, 1);
+            }
+        }
     }
 }

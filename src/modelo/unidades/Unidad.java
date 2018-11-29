@@ -18,7 +18,7 @@ public abstract class Unidad implements Colocable {
     protected int vida;
     protected int costo;
     protected Posicion posicion;
-    protected int distanciaDeMovimiento = 1;
+    protected int distanciaDeMovimiento = 2;
 
     public int getVida() {
         return vida;

@@ -28,7 +28,6 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
     public void handle(ActionEvent actionEvent) {
         Colocable edificio = juego.getColocable(fila,columna);
         juego.repararEdificio(reparador,(Edificio)edificio);
-        System.out.println("Se reparo el edificio");
         contenedor.dibujarMapaConCasilleroHandler();
     }
 }

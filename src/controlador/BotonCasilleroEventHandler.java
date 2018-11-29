@@ -31,7 +31,7 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
         // para otro lado para que maneje lo que se tenga que hacer
         //Mostra vista de acciones disponibles
         if(colocable instanceof Aldeano){
-            contenedor.dibujarMetodosAldeano(juego, (Aldeano) colocable,this.fila,this.columna);
+            contenedor.dibujarMetodosAldeano(juego,(Aldeano)colocable);
 
 
         }
