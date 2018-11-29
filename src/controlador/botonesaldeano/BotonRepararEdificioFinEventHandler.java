@@ -5,10 +5,7 @@ import javafx.event.EventHandler;
 
 import javafx.scene.control.Alert;
 import modelo.edificios.Edificio;
-import modelo.excepciones.ColocableSeleccionadoException;
-import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
-import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
-import modelo.excepciones.AldeanoEstaOcupadoException;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
@@ -25,7 +22,7 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
         this.reparador = reparador;
         this.contenedor = contenedor;
         this.juego = juego;
-        this.fila  = fila;
+        this.fila = fila;
         this.columna = columna;
     }
 
@@ -33,14 +30,11 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
     public void handle(ActionEvent actionEvent) {
         Colocable edificio = juego.getColocable(fila,columna);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Error al seleccionar edificio/aldeano");
+        alert.setTitle("Error al reparar edificio");
         try {
             juego.repararEdificio(reparador, (Edificio) edificio);
-        } catch (ColocableSeleccionadoException e) {
-            alert.setContentText(e.getMessage());
-            alert.show();
-        } catch (AldeanoEstaOcupadoException e) {
-            alert.setContentText("El aldeano seleccionado se encuentra ocupado");
+        } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
+            alert.setContentText(e.getCause().getMessage());
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();

@@ -3,10 +3,7 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.excepciones.CasilleroOcupadoException;
-import modelo.excepciones.CoordenadasInvalidasException;
-import modelo.excepciones.DistanciaInvalidaException;
-import modelo.excepciones.PosicionFueraDeRangoException;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
@@ -29,23 +26,17 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al mover la unidad");
         try {
-            juego.moverUnidadHacia(movible,columna,fila);
+            juego.moverUnidadHacia(movible, columna, fila);
         } catch (CasilleroOcupadoException e) {
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("Ese casillero ya esta ocupado");
+            alert.setContentText("El casillero de destino se encuentra ocupado");
             alert.show();
-        } catch (CoordenadasInvalidasException e) {
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("Casillero fuera del limite");
-            alert.show();
-        } catch (DistanciaInvalidaException e) {
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("");
+        } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
+            alert.setContentText(e.getCause().getMessage());
             alert.show();
         } catch (PosicionFueraDeRangoException e) {
-            alert.setTitle("Error al mover unidad");
-            alert.setContentText("");
+            alert.setContentText("La posicion de destino se encuentra fuera de rango de movimiento");
             alert.show();
         }
         contenedorPrincipal.dibujarMapaConCasilleroHandler();

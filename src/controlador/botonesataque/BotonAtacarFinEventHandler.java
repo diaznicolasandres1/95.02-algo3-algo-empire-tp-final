@@ -2,10 +2,13 @@ package controlador.botonesataque;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import vista.ContenedorPrincipal;
 
 public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
@@ -26,7 +29,17 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable atacado = juego.getColocable(fila,columna);
-        juego.atacar(atacante,atacado);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al atacar");
+        try {
+            juego.atacar(atacante, atacado);
+        } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
+            alert.setContentText(e.getCause().getMessage());
+            alert.show();
+        } catch (ColocableFueraDeRangoDeAtaqueException e) {
+            alert.setContentText("Objetivo fuera de rango de ataque");
+            alert.show();
+        }
         contenedor.dibujarMapaConCasilleroHandler();
     }
 }

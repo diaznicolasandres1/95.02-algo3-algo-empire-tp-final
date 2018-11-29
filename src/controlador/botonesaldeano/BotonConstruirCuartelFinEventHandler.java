@@ -3,9 +3,7 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.excepciones.AldeanoEstaOcupadoException;
-import modelo.excepciones.ColocableSeleccionadoException;
-import modelo.excepciones.ConstruccionFueraDeRangoException;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
@@ -27,22 +25,21 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al construir Cuartel");
         try {
             juego.construirCuartel(constructor, fila, columna);
-        } catch (ColocableSeleccionadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar edificio/aldeano");
-            alert.setContentText(e.getMessage());
-            alert.show();
-        } catch (AldeanoEstaOcupadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar aldeano");
-            alert.setContentText("El aldeano seleccionado se encuentra ocupado");
+        } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
+            alert.setContentText(e.getCause().getMessage());
             alert.show();
         } catch (ConstruccionFueraDeRangoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al construir");
             alert.setContentText("La posicion donde se pretende construir el edificio no esta proxima al aldeano");
+            alert.show();
+        } catch (OroInsuficienteException e) {
+            alert.setContentText("No se posee oro suficiente para construir cuartel");
+            alert.show();
+        } catch (CasilleroOcupadoException e) {
+            alert.setContentText("El o los casilleros para construir el cuartel se encuentran ocupados");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();

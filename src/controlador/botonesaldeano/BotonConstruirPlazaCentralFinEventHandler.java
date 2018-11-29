@@ -3,9 +3,7 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.excepciones.AldeanoEstaOcupadoException;
-import modelo.excepciones.ColocableSeleccionadoException;
-import modelo.excepciones.ConstruccionFueraDeRangoException;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
@@ -28,22 +26,21 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
     }
     @Override
     public void handle(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al construir Plaza Central");
         try {
             juego.construirPlazaCentral(constructor, fila, columna);
-        } catch (ColocableSeleccionadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar edificio/aldeano");
+        } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
-        } catch (AldeanoEstaOcupadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar aldeano");
-            alert.setContentText("El aldeano seleccionado se encuentra ocupado");
-            alert.show();
         } catch (ConstruccionFueraDeRangoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al construir");
             alert.setContentText("La posicion donde se pretende construir el edificio no esta proxima al aldeano");
+            alert.show();
+        } catch (OroInsuficienteException e) {
+            alert.setContentText("No se posee oro suficiente para construir plaza central");
+            alert.show();
+        } catch (CasilleroOcupadoException e) {
+            alert.setContentText("El o los casilleros para construir la plaza central se encuentran ocupados");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();
