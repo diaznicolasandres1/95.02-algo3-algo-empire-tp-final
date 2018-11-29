@@ -1,25 +1,26 @@
 package vista;
 
 import controlador.BotonCasilleroEventHandler;
+import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
+import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
+import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
+import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import modelo.edificios.Edificio;
 import modelo.edificios.castillo.Castillo;
+import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
-import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 
 public class ContenedorPrincipal extends BorderPane {
@@ -71,15 +72,77 @@ public class ContenedorPrincipal extends BorderPane {
         Label jugadorActual = new Label("Es el turno de: "+this.juego.getNombreJugadorActual());
         jugadorActual.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
         jugadorActual.setPadding(new Insets(20));
-        jugadorActual.setAlignment(Pos.CENTER);
         bottom.getChildren().add(jugadorActual);
 
 
     }
-    private void dibujarMapa() {
+    public void dibujarMapa() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
-        dibujadorDeMapa.dibujarMapa();
+        dibujadorDeMapa.dibujarMapa(this);
         this.setCenter(tablero);
     }
 
+
+    public void dibujarMetodosAldeano(Juego juego, Aldeano aldeano, int fila, int col){
+        this.bottom = new VBox(); //Reinicio el vbox de bottom
+
+        BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
+        Boton construirCuartel = new Boton("Construir Cuartel",cuartelEventHandler);
+
+        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,fila,col);
+        Boton construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
+
+        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,fila,col);
+        Boton repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
+
+        setjugadorActual();
+        bottom.getChildren().addAll(construirCuartel,construirPlaza,repararEdificio);
+        this.setBottom(bottom);
+        bottom.setAlignment(Pos.CENTER);
+    }
+
+    public void cambiarElHandleryRecibeCambiador(Aldeano aldeano){
+        Mapa mapa = this.juego.getMapa();
+        int base = mapa.getBase();
+        int altura = mapa.getAltura();
+
+        for (int i = 0; i < altura; i++) {
+            for (int j = 0; j < base; j++) {
+
+                Colocable colocable = juego.getColocable(i+1,j+1);
+                BotonConstruirCuartelFinEventHandler handle = new BotonConstruirCuartelFinEventHandler(juego,aldeano, i+1,j+1,this);
+                Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1,this));
+                botonCasillero.setHandler(handle);
+
+                if(colocable instanceof Aldeano){
+                   botonCasillero.setTexto("A");
+                   botonCasillero.setStyle("-fx-background-color: green");
+                }
+                else if(colocable instanceof Castillo) {
+                    botonCasillero.setTexto("C");
+                    botonCasillero.setStyle("-fx-background-color: blue");
+                }
+                else if(colocable instanceof PlazaCentral) {
+                    botonCasillero.setTexto("P");
+                    botonCasillero.setStyle("-fx-background-color: red");
+                }
+                else if(colocable instanceof Cuartel) {
+                    botonCasillero.setTexto("C");
+                    botonCasillero.setStyle("-fx-background-color: yellow");
+                }
+                this.tablero.add(botonCasillero, j, i, 1, 1);
+                botonCasillero.setPrefSize(30, 30);
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

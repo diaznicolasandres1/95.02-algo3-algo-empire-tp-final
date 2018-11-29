@@ -55,4 +55,6 @@ public class ContenedorEntrada extends VBox {
         Boton botonSalir = new Boton("Salir", botonSalirEventHandler);
         this.getChildren().addAll(botonJugar, botonSalir);
     }
+
+
 }
