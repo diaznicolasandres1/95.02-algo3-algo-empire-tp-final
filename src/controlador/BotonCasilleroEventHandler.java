@@ -49,6 +49,9 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
         else if (colocable instanceof Arquero) {
             contenedor.dibujarMetodoEspadachinOArquero((Arquero) colocable);
         }
+        else if (colocable instanceof Castillo) {
+            contenedor.dibujarMetodosCastillo((Castillo) colocable);
+        }
     }
 }
 
