@@ -208,21 +208,22 @@ public class PlazaCentralTest {
         plazaCentral.avanzarTurno();
         plazaCentral.avanzarTurno();
         plazaCentral.avanzarTurno();
-        
+
         Aldeano aldeano1 = new Aldeano(oro);
         Aldeano aldeano2 = new Aldeano(oro);
-    
+
         plazaCentral.reducirVida(100);
 
         aldeano1.repararEdificio(plazaCentral);
         aldeano1.repararEdificio(plazaCentral);
-        
-        try{
+
+        try {
             aldeano1.reducirVida(9999);
-        }catch (UnidadFueDestruidaException e){}
-        
+        } catch (UnidadFueDestruidaException e) {
+        }
+
         aldeano2.repararEdificio(plazaCentral);
-        
+
         Assert.assertEquals(425, plazaCentral.getVida());
     }
 }

@@ -35,16 +35,13 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
             contenedor.dibujarMetodosAldeano(juego,(Aldeano)colocable);
 
 
-        }
-        else if(colocable instanceof Cuartel) {
-            contenedor.dibujarMetodosCuartel(juego,(Cuartel)colocable);
+        } else if (colocable instanceof Cuartel) {
+            contenedor.dibujarMetodosCuartel(juego, (Cuartel) colocable);
 
-        }
-        else if(colocable instanceof Castillo) {
+        } else if (colocable instanceof Castillo) {
             //Actualizar vista con metodos castillo
 
-        }
-        else if(colocable instanceof PlazaCentral) {
+        } else if (colocable instanceof PlazaCentral) {
             //Actualizar vista con metodos plaza central
 
         }

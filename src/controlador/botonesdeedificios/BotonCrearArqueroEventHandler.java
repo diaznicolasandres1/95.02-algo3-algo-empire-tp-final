@@ -15,7 +15,7 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
     private Cuartel cuartel;
     private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearArqueroEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal){
+    public BotonCrearArqueroEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.cuartel = cuartel;
         this.contenedorPrincipal = contenedorPrincipal;

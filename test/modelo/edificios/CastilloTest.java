@@ -282,18 +282,19 @@ public class CastilloTest {
         Castillo castillo = new Castillo(oro);
         Aldeano aldeano1 = new Aldeano(oro);
         Aldeano aldeano2 = new Aldeano(oro);
-    
+
         castillo.reducirVida(100);
 
         aldeano1.repararEdificio(castillo);
         aldeano1.repararEdificio(castillo);
-        
-        try{
+
+        try {
             aldeano1.reducirVida(9999);
-        }catch (UnidadFueDestruidaException e){}
-        
+        } catch (UnidadFueDestruidaException e) {
+        }
+
         aldeano2.repararEdificio(castillo);
-        
+
         Assert.assertEquals(945, castillo.getVida());
     }
 

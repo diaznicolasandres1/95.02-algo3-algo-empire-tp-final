@@ -124,20 +124,19 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void dibujarMetodosCuartel(Juego juego, Cuartel cuartel){
+    public void dibujarMetodosCuartel(Juego juego, Cuartel cuartel) {
         this.bottom = new VBox(); //Reinicio el vbox de bottom
 
-        BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego,cuartel,this);
-        Boton crearArquero = new Boton("Crear arquero",arqueroHandler);
+        BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego, cuartel, this);
+        Boton crearArquero = new Boton("Crear arquero", arqueroHandler);
 
-        BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego,cuartel,this);
+        BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego, cuartel, this);
         Boton crearEspadachin = new Boton("Crear espadachin", espadachinEventHandler);
 
         setjugadorActual();
-        bottom.getChildren().addAll(crearArquero,crearEspadachin);
+        bottom.getChildren().addAll(crearArquero, crearEspadachin);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
-
 
 
     }

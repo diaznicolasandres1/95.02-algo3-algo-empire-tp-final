@@ -16,7 +16,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
     private Cuartel cuartel;
     ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal){
+    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.cuartel = cuartel;
         this.contenedorPrincipal = contenedorPrincipal;
