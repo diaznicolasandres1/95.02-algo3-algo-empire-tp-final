@@ -139,14 +139,14 @@ public class Jugador {
     public void construirCuartel(Aldeano aldeano, int fila, int columna) {
         this.esUnidadPropia(aldeano);
         Cuartel cuartel = aldeano.construirCuartel();
-        cuartel.colocarseEn(this.mapa, fila, columna);
+        aldeano.colocarEdificio(cuartel,mapa, fila, columna);
         this.estructuras.add(cuartel);
     }
 
     public void construirPlazaCentral(Aldeano aldeano, int fila, int columna) {
         this.esUnidadPropia(aldeano);
         PlazaCentral plaza = aldeano.construirPlazaCentral();
-        plaza.colocarseEn(this.mapa, fila, columna);
+        aldeano.colocarEdificio(plaza, mapa, fila, columna);
         this.estructuras.add(plaza);
     }
     

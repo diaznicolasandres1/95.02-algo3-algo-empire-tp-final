@@ -3,6 +3,7 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.excepciones.ConstruccionFueraDeRangoException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
@@ -12,6 +13,7 @@ public class Aldeano extends Unidad {
 
     private Oro oro;
     private EstadoAldeano estado = new EstadoAldeanoDisponible();
+    private static final int RANGO_CONTRUCCION = 1;
 
     public Aldeano(Oro oroNuevo) {
         this.vida = 50;
@@ -60,4 +62,15 @@ public class Aldeano extends Unidad {
     public void matar() {
         estado.matar();
     }
+
+    public void colocarEdificio(Edificio edificio, Mapa mapa, int fila, int columna) {
+        edificio.colocarseEn(mapa, fila, columna);
+        if(edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
+            this.estarDisponible();
+            throw new ConstruccionFueraDeRangoException();
+        }
+    }
+    
+    
+    
 }

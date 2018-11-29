@@ -415,4 +415,32 @@ public class AldeanoTest {
         Assert.assertEquals(5, aldeano.calcularDistanciaA(posicion));
     }
 
+    @Test(expected = ConstruccionFueraDeRangoException.class)
+    public void test30aldeanoIntentaContruirPlazaLejosLanzaException() {
+
+        Oro oro = new Oro(6000);
+        Aldeano aldeano = new Aldeano(oro);
+        Mapa mapa = new Mapa(25, 25);
+        mapa.colocarUnidad(aldeano, 10, 10);
+        PlazaCentral plaza = aldeano.construirPlazaCentral();
+        
+        aldeano.colocarEdificio(plaza, mapa, 20, 20);
+    }
+    
+    @Test
+    public void test31aldeanoIntentaContruirPlazaLejosVuelveAEstarDisponible() {
+
+        Oro oro = new Oro(6000);
+        Aldeano aldeano = new Aldeano(oro);
+        Mapa mapa = new Mapa(25, 25);
+        mapa.colocarUnidad(aldeano, 10, 10);
+        PlazaCentral plaza = aldeano.construirPlazaCentral();
+        try{
+            aldeano.colocarEdificio(plaza, mapa, 20, 20);
+        }catch(ConstruccionFueraDeRangoException e) {}
+        Cuartel cuartel = aldeano.construirCuartel();
+        
+        Assert.assertNotNull(cuartel);
+    }
+    
 }
