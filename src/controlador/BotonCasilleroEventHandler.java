@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import modelo.edificios.castillo.Castillo;
+import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
@@ -33,6 +34,10 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
         if(colocable instanceof Aldeano){
             contenedor.dibujarMetodosAldeano(juego,(Aldeano)colocable);
 
+
+        }
+        else if(colocable instanceof Cuartel) {
+            contenedor.dibujarMetodosCuartel(juego,(Cuartel)colocable);
 
         }
         else if(colocable instanceof Castillo) {

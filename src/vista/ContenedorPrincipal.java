@@ -8,6 +8,8 @@ import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
 import controlador.botonesarmadeasedio.BotonDesmontarArmaEventHandler;
 import controlador.botonesarmadeasedio.BotonMontarArmaEventHandler;
+import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
+import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -120,6 +122,24 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.getChildren().addAll(construirCuartel,construirPlaza,repararEdificio,moverAldeano);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
+    }
+
+    public void dibujarMetodosCuartel(Juego juego, Cuartel cuartel){
+        this.bottom = new VBox(); //Reinicio el vbox de bottom
+
+        BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego,cuartel,this);
+        Boton crearArquero = new Boton("Crear arquero",arqueroHandler);
+
+        BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego,cuartel,this);
+        Boton crearEspadachin = new Boton("Crear espadachin", espadachinEventHandler);
+
+        setjugadorActual();
+        bottom.getChildren().addAll(crearArquero,crearEspadachin);
+        this.setBottom(bottom);
+        bottom.setAlignment(Pos.CENTER);
+
+
+
     }
 
     public void dibujarMetodosArmaDeAsedio(Juego juego, ArmaDeAsedio armaDeAsedio){

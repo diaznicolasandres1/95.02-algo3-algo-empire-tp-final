@@ -4,6 +4,7 @@ import junit.framework.Assert;
 import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.cuartel.Cuartel;
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
@@ -209,4 +210,32 @@ public class CuartelTest {
 
         Assert.assertEquals(4, cuartel.calcularDistanciaA(posicion));
     }
+
+    @Test
+    public void test17CuartelSeIntentaRepararPorOtroAldeanoCuandoElPrimeroMuere() {
+
+        Oro oro = new Oro(1000);
+        Cuartel cuartel = new Cuartel(oro);
+
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        
+        Aldeano aldeano1 = new Aldeano(oro);
+        Aldeano aldeano2 = new Aldeano(oro);
+    
+        cuartel.reducirVida(200);
+
+        aldeano1.repararEdificio(cuartel);
+        aldeano1.repararEdificio(cuartel);
+        
+        try{
+            aldeano1.reducirVida(9999);
+        }catch (UnidadFueDestruidaException e){}
+        
+        aldeano2.repararEdificio(cuartel);
+        
+        Assert.assertEquals(200, cuartel.getVida());
+    }
+
 }

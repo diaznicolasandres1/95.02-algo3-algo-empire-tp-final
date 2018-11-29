@@ -8,15 +8,18 @@ import modelo.excepciones.CuartelCreandoseException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
+import vista.ContenedorPrincipal;
 
 public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Cuartel cuartel;
+    ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel){
+    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;
         this.cuartel = cuartel;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
@@ -35,5 +38,6 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
+        this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }
