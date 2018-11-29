@@ -12,6 +12,7 @@ import modelo.unidades.espadachin.Espadachin;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.excepciones.EdificioObjetivoEsPropioException;
 import modelo.excepciones.UnidadObjetivoEsPropiaException;
+import modelo.excepciones.UnidadFueDestruidaException;
 
 public class JuegoTest {
 
@@ -233,6 +234,32 @@ public class JuegoTest {
 
         juego.atacar(espadachin, cuartel);
     }
+
+    @Test(expected = UnidadObjetivoEsPropiaException.class)
+    public void test13juegoArqueroAtacaEspadachinAliadoLanzaExcepcion() {
+
+        Juego juego = new Juego("Rojo", "Azul");
+        if (juego.getNombreJugadorActual().equals("Azul"))
+            juego.cambiarTurno();
+        Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
+        juego.construirCuartel(aldeano, 1, 9);
+        for (int i = 0; i < 6; i++) {
+            juego.cambiarTurno();
+        }
+
+        Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
+        juego.crearArquero(cuartel);
+        juego.cambiarTurno();
+        juego.cambiarTurno();
+        juego.crearEspadachin(cuartel);
+        Arquero unArquero = (Arquero) juego.getColocable(1, 11);
+        Espadachin otroEspadachin = (Espadachin) juego.getColocable(2, 8);
+
+        juego.atacar(unArquero, otroEspadachin);
+    }
+
+
+
 /*	
     @Test
     public void test13juegoMoverHaciarCambiaUbicacionCorrectamente() {

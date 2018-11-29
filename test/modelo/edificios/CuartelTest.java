@@ -209,4 +209,21 @@ public class CuartelTest {
 
         Assert.assertEquals(4, cuartel.calcularDistanciaA(posicion));
     }
+
+    @Test
+    public void test17cuartelColocaAlrededorMasivo() {
+
+        Oro oro = new Oro(100000);
+        Cuartel cuartel = new Cuartel(oro);
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        Mapa mapa = new Mapa(20, 20);
+        cuartel.colocarseEn(mapa, 3, 3);
+ 
+        for (int i = 0; i < 40; i++) {
+            Espadachin espadachin = cuartel.crearEspadachinDesdeCuartel();
+            cuartel.colocarAlrededor(mapa, espadachin);
+        }
+    }
 }
