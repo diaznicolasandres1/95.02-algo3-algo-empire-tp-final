@@ -5,6 +5,7 @@ import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
@@ -194,5 +195,18 @@ public class CuartelTest {
         cuartel.repararse(new Aldeano(oro));
 
         cuartel.repararse(new Aldeano(oro));
+    }
+
+    @Test
+    public void test16cuartelCalculaDistanciaHaciaOtraPosicionDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(2000);
+        Cuartel cuartel = new Cuartel(oro);
+        Mapa mapa = new Mapa(20, 20);
+        Posicion posicion = new Posicion(15, 15);
+
+        cuartel.colocarseEn(mapa, 10, 10);
+
+        Assert.assertEquals(4, cuartel.calcularDistanciaA(posicion));
     }
 }

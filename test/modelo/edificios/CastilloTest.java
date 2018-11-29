@@ -9,6 +9,7 @@ import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
@@ -182,7 +183,7 @@ public class CastilloTest {
         mapa.colocarUnidad(aldeano, 13, 10);
         mapa.colocarUnidad(arquero, 13, 11);
         mapa.colocarUnidad(armaDeAsedio, 8, 11);
-         
+
          castillo.atacarAlrededor(mapa);
 
         Assert.assertEquals(30, aldeano.getVida());
@@ -190,7 +191,7 @@ public class CastilloTest {
         Assert.assertEquals(55, arquero.getVida());
         Assert.assertEquals(130, armaDeAsedio.getVida());
     }
-    
+
     @Test
     public void test14CastilloAtacaEdificiosAlRededor() {
 
@@ -216,6 +217,7 @@ public class CastilloTest {
         Aldeano otroAldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
         Espadachin espadachin = new Espadachin(oro);
+
         castillo.colocarseEn(mapa, 9, 10);
         mapa.colocarEdificio(plaza, 4, 6, 10);
         mapa.colocarUnidad(espadachin, 8, 10);
@@ -232,7 +234,7 @@ public class CastilloTest {
         Assert.assertEquals(espadachin.getVida(), 80);
         Assert.assertEquals(plaza.getVida(), 430);
     }
-    
+
     @Test
     public void test15CastilloAtacaPeroAldeanoEstaFueraDelRangoDeAtaqueYNoLeSacaVida() {
         Mapa mapa = new Mapa(20, 20);
@@ -257,6 +259,19 @@ public class CastilloTest {
         castillo.repararse(new Aldeano(oro));
 
         castillo.repararse(new Aldeano(oro));
+    }
+
+    @Test
+    public void test17castilloCalculaDistanciaHaciaOtraPosicionDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(2000);
+        Castillo castillo = new Castillo(oro);
+        Mapa mapa = new Mapa(20, 20);
+        Posicion posicion = new Posicion(15, 15);
+
+        castillo.colocarseEn(mapa, 10, 10);
+
+        Assert.assertEquals(2, castillo.calcularDistanciaA(posicion));
     }
 
 }

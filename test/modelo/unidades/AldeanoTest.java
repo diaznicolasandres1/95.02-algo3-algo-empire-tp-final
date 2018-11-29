@@ -401,4 +401,18 @@ public class AldeanoTest {
 
         Assert.assertEquals(450, plaza.getVida());
     }
+
+    @Test
+    public void test29aldeanoCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(6000);
+        Aldeano aldeano = new Aldeano(oro);
+        Mapa mapa = new Mapa(25, 25);
+        Posicion posicion = new Posicion(15, 15);
+
+        mapa.colocarUnidad(aldeano, 10, 10);
+
+        Assert.assertEquals(5, aldeano.calcularDistanciaA(posicion));
+    }
+
 }

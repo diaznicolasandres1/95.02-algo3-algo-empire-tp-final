@@ -312,4 +312,17 @@ public class EspadachinTest {
 
         Assert.assertEquals(plaza.getVida(), 420);
     }
+
+    @Test
+    public void test25espadachinCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(6000);
+        Espadachin espadachin = new Espadachin(oro);
+        Mapa mapa = new Mapa(25, 25);
+        Posicion posicion = new Posicion(15, 15);
+
+        mapa.colocarUnidad(espadachin, 10, 10);
+
+        Assert.assertEquals(5, espadachin.calcularDistanciaA(posicion));
+    }
 }

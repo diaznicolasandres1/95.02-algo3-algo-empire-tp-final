@@ -356,4 +356,17 @@ public class ArqueroTest {
 
         arquero.atacar(aldeano);
     }
+
+    @Test
+    public void test27arqueroCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(6000);
+        Arquero arquero = new Arquero(oro);
+        Mapa mapa = new Mapa(25, 25);
+        Posicion posicion = new Posicion(15, 15);
+
+        mapa.colocarUnidad(arquero, 10, 10);
+
+        Assert.assertEquals(5, arquero.calcularDistanciaA(posicion));
+    }
 }

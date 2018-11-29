@@ -464,6 +464,19 @@ public class ArmaAsedioTest {
         armaDeAsedio.atacar(castillo);
         armaDeAsedio.atacar(castillo);
     }
+
+    @Test
+    public void test33armaDeAsedioCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
+
+        Oro oro = new Oro(6000);
+        ArmaDeAsedio arma = new ArmaDeAsedio(oro);
+        Mapa mapa = new Mapa(25, 25);
+        Posicion posicion = new Posicion(15, 15);
+
+        mapa.colocarUnidad(arma, 10, 10);
+
+        Assert.assertEquals(5, arma.calcularDistanciaA(posicion));
+    }
 }
 
 
