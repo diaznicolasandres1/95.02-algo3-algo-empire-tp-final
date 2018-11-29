@@ -253,7 +253,7 @@ public class EspadachinTest {
         espadachin.atacar(plaza);
     }
 
-    @Test(expected = EspadachinYaFueUtilizadoEsteTurno.class)
+    @Test(expected = EspadachinYaFueUtilizadoEsteTurnoException.class)
     public void test21EspadachinSoloPuedeAtacarUnaVezPorTurnoLanzaExcepcion() {
 
         Oro oro = new Oro(800);
@@ -268,7 +268,7 @@ public class EspadachinTest {
         espadachin.atacar(plaza);
     }
 
-    @Test(expected = EspadachinYaFueUtilizadoEsteTurno.class)
+    @Test(expected = EspadachinYaFueUtilizadoEsteTurnoException.class)
     public void test22espadachinSoloPuedeMoverseUnaVezPorTurnoLanzaExcepcion() {
 
         Oro oro = new Oro(800);
@@ -281,7 +281,7 @@ public class EspadachinTest {
         espadachin.moverHacia(new Posicion(16, 10), mapa);
     }
 
-    @Test(expected = EspadachinYaFueUtilizadoEsteTurno.class)
+    @Test(expected = EspadachinYaFueUtilizadoEsteTurnoException.class)
     public void test23espadachinAtacaYSeIntentaMoverEnElMismoTurnoLanzaExcepcion() {
 
         Oro oro = new Oro(800);
