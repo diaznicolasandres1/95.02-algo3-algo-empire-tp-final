@@ -4,7 +4,6 @@ import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
-import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
@@ -273,29 +272,4 @@ public class CastilloTest {
 
         Assert.assertEquals(2, castillo.calcularDistanciaA(posicion));
     }
-
-
-    @Test
-    public void test18castilloSeIntentaRepararPorOtroAldeanoCuandoElPrimeroMuere() {
-
-        Oro oro = new Oro(1000);
-        Castillo castillo = new Castillo(oro);
-        Aldeano aldeano1 = new Aldeano(oro);
-        Aldeano aldeano2 = new Aldeano(oro);
-
-        castillo.reducirVida(100);
-
-        aldeano1.repararEdificio(castillo);
-        aldeano1.repararEdificio(castillo);
-
-        try {
-            aldeano1.reducirVida(9999);
-        } catch (UnidadFueDestruidaException e) {
-        }
-
-        aldeano2.repararEdificio(castillo);
-
-        Assert.assertEquals(945, castillo.getVida());
-    }
-
 }

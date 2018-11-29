@@ -24,24 +24,22 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        try{
+        try {
             juego.crearArquero(cuartel);
-        }catch(OroInsuficienteException e){
+        } catch (OroInsuficienteException e) {
             alert.setTitle("Error al crear arquero");
             alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
-        }
-        catch(CuartelCreandoseException e){
+        } catch (CuartelCreandoseException e) {
             alert.setTitle("Error al crear arquero");
             alert.setContentText("El cuartel  se encuentra en construccion");
             alert.show();
-        }catch (LimiteDePoblacionAlcanzadoException e){
+        } catch (LimiteDePoblacionAlcanzadoException e) {
             alert.setTitle("Error al crear arquero");
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
-
 }
 

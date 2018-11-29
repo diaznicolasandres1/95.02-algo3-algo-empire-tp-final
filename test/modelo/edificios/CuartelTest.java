@@ -4,7 +4,6 @@ import junit.framework.Assert;
 import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.cuartel.Cuartel;
-import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
