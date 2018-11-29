@@ -1,5 +1,6 @@
 package modelo.edificios.plazacentral;
 
+import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.juego.Oro;
 import modelo.edificios.Edificio;
 import modelo.unidades.aldeano.Aldeano;
@@ -20,11 +21,18 @@ public class PlazaCentral extends Edificio {
         this.costo = 100;
         this.oro.restarOro(costo);
         this.posiciones = new ArrayList<>();
-        this.unidadReparando = null;
+        this.aldeanoReparando = null;
     }
 
-    public void repararse() {
-        estado.repararse(this);
+    @Override
+    public void repararse(Aldeano aldeano) {
+        if (this.aldeanoReparando == null) {
+            this.aldeanoReparando = aldeano;
+        }
+        if (this.aldeanoReparando != aldeano) {
+            throw new EdificioSiendoReparadoException();
+        }
+        estado.reparar(this);
     }
 
     public void recibirDanio(int valorDanio) {

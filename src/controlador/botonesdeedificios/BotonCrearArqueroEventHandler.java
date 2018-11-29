@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.edificios.cuartel.Cuartel;
-import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
 import modelo.excepciones.CuartelCreandoseException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;

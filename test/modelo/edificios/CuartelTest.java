@@ -1,12 +1,9 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
-import modelo.excepciones.EdificioTieneVidaMaximaException;
-import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.cuartel.Cuartel;
-import modelo.excepciones.CuartelCreandoseException;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.arquero.Arquero;
@@ -57,7 +54,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
 
         cuartel.recibirDanio(50);
-        cuartel.repararseAsimismo();
+        cuartel.incrementarVida();
 
         Assert.assertEquals(cuartel.getVida(), 250);
     }
@@ -73,10 +70,10 @@ public class CuartelTest {
 
         cuartel.recibirDanio(50);
 
-        cuartel.repararse();
-        cuartel.repararse();
-        cuartel.repararse();
-        cuartel.repararse();
+        cuartel.incrementarVida();
+        cuartel.incrementarVida();
+        cuartel.incrementarVida();
+        cuartel.incrementarVida();
     }
 
     @Test
@@ -182,5 +179,20 @@ public class CuartelTest {
         mapa.colocarUnidad(new Aldeano(oro), 11, 11);
 
         mapa.colocarUnidad(new Aldeano(oro), 11, 10);
+    }
+
+    @Test(expected = EdificioSiendoReparadoException.class)
+    public void test15cuartelSeIntentaRepararPorDosAldeanosDiferentesLanzaExcepcion() {
+
+        Oro oro = new Oro(1000);
+        Cuartel cuartel = new Cuartel(oro);
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+
+        cuartel.reducirVida(100);
+        cuartel.repararse(new Aldeano(oro));
+
+        cuartel.repararse(new Aldeano(oro));
     }
 }

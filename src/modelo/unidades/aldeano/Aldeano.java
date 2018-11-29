@@ -55,8 +55,9 @@ public class Aldeano extends Unidad {
         estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, distanciaDeMovimiento);
         this.estarOcupado(1);
     }
+
     @Override
-    public void unidadMuerta(){
-        estado.unidadMuerta();
+    public void matar() {
+        estado.matar();
     }
 }

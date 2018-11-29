@@ -11,14 +11,14 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
     private int turnos = 3;
 	
 	public void avanzarTurno(Edificio cuartel) {
-        turnos -= 1;
-		if (turnos < 1) {
+		this.turnos -= 1;
+		if (this.turnos < 1) {
 			cuartel.terminoDeCrearse();			
 		}
 	}
 
 	@Override
-	public void repararse(Edificio cuartel) {
+	public void reparar(Edificio cuartel) {
 		throw new CuartelCreandoseException();
 	}
 

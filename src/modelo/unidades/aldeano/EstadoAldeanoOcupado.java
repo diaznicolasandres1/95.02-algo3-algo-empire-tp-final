@@ -3,6 +3,7 @@ package modelo.unidades.aldeano;
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.AldeanoEstaOcupadoException;
@@ -19,13 +20,13 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
     }
 
     public void recolectarOro(Oro oro) {
-        //En turno ocupado no recolecta oro
+        // En turno ocupado aldeano no recolecta oro
     }
 
     @Override
     public void avanzarTurno(Aldeano aldeano) {
-        turnos -= 1;
-        if (turnos < 1) {
+        this.turnos -= 1;
+        if (this.turnos < 1) {
             aldeano.estarDisponible();
         }
     }
@@ -52,7 +53,8 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
     }
 
     @Override
-    public void unidadMuerta(){
-        throw new UnidadEstaMuertaException();
+    public void matar() {
+        throw new UnidadFueDestruidaException();
     }
+
 }

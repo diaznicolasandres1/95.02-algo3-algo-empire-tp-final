@@ -1,16 +1,13 @@
 package modelo.unidades;
 
 import junit.framework.Assert;
-import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
-import modelo.excepciones.PosicionFueraDeRangoException;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
-import modelo.excepciones.AldeanoEstaOcupadoException;
 
 import org.junit.Test;
 
@@ -102,19 +99,19 @@ public class AldeanoTest {
 
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
-        Cuartel cuartel =  aldeano.construirCuartel(); //50 Oro       
-        aldeano.avanzarTurno();//Segundo turno ocupado
-        cuartel.avanzarTurno();//Segundo turno ocupado
-        
-        aldeano.avanzarTurno();//tercer turno ocupado
-        cuartel.avanzarTurno();//tercer turno ocupado
-        
-        aldeano.avanzarTurno();
-        cuartel.avanzarTurno();
+        Cuartel cuartel = aldeano.construirCuartel(); //50 Oro
+        aldeano.avanzarTurno(); // Primer turno ocupado
+        cuartel.avanzarTurno(); // Primer turno ocupado
 
-        cuartel.reducirVida(100); //Ya se construyo se le puede hacer daño
-        aldeano.repararEdificio(cuartel); //No Genera oro en este turno
-        aldeano.avanzarTurno();
+        aldeano.avanzarTurno(); // Segundo turno ocupado
+        cuartel.avanzarTurno(); // Segundo turno ocupado
+
+        aldeano.avanzarTurno(); // Tercer turno ocupado
+        cuartel.avanzarTurno(); // Tercer turno ocupado
+
+        cuartel.reducirVida(100); //Ya se construyo, se le puede hacer daño
+        aldeano.repararEdificio(cuartel);
+        aldeano.avanzarTurno(); // No genera oro en este turno
 
         int cantidadOro = oro.getOro();
         Assert.assertEquals(425, cantidadOro);
@@ -355,5 +352,53 @@ public class AldeanoTest {
 
         Assert.assertEquals(375, oro.getOro()); //No genero oro por estar ocupado
         Assert.assertEquals(450, plaza.getVida()); //La plaza vuelve a tener toda su vida
+    }
+
+    @Test
+    public void test27dosAldeanosDiferentesIntentanRepararMismoEdificioYElSegundoAldeanoNoQuedaOcupado() {
+
+        Oro oro = new Oro(1000);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.reducirVida(100);
+        unAldeano.repararEdificio(plaza);
+        otroAldeano.repararEdificio(plaza); // Sigue disponible
+
+        Cuartel cuartel = otroAldeano.construirCuartel();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+
+        Assert.assertEquals(250, cuartel.getVida());
+    }
+
+    @Test
+    public void test28aldeanoMuereMientrasReparaEdificioYOtroAldeanoTerminaDeRepararEdificio() {
+
+        Oro oro = new Oro(1000);
+        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano otroAldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(oro);
+
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.avanzarTurno();
+        plaza.reducirVida(100); // 350 de vida
+        unAldeano.repararEdificio(plaza); // 375 de vida
+
+        try {
+            unAldeano.reducirVida(100);
+        } catch (UnidadFueDestruidaException e) {
+            otroAldeano.repararEdificio(plaza); // 400 de vida
+            otroAldeano.avanzarTurno(); // 425 de vida
+            otroAldeano.avanzarTurno(); // 450 de vida
+        }
+
+        Assert.assertEquals(450, plaza.getVida());
     }
 }

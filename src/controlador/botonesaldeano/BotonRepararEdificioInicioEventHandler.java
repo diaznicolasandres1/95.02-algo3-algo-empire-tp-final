@@ -4,11 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.edificios.Edificio;
-import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
-import modelo.excepciones.AldeanoEstaOcupadoException;
-import modelo.excepciones.CuartelCreandoseException;
-import modelo.excepciones.OroInsuficienteException;
-import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 

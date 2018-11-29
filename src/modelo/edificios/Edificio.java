@@ -1,10 +1,11 @@
 package modelo.edificios;
 
 import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.EdificioFueDestruidoException;
+import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.mapa.Posicion;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.UnidadFueDestruidaException;
-import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
@@ -27,7 +28,7 @@ public abstract class Edificio implements Colocable {
 	protected int tamanio;
 	protected int reparacion;
     protected ArrayList<Posicion> posiciones;
-    protected Aldeano unidadReparando; 
+    protected Aldeano aldeanoReparando;
 
 	public int getVida() {
 		return vida;
@@ -50,42 +51,20 @@ public abstract class Edificio implements Colocable {
     }
 
     public void reducirVida(int danio) {
-        vida -= danio;
-        if (vida <= 0) {
-            throw new UnidadFueDestruidaException();
+        this.vida -= danio;
+        if (this.vida <= 0) {
+            throw new EdificioFueDestruidoException();
         }
     }
-	
-    public void repararseAsimismo() {
-       
-		vida += reparacion;
-		if (vida > vidaMaxima) {
-			vida = vidaMaxima;
+
+    public void incrementarVida() {
+        this.vida += this.reparacion;
+        if (this.vida > this.vidaMaxima) {
+            this.vida = this.vidaMaxima;
+            this.liberarAldeano();
             throw new EdificioTieneVidaMaximaException();
 		}
 	}
-
-    public void repararseAsimismo(Aldeano aldeano) {
-        if (unidadReparando == null){
-            unidadReparando = aldeano;
-        }
-        if (aldeano != unidadReparando)
-            throw new YaEstanReparandoEsteEdificioException();
-        
-        vida += reparacion;
-        if (vida >= vidaMaxima) {
-            vida = vidaMaxima;
-            this.vaciarAldeano();
-            throw new EdificioTieneVidaMaximaException();
-        }
-    }
-
-
-
-    public void vaciarAldeano() {
-        this.unidadReparando = null;
-    }
-
 
     @Override
     public void descolocarseDe(Mapa mapa) {
@@ -116,8 +95,14 @@ public abstract class Edificio implements Colocable {
     public abstract void avanzarTurno();
 
 	public abstract void terminoDeCrearse();
+
+    public abstract void repararse(Aldeano aldeano);
 	
 	public void colocarAlrededor(Mapa mapa, Unidad unidad) {
 		this.posiciones.get(0).colocarAlrededor(mapa, this.tamanio, unidad);
 	}
+
+    public void liberarAldeano() {
+        this.aldeanoReparando = null;
+    }
 }

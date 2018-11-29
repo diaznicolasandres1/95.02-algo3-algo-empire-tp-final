@@ -4,12 +4,13 @@ import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.UnidadEstaMuertaException;
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
 
-public  class EstadoAldeanoDisponible implements EstadoAldeano {
+public class EstadoAldeanoDisponible implements EstadoAldeano {
 
     public void recolectarOro(Oro oro) {
         oro.sumarOro(25);
@@ -21,7 +22,6 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
 
     @Override
     public PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro) {
-
         PlazaCentral plaza = new PlazaCentral(oro);
         aldeano.estarOcupado(3);
         return plaza;
@@ -46,7 +46,7 @@ public  class EstadoAldeanoDisponible implements EstadoAldeano {
     }
 
     @Override
-    public void unidadMuerta(){
-        throw new UnidadEstaMuertaException();
+    public void matar() {
+        throw new UnidadFueDestruidaException();
     }
 }

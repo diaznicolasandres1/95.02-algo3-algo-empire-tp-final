@@ -1,7 +1,7 @@
 package modelo.juego;
 
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.edificios.plazacentral.PlazaCentralEnConstruccionException;
+import modelo.excepciones.PlazaCentralEnConstruccionException;
 import modelo.unidades.aldeano.Aldeano;
 
 import org.junit.Assert;
