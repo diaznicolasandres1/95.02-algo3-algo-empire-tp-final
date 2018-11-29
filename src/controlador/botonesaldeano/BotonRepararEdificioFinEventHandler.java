@@ -8,6 +8,7 @@ import modelo.edificios.Edificio;
 import modelo.excepciones.ColocableSeleccionadoException;
 import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
+import modelo.excepciones.AldeanoEstaOcupadoException
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
@@ -37,6 +38,21 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error al seleccionar edificio/aldeano");
             alert.setContentText(e.getMessage());
+            alert.show();
+        } catch (AldeanoEstaOcupadoException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error al seleccionar aldeano");
+            alert.setContentText("El aldeano seleccionado se encuentra ocupado");
+            alert.show();
+        } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error al seleccionar aldeano");
+            alert.setContentText("El edificio seleccionado es enemigo");
+            alert.show();
+        } catch (UnidadSeleccionadaNoPerteneceAJugadorException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error al seleccionar aldeano");
+            alert.setContentText("El aldeano seleccionado es enemigo");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();
