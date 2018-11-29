@@ -188,11 +188,6 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-
-
-
-
-
     /*Cambiadores de handlers*/
 
     public void cambiarHandlerConstruirCuartel(Aldeano aldeano){

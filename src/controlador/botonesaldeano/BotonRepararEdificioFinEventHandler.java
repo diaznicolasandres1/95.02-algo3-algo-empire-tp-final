@@ -32,27 +32,16 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable edificio = juego.getColocable(fila,columna);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al seleccionar edificio/aldeano");
         try {
             juego.repararEdificio(reparador, (Edificio) edificio);
         } catch (ColocableSeleccionadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar edificio/aldeano");
+
             alert.setContentText(e.getMessage());
             alert.show();
         } catch (AldeanoEstaOcupadoException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar aldeano");
             alert.setContentText("El aldeano seleccionado se encuentra ocupado");
-            alert.show();
-        } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar aldeano");
-            alert.setContentText("El edificio seleccionado es enemigo");
-            alert.show();
-        } catch (UnidadSeleccionadaNoPerteneceAJugadorException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al seleccionar aldeano");
-            alert.setContentText("El aldeano seleccionado es enemigo");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();
