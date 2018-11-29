@@ -8,14 +8,17 @@ import modelo.excepciones.CuartelCreandoseException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
+import vista.ContenedorPrincipal;
 
 public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private Cuartel cuartel;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearArqueroEventHandler(Juego juego, Cuartel cuartel){
+    public BotonCrearArqueroEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;
         this.cuartel = cuartel;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
@@ -24,7 +27,6 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
         try{
             juego.crearArquero(cuartel);
         }catch(OroInsuficienteException e){
-
             alert.setTitle("Error al crear arquero");
             alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
@@ -38,6 +40,8 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
+        this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
+
 }
 

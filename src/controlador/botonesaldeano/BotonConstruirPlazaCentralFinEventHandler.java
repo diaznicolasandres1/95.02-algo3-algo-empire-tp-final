@@ -24,7 +24,7 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
     }
     @Override
     public void handle(ActionEvent actionEvent) {
-        juego.construirPlazaCentral(constructor,fila,columna);
-        contenedor.dibujarMapaConCasilleroHandler();
+            juego.construirPlazaCentral(constructor,fila,columna);
+            contenedor.dibujarMapaConCasilleroHandler();
     }
 }

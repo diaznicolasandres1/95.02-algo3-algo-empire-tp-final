@@ -22,7 +22,6 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
         try{
             juego.crearAldeano(plaza);
         }catch(OroInsuficienteException e){
-
             alert.setTitle("Error al crear aldeano");
             alert.setContentText("No tienes oro suficiente para crear un aldeano");
             alert.show();
