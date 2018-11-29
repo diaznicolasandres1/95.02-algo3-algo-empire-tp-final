@@ -1,6 +1,8 @@
 package vista;
 
 import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
+import controlador.botonesaldeano.BotonConstruirPlazaCentralFinEventHandler;
+import controlador.botonesaldeano.BotonRepararEdificioFinEventHandler;
 import javafx.scene.layout.GridPane;
 import modelo.juego.Juego;
 import modelo.mapa.Mapa;
@@ -12,6 +14,9 @@ public class CambiadorDeHandler {
     private GridPane tablero;
     private ContenedorPrincipal contenedorPrincipal;
     private DibujadorDeMapa dibujador;
+    private Mapa mapa;
+    int base;
+    int altura;
 
 
     public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero){
@@ -19,13 +24,15 @@ public class CambiadorDeHandler {
         this.tablero = tablero;
         this.contenedorPrincipal = contenedorPrincipal;
         this.dibujador = new DibujadorDeMapa(juego,tablero);
+        this.mapa = juego.getMapa();
+        this.base = mapa.getBase();
+        this.altura = mapa.getAltura();
+
+
     }
+    /*TRATAR DE REFACTORIZAR ESTO POR EL CODIGO REPETIDO*/
 
     public void cambiadorAConstruirCuartelFin(Aldeano aldeano){
-        Mapa mapa = this.juego.getMapa();
-        int base = mapa.getBase();
-        int altura = mapa.getAltura();
-
         for (int i = 0; i < altura; i++) {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = juego.getColocable(i + 1, j + 1);
@@ -34,5 +41,29 @@ public class CambiadorDeHandler {
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }
         }
+    }
+
+    public void cambiadorAConstruirPlazaCentralFin(Aldeano aldeano){
+        for (int i = 0; i < altura; i++) {
+            for (int j = 0; j < base; j++) {
+                Colocable colocable = juego.getColocable(i + 1, j + 1);
+                Boton botonCasillero = new Boton("", new BotonConstruirPlazaCentralFinEventHandler(juego,aldeano,i+1,j+1,contenedorPrincipal));
+                dibujador.dibujarColocable(colocable,botonCasillero);
+                this.tablero.add(botonCasillero, j, i, 1, 1);
+            }
+        }
+
+    }
+
+    public void cambiadorRepararEdificio(Aldeano aldeano) {
+        for (int i = 0; i < altura; i++) {
+            for (int j = 0; j < base; j++) {
+                Colocable colocable = juego.getColocable(i + 1, j + 1);
+                Boton botonCasillero = new Boton("", new BotonRepararEdificioFinEventHandler(juego,aldeano,i+1,j+1,contenedorPrincipal));
+                dibujador.dibujarColocable(colocable,botonCasillero);
+                this.tablero.add(botonCasillero, j, i, 1, 1);
+            }
+        }
+
     }
 }

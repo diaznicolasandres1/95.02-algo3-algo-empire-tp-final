@@ -92,10 +92,10 @@ public class ContenedorPrincipal extends BorderPane {
         BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
         Boton construirCuartel = new Boton("Construir Cuartel",cuartelEventHandler);
 
-        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,fila,col);
+        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,this);
         Boton construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
 
-        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,fila,col);
+        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,this);
         Boton repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
 
         setjugadorActual();
@@ -108,6 +108,17 @@ public class ContenedorPrincipal extends BorderPane {
     public void cambiarHandlerConstruirCuartel(Aldeano aldeano){
         CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
         cambiador.cambiadorAConstruirCuartelFin(aldeano);
+    }
+
+    public void cambiarHandlerConstuirPlazaCentral(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorAConstruirPlazaCentralFin(aldeano);
+
+    }
+    public void cambiarHandlerRepararEdificio(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorRepararEdificio(aldeano);
+
     }
 
 

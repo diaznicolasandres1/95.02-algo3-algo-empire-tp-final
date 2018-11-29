@@ -11,17 +11,19 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.excepciones.YaEstanReparandoEsteEdificioException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
+import vista.ContenedorPrincipal;
 
 public class BotonRepararEdificioInicioEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Aldeano aldeano;
-    private Edificio edificio;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonRepararEdificioInicioEventHandler(Juego juego, Aldeano aldeano,int fila, int col) {
+    public BotonRepararEdificioInicioEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.aldeano = aldeano;
-        this.edificio = edificio;
+        this.contenedorPrincipal = contenedorPrincipal;
+
     }
 
     @Override
@@ -30,7 +32,8 @@ public class BotonRepararEdificioInicioEventHandler implements EventHandler<Acti
         alert.setTitle("");
         alert.setContentText("Haz click en el edificio que quieres reparar");
         alert.show();
-        //Poner todos los casilleros en modo handle terminar reparacion.
+        contenedorPrincipal.cambiarHandlerRepararEdificio(aldeano);
+
 
     }
 

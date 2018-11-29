@@ -8,18 +8,17 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
+import vista.ContenedorPrincipal;
 
 public class BotonConstruirPlazaCentralInicioEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private Aldeano aldeano;
-    private int fila;
-    private int columna;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonConstruirPlazaCentralInicioEventHandler(Juego juego, Aldeano aldeano, int fila, int columna) {
+    public BotonConstruirPlazaCentralInicioEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.aldeano = aldeano;
-        this.fila = fila;
-        this.columna = columna;
         this.juego = juego;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
 
@@ -29,6 +28,10 @@ public class BotonConstruirPlazaCentralInicioEventHandler implements EventHandle
         alert.setTitle("");
         alert.setContentText("Haz click en donde quieres colocar la plaza central");
         alert.show();
-        //Poner todos los casilleros en handle finalizar creacion plaza central
+        contenedorPrincipal.cambiarHandlerConstuirPlazaCentral(aldeano);
+
+
+
+
     }
 }
