@@ -9,11 +9,13 @@ import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
+import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.espadachin.Espadachin;
 import vista.ContenedorPrincipal;
 
 public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
 
-    private  ContenedorPrincipal contenedor;
+    private ContenedorPrincipal contenedor;
     private int fila;
     private int columna;
     private Juego juego;
@@ -28,27 +30,22 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable colocable = this.juego.getColocable(this.fila, this.columna);
-        // Como el handler no puede devolver nada, habria que mandar este colocable
-        // para otro lado para que maneje lo que se tenga que hacer
-        //Mostra vista de acciones disponibles
-        if(colocable instanceof Aldeano){
-            contenedor.dibujarMetodosAldeano(juego,(Aldeano)colocable);
+        /*Refactorizar en un switch */
+        if (colocable instanceof Aldeano) {
+            contenedor.dibujarMetodosAldeano((Aldeano) colocable);
+        } else if (colocable instanceof Cuartel) {
+            contenedor.dibujarMetodosCuartel((Cuartel) colocable);
 
+        } else if (colocable instanceof ArmaDeAsedio) {
+            contenedor.dibujarMetodosArmaDeAsedio((ArmaDeAsedio) colocable);
 
+        } else if (colocable instanceof PlazaCentral) {
+            contenedor.dibujarMetodosPlazaCentral((PlazaCentral) colocable);
+
+        } else if (colocable instanceof Espadachin) {
+            contenedor.dibujarMetodoEspadachin((Espadachin) colocable);
         }
-        else if(colocable instanceof Cuartel) {
-            contenedor.dibujarMetodosCuartel(juego,(Cuartel)colocable);
-
-        }
-        else if(colocable instanceof Castillo) {
-            //Actualizar vista con metodos castillo
-
-        }
-        else if(colocable instanceof PlazaCentral) {
-            //Actualizar vista con metodos plaza central
-
-        }
-
     }
-
 }
+
+

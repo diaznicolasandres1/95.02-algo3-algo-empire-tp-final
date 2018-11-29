@@ -8,6 +8,8 @@ import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
 import controlador.botonesarmadeasedio.BotonDesmontarArmaEventHandler;
 import controlador.botonesarmadeasedio.BotonMontarArmaEventHandler;
+import controlador.botonesataque.BotonAtacarInicioEventHandler;
+import controlador.botonesdeedificios.BotonCrearAldeanoEventHandler;
 import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
 import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
 import javafx.event.ActionEvent;
@@ -26,15 +28,17 @@ import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Mapa;
+import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import modelo.unidades.espadachin.Espadachin;
 
 import java.util.ArrayList;
 
 public class ContenedorPrincipal extends BorderPane {
-
+    private CambiadorDeHandler cambiadorDeHandler;
     private Juego juego;
     private GridPane tablero = new GridPane();
     private String jugadorUno;
@@ -53,6 +57,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.dibujarMapaConCasilleroHandler();
         this.setCostados();
         this.setBottom();
+        this.cambiadorDeHandler =  new CambiadorDeHandler(juego,this,tablero);
     }
 
     private void setCostados(){
@@ -96,14 +101,16 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
+
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
         dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
         this.setCenter(tablero);
     }
 
+   /*Meter esto en una clase Dibujadora de metodos*/
 
-    public void dibujarMetodosAldeano(Juego juego, Aldeano aldeano){
+    public void dibujarMetodosAldeano(Aldeano aldeano){
         this.bottom = new VBox(); //Reinicio el vbox de bottom
 
         BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
@@ -124,7 +131,7 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void dibujarMetodosCuartel(Juego juego, Cuartel cuartel){
+    public void dibujarMetodosCuartel(Cuartel cuartel){
         this.bottom = new VBox(); //Reinicio el vbox de bottom
 
         BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego,cuartel,this);
@@ -142,13 +149,13 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
-    public void dibujarMetodosArmaDeAsedio(Juego juego, ArmaDeAsedio armaDeAsedio){
+    public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio){
         this.bottom = new VBox(); //Reinicio el vbox de bottom
 
-        BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego,armaDeAsedio);
+        BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego,armaDeAsedio,this );
         Boton montarArma = new Boton("Montar arma de asedio",montarArmaEventHandler);
 
-        BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego,armaDeAsedio);
+        BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego,armaDeAsedio,this);
         Boton desmontarArma = new Boton("Desmontar arma de asedio",desmontarArmaEventHandler);
 
         setjugadorActual();
@@ -157,28 +164,56 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
+    public void dibujarMetodosPlazaCentral(PlazaCentral plaza){
+        BotonCrearAldeanoEventHandler crearAldeanoEventHandler  = new BotonCrearAldeanoEventHandler(juego,plaza,this);
+        Boton crearAldeano = new Boton("Crear Aldeano",crearAldeanoEventHandler);
+        setjugadorActual();
+        bottom.getChildren().addAll(crearAldeano);
+        this.setBottom(bottom);
+        bottom.setAlignment(Pos.CENTER);
+    }
+
+    public void dibujarMetodoEspadachin(Espadachin espadachin){
+        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,espadachin,this);
+        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
+
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,espadachin,this);
+        Boton moverEspadachin = new Boton("Mover espadachin",moverHandler);
+
+        setjugadorActual();
+        bottom.getChildren().addAll(atacar,moverEspadachin);
+        this.setBottom(bottom);
+        bottom.setAlignment(Pos.CENTER);
+
+    }
+
+
+
+
+
+
+
+    /*Cambiadores de handlers*/
 
     public void cambiarHandlerConstruirCuartel(Aldeano aldeano){
-        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
-        cambiador.cambiadorAConstruirCuartelFin(aldeano);
+        cambiadorDeHandler.cambiadorAConstruirCuartelFin(aldeano);
     }
 
     public void cambiarHandlerConstuirPlazaCentral(Aldeano aldeano){
-        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
-        cambiador.cambiadorAConstruirPlazaCentralFin(aldeano);
-
+        cambiadorDeHandler.cambiadorAConstruirPlazaCentralFin(aldeano);
     }
 
     public void cambiarHandlerRepararEdificio(Aldeano aldeano){
-        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
-        cambiador.cambiadorRepararEdificio(aldeano);
-
+        cambiadorDeHandler.cambiadorRepararEdificio(aldeano);
     }
 
-
     public void cambiarHandlerMoverUnidad(Unidad unidad) {
-        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
-        cambiador.cambiadorMoverUnidad(unidad);
+        cambiadorDeHandler.cambiadorMoverUnidad(unidad);
+    }
+
+    public void cambiarHandlerAtaque(Atacante atacante) {
+        cambiadorDeHandler.cambiarHandlerAtaque(atacante);
+
     }
 }
 

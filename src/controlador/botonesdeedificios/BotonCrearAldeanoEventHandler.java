@@ -8,13 +8,16 @@ import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.excepciones.PlazaCentralEnConstruccionException;
 import modelo.juego.Juego;
+import vista.ContenedorPrincipal;
 
 public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private PlazaCentral plaza;
-    public BotonCrearAldeanoEventHandler(Juego juego, PlazaCentral plaza){
+    ContenedorPrincipal contenedorPrincipal;
+    public BotonCrearAldeanoEventHandler(Juego juego, PlazaCentral plaza, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;
         this.plaza = plaza;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -36,6 +39,7 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
             alert.show();
 
         }
+        contenedorPrincipal.dibujarMapaConCasilleroHandler();
 
     }
 }

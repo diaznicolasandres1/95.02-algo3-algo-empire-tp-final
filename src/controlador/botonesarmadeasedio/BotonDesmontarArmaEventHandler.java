@@ -7,12 +7,13 @@ import modelo.excepciones.ArmaDeAsedioException;
 
 import modelo.juego.Juego;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
+import vista.ContenedorPrincipal;
 
 public class BotonDesmontarArmaEventHandler  implements EventHandler<ActionEvent> {
     private ArmaDeAsedio armaDeAsedio;
     private Juego juego;
 
-    public BotonDesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma) {
+    public BotonDesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
         this.armaDeAsedio = arma;
         this.juego = juego;
     }
