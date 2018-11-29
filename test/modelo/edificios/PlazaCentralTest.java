@@ -1,10 +1,11 @@
 package modelo.edificios;
 
-import javafx.application.Platform;
+//import javafx.application.Platform;
 import junit.framework.Assert;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.CasilleroOcupadoException;
@@ -196,6 +197,33 @@ public class PlazaCentralTest {
         plaza.colocarseEn(mapa, 10, 10);
 
         Assert.assertEquals(4, plaza.calcularDistanciaA(posicion));
+    }
+
+    @Test
+    public void test17PlazaCentralSeIntentaRepararPorOtroAldeanoCuandoElPrimeroMuere() {
+
+        Oro oro = new Oro(1000);
+        PlazaCentral plazaCentral = new PlazaCentral(oro);
+
+        plazaCentral.avanzarTurno();
+        plazaCentral.avanzarTurno();
+        plazaCentral.avanzarTurno();
+        
+        Aldeano aldeano1 = new Aldeano(oro);
+        Aldeano aldeano2 = new Aldeano(oro);
+    
+        plazaCentral.reducirVida(100);
+
+        aldeano1.repararEdificio(plazaCentral);
+        aldeano1.repararEdificio(plazaCentral);
+        
+        try{
+            aldeano1.reducirVida(9999);
+        }catch (UnidadFueDestruidaException e){}
+        
+        aldeano2.repararEdificio(plazaCentral);
+        
+        Assert.assertEquals(425, plazaCentral.getVida());
     }
 }
 
