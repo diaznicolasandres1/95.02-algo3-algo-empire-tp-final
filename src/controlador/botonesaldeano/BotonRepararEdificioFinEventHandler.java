@@ -8,7 +8,7 @@ import modelo.edificios.Edificio;
 import modelo.excepciones.ColocableSeleccionadoException;
 import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
-import modelo.excepciones.AldeanoEstaOcupadoException
+import modelo.excepciones.AldeanoEstaOcupadoException;
 import modelo.juego.Juego;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
