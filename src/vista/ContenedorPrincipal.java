@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.BotonCambiarTurnoEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
@@ -51,20 +52,24 @@ public class ContenedorPrincipal extends BorderPane {
         VBox derecho = new VBox();
         Label tituloIzq = new Label(this.jugadorUno);
         Label tituloDer = new Label(this.jugadorDos);
+        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(juego,this);
+        Boton botonCambioTurno1 = new Boton("Cambiar Turno",cambiadorTurno);
+        Boton botonCambiarTurno2 = new Boton("Cambiar Turno",cambiadorTurno);
         tituloDer.setPadding(new Insets(15));
         tituloIzq.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        izquierdo.getChildren().addAll(tituloIzq);
-        derecho.getChildren().addAll(tituloDer);
-        this.setLeft(izquierdo);
+        izquierdo.getChildren().addAll(tituloIzq,botonCambioTurno1);
+        derecho.getChildren().addAll(tituloDer,botonCambiarTurno2);        this.setLeft(izquierdo);
+
         this.setRight(derecho);
+
     }
 
-    private void setBottom(){
-
+    public void setBottom(){
+        this.bottom = new VBox();
         setjugadorActual();
-        Label comienzo = new Label("Clickea en una unidad o edificio para comenzar a jugar");
+        Label comienzo = new Label("Clickea en una unidad o edificio");
         bottom.getChildren().add(comienzo);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
@@ -75,6 +80,7 @@ public class ContenedorPrincipal extends BorderPane {
         Label jugadorActual = new Label("Es el turno de: "+this.juego.getNombreJugadorActual());
         jugadorActual.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
         jugadorActual.setPadding(new Insets(20));
+
         bottom.getChildren().add(jugadorActual);
 
 
