@@ -19,7 +19,6 @@ public class BotonDesmontarArmaEventHandler  implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent actionEvent) {
-
         try {
             juego.desmontarArma(armaDeAsedio);
         } catch (ArmaDeAsedioException e) {

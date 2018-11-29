@@ -26,13 +26,13 @@ public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        try{
+        try {
             juego.moverUnidadHacia(movible,columna,fila);
-            contenedorPrincipal.dibujarMapaConCasilleroHandler();
-        }catch(CasilleroOcupadoException e) {
+        } catch (CasilleroOcupadoException e) {
             alert.setTitle("Error al mover unidad");
             alert.setContentText("Ese casillero ya esta ocupado");
             alert.show();
         }
+        contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }
