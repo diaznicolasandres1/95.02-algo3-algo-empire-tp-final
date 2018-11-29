@@ -8,10 +8,6 @@ import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
-<<<<<<< HEAD
-=======
-import modelo.unidades.Colocable;
->>>>>>> ef56c2ab553a661551dcb3a005f6c097543135a8
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
