@@ -48,8 +48,8 @@ public class ContenedorEntrada extends VBox {
         this.getChildren().addAll(titulo, imagenVista, vBox);
     }
 
-    public void setBotonJugar(Stage stage, Scene proximaEscena) {
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, proximaEscena, jugadores);
+    public void setBotonJugar(Stage stage) {
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, jugadores);
         BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
         Boton botonJugar = new Boton("Jugar", botonJugarEventHandler);
         Boton botonSalir = new Boton("Salir", botonSalirEventHandler);
