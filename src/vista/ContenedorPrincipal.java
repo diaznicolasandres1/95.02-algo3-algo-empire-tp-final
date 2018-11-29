@@ -4,6 +4,8 @@ import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -20,6 +22,8 @@ import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 
+import java.util.ArrayList;
+
 public class ContenedorPrincipal extends BorderPane {
 
     private Juego juego;
@@ -29,6 +33,8 @@ public class ContenedorPrincipal extends BorderPane {
     private VBox izquierdo = new VBox();
     private VBox derecho = new VBox();
     private VBox bottom = new VBox();
+    public ArrayList<Boton> botones = new ArrayList<Boton>();
+
 
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
@@ -98,39 +104,21 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void cambiarHandlerCuartelFin(Aldeano aldeano){
-        Mapa mapa = this.juego.getMapa();
-        int base = mapa.getBase();
-        int altura = mapa.getAltura();
 
-        for (int i = 0; i < altura; i++) {
-            for (int j = 0; j < base; j++) {
-                Colocable colocable = juego.getColocable(i+1,j+1);
-                
-                Boton botonCasillero = new Boton("", new BotonConstruirCuartelFinEventHandler(juego,aldeano, i+1,j+1,this));
-
-                if(colocable instanceof Aldeano){
-                   botonCasillero.setTexto("A");
-                   botonCasillero.setStyle("-fx-background-color: green");
-                }
-                else if(colocable instanceof Castillo) {
-                    botonCasillero.setTexto("C");
-                    botonCasillero.setStyle("-fx-background-color: blue");
-                }
-                else if(colocable instanceof PlazaCentral) {
-                    botonCasillero.setTexto("P");
-                    botonCasillero.setStyle("-fx-background-color: red");
-                }
-                else if(colocable instanceof Cuartel) {
-                    botonCasillero.setTexto("C");
-                    botonCasillero.setStyle("-fx-background-color: yellow");
-                }
-                this.tablero.add(botonCasillero, j, i, 1, 1);
-                botonCasillero.setPrefSize(30, 30);
-            }
-
-        }
+    public void cambiarHandlerConstruirCuartel(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorAConstruirCuartelFin(aldeano);
     }
+
+
+
+
+
+
+
+
+
+
 }
 
 
