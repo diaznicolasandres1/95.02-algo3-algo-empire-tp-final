@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.BotonCasilleroEventHandler;
+import controlador.BotonCambiarTurnoEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
@@ -23,6 +23,8 @@ import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 
+import java.util.ArrayList;
+
 public class ContenedorPrincipal extends BorderPane {
 
     private Juego juego;
@@ -32,13 +34,15 @@ public class ContenedorPrincipal extends BorderPane {
     private VBox izquierdo = new VBox();
     private VBox derecho = new VBox();
     private VBox bottom = new VBox();
+    public ArrayList<Boton> botones = new ArrayList<Boton>();
+
 
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
-        this.dibujarMapa();
+        this.dibujarMapaConCasilleroHandler();
         this.setCostados();
         this.setBottom();
     }
@@ -48,20 +52,24 @@ public class ContenedorPrincipal extends BorderPane {
         VBox derecho = new VBox();
         Label tituloIzq = new Label(this.jugadorUno);
         Label tituloDer = new Label(this.jugadorDos);
+        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(juego,this);
+        Boton botonCambioTurno1 = new Boton("Cambiar Turno",cambiadorTurno);
+        Boton botonCambiarTurno2 = new Boton("Cambiar Turno",cambiadorTurno);
         tituloDer.setPadding(new Insets(15));
         tituloIzq.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        izquierdo.getChildren().addAll(tituloIzq);
-        derecho.getChildren().addAll(tituloDer);
-        this.setLeft(izquierdo);
+        izquierdo.getChildren().addAll(tituloIzq,botonCambioTurno1);
+        derecho.getChildren().addAll(tituloDer,botonCambiarTurno2);        this.setLeft(izquierdo);
+
         this.setRight(derecho);
+
     }
 
-    private void setBottom(){
-
+    public void setBottom(){
+        this.bottom = new VBox();
         setjugadorActual();
-        Label comienzo = new Label("Clickea en una unidad o edificio para comenzar a jugar");
+        Label comienzo = new Label("Clickea en una unidad o edificio");
         bottom.getChildren().add(comienzo);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
@@ -72,13 +80,14 @@ public class ContenedorPrincipal extends BorderPane {
         Label jugadorActual = new Label("Es el turno de: "+this.juego.getNombreJugadorActual());
         jugadorActual.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
         jugadorActual.setPadding(new Insets(20));
+
         bottom.getChildren().add(jugadorActual);
 
 
     }
-    public void dibujarMapa() {
+    public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
-        dibujadorDeMapa.dibujarMapa(this);
+        dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
         this.setCenter(tablero);
     }
 
@@ -89,10 +98,10 @@ public class ContenedorPrincipal extends BorderPane {
         BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
         Boton construirCuartel = new Boton("Construir Cuartel",cuartelEventHandler);
 
-        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,fila,col);
+        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,this);
         Boton construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
 
-        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,fila,col);
+        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,this);
         Boton repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
 
         setjugadorActual();
@@ -101,40 +110,32 @@ public class ContenedorPrincipal extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
     }
 
-    public void cambiarElHandleryRecibeCambiador(Aldeano aldeano){
-        Mapa mapa = this.juego.getMapa();
-        int base = mapa.getBase();
-        int altura = mapa.getAltura();
 
-        for (int i = 0; i < altura; i++) {
-            for (int j = 0; j < base; j++) {
-
-                Colocable colocable = juego.getColocable(i+1,j+1);
-                BotonConstruirCuartelFinEventHandler handle = new BotonConstruirCuartelFinEventHandler(juego,aldeano, i+1,j+1,this);
-                Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1,this));
-                botonCasillero.setHandler(handle);
-
-                if(colocable instanceof Aldeano){
-                   botonCasillero.setTexto("A");
-                   botonCasillero.setStyle("-fx-background-color: green");
-                }
-                else if(colocable instanceof Castillo) {
-                    botonCasillero.setTexto("C");
-                    botonCasillero.setStyle("-fx-background-color: blue");
-                }
-                else if(colocable instanceof PlazaCentral) {
-                    botonCasillero.setTexto("P");
-                    botonCasillero.setStyle("-fx-background-color: red");
-                }
-                else if(colocable instanceof Cuartel) {
-                    botonCasillero.setTexto("C");
-                    botonCasillero.setStyle("-fx-background-color: yellow");
-                }
-                this.tablero.add(botonCasillero, j, i, 1, 1);
-                botonCasillero.setPrefSize(30, 30);
-            }
-        }
+    public void cambiarHandlerConstruirCuartel(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorAConstruirCuartelFin(aldeano);
     }
+
+    public void cambiarHandlerConstuirPlazaCentral(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorAConstruirPlazaCentralFin(aldeano);
+
+    }
+    public void cambiarHandlerRepararEdificio(Aldeano aldeano){
+        CambiadorDeHandler cambiador = new CambiadorDeHandler(juego,this,tablero);
+        cambiador.cambiadorRepararEdificio(aldeano);
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
 
 

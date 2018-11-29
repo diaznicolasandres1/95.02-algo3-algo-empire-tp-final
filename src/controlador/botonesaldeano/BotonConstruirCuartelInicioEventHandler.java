@@ -25,10 +25,6 @@ public class BotonConstruirCuartelInicioEventHandler implements EventHandler<Act
         alert.setTitle("");
         alert.setContentText("Haz click en donde quieres colocar el cuartel");
         alert.show();
-
-       contenedorPrincipal.cambiarElHandleryRecibeCambiador(aldeano);
-
-        //Poner todos los casilleros en handle finalizar creacion plaza central
-        //Poner todos los demas en modo seleccion de lugar
+        contenedorPrincipal.cambiarHandlerConstruirCuartel(aldeano);
     }
 }
