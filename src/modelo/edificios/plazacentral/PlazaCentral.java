@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 
-    private Oro oro;
     private EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
     public PlazaCentral(Oro oroInicio) {
@@ -19,7 +18,7 @@ public class PlazaCentral extends Edificio {
         this.tamanio = 4;
         this.oro = oroInicio;
         this.costo = 100;
-        this.oro.restarOro(costo);
+        this.oro.restarOro(this.costo);
         this.posiciones = new ArrayList<>();
         this.aldeanoReparando = null;
     }

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Cuartel extends Edificio {
 
-    private Oro oro;
     private EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 
     public Cuartel(Oro nuevoOro) {
@@ -21,7 +20,7 @@ public class Cuartel extends Edificio {
         this.tamanio = 4;
         this.oro = nuevoOro;
         this.costo = 50;
-        this.oro.restarOro(costo);
+        this.oro.restarOro(this.costo);
         this.posiciones = new ArrayList<>();
         this.aldeanoReparando = null;
     }

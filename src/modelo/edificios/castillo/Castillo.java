@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class Castillo extends Edificio implements Atacante {
 
-    private Oro oro;
     private static final int RANGO_DE_ATAQUE = 5;
 	
 	public Castillo(Oro oro) {

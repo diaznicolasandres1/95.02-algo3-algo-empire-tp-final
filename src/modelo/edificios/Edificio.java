@@ -2,10 +2,9 @@ package modelo.edificios;
 
 import modelo.edificios.castillo.Castillo;
 import modelo.excepciones.EdificioFueDestruidoException;
-import modelo.excepciones.EdificioSiendoReparadoException;
+import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
-import modelo.excepciones.UnidadFueDestruidaException;
 import modelo.mapa.Mapa;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
@@ -27,6 +26,7 @@ public abstract class Edificio implements Colocable {
 	protected int costo;
 	protected int tamanio;
 	protected int reparacion;
+    protected Oro oro;
     protected ArrayList<Posicion> posiciones;
     protected Aldeano aldeanoReparando;
 
