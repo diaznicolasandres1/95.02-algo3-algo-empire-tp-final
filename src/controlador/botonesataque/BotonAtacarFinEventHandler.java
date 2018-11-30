@@ -15,6 +15,8 @@ import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import vista.ContenedorPrincipal;
 
+import java.util.Optional;
+
 public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
     private ContenedorPrincipal contenedor;
     private Atacante atacante;
@@ -40,8 +42,13 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
             juego.atacar(atacante, atacado);
         }catch(CastilloFueDestruidoException e){
             alert.setContentText("El castillo fue destruido finaliza el juego");
-            alert.show();
-            contenedor.finalizarJuego();
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+               Platform.exit();
+            }
+
+
 
 
         }
