@@ -23,6 +23,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano {
             edificio.repararse(aldeano);
         } catch (EdificioTieneVidaMaximaException | EdificioSiendoReparadoException e) {
             aldeano.estarDisponible();
+            throw e;
         }
     }
 
@@ -47,7 +48,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano {
     }
 
     @Override
-    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima) {
         throw new AldeanoEstaOcupadoException();
     }
 

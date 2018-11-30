@@ -40,8 +40,8 @@ public class EstadoAldeanoDisponible implements EstadoAldeano {
     }
 
     @Override
-    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
-        origen.moverUnidadHacia(unidad, mapa, destino, rangoMovimiento);
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima) {
+        origen.moverUnidadHacia(unidad, mapa, destino, distanciaMaxima);
     }
 
     @Override

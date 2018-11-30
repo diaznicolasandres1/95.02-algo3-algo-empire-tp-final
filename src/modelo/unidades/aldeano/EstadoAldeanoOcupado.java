@@ -47,7 +47,7 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
     }
 
     @Override
-    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento) {
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima) {
         throw new AldeanoEstaOcupadoException();
     }
 
