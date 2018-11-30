@@ -162,8 +162,9 @@ public class Jugador {
             throw new EdificioObjetivoEsPropioException();
         try {
             atacante.atacar(objetivo);
-        } catch (UnidadFueDestruidaException e) {
+        } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
             this.oponente.removerColocable(objetivo);
+            objetivo.descolocarseDe(mapa);
         }
     }
 
