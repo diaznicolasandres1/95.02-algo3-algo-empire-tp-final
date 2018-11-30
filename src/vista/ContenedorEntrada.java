@@ -37,24 +37,32 @@ public class ContenedorEntrada extends VBox {
         VBox vBox = new VBox(unaEntrada.getHb(), otraEntrada.getHb());
         vBox.setSpacing(30);
 
-        Label titulo = new Label("AlgoEmpire");
-        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        titulo.setTextAlignment(TextAlignment.CENTER);
-        titulo.setTextFill(Color.web("000000"));
-
-        Image imagen = new Image("file:src/vista/imagenes/imagen_inicio_aoe.png", 1500, 150, true, true);
+        Image imagen = new Image("file:src/vista/imagenes/imagen_inicio.png", 1500, 150, true, true);
         ImageView imagenVista = new ImageView(imagen);
 
-        this.getChildren().addAll(titulo, imagenVista, vBox);
+        Image fondo = new Image("file:src/vista/imagenes/fondo_inicio.jpg", 525, 525, false, true);
+        BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenFondo));
+
+        this.getChildren().addAll(imagenVista, vBox);
     }
 
-    public void setBotonJugar(Stage stage) {
+    public void setBotonesIniciales(Stage stage) {
+
         BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, jugadores);
         BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
-        Boton botonJugar = new Boton("Jugar", botonJugarEventHandler);
-        Boton botonSalir = new Boton("Salir", botonSalirEventHandler);
+
+        Boton botonJugar = new Boton("", botonJugarEventHandler);
+        botonJugar.setBackground(Background.EMPTY);
+        Image jugar = new Image("file:src/vista/imagenes/boton_jugar.png");
+        botonJugar.setGraphic(new ImageView(jugar));
+
+        Boton botonSalir = new Boton("", botonSalirEventHandler);
+        botonSalir.setBackground(Background.EMPTY);
+        Image salir = new Image("file:src/vista/imagenes/boton_salir.png");
+        botonSalir.setGraphic(new ImageView(salir));
+
         this.getChildren().addAll(botonJugar, botonSalir);
     }
-
 
 }

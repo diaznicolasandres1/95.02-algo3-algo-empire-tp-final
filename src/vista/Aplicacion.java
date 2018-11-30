@@ -17,7 +17,7 @@ public class Aplicacion extends Application {
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada();
         Scene escenaInicial = new Scene(contenedorEntrada);
-        contenedorEntrada.setBotonJugar(primaryStage);
+        contenedorEntrada.setBotonesIniciales(primaryStage);
 
         primaryStage.setScene(escenaInicial);
         primaryStage.setResizable(false);
