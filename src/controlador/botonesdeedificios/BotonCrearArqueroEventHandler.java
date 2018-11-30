@@ -5,12 +5,14 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.excepciones.CuartelCreandoseException;
+import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
 public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> {
+
     private Juego juego;
     private Cuartel cuartel;
     private ContenedorPrincipal contenedorPrincipal;
@@ -24,18 +26,19 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al crear arquero");
         try {
-            juego.crearArquero(cuartel);
+            juego.crearArquero(this.cuartel);
+        } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
+            alert.setContentText(e.getMessage());
+            alert.show();
         } catch (OroInsuficienteException e) {
-            alert.setTitle("Error al crear arquero");
             alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
         } catch (CuartelCreandoseException e) {
-            alert.setTitle("Error al crear arquero");
-            alert.setContentText("El cuartel  se encuentra en construccion");
+            alert.setContentText("El cuartel se encuentra en construccion");
             alert.show();
         } catch (LimiteDePoblacionAlcanzadoException e) {
-            alert.setTitle("Error al crear arquero");
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }

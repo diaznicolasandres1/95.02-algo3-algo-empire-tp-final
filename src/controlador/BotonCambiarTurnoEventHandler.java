@@ -19,6 +19,5 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         juego.cambiarTurno();
         contenedorPrincipal.setBottom();
-
     }
 }

@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.edificios.castillo.Castillo;
+import modelo.excepciones.CuartelCreandoseException;
+import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
+import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
@@ -19,14 +22,24 @@ public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEv
         this.castillo = castillo;
         this.contenedorPrincipal = contenedorPrincipal;
     }
+
     @Override
     public void handle(ActionEvent actionEvent) {
-        try{
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error al crear arma de asedio");
+        try {
             juego.crearArmaDeAsedio(this.castillo);
-        }catch(OroInsuficienteException e){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error al crear arma de asedio");
-            alert.setContentText("No tienes oro suficiente para crear una arma de asedio");
+        } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
+            alert.setContentText(e.getMessage());
+            alert.show();
+        } catch (OroInsuficienteException e) {
+            alert.setContentText("No tienes oro suficiente para crear un arma de asedio");
+            alert.show();
+        } catch (CuartelCreandoseException e) {
+            alert.setContentText("El cuartel se encuentra en construccion");
+            alert.show();
+        } catch (LimiteDePoblacionAlcanzadoException e) {
+            alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
         contenedorPrincipal.dibujarMapaConCasilleroHandler();
