@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.excepciones.CuartelCreandoseException;
+import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
@@ -14,7 +15,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
 
     private Juego juego;
     private Cuartel cuartel;
-    ContenedorPrincipal contenedorPrincipal;
+    private ContenedorPrincipal contenedorPrincipal;
 
     public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
@@ -25,16 +26,19 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Error al crear Espadachin");
-        try{
+        alert.setTitle("Error al crear espadachin");
+        try {
             juego.crearEspadachin(this.cuartel);
-        }catch(OroInsuficienteException e){
-            alert.setContentText("No tienes oro suficiente para crear un Espadachin");
+        } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
+            alert.setContentText(e.getMessage());
             alert.show();
-        }catch(CuartelCreandoseException e){
-            alert.setContentText("El cuartel  se encuentra en construccion");
+        } catch (OroInsuficienteException e) {
+            alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
-        }catch (LimiteDePoblacionAlcanzadoException e){
+        } catch (CuartelCreandoseException e) {
+            alert.setContentText("El cuartel se encuentra en construccion");
+            alert.show();
+        } catch (LimiteDePoblacionAlcanzadoException e) {
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
