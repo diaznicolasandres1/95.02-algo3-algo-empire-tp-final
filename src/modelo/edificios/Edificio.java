@@ -53,6 +53,7 @@ public abstract class Edificio implements Colocable {
     public void reducirVida(int danio) {
         this.vida -= danio;
         if (this.vida <= 0) {
+            this.descolocarseDe(mapa);
             throw new EdificioFueDestruidoException();
         }
     }

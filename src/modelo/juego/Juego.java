@@ -43,6 +43,10 @@ public class Juego {
     public Colocable getColocable(int fila, int columna) {
         return this.mapa.buscarColocableEn(fila, columna);
     }
+    
+    public Mapa getMapa() {
+        return this.mapa;
+    }
 
     /*-----Metodos de Edificios-----*/
 
@@ -62,7 +66,7 @@ public class Juego {
         this.jugadorActual.crearArmaDeAsedio(castillo);
     }
 
-/*-----Metodos de Aldeano-----*/
+    /*-----Metodos de Aldeano-----*/
 
     public void construirCuartel(Aldeano aldeano, int fila, int columna) {
         this.jugadorActual.construirCuartel(aldeano, fila, columna);
@@ -101,7 +105,4 @@ public class Juego {
         this.jugadorActual.desmontarArma(arma);
     }
 
-    public Mapa getMapa() {
-        return this.mapa;
-    }
 }
