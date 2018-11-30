@@ -122,7 +122,7 @@ public class CuartelTest {
         Cuartel cuartel = new Cuartel(oro);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test10cuartelIntentaColocarseFueraDelRangoDelMapaPositivoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -132,7 +132,7 @@ public class CuartelTest {
         cuartel.colocarseEn(mapa, 100, 100);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test11cuartelIntentaColocarseFueraDelRangoDelMapaNegativoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -142,7 +142,7 @@ public class CuartelTest {
         cuartel.colocarseEn(mapa, -1000, -1000);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test12cuartelIntentaColocarseFueraDelRangoDelMapaNuloLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -152,7 +152,7 @@ public class CuartelTest {
         cuartel.colocarseEn(mapa, 0, 0);
     }
 
-    @Test(expected = CasilleroOcupadoException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test13cuartelSeColocaEnMapaYSeIntentaColocarOtraPlazaEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);

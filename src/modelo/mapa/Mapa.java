@@ -2,6 +2,7 @@ package modelo.mapa;
 
 import modelo.edificios.Edificio;
 import modelo.excepciones.CasilleroOcupadoException;
+import modelo.excepciones.NoHayLugarSuficenteParaColocarEdificioException;
 import modelo.excepciones.TamanioInvalidoException;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
@@ -16,6 +17,8 @@ public class Mapa {
     private ArrayList<Fila> filas;
     private int base;
     private int altura;
+    private static final int BASE_MINIMA = 12;
+    private static final int ALTURA_MINIMA = 12;
 
     public Mapa(int base, int altura) {
 
@@ -38,12 +41,17 @@ public class Mapa {
 
     public void colocarEdificio(Edificio edificio, int tamanioEdificio, int filaInicio, int columnaInicio) {
 
-        double cantidadFilasAUtilizar = sqrt(tamanioEdificio);
-        double cantidadColumnasAUtilizar = sqrt(tamanioEdificio);
+        double filasAUtilizar = sqrt(tamanioEdificio);
+        double columnasAUtilizar = sqrt(tamanioEdificio);
 
-        for (int i = 0; i < cantidadFilasAUtilizar; i++) {
-            for (int j = 0; j < cantidadColumnasAUtilizar; j++) {
-                this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + j);
+        for (int i = 0; i < filasAUtilizar; i++) {
+            for (int j = 0; j < columnasAUtilizar; j++) {
+                try {
+                    this.buscarFila(filaInicio + i).colocar(edificio, columnaInicio + j);
+                } catch (CasilleroOcupadoException | IndexOutOfBoundsException e) {
+                    this.descolocarEdificioParcialmenteColocadoEn(filaInicio, columnaInicio, i, j, tamanioEdificio);
+                    throw new NoHayLugarSuficenteParaColocarEdificioException();
+                }
                 edificio.agregarPosicion(new Posicion(columnaInicio + j, filaInicio + i));
             }
         }
@@ -112,6 +120,14 @@ public class Mapa {
         return this.buscarFila(fila).buscarColocableEn(columna);
     }
 
+    public int getBase() {
+        return this.base;
+    }
+
+    public int getAltura() {
+        return this.altura;
+    }
+
     private void agregarCasilleros() {
 
         for (int i = 0; i < altura; i++) {
@@ -145,15 +161,24 @@ public class Mapa {
     }
 
     private boolean esTamanioValido(int base, int altura) {
-
-        return (base >= 12 && altura >= 12);
+        return (base >= BASE_MINIMA && altura >= ALTURA_MINIMA);
     }
 
-    public int getBase() {
-        return this.base;
-    }
+    private void descolocarEdificioParcialmenteColocadoEn(int filaInicio, int columnaInicio, int filasUtilizadas, int columnasUtilizadas, int tamanioEdificio) {
 
-    public int getAltura() {
-        return this.altura;
+        double auxColumnasUtilizadas = columnasUtilizadas;
+        if (filasUtilizadas >= 1) {
+            auxColumnasUtilizadas = sqrt(tamanioEdificio) - 1;
+        }
+
+        descolocar:
+        for (int i = 0; i <= filasUtilizadas; i++) {
+            for (int j = 0; j <= auxColumnasUtilizadas; j++) {
+                if (i == filasUtilizadas && j == columnasUtilizadas) {
+                    break descolocar;
+                }
+                this.descolocarColocable(filaInicio + i, columnaInicio + j);
+            }
+        }
     }
 }

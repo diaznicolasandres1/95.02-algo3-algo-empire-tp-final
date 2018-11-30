@@ -1,12 +1,9 @@
 package modelo.edificios;
 
 import junit.framework.Assert;
-import modelo.excepciones.EdificioSiendoReparadoException;
-import modelo.excepciones.EdificioTieneVidaMaximaException;
-import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
@@ -109,7 +106,7 @@ public class PlazaCentralTest {
         PlazaCentral plaza = new PlazaCentral(oro);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test09plazaCentralIntentaColocarseFueraDelRangoDelMapaPositivoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -119,7 +116,7 @@ public class PlazaCentralTest {
         plaza.colocarseEn(mapa, 100, 100);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test10plazaCentralIntentaColocarseFueraDelRangoDelMapaNegativoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -129,7 +126,7 @@ public class PlazaCentralTest {
         plaza.colocarseEn(mapa, -1000, -1000);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test11plazaCentralIntentaColocarseFueraDelRangoDelMapaNuloLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -139,7 +136,7 @@ public class PlazaCentralTest {
         plaza.colocarseEn(mapa, 0, 0);
     }
 
-    @Test(expected = CasilleroOcupadoException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test12plazaCentralSeColocaEnMapaYSeIntentaColocarOtraPlazaEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);

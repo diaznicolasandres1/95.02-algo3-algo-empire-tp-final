@@ -2,12 +2,9 @@ package modelo.edificios;
 
 import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
-import modelo.excepciones.EdificioSiendoReparadoException;
-import modelo.excepciones.EdificioTieneVidaMaximaException;
-import modelo.excepciones.OroInsuficienteException;
+import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidades.aldeano.Aldeano;
@@ -108,7 +105,7 @@ public class CastilloTest {
         castillo.crearArmaDeAsedio();
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test08castilloIntentaColocarseFueraDelRangoDelMapaPositivoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -118,7 +115,7 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, 100, 100);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test09castilloIntentaColocarseFueraDelRangoDelMapaNegativoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -128,7 +125,7 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, -1000, -1000);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test10castilloIntentaColocarseFueraDelRangoDelMapaNuloLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
@@ -138,8 +135,8 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, 0, 0);
     }
 
-    @Test(expected = CasilleroOcupadoException.class)
-    public void test11castilloSeColocaEnMapaYSeIntentaColocarOtraPlazaEnMismoLugarLanzaExcepcion() {
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
+    public void test11castilloSeColocaEnMapaYSeIntentaColocarOtroCastilloEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);

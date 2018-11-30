@@ -1,5 +1,6 @@
 package modelo.mapa;
 
+import modelo.excepciones.NoHayLugarSuficenteParaColocarEdificioException;
 import modelo.juego.Oro;
 import modelo.excepciones.CasilleroOcupadoException;
 import modelo.excepciones.PosicionFueraDeRangoException;
@@ -161,7 +162,7 @@ public class MapaTest {
         Assert.assertEquals(16, cantidadDeVecesLanzadaExcepcion);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test12plazaSeColocaFueraDelRangoPositivoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
@@ -170,7 +171,7 @@ public class MapaTest {
         mapa.colocarEdificio(plaza, 4, 35, 100);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test13plazaSeColocaFueraDelRangoNegativoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
@@ -179,7 +180,7 @@ public class MapaTest {
         mapa.colocarEdificio(plaza, 4, -1000, -1000);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test14plazaSeColocaFueraDelRangoNuloDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
@@ -188,7 +189,7 @@ public class MapaTest {
         mapa.colocarEdificio(plaza, 4, 0, 0);
     }
 
-    @Test(expected = CasilleroOcupadoException.class)
+    @Test(expected = NoHayLugarSuficenteParaColocarEdificioException.class)
     public void test15mapaColocaUnidadYSeColocaEdificioEnElMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(50, 40);
@@ -397,5 +398,37 @@ public class MapaTest {
         mapa.colocarAlrededor(5, 5, 16, aldeano);
 
         Assert.assertEquals(aldeano, mapa.buscarColocableEn(9, 9));
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test28mapaColocaEdificioParcialmenteSobrePosicionesOcupadasSeLiberanEsasPosicionesYSeColocanUnidadesEnEsasPosicionesLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(25, 25);
+        Castillo castillo = new Castillo(oro);
+
+        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+
+        try {
+            mapa.colocarEdificio(castillo, 16, 7, 7);
+        } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
+            mapa.colocarUnidad(new Aldeano(oro), 8, 8);
+        }
+
+        mapa.colocarUnidad(new Aldeano(oro), 8, 8);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void test29mapaColocaEdificioParcialmenteFueraDelRangoDelMapaSeLiberanEsasPosicionesYSeColocanUnidadesLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(25, 25);
+        Castillo castillo = new Castillo(oro);
+
+        try {
+            mapa.colocarEdificio(castillo, 16, 23, 23);
+        } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
+            mapa.colocarUnidad(new Aldeano(oro), 21, 21);
+        }
+
+        mapa.colocarUnidad(new Aldeano(oro), 21, 21);
     }
 }
