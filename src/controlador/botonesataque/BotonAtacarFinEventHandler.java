@@ -34,7 +34,7 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
         try {
             juego.atacar(atacante, atacado);
         } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
-            alert.setContentText(e.getCause().getMessage());
+            alert.setContentText(e.getMessage());
             alert.show();
         } catch (ColocableFueraDeRangoDeAtaqueException e) {
             alert.setContentText("Objetivo fuera de rango de ataque");

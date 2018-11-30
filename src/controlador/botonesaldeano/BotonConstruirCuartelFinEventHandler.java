@@ -30,7 +30,7 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
         try {
             juego.construirCuartel(constructor, fila, columna);
         } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
-            alert.setContentText(e.getCause().getMessage());
+            alert.setContentText(e.getMessage());
             alert.show();
         } catch (ConstruccionFueraDeRangoException e) {
             alert.setContentText("La posicion donde se pretende construir el edificio no esta proxima al aldeano");
@@ -38,8 +38,8 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
         } catch (OroInsuficienteException e) {
             alert.setContentText("No se posee oro suficiente para construir cuartel");
             alert.show();
-        } catch (CasilleroOcupadoException e) {
-            alert.setContentText("El o los casilleros para construir el cuartel se encuentran ocupados");
+        } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
+            alert.setContentText("El o los casilleros necesarios para construir el cuartel se encuentran ocupados");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();

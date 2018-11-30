@@ -34,7 +34,7 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
         try {
             juego.repararEdificio(reparador, (Edificio) edificio);
         } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
-            alert.setContentText(e.getCause().getMessage());
+            alert.setContentText(e.getMessage());
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();

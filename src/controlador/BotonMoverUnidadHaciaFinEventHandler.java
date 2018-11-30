@@ -9,14 +9,15 @@ import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
 
 public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<ActionEvent> {
-    private Unidad movible;
+
+    private Unidad unidad;
     private Juego juego;
     private int fila;
     private int columna;
     private ContenedorPrincipal contenedorPrincipal;
 
     public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
-        this.movible = unidad;
+        this.unidad = unidad;
         this.juego = juego;
         this.fila = fila;
         this.columna = columna;
@@ -28,12 +29,12 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al mover la unidad");
         try {
-            juego.moverUnidadHacia(movible, columna, fila);
+            juego.moverUnidadHacia(unidad, fila, columna);
         } catch (CasilleroOcupadoException e) {
             alert.setContentText("El casillero de destino se encuentra ocupado");
             alert.show();
         } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
-            alert.setContentText(e.getCause().getMessage());
+            alert.setContentText(e.getMessage());
             alert.show();
         } catch (PosicionFueraDeRangoException e) {
             alert.setContentText("La posicion de destino se encuentra fuera de rango de movimiento");

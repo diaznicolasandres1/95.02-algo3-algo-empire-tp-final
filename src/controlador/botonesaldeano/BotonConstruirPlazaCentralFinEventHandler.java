@@ -39,8 +39,8 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
         } catch (OroInsuficienteException e) {
             alert.setContentText("No se posee oro suficiente para construir plaza central");
             alert.show();
-        } catch (CasilleroOcupadoException e) {
-            alert.setContentText("El o los casilleros para construir la plaza central se encuentran ocupados");
+        } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
+            alert.setContentText("El o los casilleros necesarios para construir la plaza central se encuentran ocupados");
             alert.show();
         }
         contenedor.dibujarMapaConCasilleroHandler();
