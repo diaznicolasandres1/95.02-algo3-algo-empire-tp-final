@@ -257,4 +257,17 @@ public class JuegoTest {
 
         juego.atacar(unArquero, otroEspadachin);
     }
+    
+    @Test
+    public void test13juegoMoverHaciarCambiaUbicacionCorrectamente() {
+        Juego juego = new Juego("Rojo", "Azul");
+        if(juego.getNombreJugadorActual().equals("Azul"))
+            juego.cambiarTurno();
+        Aldeano aldeano1 = (Aldeano)juego.getColocable(1, 8);
+        juego.moverUnidadHacia(aldeano1, 1, 9);
+        Aldeano aldeano2 = (Aldeano)juego.getColocable(1, 9);
+        Assert.assertNull(juego.getColocable(1, 8));
+        Assert.assertEquals(aldeano1, aldeano2);
+    }
+    
 }

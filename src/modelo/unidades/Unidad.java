@@ -69,7 +69,6 @@ public abstract class Unidad implements Colocable {
     public abstract void moverHacia(Posicion destino, Mapa mapa);
 
     public void matar() {
-        this.descolocarseDe(mapa);
         throw new UnidadFueDestruidaException();
     }
 

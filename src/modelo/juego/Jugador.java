@@ -162,7 +162,8 @@ public class Jugador {
             throw new EdificioObjetivoEsPropioException();
         try {
             atacante.atacar(objetivo);
-        } catch (UnidadFueDestruidaException e) {
+        } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
+            objetivo.descolocarseDe(mapa);
             this.oponente.removerColocable(objetivo);
         }
     }
@@ -195,7 +196,7 @@ public class Jugador {
     
     public void moverUnidadHacia(Unidad unidad, int fila, int columna) {
         this.esUnidadPropia(unidad);
-        Posicion destino = new Posicion(fila, columna);
+        Posicion destino = new Posicion(columna, fila);
         unidad.moverHacia(destino, this.mapa);
     }
 
