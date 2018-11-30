@@ -95,40 +95,22 @@ public class ContenedorPrincipal extends BorderPane {
         jugadorActual.setPadding(new Insets(20));
         bottom.getChildren().add(jugadorActual);
 
-
     }
 
-    public void finalizarJuego(){
-
-        VBox fin = new VBox();
-
-        Label titulo = new Label("El juego finalizo! el ganador es:"+ juego.getNombreJugadorActual());
-        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        titulo.setTextAlignment(TextAlignment.CENTER);
-        titulo.setTextFill(Color.web("000000"));
-
-        BotonSalirEventHandler salir = new BotonSalirEventHandler();
-        Boton salirBoton = new Boton("Salir",salir);
-        fin.getChildren().addAll(titulo,salirBoton);
-        this.setBottom(fin);
 
 
 
 
 
-    }
 
+
+    /*Meter esto en una clase Dibujadora de metodos*/
 
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
         dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
         this.setCenter(tablero);
     }
-
-
-
-
-    /*Meter esto en una clase Dibujadora de metodos*/
 
     public void dibujarMetodosAldeano(Aldeano aldeano){
         this.bottom = new VBox(); //Reinicio el vbox de bottom
