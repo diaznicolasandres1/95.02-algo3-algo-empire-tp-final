@@ -354,7 +354,7 @@ public class AldeanoTest {
         Assert.assertEquals(450, plaza.getVida()); //La plaza vuelve a tener toda su vida
     }
 
-    @Test
+    @Test(expected = EdificioSiendoReparadoException.class)
     public void test27dosAldeanosDiferentesIntentanRepararMismoEdificioYElSegundoAldeanoNoQuedaOcupado() {
 
         Oro oro = new Oro(1000);
@@ -367,14 +367,8 @@ public class AldeanoTest {
         plaza.avanzarTurno();
         plaza.reducirVida(100);
         unAldeano.repararEdificio(plaza);
-        otroAldeano.repararEdificio(plaza); // Sigue disponible
 
-        Cuartel cuartel = otroAldeano.construirCuartel();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-
-        Assert.assertEquals(250, cuartel.getVida());
+        otroAldeano.repararEdificio(plaza);
     }
 
     @Test
