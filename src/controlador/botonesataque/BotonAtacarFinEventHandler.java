@@ -1,8 +1,12 @@
 package controlador.botonesataque;
 
+import controlador.BotonJugarEventHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacante;
@@ -29,17 +33,25 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable atacado = juego.getColocable(fila,columna);
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al atacar");
         try {
             juego.atacar(atacante, atacado);
-        } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
+        }catch(CastilloFueDestruidoException e){
+            alert.setContentText("El castillo fue destruido finaliza el juego");
+            alert.show();
+            contenedor.finalizarJuego();
+
+
+        }
+        catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
             alert.setContentText(e.getMessage());
             alert.show();
         } catch (ColocableFueraDeRangoDeAtaqueException e) {
             alert.setContentText("Objetivo fuera de rango de ataque");
             alert.show();
         }
-        contenedor.dibujarMapaConCasilleroHandler();
+       contenedor.dibujarMapaConCasilleroHandler();
     }
 }

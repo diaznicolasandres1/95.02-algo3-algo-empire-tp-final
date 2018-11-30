@@ -2,7 +2,7 @@ package vista;
 
 import controlador.BotonCambiarTurnoEventHandler;
 import controlador.BotonMoverUnidadHaciaInicioEventHandler;
-import controlador.botonesaldeano.BotonConstruirCuartelFinEventHandler;
+import controlador.BotonSalirEventHandler;
 import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
 import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
 import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
@@ -13,29 +13,22 @@ import controlador.botonesdeedificios.BotonCrearAldeanoEventHandler;
 import controlador.botonesdeedificios.BotonCrearArmaDeAsedioEventHandler;
 import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
 import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.juego.Juego;
-import modelo.mapa.Mapa;
 import modelo.unidades.Atacante;
-import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
-import modelo.unidades.arquero.Arquero;
-import modelo.unidades.espadachin.Espadachin;
 
 import java.util.ArrayList;
 
@@ -56,15 +49,17 @@ public class ContenedorPrincipal extends BorderPane {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
+
         this.dibujarMapaConCasilleroHandler();
         this.setCostados();
-        this.setBottom();
+        this.crearBottom();
         this.cambiadorDeHandler =  new CambiadorDeHandler(juego,this,tablero);
     }
 
+
+
     private void setCostados(){
-        VBox izquierdo = new VBox();
-        VBox derecho = new VBox();
+
         Label tituloIzq = new Label(this.jugadorUno);
         Label tituloDer = new Label(this.jugadorDos);
         BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(juego,this);
@@ -83,7 +78,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
-    public void setBottom(){
+    public void crearBottom(){
         this.bottom = new VBox();
         setjugadorActual();
         Label comienzo = new Label("Clickea en una unidad o edificio");
@@ -103,6 +98,26 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
+    public void finalizarJuego(){
+
+        VBox fin = new VBox();
+
+        Label titulo = new Label("El juego finalizo! el ganador es:"+ juego.getNombreJugadorActual());
+        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+        titulo.setTextAlignment(TextAlignment.CENTER);
+        titulo.setTextFill(Color.web("000000"));
+
+        BotonSalirEventHandler salir = new BotonSalirEventHandler();
+        Boton salirBoton = new Boton("Salir",salir);
+        fin.getChildren().addAll(titulo,salirBoton);
+        this.setBottom(fin);
+
+
+
+
+
+    }
+
 
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
@@ -110,7 +125,10 @@ public class ContenedorPrincipal extends BorderPane {
         this.setCenter(tablero);
     }
 
-   /*Meter esto en una clase Dibujadora de metodos*/
+
+
+
+    /*Meter esto en una clase Dibujadora de metodos*/
 
     public void dibujarMetodosAldeano(Aldeano aldeano){
         this.bottom = new VBox(); //Reinicio el vbox de bottom

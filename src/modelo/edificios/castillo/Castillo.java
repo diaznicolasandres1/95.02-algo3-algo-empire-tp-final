@@ -1,5 +1,6 @@
 package modelo.edificios.castillo;
 
+import modelo.excepciones.EdificioFueDestruidoException;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.unidades.Atacante;
 import modelo.juego.Oro;
@@ -60,6 +61,13 @@ public class Castillo extends Edificio implements Atacante {
         this.incrementarVida();
     }
 
+    @Override
+    public void reducirVida(int danio) {
+        this.vida -= danio;
+        if (this.vida <= 0) {
+            throw new CastilloFueDestruidoException();
+        }
+    }
     @Override
 	public void recibirDanio(Castillo castillo) {
         // Castillo no recibe daño si lo ataca castillo
