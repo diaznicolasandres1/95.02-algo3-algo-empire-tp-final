@@ -43,8 +43,6 @@ public class ContenedorPrincipal extends BorderPane {
     private VBox bottom = new VBox();
     public ArrayList<Boton> botones = new ArrayList<Boton>();
 
-
-
     public ContenedorPrincipal(String unJugador, String otroJugador) {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
@@ -71,11 +69,17 @@ public class ContenedorPrincipal extends BorderPane {
         tituloIzq.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        izquierdo.getChildren().addAll(tituloIzq,botonCambioTurno1);
-        derecho.getChildren().addAll(tituloDer,botonCambioTurno2);
+        izquierdo.setAlignment(Pos.TOP_LEFT);
+        derecho.setAlignment(Pos.TOP_RIGHT);
+        izquierdo.setSpacing(20);
+        derecho.setSpacing(20);
+        derecho.setPadding(new Insets(25));
+        izquierdo.setPadding(new Insets(25));
+        izquierdo.getChildren().addAll(tituloIzq, botonCambioTurno1);
+        derecho.getChildren().addAll(tituloDer, botonCambioTurno2);
         this.setLeft(izquierdo);
         this.setRight(derecho);
-
+        this.setPadding(new Insets(25));
     }
 
     public void crearBottom(){

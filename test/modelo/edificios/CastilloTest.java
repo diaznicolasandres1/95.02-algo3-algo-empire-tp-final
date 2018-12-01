@@ -2,6 +2,7 @@ package modelo.edificios;
 
 import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
+import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
@@ -268,5 +269,14 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, 10, 10);
 
         Assert.assertEquals(2, castillo.calcularDistanciaA(posicion));
+    }
+
+    @Test(expected = CastilloFueDestruidoException.class)
+    public void test18castilloReduceVidaYEsDestruidoLanzaExcepcion() {
+
+        Oro oro = new Oro(2000);
+        Castillo castillo = new Castillo(oro);
+
+        castillo.reducirVida(20000);
     }
 }
