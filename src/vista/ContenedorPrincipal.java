@@ -165,6 +165,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio){
+
         this.bottom = new HBox(); //Reinicio el vbox de bottom
 
         BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego,armaDeAsedio,this );
@@ -173,8 +174,15 @@ public class ContenedorPrincipal extends BorderPane {
         BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego,armaDeAsedio,this);
         Boton desmontarArma = new Boton("Desmontar arma de asedio",desmontarArmaEventHandler);
 
+        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,armaDeAsedio,this);
+        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
+
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)armaDeAsedio,this);
+        Boton moverArma = new Boton("Mover unidad",moverHandler);
+
         setjugadorActual();
-        bottom.getChildren().addAll(montarArma,desmontarArma);
+        bottom.setSpacing(10);
+        bottom.getChildren().addAll(montarArma,desmontarArma,atacar,moverArma);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
     }
@@ -186,6 +194,7 @@ public class ContenedorPrincipal extends BorderPane {
         setjugadorActual();
         bottom.getChildren().addAll(crearAldeano);
         this.setBottom(bottom);
+        bottom.setSpacing(10);
         bottom.setAlignment(Pos.CENTER);
     }
 
@@ -199,6 +208,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         setjugadorActual();
         bottom.getChildren().addAll(atacar,moverEspadachin);
+        bottom.setSpacing(10);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
 
@@ -211,6 +221,7 @@ public class ContenedorPrincipal extends BorderPane {
         setjugadorActual();
         bottom.getChildren().addAll(crearArmaDeAsedio);
         this.setBottom(bottom);
+        bottom.setSpacing(10);
         bottom.setAlignment(Pos.CENTER);
     }
 
