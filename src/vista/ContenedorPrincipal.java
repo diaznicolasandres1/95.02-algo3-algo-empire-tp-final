@@ -141,6 +141,7 @@ public class ContenedorPrincipal extends BorderPane {
         Boton moverAldeano = new Boton("Mover aldeano",moverHandler);
 
         setjugadorActual();
+        bottom.setSpacing(10);
         bottom.getChildren().addAll(construirCuartel,construirPlaza,repararEdificio,moverAldeano);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
@@ -156,6 +157,7 @@ public class ContenedorPrincipal extends BorderPane {
         Boton crearEspadachin = new Boton("Crear espadachin", espadachinEventHandler);
 
         setjugadorActual();
+        bottom.setSpacing(10);
         bottom.getChildren().addAll(crearArquero,crearEspadachin);
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
@@ -192,9 +194,10 @@ public class ContenedorPrincipal extends BorderPane {
         BotonCrearAldeanoEventHandler crearAldeanoEventHandler  = new BotonCrearAldeanoEventHandler(juego,plaza,this);
         Boton crearAldeano = new Boton("Crear Aldeano",crearAldeanoEventHandler);
         setjugadorActual();
+        bottom.setSpacing(10);
         bottom.getChildren().addAll(crearAldeano);
         this.setBottom(bottom);
-        bottom.setSpacing(10);
+
         bottom.setAlignment(Pos.CENTER);
     }
 
@@ -207,8 +210,9 @@ public class ContenedorPrincipal extends BorderPane {
         Boton moverEspadachin = new Boton("Mover unidad",moverHandler);
 
         setjugadorActual();
-        bottom.getChildren().addAll(atacar,moverEspadachin);
         bottom.setSpacing(10);
+        bottom.getChildren().addAll(atacar,moverEspadachin);
+
         this.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
 
@@ -219,9 +223,10 @@ public class ContenedorPrincipal extends BorderPane {
         BotonCrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new BotonCrearArmaDeAsedioEventHandler(juego,castillo,this);
         Boton crearArmaDeAsedio = new Boton("Crear arma de asedio",armaDeAsedioEventHandler);
         setjugadorActual();
+        bottom.setSpacing(10);
         bottom.getChildren().addAll(crearArmaDeAsedio);
         this.setBottom(bottom);
-        bottom.setSpacing(10);
+
         bottom.setAlignment(Pos.CENTER);
     }
 
