@@ -3,6 +3,7 @@ package controlador.botonesdeedificios;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Region;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
@@ -27,6 +28,7 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al crear aldeano");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
             juego.crearAldeano(this.plaza);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {

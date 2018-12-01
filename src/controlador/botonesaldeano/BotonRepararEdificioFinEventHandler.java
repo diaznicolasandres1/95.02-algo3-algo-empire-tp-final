@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Region;
 import modelo.edificios.Edificio;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
@@ -31,6 +32,7 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
         Colocable edificio = juego.getColocable(fila,columna);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al reparar edificio");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
             juego.repararEdificio(reparador, (Edificio) edificio);
         } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException e) {

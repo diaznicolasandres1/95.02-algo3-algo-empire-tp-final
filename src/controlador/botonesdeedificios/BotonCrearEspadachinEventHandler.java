@@ -3,6 +3,7 @@ package controlador.botonesdeedificios;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Region;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.excepciones.CuartelCreandoseException;
 import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
@@ -27,6 +28,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al crear espadachin");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
             juego.crearEspadachin(this.cuartel);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {

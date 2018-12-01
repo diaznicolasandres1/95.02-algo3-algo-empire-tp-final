@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
 import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
@@ -38,19 +39,17 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al atacar");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
             juego.atacar(atacante, atacado);
         }catch(CastilloFueDestruidoException e){
-            alert.setContentText("El castillo fue destruido finaliza el juego");
 
+            /*FINALIZACION DEL JUEGO */
+            alert.setContentText("El castillo fue destruido finaliza el juego");
             Optional<ButtonType> result = alert.showAndWait();
             if(result.get() == ButtonType.OK){
                Platform.exit();
             }
-
-
-
-
         }
         catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
             alert.setContentText(e.getMessage());
