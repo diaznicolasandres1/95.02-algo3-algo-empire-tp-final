@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.BotonCasilleroEventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
@@ -32,38 +33,40 @@ public class DibujadorDeMapa {
         for (int i = 0; i < altura; i++) {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
-                Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
-                this.dibujarColocable(colocable, botonCasillero);
+                Button botonCasillero = new Button("");
+                botonCasillero.setOnAction( new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
+                dibujarColocable(colocable,botonCasillero);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }
         }
     }
 
-    public void dibujarColocable(Colocable colocable, Boton botonCasillero) {
+    public void dibujarColocable(Colocable colocable, Button botonCasillero) {
         /*cambiar por switch*/
 
         if (colocable instanceof Aldeano) {
-            botonCasillero.setTexto("A");
+            botonCasillero.setText("A");
             botonCasillero.setStyle("-fx-background-color: green");
         } else if (colocable instanceof Espadachin) {
-            botonCasillero.setTexto("E");
+            botonCasillero.setText("E");
             botonCasillero.setStyle("-fx-background-color: white");
         } else if (colocable instanceof Arquero) {
-            botonCasillero.setTexto("a");
+            botonCasillero.setText("a");
             botonCasillero.setStyle("-fx-background-color: pink");
         } else if (colocable instanceof Castillo) {
-            botonCasillero.setTexto("C");
+            botonCasillero.setText("C");
             botonCasillero.setStyle("-fx-background-color: blue");
         } else if (colocable instanceof PlazaCentral) {
-            botonCasillero.setTexto("P");
+            botonCasillero.setText("P");
             botonCasillero.setStyle("-fx-background-color: red");
         } else if (colocable instanceof Cuartel) {
-            botonCasillero.setTexto("c");
+            botonCasillero.setText("c");
             botonCasillero.setStyle("-fx-background-color: yellow");
         } else if (colocable instanceof ArmaDeAsedio) {
-            botonCasillero.setTexto("A");
+            botonCasillero.setText("A");
             botonCasillero.setStyle("-fx-background-color: grey");
-        }
+        }/*else un casillero con opacity:80 para que se vea el fondo pero cuando se abre un alert se lo sube (WTF)*/
+
         botonCasillero.setPrefSize(30, 30);
     }
 }
