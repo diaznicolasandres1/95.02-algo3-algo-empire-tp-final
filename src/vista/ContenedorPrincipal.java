@@ -53,8 +53,11 @@ public class ContenedorPrincipal extends BorderPane {
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
         BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
-        Boton botonFinalizarTurno1 = new Boton("Finalizar Turno", cambiadorTurno);
-        Boton botonFinalizarTurno2 = new Boton("Finalizar Turno", cambiadorTurno);
+
+        Button botonFinalizarTurno1 = new Button("Finalizar Turno");
+        Button botonFinalizarTurno2 = new Button("Finalizar Turno");
+        botonFinalizarTurno1.setOnAction(cambiadorTurno);
+        botonFinalizarTurno2.setOnAction(cambiadorTurno);
         botonFinalizarTurno2.setPadding(new Insets(15));
         botonFinalizarTurno1.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));

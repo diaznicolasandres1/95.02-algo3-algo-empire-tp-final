@@ -109,7 +109,7 @@ public class Mapa {
                 try {
                     this.colocarUnidad(unidad, auxFila + i, auxColumna + j);
                     estaColocado = true;
-                } catch (IndexOutOfBoundsException | CasilleroOcupadoException e) {
+                } catch (IndexOutOfBoundsException | CasilleroOcupadoException ignored) {
                 }
             }
         }

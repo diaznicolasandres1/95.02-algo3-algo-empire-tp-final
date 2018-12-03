@@ -4,16 +4,11 @@ import controlador.BotonJugarEventHandler;
 import controlador.BotonSalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -32,8 +27,8 @@ public class ContenedorEntrada extends VBox {
 
         EntradaUsuario unaEntrada = new EntradaUsuario("Primer Jugador", Color.CYAN);
         EntradaUsuario otraEntrada = new EntradaUsuario("Segundo Jugador", Color.ORANGE);
-        jugadores.add(unaEntrada);
-        jugadores.add(otraEntrada);
+        this.jugadores.add(unaEntrada);
+        this.jugadores.add(otraEntrada);
 
         VBox vBox = new VBox(unaEntrada.getHb(), otraEntrada.getHb());
         vBox.setSpacing(30);
@@ -50,7 +45,7 @@ public class ContenedorEntrada extends VBox {
 
     public void setBotonesIniciales(Stage stage) {
 
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, jugadores);
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, this.jugadores);
         BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
 
         Button botonJugar = new Button("");

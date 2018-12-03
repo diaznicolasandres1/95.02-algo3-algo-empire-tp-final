@@ -36,7 +36,7 @@ public class Castillo extends Edificio implements Atacante {
 	}
 
 	public ArmaDeAsedio crearArmaDeAsedio() {
-        return new ArmaDeAsedio(oro);
+        return new ArmaDeAsedio(this.oro);
 	}	
 	
 	public void atacarAlrededor(Mapa mapa) {

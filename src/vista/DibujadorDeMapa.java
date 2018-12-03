@@ -35,7 +35,7 @@ public class DibujadorDeMapa {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
                 Button botonCasillero = new Button("");
                 botonCasillero.setOnAction( new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
-                dibujarColocable(colocable,botonCasillero);
+                this.dibujarColocable(colocable, botonCasillero);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }
         }
@@ -65,8 +65,7 @@ public class DibujadorDeMapa {
         } else if (colocable instanceof ArmaDeAsedio) {
             botonCasillero.setText("A");
             botonCasillero.setStyle("-fx-background-color: grey");
-        }/*else un casillero con opacity:80 para que se vea el fondo pero cuando se abre un alert se lo sube (WTF)*/
-
+        }
         botonCasillero.setPrefSize(30, 30);
     }
 }
