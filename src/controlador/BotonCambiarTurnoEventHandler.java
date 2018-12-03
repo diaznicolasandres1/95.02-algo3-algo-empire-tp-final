@@ -16,7 +16,11 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        int oroAnterior = juego.getOroJugadorActual();
         this.juego.cambiarTurno();
+        int oroActual = juego.getOroJugadorActual();
         this.contenedorPrincipal.crearBottom();
+        this.contenedorPrincipal.setCostados(oroAnterior,oroActual);
+
     }
 }

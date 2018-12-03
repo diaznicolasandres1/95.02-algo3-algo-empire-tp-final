@@ -30,8 +30,8 @@ public class ContenedorPrincipal extends BorderPane {
     private final GridPane tablero = new GridPane();
     private final String jugadorUno;
     private final String jugadorDos;
-    private final VBox izquierdo = new VBox();
-    private final VBox derecho = new VBox();
+    private  VBox izquierdo = new VBox();
+    private  VBox derecho = new VBox();
     private HBox bottom = new HBox();
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
@@ -39,7 +39,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
         this.dibujarMapaConCasilleroHandler();
-        this.setCostados();
+        this.setCostados(100,100);
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
@@ -51,12 +51,21 @@ public class ContenedorPrincipal extends BorderPane {
         this.setBackground(new Background(imagenFondo));
     }
 
-    private void setCostados() {
+
+
+
+
+
+    public void setCostados(int oroJugadorAnterior, int oroJugadorActual) {
+
+        izquierdo.getChildren().clear();
+        derecho.getChildren().clear();
+
 
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
-        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
 
+        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
         Button botonFinalizarTurno1 = new Button("Finalizar Turno");
         Button botonFinalizarTurno2 = new Button("Finalizar Turno");
         botonFinalizarTurno1.setOnAction(cambiadorTurno);
@@ -67,15 +76,30 @@ public class ContenedorPrincipal extends BorderPane {
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFill(Color.WHITE);
         tituloIzq.setFill(Color.WHITE);
-
         this.izquierdo.setAlignment(Pos.TOP_LEFT);
         this.derecho.setAlignment(Pos.TOP_RIGHT);
         this.izquierdo.setSpacing(20);
         this.derecho.setSpacing(20);
         this.derecho.setPadding(new Insets(25));
         this.izquierdo.setPadding(new Insets(25));
-        this.izquierdo.getChildren().addAll(tituloIzq, botonFinalizarTurno1);
-        this.derecho.getChildren().addAll(tituloDer, botonFinalizarTurno2);
+
+        Text oroIzq;
+        Text oroDer;
+        if(juego.getNombreJugadorActual() == jugadorUno){
+            oroIzq = new Text("Oro: "+ oroJugadorActual);
+            oroDer = new Text ("Oro: "+oroJugadorAnterior);
+        }else{
+            oroDer = new Text("Oro: "+ oroJugadorActual);
+            oroIzq = new Text ("Oro: "+oroJugadorAnterior);
+        }
+
+        oroIzq.setFill(Color.WHITE);
+        oroDer.setFill(Color.WHITE);
+
+
+        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq, botonFinalizarTurno1);
+        this.derecho.getChildren().addAll(tituloDer,oroDer,botonFinalizarTurno2);
+
         this.setLeft(this.izquierdo);
         this.setRight(this.derecho);
         this.setPadding(new Insets(25));
@@ -97,8 +121,10 @@ public class ContenedorPrincipal extends BorderPane {
         jugadorActual.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
         jugadorActual.setPadding(new Insets(20));
         jugadorActual.setTextFill(Color.WHITE);
-        this.bottom.getChildren().add(jugadorActual);
+        this.bottom.getChildren().addAll(jugadorActual);
     }
+
+
 
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
