@@ -5,6 +5,7 @@ import controlador.BotonSalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,12 +53,14 @@ public class ContenedorEntrada extends VBox {
         BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, jugadores);
         BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
 
-        Boton botonJugar = new Boton("", botonJugarEventHandler);
+        Button botonJugar = new Button("");
+        botonJugar.setOnAction(botonJugarEventHandler);
         botonJugar.setBackground(Background.EMPTY);
         Image jugar = new Image("file:src/vista/imagenes/boton_jugar.png");
         botonJugar.setGraphic(new ImageView(jugar));
 
-        Boton botonSalir = new Boton("", botonSalirEventHandler);
+        Button botonSalir = new Button("");
+        botonSalir.setOnAction(botonSalirEventHandler);
         botonSalir.setBackground(Background.EMPTY);
         Image salir = new Image("file:src/vista/imagenes/boton_salir.png");
         botonSalir.setGraphic(new ImageView(salir));

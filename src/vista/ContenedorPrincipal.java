@@ -15,7 +15,9 @@ import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
 import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -43,7 +45,7 @@ public class ContenedorPrincipal extends BorderPane {
     private VBox izquierdo = new VBox();
     private VBox derecho = new VBox();
     private HBox bottom = new HBox();
-    public ArrayList<Boton> botones = new ArrayList<Boton>();
+   
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
         this.juego = new Juego(unJugador, otroJugador);
@@ -66,8 +68,13 @@ public class ContenedorPrincipal extends BorderPane {
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
         BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(juego,this);
-        Boton botonCambioTurno1 = new Boton("Cambiar Turno",cambiadorTurno);
-        Boton botonCambioTurno2 = new Boton("Cambiar Turno",cambiadorTurno);
+
+        Button botonCambioTurno1 = new Button("Cambiar turno");
+        botonCambioTurno1.setOnAction(cambiadorTurno);
+
+        Button botonCambioTurno2 = new Button("Cambiar turno");
+        botonCambioTurno2.setOnAction(cambiadorTurno);
+
         botonCambioTurno2.setPadding(new Insets(15));
         botonCambioTurno1.setPadding(new Insets(15));
         //tituloDer.setPadding(new Insets(15));
@@ -112,11 +119,6 @@ public class ContenedorPrincipal extends BorderPane {
 
 
 
-
-
-
-
-
     /*Meter esto en una clase Dibujadora de metodos*/
 
     public void dibujarMapaConCasilleroHandler() {
@@ -126,19 +128,34 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosAldeano(Aldeano aldeano){
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setRadius(5.0);
+        dropShadow.setOffsetX(3.0);
+        dropShadow.setOffsetY(3.0);
+        dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
+
         this.bottom = new HBox(); //Reinicio el vbox de bottom
 
         BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
-        Boton construirCuartel = new Boton("Construir Cuartel",cuartelEventHandler);
+        Button construirCuartel = new Button("Construir Cuartel");
+        construirCuartel.setOnAction(cuartelEventHandler);
+        construirCuartel.setEffect(dropShadow);
 
         BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,this);
-        Boton construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
+        Button construirPlaza = new Button("Constuir Plaza Central");
+        construirPlaza.setOnAction(plazaCentralEventHandler);
+        construirPlaza.setEffect(dropShadow);
 
         BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,this);
-        Boton repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
+        Button repararEdificio = new Button("Reparar edificio");
+        repararEdificio.setOnAction(repararEdificioInicioEventHandler);
+        construirPlaza.setEffect(dropShadow);
+
 
         BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,aldeano,this);
-        Boton moverAldeano = new Boton("Mover aldeano",moverHandler);
+        Button moverAldeano = new Button("Mover aldeano");
+        moverAldeano.setOnAction(moverHandler);
+        moverAldeano.setEffect(dropShadow);
 
         setjugadorActual();
         bottom.setSpacing(10);
@@ -151,10 +168,12 @@ public class ContenedorPrincipal extends BorderPane {
         this.bottom = new HBox(); //Reinicio el vbox de bottom
 
         BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego,cuartel,this);
-        Boton crearArquero = new Boton("Crear arquero",arqueroHandler);
+        Button crearArquero = new Button("Crear arquero");
+        crearArquero.setOnAction(arqueroHandler);
 
         BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego,cuartel,this);
-        Boton crearEspadachin = new Boton("Crear espadachin", espadachinEventHandler);
+        Button crearEspadachin = new Button("Crear espadachin");
+        crearEspadachin.setOnAction(espadachinEventHandler);
 
         setjugadorActual();
         bottom.setSpacing(10);
@@ -171,16 +190,20 @@ public class ContenedorPrincipal extends BorderPane {
         this.bottom = new HBox(); //Reinicio el vbox de bottom
 
         BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego,armaDeAsedio,this );
-        Boton montarArma = new Boton("Montar arma de asedio",montarArmaEventHandler);
+        Button montarArma = new Button("Montar arma de asedio");
+        montarArma.setOnAction(montarArmaEventHandler);
 
         BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego,armaDeAsedio,this);
-        Boton desmontarArma = new Boton("Desmontar arma de asedio",desmontarArmaEventHandler);
+        Button desmontarArma = new Button("Desmontar arma de asedio");
+        desmontarArma.setOnAction(desmontarArmaEventHandler);
 
         BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,armaDeAsedio,this);
-        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
+        Button atacar = new Button("Atacar");
+        atacar.setOnAction(atacarInicioEventHandler);
 
         BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)armaDeAsedio,this);
-        Boton moverArma = new Boton("Mover unidad",moverHandler);
+        Button moverArma = new Button("Mover unidad");
+        moverArma.setOnAction(moverHandler);
 
         setjugadorActual();
         bottom.setSpacing(10);
@@ -192,22 +215,24 @@ public class ContenedorPrincipal extends BorderPane {
     public void dibujarMetodosPlazaCentral(PlazaCentral plaza){
         this.bottom = new HBox(); //Reinicio el vbox de bottom
         BotonCrearAldeanoEventHandler crearAldeanoEventHandler  = new BotonCrearAldeanoEventHandler(juego,plaza,this);
-        Boton crearAldeano = new Boton("Crear Aldeano",crearAldeanoEventHandler);
+        Button crearAldeano = new Button("Crear Aldeano");
+        crearAldeano.setOnAction(crearAldeanoEventHandler);
         setjugadorActual();
         bottom.setSpacing(10);
         bottom.getChildren().addAll(crearAldeano);
         this.setBottom(bottom);
-
         bottom.setAlignment(Pos.CENTER);
     }
 
     public void dibujarMetodoEspadachinOArquero(Atacante atacante){
         this.bottom = new HBox(); //Reinicio el vbox de bottom
         BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,atacante,this);
-        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
+        Button atacar = new Button("Atacar");
+        atacar.setOnAction(atacarInicioEventHandler);
 
         BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)atacante,this);
-        Boton moverEspadachin = new Boton("Mover unidad",moverHandler);
+        Button moverEspadachin = new Button("Mover unidad");
+        moverEspadachin.setOnAction(moverHandler);
 
         setjugadorActual();
         bottom.setSpacing(10);
@@ -221,7 +246,8 @@ public class ContenedorPrincipal extends BorderPane {
     public void dibujarMetodosCastillo(Castillo castillo) {
         this.bottom = new HBox(); //Reinicio el vbox de bottom
         BotonCrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new BotonCrearArmaDeAsedioEventHandler(juego,castillo,this);
-        Boton crearArmaDeAsedio = new Boton("Crear arma de asedio",armaDeAsedioEventHandler);
+        Button crearArmaDeAsedio = new Button("Crear arma de asedio");
+        crearArmaDeAsedio.setOnAction(armaDeAsedioEventHandler);
         setjugadorActual();
         bottom.setSpacing(10);
         bottom.getChildren().addAll(crearArmaDeAsedio);
