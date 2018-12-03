@@ -42,8 +42,6 @@ public class DibujadorDeMapa {
     }
 
     public void dibujarColocable(Colocable colocable, Button botonCasillero) {
-        /*cambiar por switch*/
-
         if (colocable instanceof Aldeano) {
             botonCasillero.setText("A");
             botonCasillero.setStyle("-fx-background-color: green");

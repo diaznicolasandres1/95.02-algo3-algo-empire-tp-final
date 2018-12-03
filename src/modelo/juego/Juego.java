@@ -48,6 +48,11 @@ public class Juego {
         return this.mapa;
     }
 
+    public int getOroJugadorActual(){
+        return jugadorActual.getOro();
+    }
+
+
     /*-----Metodos de Edificios-----*/
 
     public void crearAldeano(PlazaCentral plaza) {
