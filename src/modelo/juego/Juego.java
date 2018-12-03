@@ -53,6 +53,9 @@ public class Juego {
         return jugadorActual.getOro();
     }
 
+    public int getPoblacionJugadorActual(){
+        return  jugadorActual.getPoblacion();
+    }
 
 
     /*-----Metodos de Edificios-----*/

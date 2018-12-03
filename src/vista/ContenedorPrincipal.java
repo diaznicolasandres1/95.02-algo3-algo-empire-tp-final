@@ -39,7 +39,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
         this.dibujarMapaConCasilleroHandler();
-        this.setCostados(100,100);
+        this.setCostados(100,100,3,3);
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
@@ -56,7 +56,7 @@ public class ContenedorPrincipal extends BorderPane {
 
 
 
-    public void setCostados(int oroJugadorAnterior, int oroJugadorActual) {
+    public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
 
         izquierdo.getChildren().clear();
         derecho.getChildren().clear();
@@ -85,20 +85,33 @@ public class ContenedorPrincipal extends BorderPane {
 
         Text oroIzq;
         Text oroDer;
+        Text poblacionIzq;
+        Text poblacionDer;
+
         if(juego.getNombreJugadorActual() == jugadorUno){
+
             oroIzq = new Text("Oro: "+ oroJugadorActual);
+            poblacionIzq = new Text("Poblacion: "+ poblacionActual);
+
             oroDer = new Text ("Oro: "+oroJugadorAnterior);
+            poblacionDer = new Text("Poblacion: "+ poblacionAnterior);
         }else{
+
             oroDer = new Text("Oro: "+ oroJugadorActual);
+            poblacionDer = new Text("Poblacion: "+ poblacionActual);
+
             oroIzq = new Text ("Oro: "+oroJugadorAnterior);
+            poblacionIzq = new Text("Poblacion: "+ poblacionAnterior);
         }
 
         oroIzq.setFill(Color.WHITE);
         oroDer.setFill(Color.WHITE);
+        poblacionDer.setFill(Color.WHITE);
+        poblacionIzq.setFill(Color.WHITE);
 
 
-        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq, botonFinalizarTurno1);
-        this.derecho.getChildren().addAll(tituloDer,oroDer,botonFinalizarTurno2);
+        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq,poblacionIzq, botonFinalizarTurno1);
+        this.derecho.getChildren().addAll(tituloDer,oroDer,poblacionDer,botonFinalizarTurno2);
 
         this.setLeft(this.izquierdo);
         this.setRight(this.derecho);
