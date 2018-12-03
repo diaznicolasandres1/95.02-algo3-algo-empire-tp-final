@@ -24,7 +24,7 @@ public class CambiadorDeHandler {
     private int base;
     private int altura;
 
-    public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero){
+    public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero) {
         this.juego = juego;
         this.tablero = tablero;
         this.contenedorPrincipal = contenedorPrincipal;

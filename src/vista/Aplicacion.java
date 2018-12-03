@@ -15,7 +15,7 @@ public class Aplicacion extends Application {
     public void start(Stage primaryStage) {
 
         primaryStage.setTitle("AlgoEmpire");
-        primaryStage.getIcons().add(new Image("/vista/imagenes/icono_barra_titulo.jpg"));
+        primaryStage.getIcons().add(new Image("file:src/vista/imagenes/icono_barra_titulo.jpg"));
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada();
         Scene escenaInicial = new Scene(contenedorEntrada);

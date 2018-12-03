@@ -43,7 +43,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
-        Image fondo = new Image("/vista/imagenes/fondo_juego_1.jpg", 1600, 920, false, true);
+        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1600, 920, false, true);
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
     }
