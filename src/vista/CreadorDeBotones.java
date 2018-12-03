@@ -35,15 +35,18 @@ public class CreadorDeBotones {
         botones.add(construirCuartel);
 
         BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego, aldeano, contenedor);
-        Button construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
+        Button construirPlaza = new Button("Constuir Plaza Central");
+        construirCuartel.setOnAction(plazaCentralEventHandler);
         botones.add(construirPlaza);
 
         BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego, aldeano, contenedor);
-        Button repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
+        Button repararEdificio = new Button("Reparar edificio");
+        repararEdificio.setOnAction(repararEdificioInicioEventHandler);
         botones.add(repararEdificio);
 
         BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego, aldeano, contenedor);
-        Button moverAldeano = new Boton("Mover unidad", moverHandler);
+        Button moverAldeano = new Button("Mover unidad");
+        moverAldeano.setOnAction(moverHandler);
         botones.add(moverAldeano);
 
         return botones;
