@@ -1,6 +1,5 @@
 package controlador.botonesataque;
 
-import controlador.BotonJugarEventHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,18 +11,16 @@ import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
-import modelo.unidades.aldeano.Aldeano;
-import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import vista.ContenedorPrincipal;
 
 import java.util.Optional;
 
 public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
-    private ContenedorPrincipal contenedor;
-    private Atacante atacante;
-    private Juego juego;
-    private int fila;
-    private int columna;
+    private final ContenedorPrincipal contenedor;
+    private final Atacante atacante;
+    private final Juego juego;
+    private final int fila;
+    private final int columna;
 
     public  BotonAtacarFinEventHandler(Juego juego, Atacante atacante, int fila, int columna, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;
@@ -35,19 +32,16 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Colocable atacado = juego.getColocable(fila,columna);
-
+        Colocable atacado = this.juego.getColocable(this.fila, this.columna);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al atacar");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.atacar(atacante, atacado);
-        }catch(CastilloFueDestruidoException e){
-
-            /*FINALIZACION DEL JUEGO */
-            alert.setContentText("El castillo fue destruido finaliza el juego");
+            this.juego.atacar(this.atacante, atacado);
+        } catch (CastilloFueDestruidoException e) {
+            alert.setContentText("El castillo fue destruido. Se finaliza el juego");
             Optional<ButtonType> result = alert.showAndWait();
-            if(result.get() == ButtonType.OK){
+            if (result.get() == ButtonType.OK) {
                Platform.exit();
             }
         }
@@ -58,6 +52,6 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
             alert.setContentText("Objetivo fuera de rango de ataque");
             alert.show();
         }
-       contenedor.dibujarMapaConCasilleroHandler();
+        this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

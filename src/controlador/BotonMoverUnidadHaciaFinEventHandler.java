@@ -31,7 +31,7 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
         alert.setTitle("Error al mover la unidad");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.moverUnidadHacia(unidad, fila, columna);
+            this.juego.moverUnidadHacia(this.unidad, this.fila, this.columna);
         } catch (CasilleroOcupadoException e) {
             alert.setContentText("El casillero de destino se encuentra ocupado");
             alert.show();
@@ -42,6 +42,6 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
             alert.setContentText("La posicion de destino se encuentra fuera de rango de movimiento");
             alert.show();
         }
-        contenedorPrincipal.dibujarMapaConCasilleroHandler();
+        this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

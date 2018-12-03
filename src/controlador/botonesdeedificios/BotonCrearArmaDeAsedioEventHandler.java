@@ -30,7 +30,7 @@ public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEv
         alert.setTitle("Error al crear arma de asedio");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.crearArmaDeAsedio(this.castillo);
+            this.juego.crearArmaDeAsedio(this.castillo);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();
@@ -44,6 +44,6 @@ public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEv
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
-        contenedorPrincipal.dibujarMapaConCasilleroHandler();
+        this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

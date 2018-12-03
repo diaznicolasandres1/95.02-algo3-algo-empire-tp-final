@@ -29,7 +29,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano {
 
     @Override
     public void avanzarTurno(Aldeano aldeano) {
-        this.repararEdificio(aldeano, edificio);
+        this.repararEdificio(aldeano, this.edificio);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class EstadoAldeanoReparando implements EstadoAldeano {
 
     @Override
     public void matar() {
-        edificio.liberarAldeano();
+        this.edificio.liberarAldeano();
         throw new UnidadFueDestruidaException();
     }
 

@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modelo.juego.Juego;
 import modelo.unidades.Atacante;
-import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
 public class BotonAtacarInicioEventHandler implements EventHandler<ActionEvent> {
@@ -24,7 +23,7 @@ public class BotonAtacarInicioEventHandler implements EventHandler<ActionEvent> 
         alert.setTitle("");
         alert.setContentText("Haz click en el sobre quien quieres realizar el ataque");
         alert.show();
-        contenedorPrincipal.cambiarHandlerAtaque(atacante);
+        this.contenedorPrincipal.cambiarHandlerAtaque(this.atacante);
 
     }
 }

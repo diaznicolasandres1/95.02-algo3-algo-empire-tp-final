@@ -33,24 +33,24 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
         Colocable colocable = this.juego.getColocable(this.fila, this.columna);
         /*Refactorizar en un switch */
         if (colocable instanceof Aldeano) {
-            contenedor.dibujarMetodosAldeano((Aldeano) colocable);
+            this.contenedor.dibujarMetodosAldeano((Aldeano) colocable);
         } else if (colocable instanceof Cuartel) {
-            contenedor.dibujarMetodosCuartel((Cuartel) colocable);
+            this.contenedor.dibujarMetodosCuartel((Cuartel) colocable);
 
         } else if (colocable instanceof ArmaDeAsedio) {
-            contenedor.dibujarMetodosArmaDeAsedio((ArmaDeAsedio) colocable);
+            this.contenedor.dibujarMetodosArmaDeAsedio((ArmaDeAsedio) colocable);
 
         } else if (colocable instanceof PlazaCentral) {
-            contenedor.dibujarMetodosPlazaCentral((PlazaCentral) colocable);
+            this.contenedor.dibujarMetodosPlazaCentral((PlazaCentral) colocable);
 
         } else if (colocable instanceof Espadachin) {
-            contenedor.dibujarMetodoEspadachinOArquero((Espadachin) colocable);
+            this.contenedor.dibujarMetodoEspadachinOArquero((Espadachin) colocable);
         }
         else if (colocable instanceof Arquero) {
-            contenedor.dibujarMetodoEspadachinOArquero((Arquero) colocable);
+            this.contenedor.dibujarMetodoEspadachinOArquero((Arquero) colocable);
         }
         else if (colocable instanceof Castillo) {
-            contenedor.dibujarMetodosCastillo((Castillo) colocable);
+            this.contenedor.dibujarMetodosCastillo((Castillo) colocable);
         }
     }
 }

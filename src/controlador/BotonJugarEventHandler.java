@@ -21,7 +21,7 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(jugadores.get(0).getNombre(), jugadores.get(1).getNombre());
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(this.jugadores.get(0).getNombre(), this.jugadores.get(1).getNombre());
         Scene escenaJuego = new Scene(contenedorPrincipal);
         this.stage.setScene(escenaJuego);
     }

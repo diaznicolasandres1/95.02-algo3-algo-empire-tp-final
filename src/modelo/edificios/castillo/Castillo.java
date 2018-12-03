@@ -1,6 +1,5 @@
 package modelo.edificios.castillo;
 
-import modelo.excepciones.EdificioFueDestruidoException;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.unidades.Atacante;
 import modelo.juego.Oro;
@@ -37,8 +36,7 @@ public class Castillo extends Edificio implements Atacante {
 	}
 
 	public ArmaDeAsedio crearArmaDeAsedio() {
-		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro) ;
-		return armaDeAsedio;	
+        return new ArmaDeAsedio(oro);
 	}	
 	
 	public void atacarAlrededor(Mapa mapa) {

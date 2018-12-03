@@ -33,28 +33,28 @@ public class Cuartel extends Edificio {
         if (this.aldeanoReparando != aldeano) {
             throw new EdificioSiendoReparadoException();
         }
-        estado.reparar(this);
+        this.estado.reparar(this);
     }
 
     public void recibirDanio(int valorDanio) {
-        estado.recibirDanio(this, valorDanio);
+        this.estado.recibirDanio(this, valorDanio);
     }
 
     @Override
     public void terminoDeCrearse() {
-        estado = new EstadoCuartelConstruido();
+        this.estado = new EstadoCuartelConstruido();
     }
 
     @Override
     public void avanzarTurno() {
-        estado.avanzarTurno(this);
+        this.estado.avanzarTurno(this);
     }
 
     public Arquero crearArqueroDesdeCuartel() {
-        return estado.crearArquero(oro);
+        return this.estado.crearArquero(this.oro);
     }
 
     public Espadachin crearEspadachinDesdeCuartel() {
-        return estado.crearEspadachin(oro);
+        return this.estado.crearEspadachin(this.oro);
     }
 }

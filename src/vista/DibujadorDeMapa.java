@@ -33,7 +33,7 @@ public class DibujadorDeMapa {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
                 Boton botonCasillero = new Boton("", new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
-                dibujarColocable(colocable,botonCasillero);
+                this.dibujarColocable(colocable, botonCasillero);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }
         }

@@ -34,7 +34,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
-		this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, distanciaDeMovimiento);
+        this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, this.distanciaDeMovimiento);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
 		this.estado.atacar(colocable, this);
-		this.estado = new EstadoArmaAsedioEnPausa(estado);
+        this.estado = new EstadoArmaAsedioEnPausa(this.estado);
 	}
 
 }

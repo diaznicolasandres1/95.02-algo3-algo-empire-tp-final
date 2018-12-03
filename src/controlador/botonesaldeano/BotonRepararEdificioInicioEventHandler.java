@@ -3,7 +3,6 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.edificios.Edificio;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
@@ -27,7 +26,7 @@ public class BotonRepararEdificioInicioEventHandler implements EventHandler<Acti
         alert.setTitle("");
         alert.setContentText("Haz click en el edificio que quieres reparar");
         alert.show();
-        contenedorPrincipal.cambiarHandlerRepararEdificio(aldeano);
+        this.contenedorPrincipal.cambiarHandlerRepararEdificio(this.aldeano);
 
 
     }

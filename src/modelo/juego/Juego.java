@@ -51,11 +51,11 @@ public class Juego {
     /*-----Metodos de Edificios-----*/
 
     public void crearAldeano(PlazaCentral plaza) {
-        jugadorActual.crearAldeano(plaza);
+        this.jugadorActual.crearAldeano(plaza);
     }
 
     public void crearEspadachin(Cuartel cuartel) {
-        jugadorActual.crearEspadachin(cuartel);
+        this.jugadorActual.crearEspadachin(cuartel);
     }
 
     public void crearArquero(Cuartel cuartel) {

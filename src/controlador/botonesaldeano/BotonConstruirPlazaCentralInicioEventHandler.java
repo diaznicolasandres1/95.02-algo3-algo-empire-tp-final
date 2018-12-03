@@ -3,9 +3,6 @@ package controlador.botonesaldeano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.excepciones.AldeanoEstaOcupadoException;
-import modelo.excepciones.OroInsuficienteException;
-import modelo.excepciones.UnidadSeleccionadaNoPerteneceAJugadorException;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
@@ -28,7 +25,7 @@ public class BotonConstruirPlazaCentralInicioEventHandler implements EventHandle
         alert.setTitle("");
         alert.setContentText("Haz click en donde quieres colocar la plaza central");
         alert.show();
-        contenedorPrincipal.cambiarHandlerConstuirPlazaCentral(aldeano);
+        this.contenedorPrincipal.cambiarHandlerConstuirPlazaCentral(this.aldeano);
 
 
 

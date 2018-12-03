@@ -26,6 +26,6 @@ public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<Act
         alert.setTitle("");
         alert.setContentText("Haz click en el lugar donde deseas mover la unidad");
         alert.show();
-        contenedorPrincipal.cambiarHandlerMoverUnidad(unidad);
+        this.contenedorPrincipal.cambiarHandlerMoverUnidad(this.unidad);
     }
 }

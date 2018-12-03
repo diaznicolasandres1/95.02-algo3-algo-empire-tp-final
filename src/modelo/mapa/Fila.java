@@ -9,7 +9,7 @@ public class Fila {
     private ArrayList<Casillero> casilleros;
 
     public Fila() {
-        casilleros = new ArrayList<>();
+        this.casilleros = new ArrayList<>();
     }
 
     public void agregarCasilleros(ArrayList<Casillero> casilleros) {
@@ -18,7 +18,7 @@ public class Fila {
     }
 
     public Casillero buscarCasillero(int columna) {
-        return casilleros.get(columna - 1);
+        return this.casilleros.get(columna - 1);
     }
 
     public void colocar(Colocable colocable, int columna) {

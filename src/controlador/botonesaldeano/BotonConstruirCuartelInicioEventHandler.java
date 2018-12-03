@@ -25,6 +25,6 @@ public class BotonConstruirCuartelInicioEventHandler implements EventHandler<Act
         alert.setTitle("");
         alert.setContentText("Haz click en donde quieres colocar el cuartel");
         alert.show();
-        contenedorPrincipal.cambiarHandlerConstruirCuartel(aldeano);
+        this.contenedorPrincipal.cambiarHandlerConstruirCuartel(this.aldeano);
     }
 }

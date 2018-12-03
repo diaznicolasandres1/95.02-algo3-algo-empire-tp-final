@@ -31,7 +31,7 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
         alert.setTitle("Error al construir Plaza Central");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.construirPlazaCentral(constructor, fila, columna);
+            this.juego.construirPlazaCentral(this.constructor, this.fila, this.columna);
         } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
@@ -45,6 +45,6 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
             alert.setContentText("El o los casilleros necesarios para construir la plaza central se encuentran ocupados");
             alert.show();
         }
-        contenedor.dibujarMapaConCasilleroHandler();
+        this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

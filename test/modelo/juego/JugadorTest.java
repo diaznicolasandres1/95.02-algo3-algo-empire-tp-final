@@ -4,7 +4,6 @@ import modelo.excepciones.*;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.mapa.Mapa;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.espadachin.Espadachin;

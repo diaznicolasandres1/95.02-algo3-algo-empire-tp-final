@@ -55,8 +55,8 @@ public class MapaTest {
     public void test04mapaColocaDosUnidadesEnMismaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(50, 25);
-        Aldeano unAldeano = new Aldeano(oro);
-        Aldeano otroAldeano = new Aldeano(oro);
+        Aldeano unAldeano = new Aldeano(this.oro);
+        Aldeano otroAldeano = new Aldeano(this.oro);
 
         mapa.colocarUnidad(unAldeano, 4, 5);
         mapa.colocarUnidad(otroAldeano, 4, 5);
@@ -66,7 +66,7 @@ public class MapaTest {
     public void test05mapaColocaUnidadFueraDeRangoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(61, 15);
-        Aldeano unAldeano = new Aldeano(oro);
+        Aldeano unAldeano = new Aldeano(this.oro);
 
         mapa.colocarUnidad(unAldeano, 100, 100);
     }
@@ -79,9 +79,9 @@ public class MapaTest {
         int indice = 0;
         Mapa mapa = new Mapa(base, altura);
         ArrayList<Aldeano> aldeanos = new ArrayList<>();
-        Aldeano ultimoAldeano = new Aldeano(oro);
+        Aldeano ultimoAldeano = new Aldeano(this.oro);
         for (int i = 0; i < altura * base; i++) {
-            aldeanos.add(new Aldeano(oro));
+            aldeanos.add(new Aldeano(this.oro));
         }
 
         for (int i = 1; i <= altura; i++) {
@@ -97,8 +97,8 @@ public class MapaTest {
     public void test07plazaSeColocaEnMapaYSeIntentaPonerUnidadEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 10, 10);
 
@@ -109,8 +109,8 @@ public class MapaTest {
     public void test08plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 10, 10);
 
@@ -120,8 +120,8 @@ public class MapaTest {
     @Test(expected = CasilleroOcupadoException.class)
     public void test09plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
         Mapa mapa = new Mapa(20, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 10, 10);
 
@@ -132,8 +132,8 @@ public class MapaTest {
     public void test10plazaSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorEdificioLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 10, 10);
 
@@ -144,8 +144,8 @@ public class MapaTest {
     public void test11castilloSeColocaEnMapaYSeIntentaPonerUnidadEnLugarOcupadoPorCastilloDeberiaLanzar16Excepciones() {
 
         Mapa mapa = new Mapa(20, 20);
-        Castillo castillo = new Castillo(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        Castillo castillo = new Castillo(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
         mapa.colocarEdificio(castillo, 16, 10, 10);
         int cantidadDeVecesLanzadaExcepcion = 0;
 
@@ -166,7 +166,7 @@ public class MapaTest {
     public void test12plazaSeColocaFueraDelRangoPositivoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 35, 100);
     }
@@ -175,7 +175,7 @@ public class MapaTest {
     public void test13plazaSeColocaFueraDelRangoNegativoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
 
         mapa.colocarEdificio(plaza, 4, -1000, -1000);
     }
@@ -184,7 +184,7 @@ public class MapaTest {
     public void test14plazaSeColocaFueraDelRangoNuloDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(30, 20);
-        PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
 
         mapa.colocarEdificio(plaza, 4, 0, 0);
     }
@@ -193,8 +193,8 @@ public class MapaTest {
     public void test15mapaColocaUnidadYSeColocaEdificioEnElMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(50, 40);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
 
         mapa.colocarUnidad(espadachin, 23, 22);
 
@@ -206,8 +206,8 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 25);
         Posicion posicion = new Posicion(5, 5);
-        Espadachin espadachin = new Espadachin(oro);
-        Arquero arquero = new Arquero(oro);
+        Espadachin espadachin = new Espadachin(this.oro);
+        Arquero arquero = new Arquero(this.oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 5, 5);
@@ -221,7 +221,7 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 30);
         Posicion posicion = new Posicion(10, 11);
-        Espadachin espadachin = new Espadachin(oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         espadachin.setPosicion(posicion);
 
         mapa.colocarUnidad(espadachin, 11, 10);
@@ -233,7 +233,7 @@ public class MapaTest {
     public void test18mapaMueveUnidadFueraDelRangoDeUnidadLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 30);
-        Espadachin espadachin = new Espadachin(oro);
+        Espadachin espadachin = new Espadachin(this.oro);
 
         mapa.colocarUnidad(espadachin, 9, 8);
 
@@ -245,8 +245,8 @@ public class MapaTest {
 
         Mapa mapa = new Mapa(25, 36);
         Posicion posicion = new Posicion(3, 1);
-        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(oro);
-        Cuartel cuartel = new Cuartel(oro);
+        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(this.oro);
+        Cuartel cuartel = new Cuartel(this.oro);
         armaAsedio.setPosicion(posicion);
 
         cuartel.colocarseEn(mapa, 1, 1);
@@ -261,8 +261,8 @@ public class MapaTest {
         Mapa mapa = new Mapa(25, 36);
         Posicion unaPosicion = new Posicion(3, 1);
         Posicion otraPosicion = new Posicion(2, 2);
-        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(oro);
-        Arquero arquero = new Arquero(oro);
+        ArmaDeAsedio armaAsedio = new ArmaDeAsedio(this.oro);
+        Arquero arquero = new Arquero(this.oro);
         armaAsedio.setPosicion(unaPosicion);
         arquero.setPosicion(otraPosicion);
 
@@ -276,8 +276,8 @@ public class MapaTest {
     public void test21mapaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 40);
-        Arquero arquero = new Arquero(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         mapa.colocarUnidad(arquero, 10, 10);
         mapa.descolocarColocable(10, 10);
@@ -290,7 +290,7 @@ public class MapaTest {
     public void test22mapaColocaYDescolocaEdificioYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 40);
-        Castillo castillo = new Castillo(oro);
+        Castillo castillo = new Castillo(this.oro);
 
         mapa.colocarEdificio(castillo, 16, 10, 10);
         for (int i = 0; i < 4; i++) {
@@ -300,20 +300,20 @@ public class MapaTest {
         }
 
         for (int i = 0; i < 8; i++) {
-            mapa.colocarUnidad(new Arquero(oro), 10 + i, 10);
-            mapa.colocarUnidad(new Arquero(oro), 10 + i, 11);
+            mapa.colocarUnidad(new Arquero(this.oro), 10 + i, 10);
+            mapa.colocarUnidad(new Arquero(this.oro), 10 + i, 11);
         }
 
-        mapa.colocarUnidad(new Aldeano(oro), 15, 10);
+        mapa.colocarUnidad(new Aldeano(this.oro), 15, 10);
     }
 
     @Test
     public void test23mapaBuscaColocablesEnRangosValidosYDevuelveColocablesCorrectos() {
 
         Mapa mapa = new Mapa(20, 20);
-        Castillo castillo = new Castillo(oro);
-        Aldeano unAldeano = new Aldeano(oro);
-        Aldeano otroAldeano = new Aldeano(oro);
+        Castillo castillo = new Castillo(this.oro);
+        Aldeano unAldeano = new Aldeano(this.oro);
+        Aldeano otroAldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(castillo, 16, 10, 10);
         mapa.colocarUnidad(unAldeano, 14, 14);
@@ -330,10 +330,10 @@ public class MapaTest {
     public void test24mapaBuscaColocablesEnRangoBordeDelMapaDevuelveColocablesCorrectos() {
 
         Mapa mapa = new Mapa(20, 20);
-        Castillo castillo = new Castillo(oro);
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Aldeano unAldeano = new Aldeano(oro);
-        Aldeano otroAldeano = new Aldeano(oro);
+        Castillo castillo = new Castillo(this.oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Aldeano unAldeano = new Aldeano(this.oro);
+        Aldeano otroAldeano = new Aldeano(this.oro);
 
         mapa.colocarEdificio(castillo, 16, 1, 1);
         mapa.colocarEdificio(plaza, 4, 5, 4);
@@ -352,8 +352,8 @@ public class MapaTest {
     public void test25mapaColocaAlrededorDePlazaCorrectamente() {
 
         Mapa mapa = new Mapa(20, 20);
-        Aldeano aldeano = new Aldeano(oro);
-        PlazaCentral plaza = new PlazaCentral(oro);
+        Aldeano aldeano = new Aldeano(this.oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
 
         mapa.colocarEdificio(plaza, 8, 1, 1);
         mapa.colocarAlrededor(1, 1, 8, aldeano);
@@ -365,8 +365,8 @@ public class MapaTest {
     public void test26mapaColocaUnidadAlrededorDeCastilloCorrectamente() {
 
         Mapa mapa = new Mapa(20, 20);
-        Aldeano aldeano = new Aldeano(oro);
-        Castillo castillo = new Castillo(oro);
+        Aldeano aldeano = new Aldeano(this.oro);
+        Castillo castillo = new Castillo(this.oro);
 
         mapa.colocarEdificio(castillo, 16, 1, 1);
         mapa.colocarAlrededor(1, 1, 16, aldeano);
@@ -378,21 +378,21 @@ public class MapaTest {
     public void test27mapaColocaUnidadEnElUnicoLugarLibreAlrededorDeCastillo() {
 
         Mapa mapa = new Mapa(20, 20);
-        Castillo castillo = new Castillo(oro);
-        Aldeano aldeano = new Aldeano(oro);
+        Castillo castillo = new Castillo(this.oro);
+        Aldeano aldeano = new Aldeano(this.oro);
 
         castillo.colocarseEn(mapa, 5, 5);
         for (int i = 0; i < 6; i++) {
-            mapa.colocarUnidad(new Aldeano(oro), 4, 4 + i);
+            mapa.colocarUnidad(new Aldeano(this.oro), 4, 4 + i);
         }
         for (int i = 1; i < 6; i++) {
-            mapa.colocarUnidad(new Aldeano(oro), 4 + i, 4);
+            mapa.colocarUnidad(new Aldeano(this.oro), 4 + i, 4);
         }
         for (int i = 0; i < 4; i++) {
-            mapa.colocarUnidad(new Aldeano(oro), 9, 5 + i);
+            mapa.colocarUnidad(new Aldeano(this.oro), 9, 5 + i);
         }
         for (int i = 0; i < 4; i++) {
-            mapa.colocarUnidad(new Aldeano(oro), 5 + i, 9);
+            mapa.colocarUnidad(new Aldeano(this.oro), 5 + i, 9);
         }
 
         mapa.colocarAlrededor(5, 5, 16, aldeano);
@@ -404,31 +404,31 @@ public class MapaTest {
     public void test28mapaColocaEdificioParcialmenteSobrePosicionesOcupadasSeLiberanEsasPosicionesYSeColocanUnidadesEnEsasPosicionesLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 25);
-        Castillo castillo = new Castillo(oro);
+        Castillo castillo = new Castillo(this.oro);
 
-        mapa.colocarUnidad(new Aldeano(oro), 10, 10);
+        mapa.colocarUnidad(new Aldeano(this.oro), 10, 10);
 
         try {
             mapa.colocarEdificio(castillo, 16, 7, 7);
         } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
-            mapa.colocarUnidad(new Aldeano(oro), 8, 8);
+            mapa.colocarUnidad(new Aldeano(this.oro), 8, 8);
         }
 
-        mapa.colocarUnidad(new Aldeano(oro), 8, 8);
+        mapa.colocarUnidad(new Aldeano(this.oro), 8, 8);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
     public void test29mapaColocaEdificioParcialmenteFueraDelRangoDelMapaSeLiberanEsasPosicionesYSeColocanUnidadesLanzaExcepcion() {
 
         Mapa mapa = new Mapa(25, 25);
-        Castillo castillo = new Castillo(oro);
+        Castillo castillo = new Castillo(this.oro);
 
         try {
             mapa.colocarEdificio(castillo, 16, 23, 23);
         } catch (NoHayLugarSuficenteParaColocarEdificioException e) {
-            mapa.colocarUnidad(new Aldeano(oro), 21, 21);
+            mapa.colocarUnidad(new Aldeano(this.oro), 21, 21);
         }
 
-        mapa.colocarUnidad(new Aldeano(oro), 21, 21);
+        mapa.colocarUnidad(new Aldeano(this.oro), 21, 21);
     }
 }

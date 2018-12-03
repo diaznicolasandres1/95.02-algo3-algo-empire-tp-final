@@ -10,16 +10,13 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
     private ContenedorPrincipal contenedorPrincipal;
 
     public BotonCambiarTurnoEventHandler(Juego juego, ContenedorPrincipal contenedorPrincipal){
-
         this.juego = juego;
         this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        juego.cambiarTurno();
-        contenedorPrincipal.crearBottom();
-
-
+        this.juego.cambiarTurno();
+        this.contenedorPrincipal.crearBottom();
     }
 }

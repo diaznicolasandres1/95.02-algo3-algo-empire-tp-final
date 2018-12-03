@@ -36,8 +36,8 @@ public class Jugador {
         this.poblacion = new Poblacion();
         this.estructuras = new ArrayList<>();
         this.mapa = mapa;
-        this.colocarCastillo(oro, castilloFil, castilloCol);
-        this.colocarPlazaYAldeanos(oro, plazaFil, plazaCol);
+        this.colocarCastillo(this.oro, castilloFil, castilloCol);
+        this.colocarPlazaYAldeanos(this.oro, plazaFil, plazaCol);
     }
 
     /*-----Inicializadores-----*/
@@ -61,7 +61,7 @@ public class Jugador {
     private void crearAldeanosIniciales(Oro oro, PlazaCentral plaza) {
         for (int i = 0; i < ALDEANOS_INICIALES; i++) {
             Aldeano aldeano = new Aldeano(oro);
-            plaza.colocarAlrededor(mapa, aldeano);
+            plaza.colocarAlrededor(this.mapa, aldeano);
             this.poblacion.agregarUnidad(aldeano);
         }
     }
@@ -105,28 +105,28 @@ public class Jugador {
     public void crearAldeano(PlazaCentral plaza) {
         this.esEdificioPropio(plaza);
         Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
-        plaza.colocarAlrededor(mapa, aldeano);
+        plaza.colocarAlrededor(this.mapa, aldeano);
         this.poblacion.agregarUnidad(aldeano);
     }
 
     public void crearEspadachin(Cuartel cuartel) {
         this.esEdificioPropio(cuartel);
         Espadachin espadachin = cuartel.crearEspadachinDesdeCuartel();
-        cuartel.colocarAlrededor(mapa, espadachin);
+        cuartel.colocarAlrededor(this.mapa, espadachin);
         this.poblacion.agregarUnidad(espadachin);
     }
 
     public void crearArquero(Cuartel cuartel) {
         this.esEdificioPropio(cuartel);
         Arquero arquero = cuartel.crearArqueroDesdeCuartel();
-        cuartel.colocarAlrededor(mapa, arquero);
+        cuartel.colocarAlrededor(this.mapa, arquero);
         this.poblacion.agregarUnidad(arquero);
     }
 
     public void crearArmaDeAsedio(Castillo castillo) {
         this.esEdificioPropio(castillo);
         ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
-        castillo.colocarAlrededor(mapa, armaDeAsedio);
+        castillo.colocarAlrededor(this.mapa, armaDeAsedio);
         this.poblacion.agregarUnidad(armaDeAsedio);
     }
 
@@ -135,14 +135,14 @@ public class Jugador {
     public void construirCuartel(Aldeano aldeano, int fila, int columna) {
         this.esUnidadPropia(aldeano);
         Cuartel cuartel = aldeano.construirCuartel();
-        aldeano.colocarEdificio(cuartel,mapa, fila, columna);
+        aldeano.colocarEdificio(cuartel, this.mapa, fila, columna);
         this.estructuras.add(cuartel);
     }
 
     public void construirPlazaCentral(Aldeano aldeano, int fila, int columna) {
         this.esUnidadPropia(aldeano);
         PlazaCentral plaza = aldeano.construirPlazaCentral();
-        aldeano.colocarEdificio(plaza, mapa, fila, columna);
+        aldeano.colocarEdificio(plaza, this.mapa, fila, columna);
         this.estructuras.add(plaza);
     }
     
@@ -163,7 +163,7 @@ public class Jugador {
         try {
             atacante.atacar(objetivo);
         } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
-            objetivo.descolocarseDe(mapa);
+            objetivo.descolocarseDe(this.mapa);
             this.oponente.removerColocable(objetivo);
         }
     }

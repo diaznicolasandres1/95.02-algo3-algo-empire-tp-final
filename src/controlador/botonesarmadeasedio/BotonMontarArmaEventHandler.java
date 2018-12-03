@@ -27,7 +27,7 @@ public class BotonMontarArmaEventHandler implements EventHandler<ActionEvent> {
         alert.setTitle("Error al montar arma");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.montarArma(armaDeAsedio);
+            this.juego.montarArma(this.armaDeAsedio);
         } catch (ArmaDeAsedioException | ColocableSeleccionadoException e) {
             alert.setContentText(e.getMessage());
             alert.show();

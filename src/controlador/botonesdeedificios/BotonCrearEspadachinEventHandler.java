@@ -30,7 +30,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
         alert.setTitle("Error al crear espadachin");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.crearEspadachin(this.cuartel);
+            this.juego.crearEspadachin(this.cuartel);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();

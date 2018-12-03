@@ -30,7 +30,7 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
         alert.setTitle("Error al construir Cuartel");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.construirCuartel(constructor, fila, columna);
+            this.juego.construirCuartel(this.constructor, this.fila, this.columna);
         } catch (ColocableSeleccionadoException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
@@ -44,6 +44,6 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
             alert.setContentText("El o los casilleros necesarios para construir el cuartel se encuentran ocupados");
             alert.show();
         }
-        contenedor.dibujarMapaConCasilleroHandler();
+        this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

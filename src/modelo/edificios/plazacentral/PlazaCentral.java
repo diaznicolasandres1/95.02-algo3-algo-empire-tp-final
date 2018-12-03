@@ -31,24 +31,24 @@ public class PlazaCentral extends Edificio {
         if (this.aldeanoReparando != aldeano) {
             throw new EdificioSiendoReparadoException();
         }
-        estado.reparar(this);
+        this.estado.reparar(this);
     }
 
     public void recibirDanio(int valorDanio) {
-        estado.recibirDanio(this, valorDanio);
+        this.estado.recibirDanio(this, valorDanio);
     }
 
     public Aldeano crearAldeanoDesdePlaza() {
-        return estado.crearAldeano(oro);
+        return this.estado.crearAldeano(this.oro);
     }
 
     @Override
     public void terminoDeCrearse() {
-        estado = new EstadoPlazaCentralCreada();
+        this.estado = new EstadoPlazaCentralCreada();
     }
 
     @Override
     public void avanzarTurno() {
-        estado.avanzarTurno(this);
+        this.estado.avanzarTurno(this);
     }
 }

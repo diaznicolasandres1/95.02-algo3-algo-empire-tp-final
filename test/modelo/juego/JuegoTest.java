@@ -12,7 +12,6 @@ import modelo.unidades.espadachin.Espadachin;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.excepciones.EdificioObjetivoEsPropioException;
 import modelo.excepciones.UnidadObjetivoEsPropiaException;
-import modelo.excepciones.UnidadFueDestruidaException;
 
 public class JuegoTest {
 
@@ -23,7 +22,7 @@ public class JuegoTest {
 
         String nombre = juego.getNombreJugadorActual();
 
-        Assert.assertTrue(nombre == "Rojo" || nombre.equals("Azul"));
+        Assert.assertTrue(nombre.equals("Rojo") || nombre.equals("Azul"));
     }
 
     @Test

@@ -27,8 +27,8 @@ public class FilaTest {
     public void test02filaColocaUnidadEIntentaColocarNuevamenteEnMismoLugarLanzaExcepcion() {
 
         Fila fila = new Fila();
-        Arquero arquero = new Arquero(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         ArrayList<Casillero> casilleros = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             casilleros.add(new Casillero());
@@ -44,8 +44,8 @@ public class FilaTest {
     public void test03filaColocaUnidadFueraDeRangoYLanzaExcepcion() {
 
         Fila fila = new Fila();
-        Arquero arquero = new Arquero(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         ArrayList<Casillero> casilleros = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             casilleros.add(new Casillero());
@@ -61,8 +61,8 @@ public class FilaTest {
     public void test04filaColocaUnidadFueraDeRangoYLanzaExcepcion() {
 
         Fila fila = new Fila();
-        Arquero arquero = new Arquero(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         ArrayList<Casillero> casilleros = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             casilleros.add(new Casillero());
@@ -78,8 +78,8 @@ public class FilaTest {
     public void test05filaColocaUnidadFueraDeRangoNegativoYLanzaExcepcion() {
 
         Fila fila = new Fila();
-        Arquero arquero = new Arquero(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         ArrayList<Casillero> casilleros = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             casilleros.add(new Casillero());
@@ -95,8 +95,8 @@ public class FilaTest {
     public void test06filaColocaYDescolocaUnidadYLuegoColocaUnidadDosVecesEnMismoLugarLanzaExcepcion() {
 
         Fila fila = new Fila();
-        Arquero arquero = new Arquero(oro);
-        Espadachin espadachin = new Espadachin(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Espadachin espadachin = new Espadachin(this.oro);
         ArrayList<Casillero> casilleros = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             casilleros.add(new Casillero());
@@ -131,7 +131,7 @@ public class FilaTest {
 
         Fila fila = new Fila();
         ArrayList<Casillero> casilleros = new ArrayList<>();
-        Aldeano aldeano = new Aldeano(oro);
+        Aldeano aldeano = new Aldeano(this.oro);
         for (int i = 0; i < 50; i++) {
             Casillero casillero = new Casillero();
             casillero.colocar(aldeano);

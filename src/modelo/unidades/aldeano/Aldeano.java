@@ -19,48 +19,48 @@ public class Aldeano extends Unidad {
         this.vida = 50;
         this.oro = oroNuevo;
         this.costo = 25;
-        oro.restarOro(costo);
+        this.oro.restarOro(this.costo);
     }
 
     public void repararEdificio(Edificio edificio) {
-        estado.repararEdificio(this, edificio);
+        this.estado.repararEdificio(this, edificio);
     }
 
     public void estarOcupado(int turnosOcupado) {
-        estado = new EstadoAldeanoOcupado(turnosOcupado);
+        this.estado = new EstadoAldeanoOcupado(turnosOcupado);
     }
 
     public void estarEnReparacion() {
-        estado = new EstadoAldeanoReparando();
+        this.estado = new EstadoAldeanoReparando();
     }
     
     public void estarDisponible() {
-        estado = new EstadoAldeanoDisponible();
+        this.estado = new EstadoAldeanoDisponible();
     }
 
     public Cuartel construirCuartel() {
-        return estado.construirCuartel(this, 3, oro);
+        return this.estado.construirCuartel(this, 3, this.oro);
     }
 
     public PlazaCentral construirPlazaCentral() {
-        return estado.construirPlazaCentral(this, 3, oro);
+        return this.estado.construirPlazaCentral(this, 3, this.oro);
     }
 
     @Override
     public void avanzarTurno() {
-        estado.recolectarOro(oro);
-        estado.avanzarTurno(this);
+        this.estado.recolectarOro(this.oro);
+        this.estado.avanzarTurno(this);
     }
 
     @Override
     public void moverHacia(Posicion destino, Mapa mapa) {
-        estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, this.distanciaDeMovimiento);
+        this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, this.distanciaDeMovimiento);
         this.estarOcupado(1);
     }
 
     @Override
     public void matar() {
-        estado.matar();
+        this.estado.matar();
     }
 
     public void colocarEdificio(Edificio edificio, Mapa mapa, int fila, int columna) {

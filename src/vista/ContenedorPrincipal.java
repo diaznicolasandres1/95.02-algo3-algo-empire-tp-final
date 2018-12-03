@@ -1,20 +1,9 @@
 package vista;
 
 import controlador.BotonCambiarTurnoEventHandler;
-import controlador.BotonMoverUnidadHaciaInicioEventHandler;
-import controlador.BotonSalirEventHandler;
-import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
-import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
-import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
-import controlador.botonesarmadeasedio.BotonDesmontarArmaEventHandler;
-import controlador.botonesarmadeasedio.BotonMontarArmaEventHandler;
-import controlador.botonesataque.BotonAtacarInicioEventHandler;
-import controlador.botonesdeedificios.BotonCrearAldeanoEventHandler;
-import controlador.botonesdeedificios.BotonCrearArmaDeAsedioEventHandler;
-import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
-import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -22,7 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
 import modelo.edificios.plazacentral.PlazaCentral;
@@ -35,238 +23,150 @@ import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import java.util.ArrayList;
 
 public class ContenedorPrincipal extends BorderPane {
-    private CambiadorDeHandler cambiadorDeHandler;
-    private Juego juego;
-    private GridPane tablero = new GridPane();
-    private String jugadorUno;
-    private String jugadorDos;
-    private VBox izquierdo = new VBox();
-    private VBox derecho = new VBox();
+
+    private final CambiadorDeHandler cambiadorDeHandler;
+    private final CreadorDeBotones creadorDeBotones;
+    private final Juego juego;
+    private final GridPane tablero = new GridPane();
+    private final String jugadorUno;
+    private final String jugadorDos;
+    private final VBox izquierdo = new VBox();
+    private final VBox derecho = new VBox();
     private HBox bottom = new HBox();
-    public ArrayList<Boton> botones = new ArrayList<Boton>();
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
         this.juego = new Juego(unJugador, otroJugador);
         this.jugadorUno = unJugador;
         this.jugadorDos = otroJugador;
-
         this.dibujarMapaConCasilleroHandler();
         this.setCostados();
         this.crearBottom();
-        this.cambiadorDeHandler =  new CambiadorDeHandler(juego,this,tablero);
-        Image fondo = new Image("file:src/vista/imagenes/fondoContenedor.jpg", 1600, 920, false, true);
+        this.creadorDeBotones = new CreadorDeBotones();
+        this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
+        Image fondo = new Image("/vista/imagenes/fondo_juego_1.jpg", 1600, 920, false, true);
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
     }
 
-
-
-    private void setCostados(){
+    private void setCostados() {
 
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
-        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(juego,this);
-        Boton botonCambioTurno1 = new Boton("Cambiar Turno",cambiadorTurno);
-        Boton botonCambioTurno2 = new Boton("Cambiar Turno",cambiadorTurno);
-        botonCambioTurno2.setPadding(new Insets(15));
-        botonCambioTurno1.setPadding(new Insets(15));
-        //tituloDer.setPadding(new Insets(15));
-        //tituloIzq.setPadding(new Insets(15));
+        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
+        Boton botonFinalizarTurno1 = new Boton("Finalizar Turno", cambiadorTurno);
+        Boton botonFinalizarTurno2 = new Boton("Finalizar Turno", cambiadorTurno);
+        botonFinalizarTurno2.setPadding(new Insets(15));
+        botonFinalizarTurno1.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFill(Color.WHITE);
         tituloIzq.setFill(Color.WHITE);
 
-
-        izquierdo.setAlignment(Pos.TOP_LEFT);
-        derecho.setAlignment(Pos.TOP_RIGHT);
-        izquierdo.setSpacing(20);
-        derecho.setSpacing(20);
-        derecho.setPadding(new Insets(25));
-        izquierdo.setPadding(new Insets(25));
-        izquierdo.getChildren().addAll(tituloIzq, botonCambioTurno1);
-        derecho.getChildren().addAll(tituloDer, botonCambioTurno2);
-        this.setLeft(izquierdo);
-        this.setRight(derecho);
+        this.izquierdo.setAlignment(Pos.TOP_LEFT);
+        this.derecho.setAlignment(Pos.TOP_RIGHT);
+        this.izquierdo.setSpacing(20);
+        this.derecho.setSpacing(20);
+        this.derecho.setPadding(new Insets(25));
+        this.izquierdo.setPadding(new Insets(25));
+        this.izquierdo.getChildren().addAll(tituloIzq, botonFinalizarTurno1);
+        this.derecho.getChildren().addAll(tituloDer, botonFinalizarTurno2);
+        this.setLeft(this.izquierdo);
+        this.setRight(this.derecho);
         this.setPadding(new Insets(25));
     }
 
-    public void crearBottom(){
+    public void crearBottom() {
         this.bottom = new HBox();
-        setjugadorActual();
+        this.setjugadorActual();
         Label comienzo = new Label("Clickea en una unidad o edificio");
-        bottom.getChildren().add(comienzo);
-        this.setBottom(bottom);
-        bottom.setAlignment(Pos.CENTER);
-        bottom.setPadding(new Insets(20));
-
+        comienzo.setTextFill(Color.WHITE);
+        this.bottom.getChildren().add(comienzo);
+        this.setBottom(this.bottom);
+        this.bottom.setAlignment(Pos.CENTER);
+        this.bottom.setPadding(new Insets(20));
     }
 
-    private void setjugadorActual(){
-        Label jugadorActual = new Label("Es el turno de: "+this.juego.getNombreJugadorActual());
+    private void setjugadorActual() {
+        Label jugadorActual = new Label("Es el turno de: " + this.juego.getNombreJugadorActual());
         jugadorActual.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
         jugadorActual.setPadding(new Insets(20));
-        bottom.getChildren().add(jugadorActual);
-
+        jugadorActual.setTextFill(Color.WHITE);
+        this.bottom.getChildren().add(jugadorActual);
     }
-
-
-
-
-
-
-
-
-    /*Meter esto en una clase Dibujadora de metodos*/
 
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
         dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
-        this.setCenter(tablero);
+        this.setCenter(this.tablero);
     }
 
-    public void dibujarMetodosAldeano(Aldeano aldeano){
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-
-        BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego,aldeano,this);
-        Boton construirCuartel = new Boton("Construir Cuartel",cuartelEventHandler);
-
-        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego,aldeano,this);
-        Boton construirPlaza = new Boton("Constuir Plaza Central", plazaCentralEventHandler);
-
-        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego,aldeano,this);
-        Boton repararEdificio = new Boton("Reparar edificio", repararEdificioInicioEventHandler);
-
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,aldeano,this);
-        Boton moverAldeano = new Boton("Mover aldeano",moverHandler);
-
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(construirCuartel,construirPlaza,repararEdificio,moverAldeano);
-        this.setBottom(bottom);
-        bottom.setAlignment(Pos.CENTER);
+    public void dibujarMetodosAldeano(Aldeano aldeano) {
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(aldeano, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
-    public void dibujarMetodosCuartel(Cuartel cuartel){
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-
-        BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego,cuartel,this);
-        Boton crearArquero = new Boton("Crear arquero",arqueroHandler);
-
-        BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego,cuartel,this);
-        Boton crearEspadachin = new Boton("Crear espadachin", espadachinEventHandler);
-
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(crearArquero,crearEspadachin);
-        this.setBottom(bottom);
-        bottom.setAlignment(Pos.CENTER);
-
-
-
+    public void dibujarMetodosCuartel(Cuartel cuartel) {
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(cuartel, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
-    public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio){
-
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-
-        BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego,armaDeAsedio,this );
-        Boton montarArma = new Boton("Montar arma de asedio",montarArmaEventHandler);
-
-        BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego,armaDeAsedio,this);
-        Boton desmontarArma = new Boton("Desmontar arma de asedio",desmontarArmaEventHandler);
-
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,armaDeAsedio,this);
-        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
-
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)armaDeAsedio,this);
-        Boton moverArma = new Boton("Mover unidad",moverHandler);
-
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(montarArma,desmontarArma,atacar,moverArma);
-        this.setBottom(bottom);
-        bottom.setAlignment(Pos.CENTER);
+    public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(armaDeAsedio, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
-    public void dibujarMetodosPlazaCentral(PlazaCentral plaza){
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-        BotonCrearAldeanoEventHandler crearAldeanoEventHandler  = new BotonCrearAldeanoEventHandler(juego,plaza,this);
-        Boton crearAldeano = new Boton("Crear Aldeano",crearAldeanoEventHandler);
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(crearAldeano);
-        this.setBottom(bottom);
-
-        bottom.setAlignment(Pos.CENTER);
+    public void dibujarMetodosPlazaCentral(PlazaCentral plaza) {
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(plaza, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
-    public void dibujarMetodoEspadachinOArquero(Atacante atacante){
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego,atacante,this);
-        Boton atacar = new Boton("Atacar",atacarInicioEventHandler);
-
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego,(Unidad)atacante,this);
-        Boton moverEspadachin = new Boton("Mover unidad",moverHandler);
-
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(atacar,moverEspadachin);
-
-        this.setBottom(bottom);
-        bottom.setAlignment(Pos.CENTER);
-
+    public void dibujarMetodoEspadachinOArquero(Atacante atacante) {
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
     public void dibujarMetodosCastillo(Castillo castillo) {
-        this.bottom = new HBox(); //Reinicio el vbox de bottom
-        BotonCrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new BotonCrearArmaDeAsedioEventHandler(juego,castillo,this);
-        Boton crearArmaDeAsedio = new Boton("Crear arma de asedio",armaDeAsedioEventHandler);
-        setjugadorActual();
-        bottom.setSpacing(10);
-        bottom.getChildren().addAll(crearArmaDeAsedio);
-        this.setBottom(bottom);
-
-        bottom.setAlignment(Pos.CENTER);
+        this.bottom.getChildren().clear();
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(castillo, this.juego, this);
+        this.configurarBottom();
+        botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
 
-
-
-
-
-
-    /*Cambiadores de handlers*/
-
-    public void cambiarHandlerConstruirCuartel(Aldeano aldeano){
-        cambiadorDeHandler.cambiadorAConstruirCuartelFin(aldeano);
+    private void configurarBottom() {
+        this.setjugadorActual();
+        this.bottom.setSpacing(10);
+        this.bottom.setAlignment(Pos.CENTER);
     }
 
-    public void cambiarHandlerConstuirPlazaCentral(Aldeano aldeano){
-        cambiadorDeHandler.cambiadorAConstruirPlazaCentralFin(aldeano);
+    /* Cambiadores de handlers */
+
+    public void cambiarHandlerConstruirCuartel(Aldeano aldeano) {
+        this.cambiadorDeHandler.cambiadorAConstruirCuartelFin(aldeano);
     }
 
-    public void cambiarHandlerRepararEdificio(Aldeano aldeano){
-        cambiadorDeHandler.cambiadorRepararEdificio(aldeano);
+    public void cambiarHandlerConstuirPlazaCentral(Aldeano aldeano) {
+        this.cambiadorDeHandler.cambiadorAConstruirPlazaCentralFin(aldeano);
+    }
+
+    public void cambiarHandlerRepararEdificio(Aldeano aldeano) {
+        this.cambiadorDeHandler.cambiadorRepararEdificio(aldeano);
     }
 
     public void cambiarHandlerMoverUnidad(Unidad unidad) {
-        cambiadorDeHandler.cambiadorMoverUnidad(unidad);
+        this.cambiadorDeHandler.cambiadorMoverUnidad(unidad);
     }
 
     public void cambiarHandlerAtaque(Atacante atacante) {
-        cambiadorDeHandler.cambiarHandlerAtaque(atacante);
-
+        this.cambiadorDeHandler.cambiarHandlerAtaque(atacante);
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-

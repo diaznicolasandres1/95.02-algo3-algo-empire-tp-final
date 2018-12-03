@@ -27,7 +27,7 @@ public class BotonDesmontarArmaEventHandler  implements EventHandler<ActionEvent
         alert.setTitle("Error al desmontar arma");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.desmontarArma(armaDeAsedio);
+            this.juego.desmontarArma(this.armaDeAsedio);
         } catch (ArmaDeAsedioException | ColocableSeleccionadoException e) {
             alert.setContentText(e.getMessage());
             alert.show();

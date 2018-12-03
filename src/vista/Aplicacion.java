@@ -2,6 +2,7 @@ package vista;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
@@ -14,6 +15,7 @@ public class Aplicacion extends Application {
     public void start(Stage primaryStage) {
 
         primaryStage.setTitle("AlgoEmpire");
+        primaryStage.getIcons().add(new Image("/vista/imagenes/icono_barra_titulo.jpg"));
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada();
         Scene escenaInicial = new Scene(contenedorEntrada);

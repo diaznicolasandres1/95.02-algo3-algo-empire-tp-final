@@ -11,14 +11,14 @@ public class Oro {
     }
 
     public void sumarOro(int cantidadSumar) {
-        cantidadOro += cantidadSumar;
+        this.cantidadOro += cantidadSumar;
     }
 
     public void restarOro(int cantidadRestar) {
-        if (cantidadRestar > cantidadOro) {
+        if (cantidadRestar > this.cantidadOro) {
             throw new OroInsuficienteException();
         }
-        cantidadOro -= cantidadRestar;
+        this.cantidadOro -= cantidadRestar;
     }
 
     public int getOro() {

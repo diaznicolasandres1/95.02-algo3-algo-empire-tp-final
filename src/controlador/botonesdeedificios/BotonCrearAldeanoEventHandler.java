@@ -30,7 +30,7 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
         alert.setTitle("Error al crear aldeano");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.crearAldeano(this.plaza);
+            this.juego.crearAldeano(this.plaza);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();
@@ -44,6 +44,6 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
-        contenedorPrincipal.dibujarMapaConCasilleroHandler();
+        this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

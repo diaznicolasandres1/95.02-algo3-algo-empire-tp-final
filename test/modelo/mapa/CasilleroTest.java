@@ -22,8 +22,8 @@ public class CasilleroTest {
     public void test02casilleroEsOcupadoPorUnidadYSeIntentaOcuparNuevamentePorOtraUnidadLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
-        Arquero arquero = new Arquero(oro);
-        Arquero otroArquero = new Arquero(oro);
+        Arquero arquero = new Arquero(this.oro);
+        Arquero otroArquero = new Arquero(this.oro);
 
         casillero.colocar(arquero);
 
@@ -34,8 +34,8 @@ public class CasilleroTest {
     public void test03casilleroOcupadoPorEdificioSeIntentaOcuparPorUnidadLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
-        PlazaCentral plaza = new PlazaCentral(oro);
-        Arquero arquero = new Arquero(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        Arquero arquero = new Arquero(this.oro);
 
         casillero.colocar(plaza);
 
@@ -46,8 +46,8 @@ public class CasilleroTest {
     public void test04casilleroOcupadoPorEdificioSeIntentaOcuparPorEdificioLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
-        PlazaCentral plaza = new PlazaCentral(oro);
-        PlazaCentral otraPlaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        PlazaCentral otraPlaza = new PlazaCentral(this.oro);
 
         casillero.colocar(plaza);
 
@@ -58,8 +58,8 @@ public class CasilleroTest {
     public void test05casilleroEsOcupadoYDesocupadoMultiplesVecesYAlFinalLanzaExcepcion() {
 
         Casillero casillero = new Casillero();
-        PlazaCentral plaza = new PlazaCentral(oro);
-        PlazaCentral otraPlaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
+        PlazaCentral otraPlaza = new PlazaCentral(this.oro);
 
         for (int i = 0; i < 1000; i++) {
             casillero.colocar(plaza);
@@ -82,7 +82,7 @@ public class CasilleroTest {
     public void test07casilleroEsOcupadoPorUnidadYSeVerificaContenido() {
 
         Casillero casillero = new Casillero();
-        Arquero arquero = new Arquero(oro);
+        Arquero arquero = new Arquero(this.oro);
 
         casillero.colocar(arquero);
 
@@ -93,7 +93,7 @@ public class CasilleroTest {
     public void test08casilleroEsOcupadoPorEdificioYSeVerificaContenido() {
 
         Casillero casillero = new Casillero();
-        PlazaCentral plaza = new PlazaCentral(oro);
+        PlazaCentral plaza = new PlazaCentral(this.oro);
 
         casillero.colocar(plaza);
 

@@ -16,7 +16,7 @@ public class Espadachin extends Unidad implements Atacante {
     public Espadachin(Oro oro) {
         this.vida = 100;
         this.costo = 50;
-        oro.restarOro(costo);
+        oro.restarOro(this.costo);
     }
 
     @Override
@@ -24,26 +24,26 @@ public class Espadachin extends Unidad implements Atacante {
         if (colocable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
-        estado.atacar(colocable, this);
+        this.estado.atacar(colocable, this);
         this.estarOcupado();
     }
 
     @Override
     public void moverHacia(Posicion destino, Mapa mapa) {
-        estado.moverEspadachinDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
+        this.estado.moverEspadachinDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
         this.estarOcupado();
     }
 
     public void avanzarTurno() {
-        estado.avanzarTurno(this);
+        this.estado.avanzarTurno(this);
     }
 
     public void estarDisponible() {
-        estado = new EstadoEspadachinDisponible();
+        this.estado = new EstadoEspadachinDisponible();
     }
 
     public void estarOcupado() {
-        estado = new EstadoEspadachinOcupado();
+        this.estado = new EstadoEspadachinOcupado();
     }
 
 }

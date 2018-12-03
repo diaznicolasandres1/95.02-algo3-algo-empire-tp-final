@@ -4,7 +4,6 @@ import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.excepciones.*;
-import modelo.excepciones.CasilleroOcupadoException;
 import modelo.juego.Oro;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;

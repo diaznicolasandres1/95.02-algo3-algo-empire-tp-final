@@ -30,7 +30,7 @@ public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> 
         alert.setTitle("Error al crear arquero");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.crearArquero(this.cuartel);
+            this.juego.crearArquero(this.cuartel);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();

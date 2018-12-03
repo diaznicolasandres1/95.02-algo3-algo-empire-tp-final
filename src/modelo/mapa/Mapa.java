@@ -110,7 +110,6 @@ public class Mapa {
                     this.colocarUnidad(unidad, auxFila + i, auxColumna + j);
                     estaColocado = true;
                 } catch (IndexOutOfBoundsException | CasilleroOcupadoException e) {
-                    continue;
                 }
             }
         }
@@ -130,10 +129,10 @@ public class Mapa {
 
     private void agregarCasilleros() {
 
-        for (int i = 0; i < altura; i++) {
-            for (int j = 0; j < base; j++) {
+        for (int i = 0; i < this.altura; i++) {
+            for (int j = 0; j < this.base; j++) {
                 Casillero casillero = new Casillero();
-                casilleros.add(casillero);
+                this.casilleros.add(casillero);
             }
         }
     }
@@ -142,7 +141,7 @@ public class Mapa {
         for (int i = 1; i <= this.altura; i++) {
             ArrayList<Casillero> casillerosEnFila = new ArrayList<>();
             for (int j = (i - 1) * this.base; j < i * this.base; j++) {
-                casillerosEnFila.add(casilleros.get(j));
+                casillerosEnFila.add(this.casilleros.get(j));
             }
             Fila fila = new Fila();
             fila.agregarCasilleros(casillerosEnFila);
@@ -157,7 +156,7 @@ public class Mapa {
     }
 
     private Fila buscarFila(int numeroFila) {
-        return filas.get(numeroFila - 1);
+        return this.filas.get(numeroFila - 1);
     }
 
     private boolean esTamanioValido(int base, int altura) {

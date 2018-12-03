@@ -31,7 +31,7 @@ public abstract class Edificio implements Colocable {
     protected Aldeano aldeanoReparando;
 
 	public int getVida() {
-		return vida;
+        return this.vida;
 	}
 	
 	public void recibirDanio(Espadachin espadachin) {

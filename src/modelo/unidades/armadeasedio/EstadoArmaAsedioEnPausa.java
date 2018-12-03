@@ -41,6 +41,6 @@ public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 	}
 
 	public EstadoArmaAsedio proximoEstado() {
-		return proximoEstado;
+        return this.proximoEstado;
 	}
 }

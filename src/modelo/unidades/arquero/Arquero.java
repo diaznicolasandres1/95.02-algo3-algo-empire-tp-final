@@ -16,11 +16,11 @@ public class Arquero extends Unidad implements Atacante {
 	public Arquero(Oro oro) {
         this.vida = 75;
         this.costo = 75;
-        oro.restarOro(costo);
+        oro.restarOro(this.costo);
 	}
 	
 	public void avanzarTurno() {
-		estado.avanzarTurno(this);
+        this.estado.avanzarTurno(this);
 	}
 
 	@Override
@@ -28,22 +28,22 @@ public class Arquero extends Unidad implements Atacante {
         if (colocable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
-        estado.atacar(colocable, this);
+        this.estado.atacar(colocable, this);
 		this.estarOcupado();
 	}
 
 	@Override
     public void moverHacia(Posicion destino, Mapa mapa) {
-        estado.moverArqueroDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
+        this.estado.moverArqueroDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
         this.estarOcupado();
     }
 
 	public void estarDisponible() {
-		 estado = new EstadoArqueroDisponible();		
+        this.estado = new EstadoArqueroDisponible();
 	}
 	
 	public void estarOcupado() {
-		 estado = new EstadoArqueroOcupado();		
+        this.estado = new EstadoArqueroOcupado();
 	}
 
 }

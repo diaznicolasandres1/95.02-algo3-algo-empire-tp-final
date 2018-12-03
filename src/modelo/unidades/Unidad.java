@@ -20,7 +20,7 @@ public abstract class Unidad implements Colocable {
     protected int distanciaDeMovimiento = 1;
 
     public int getVida() {
-        return vida;
+        return this.vida;
     }
 
     public void recibirDanio(Espadachin espadachin) {

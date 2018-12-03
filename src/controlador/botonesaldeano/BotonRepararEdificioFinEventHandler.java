@@ -29,16 +29,16 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Colocable edificio = juego.getColocable(fila,columna);
+        Colocable edificio = this.juego.getColocable(this.fila, this.columna);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error al reparar edificio");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            juego.repararEdificio(reparador, (Edificio) edificio);
+            this.juego.repararEdificio(this.reparador, (Edificio) edificio);
         } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        contenedor.dibujarMapaConCasilleroHandler();
+        this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }
