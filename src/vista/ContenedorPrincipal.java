@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -32,6 +33,7 @@ public class ContenedorPrincipal extends BorderPane {
     private final String jugadorDos;
     private  VBox izquierdo = new VBox();
     private  VBox derecho = new VBox();
+    private HBox top = new HBox();
     private HBox bottom = new HBox();
 
     public ContenedorPrincipal(String unJugador, String otroJugador) {
@@ -45,12 +47,20 @@ public class ContenedorPrincipal extends BorderPane {
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
 
 
-        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1600, 920, false, true);
+        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1990, 1020, false, true);
 
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
+        setTop();
     }
 
+    public void setTop(){
+        Image tituloTop = new Image("file:src/vista/imagenes/AlgoEmpire.png", 250, 100, false, true);
+        ImageView titulo = new ImageView(tituloTop);
+        top.getChildren().add(titulo);
+        this.setTop(top);
+        this.top.setAlignment(Pos.CENTER);
+    }
 
     public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
 
