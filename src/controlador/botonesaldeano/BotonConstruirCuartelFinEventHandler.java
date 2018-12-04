@@ -44,6 +44,7 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
             alert.setContentText("El o los casilleros necesarios para construir el cuartel se encuentran ocupados");
             alert.show();
         }
+        this.contenedor.actualizarOro();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

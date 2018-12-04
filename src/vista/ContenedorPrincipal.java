@@ -51,7 +51,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
-        setTop();
+        //setTop();
     }
 
     public void setTop(){
@@ -96,7 +96,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         //Oro y poblacion
 
-        if(juego.getNombreJugadorActual() == jugadorUno){
+        if(this.juego.getNombreJugadorActual() == jugadorUno){
 
             oroIzq = new Text("Oro: "+ oroJugadorActual);
             poblacionIzq = new Text("Poblacion: "+ poblacionActual);
@@ -125,6 +125,19 @@ public class ContenedorPrincipal extends BorderPane {
         this.setLeft(this.izquierdo);
         this.setRight(this.derecho);
         this.setPadding(new Insets(25));
+    }
+    
+    public void actualizarOro() {
+        int oroActual = this.juego.getOroJugadorActual();
+        if(this.juego.getNombreJugadorActual() == jugadorUno){
+            Text oroIzq = new Text("Oro: "+ oroActual);
+            oroIzq.setFill(Color.WHITE);
+            this.izquierdo.getChildren().set(1, oroIzq);
+        }else {
+            Text oroDer = new Text("Oro: "+ oroActual);
+            oroDer.setFill(Color.WHITE);
+            this.derecho.getChildren().set(1, oroDer);
+        }
     }
 
     public void crearBottom() {

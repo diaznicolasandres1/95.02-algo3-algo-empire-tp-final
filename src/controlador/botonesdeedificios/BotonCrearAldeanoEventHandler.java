@@ -44,6 +44,7 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
+        this.contenedorPrincipal.actualizarOro();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

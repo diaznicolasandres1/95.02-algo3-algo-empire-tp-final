@@ -45,6 +45,7 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
             alert.setContentText("El o los casilleros necesarios para construir la plaza central se encuentran ocupados");
             alert.show();
         }
+        this.contenedor.actualizarOro();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

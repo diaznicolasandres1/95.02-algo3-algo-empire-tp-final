@@ -44,6 +44,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
             alert.setContentText("Limite de poblacion alcanzado");
             alert.show();
         }
+        this.contenedorPrincipal.actualizarOro();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }
