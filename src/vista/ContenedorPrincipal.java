@@ -139,6 +139,19 @@ public class ContenedorPrincipal extends BorderPane {
             this.derecho.getChildren().set(1, oroDer);
         }
     }
+    
+    public void actualizarPoblacion() {
+        int poblacionActual = this.juego.getPoblacionJugadorActual();
+        if(this.juego.getNombreJugadorActual() == jugadorUno){
+            Text poblacionIzq = new Text("Poblacion: "+ poblacionActual);
+            poblacionIzq.setFill(Color.WHITE);
+            this.izquierdo.getChildren().set(2, poblacionIzq);
+        }else {
+            Text poblacionDer = new Text("Poblacion: "+ poblacionActual);
+            poblacionDer.setFill(Color.WHITE);
+            this.derecho.getChildren().set(2, poblacionDer);
+        }
+    }
 
     public void crearBottom() {
         this.bottom = new HBox();

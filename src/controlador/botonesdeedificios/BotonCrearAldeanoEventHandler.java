@@ -45,6 +45,7 @@ public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> 
             alert.show();
         }
         this.contenedorPrincipal.actualizarOro();
+        this.contenedorPrincipal.actualizarPoblacion();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

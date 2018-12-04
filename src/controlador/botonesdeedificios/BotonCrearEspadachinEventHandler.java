@@ -45,6 +45,7 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
             alert.show();
         }
         this.contenedorPrincipal.actualizarOro();
+        this.contenedorPrincipal.actualizarPoblacion();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

@@ -45,6 +45,7 @@ public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEv
             alert.show();
         }
         this.contenedorPrincipal.actualizarOro();
+        this.contenedorPrincipal.actualizarPoblacion();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }
