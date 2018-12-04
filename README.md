@@ -38,3 +38,8 @@ Siempre:
 1. `git commit -m "Comentario del commit"`
 1. `git push origin master` 
 1. Confirmar que el build paso las pruebas de [Travis](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3/) (se recibe un mail de no hacerlo)
+
+## Para ejecutar juego.
+Abrir terminal en Algo-Empire-AYP3
+
+ `ant ejecutar.aplicacion`
