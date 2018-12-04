@@ -34,7 +34,7 @@ public class CambiadorDeHandler {
         this.altura = this.mapa.getAltura();
     }
 
-    // TRATAR DE REFACTORIZAR ESTO POR EL CODIGO REPETIDO Y QUE SE CAMBIE EL ESTADO NO CREAR BOTONES NUEVOS
+
     public void cambiadorAConstruirCuartelFin(Aldeano aldeano){
         for (int i = 0; i < this.altura; i++) {
             for (int j = 0; j < this.base; j++) {

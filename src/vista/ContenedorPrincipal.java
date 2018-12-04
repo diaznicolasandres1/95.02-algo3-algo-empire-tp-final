@@ -52,10 +52,6 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-
-
-
-
     public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
 
         izquierdo.getChildren().clear();
@@ -88,6 +84,8 @@ public class ContenedorPrincipal extends BorderPane {
         Text poblacionIzq;
         Text poblacionDer;
 
+        //Oro y poblacion
+
         if(juego.getNombreJugadorActual() == jugadorUno){
 
             oroIzq = new Text("Oro: "+ oroJugadorActual);
@@ -95,6 +93,7 @@ public class ContenedorPrincipal extends BorderPane {
 
             oroDer = new Text ("Oro: "+oroJugadorAnterior);
             poblacionDer = new Text("Poblacion: "+ poblacionAnterior);
+
         }else{
 
             oroDer = new Text("Oro: "+ oroJugadorActual);

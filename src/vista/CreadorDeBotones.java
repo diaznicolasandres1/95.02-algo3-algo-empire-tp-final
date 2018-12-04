@@ -36,7 +36,7 @@ public class CreadorDeBotones {
 
         BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego, aldeano, contenedor);
         Button construirPlaza = new Button("Constuir Plaza Central");
-        construirCuartel.setOnAction(plazaCentralEventHandler);
+        construirPlaza.setOnAction(plazaCentralEventHandler);
         botones.add(construirPlaza);
 
         BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego, aldeano, contenedor);

@@ -24,6 +24,7 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
 
         int oroActual = juego.getOroJugadorActual();
         int poblacionActual = juego.getPoblacionJugadorActual();
+
         this.contenedorPrincipal.crearBottom();
         this.contenedorPrincipal.setCostados(oroAnterior,oroActual,poblacionAnterior,poblacionActual);
 
