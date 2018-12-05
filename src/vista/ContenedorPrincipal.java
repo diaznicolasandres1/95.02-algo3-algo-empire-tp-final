@@ -71,12 +71,9 @@ public class ContenedorPrincipal extends BorderPane {
         Text tituloDer = new Text(this.jugadorDos);
 
         BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
-        Button botonFinalizarTurno1 = new Button("Finalizar Turno");
-        Button botonFinalizarTurno2 = new Button("Finalizar Turno");
-        botonFinalizarTurno1.setOnAction(cambiadorTurno);
-        botonFinalizarTurno2.setOnAction(cambiadorTurno);
-        botonFinalizarTurno2.setPadding(new Insets(15));
-        botonFinalizarTurno1.setPadding(new Insets(15));
+        Button botonFinalizarTurno = new Button("Finalizar Turno");
+        botonFinalizarTurno.setOnAction(cambiadorTurno);
+        botonFinalizarTurno.setPadding(new Insets(15));
         tituloIzq.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         tituloDer.setFill(Color.WHITE);
@@ -98,15 +95,14 @@ public class ContenedorPrincipal extends BorderPane {
             oroIzq = new Text("Oro: "+ oroJugadorActual);
             poblacionIzq = new Text("Poblacion: "+ poblacionActual);
 
-            oroDer = new Text ("Oro: "+oroJugadorAnterior);
+            oroDer = new Text ("Oro: "+ oroJugadorAnterior);
             poblacionDer = new Text("Poblacion: "+ poblacionAnterior);
-
         } else {
 
             oroDer = new Text("Oro: "+ oroJugadorActual);
             poblacionDer = new Text("Poblacion: "+ poblacionActual);
 
-            oroIzq = new Text ("Oro: "+oroJugadorAnterior);
+            oroIzq = new Text ("Oro: "+ oroJugadorAnterior);
             poblacionIzq = new Text("Poblacion: "+ poblacionAnterior);
         }
 
@@ -115,12 +111,26 @@ public class ContenedorPrincipal extends BorderPane {
         poblacionDer.setFill(Color.WHITE);
         poblacionIzq.setFill(Color.WHITE);
 
-        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq,poblacionIzq, botonFinalizarTurno1);
-        this.derecho.getChildren().addAll(tituloDer,oroDer,poblacionDer,botonFinalizarTurno2);
-
+        
+        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq,poblacionIzq);
+        this.derecho.getChildren().addAll(tituloDer,oroDer,poblacionDer);
+        if (this.juego.getNombreJugadorActual().equals(this.jugadorUno))
+            this.izquierdo.getChildren().add(botonFinalizarTurno);
+        else
+            this.derecho.getChildren().add(botonFinalizarTurno);
         this.setLeft(this.izquierdo);
         this.setRight(this.derecho);
         this.setPadding(new Insets(25));
+    }
+    
+    public void moverFinalizarTurno() {
+        if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
+            Button botonFinalizar = (Button)this.derecho.getChildren().remove(3);
+            this.izquierdo.getChildren().add(botonFinalizar);
+        }else {
+            Button botonFinalizar = (Button)this.izquierdo.getChildren().remove(3);
+            this.derecho.getChildren().add(botonFinalizar);
+        }
     }
     
     public void actualizarOro() {

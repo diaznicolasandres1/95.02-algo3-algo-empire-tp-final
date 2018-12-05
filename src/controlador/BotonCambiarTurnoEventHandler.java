@@ -21,5 +21,6 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
         this.contenedorPrincipal.crearBottom();
         this.contenedorPrincipal.actualizarOro();
         this.contenedorPrincipal.actualizarPoblacion();
+        this.contenedorPrincipal.moverFinalizarTurno();
     }
 }

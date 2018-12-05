@@ -15,7 +15,8 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 
 	public ArmaDeAsedio(Oro oro) {
 		this.vida = 150;
-		oro.restarOro(200);
+		this.costo = 200;
+		oro.restarOro(this.costo);
 	}
 
 	public void montarArma() {
