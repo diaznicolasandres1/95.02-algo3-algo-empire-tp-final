@@ -1,5 +1,6 @@
 package modelo.juego;
 
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
 import modelo.edificios.Edificio;
@@ -11,7 +12,6 @@ import modelo.unidades.Unidad;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego {
@@ -50,11 +50,11 @@ public class Juego {
     }
 
     public int getOroJugadorActual(){
-        return jugadorActual.getOro();
+        return this.jugadorActual.getOro();
     }
 
     public int getPoblacionJugadorActual(){
-        return  jugadorActual.getPoblacion();
+        return this.jugadorActual.getPoblacion();
     }
 
 
@@ -92,8 +92,8 @@ public class Juego {
 
     /*-----Metodos de Atacante-----*/
 
-    public void atacar(Atacante atacante, Colocable objetivo) {
-        this.jugadorActual.atacar(atacante, objetivo);
+    public void atacar(Atacante atacante, Atacable atacable) {
+        this.jugadorActual.atacar(atacante, atacable);
     }
 
 

@@ -9,15 +9,15 @@ import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 
-public abstract class Unidad implements Colocable {
+public abstract class Unidad implements Colocable, Atacable {
 
     private static final int DANIO_DE_ARQUERO = 15;
     private static final int DANIO_DE_ESPADACHIN = 25;
     private static final int DANIO_DE_CASTILLO = 20;
+    protected static final int DISTANCIA_DE_MOVIMIENTO = 1;
     protected int vida;
     protected int costo;
     protected Posicion posicion;
-    protected int distanciaDeMovimiento = 1;
 
     public int getVida() {
         return this.vida;

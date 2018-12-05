@@ -2,13 +2,13 @@ package modelo.unidades.espadachin;
 
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 
 public interface EstadoEspadachin {
 
 	void avanzarTurno(Espadachin espadachin);
 
-    void atacar(Colocable colocable, Espadachin espadachin);
+    void atacar(Atacable atacable, Espadachin espadachin);
 
     void moverEspadachinDesdeHacia(Espadachin espadachin, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento);
 }

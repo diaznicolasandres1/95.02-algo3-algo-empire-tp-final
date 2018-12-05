@@ -2,7 +2,7 @@ package modelo.unidades.armadeasedio;
 
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 import modelo.unidades.Unidad;
 import modelo.excepciones.ArmaDeAsedioYaSeEncuentraDesmontadaException;
 import modelo.excepciones.NoSePuedeAtacarConArmaAsedioDesmontadaException;
@@ -14,7 +14,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
     }
 
     @Override
-    public void atacar(Colocable colocable, ArmaDeAsedio arma) {
+    public void atacar(Atacable atacable, ArmaDeAsedio arma) {
         throw new NoSePuedeAtacarConArmaAsedioDesmontadaException();
     }
 

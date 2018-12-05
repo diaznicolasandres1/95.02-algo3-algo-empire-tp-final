@@ -3,7 +3,7 @@ package modelo.unidades.arquero;
 import modelo.excepciones.ArqueroYaFueUtilizadoEnEsteTurnoException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 
 public class EstadoArqueroOcupado implements EstadoArquero {
 
@@ -13,7 +13,7 @@ public class EstadoArqueroOcupado implements EstadoArquero {
 	}
 
 	@Override
-    public void atacar(Colocable colocable, Arquero arquero) {
+	public void atacar(Atacable atacable, Arquero arquero) {
         throw new ArqueroYaFueUtilizadoEnEsteTurnoException();
 	}
 

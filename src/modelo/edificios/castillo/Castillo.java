@@ -1,6 +1,7 @@
 package modelo.edificios.castillo;
 
 import modelo.excepciones.EdificioSiendoReparadoException;
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.juego.Oro;
 import modelo.edificios.Edificio;
@@ -44,8 +45,8 @@ public class Castillo extends Edificio implements Atacante {
         this.atacarAColocables(colocables);
     }
 
-    public void atacar(Colocable colocable) {
-        colocable.recibirDanio(this);
+    public void atacar(Atacable atacable) {
+        atacable.recibirDanio(this);
     }
 
     @Override
@@ -59,7 +60,6 @@ public class Castillo extends Edificio implements Atacante {
         this.incrementarVida();
     }
 
-    @Override
     public void reducirVida(int danio) {
         this.vida -= danio;
         if (this.vida <= 0) {
@@ -77,7 +77,7 @@ public class Castillo extends Edificio implements Atacante {
 
     private void atacarAColocables(ArrayList<Colocable> colocables) {
         for (Colocable colocable : colocables) {
-            this.atacar(colocable);
+            this.atacar((Atacable) colocable);
         }
     }
 }

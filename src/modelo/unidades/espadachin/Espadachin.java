@@ -2,10 +2,10 @@ package modelo.unidades.espadachin;
 
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.excepciones.ColocableFueraDeRangoDeAtaqueException;
 import modelo.juego.Oro;
-import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 
 public class Espadachin extends Unidad implements Atacante {
@@ -20,17 +20,17 @@ public class Espadachin extends Unidad implements Atacante {
     }
 
     @Override
-    public void atacar(Colocable colocable) {
-        if (colocable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
+    public void atacar(Atacable atacable) {
+        if (atacable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
-        this.estado.atacar(colocable, this);
+        this.estado.atacar(atacable, this);
         this.estarOcupado();
     }
 
     @Override
     public void moverHacia(Posicion destino, Mapa mapa) {
-        this.estado.moverEspadachinDesdeHacia(this, this.posicion, destino, mapa, this.distanciaDeMovimiento);
+        this.estado.moverEspadachinDesdeHacia(this, this.posicion, destino, mapa, DISTANCIA_DE_MOVIMIENTO);
         this.estarOcupado();
     }
 

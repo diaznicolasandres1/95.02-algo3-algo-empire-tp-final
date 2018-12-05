@@ -3,7 +3,7 @@ package modelo.unidades.espadachin;
 import modelo.excepciones.EspadachinYaFueUtilizadoEsteTurnoException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 
 public class EstadoEspadachinOcupado implements EstadoEspadachin {
 
@@ -13,7 +13,7 @@ public class EstadoEspadachinOcupado implements EstadoEspadachin {
 	}
 
 	@Override
-    public void atacar(Colocable colocable, Espadachin espadachin) {
+    public void atacar(Atacable atacable, Espadachin espadachin) {
 		throw new EspadachinYaFueUtilizadoEsteTurnoException();
 	}
 
