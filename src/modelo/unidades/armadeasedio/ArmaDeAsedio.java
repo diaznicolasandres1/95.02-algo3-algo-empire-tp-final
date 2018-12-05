@@ -35,6 +35,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
 		this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, DISTANCIA_DE_MOVIMIENTO);
+		this.estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());
 	}
 
 	@Override

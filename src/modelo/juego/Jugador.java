@@ -26,6 +26,7 @@ public class Jugador {
     private Oro oro;
     private Poblacion poblacion;
     private ArrayList<Colocable> estructuras;
+    private Castillo castillo;
     private Mapa mapa;
     private Jugador oponente;
     private static final int ALDEANOS_INICIALES = 3;
@@ -168,6 +169,15 @@ public class Jugador {
             edificio.finalizarTurno();
         }
         this.poblacion.finalizarTurno();
+        ArrayList<Colocable> objetivos = this.castillo.getColocablesAlrededor(this.mapa);
+        ArrayList<Colocable> removibles = new ArrayList<>();
+        for(Colocable objetivo : objetivos) {
+            if (this.poblacion.perteneceUnidad(objetivo) | this.estructuras.contains(objetivo))
+                removibles.add(objetivo);
+        }
+        for(Colocable removible : removibles)
+            objetivos.remove(removible);
+        castillo.atacarAColocables(objetivos);
         return this.oponente;
     }
 
@@ -201,6 +211,7 @@ public class Jugador {
     private void colocarCastillo(Oro oro, int fila, int columna) {
         Castillo castillo = new Castillo(oro);
         castillo.colocarseEn(this.mapa, fila, columna);
+        this.castillo = castillo;
         this.estructuras.add(castillo);
     }
 

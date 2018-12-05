@@ -11,7 +11,7 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 
     @Override
     public EstadoArmaAsedio proximoEstado() {
-        return null;
+        return this;
     }
 
     @Override

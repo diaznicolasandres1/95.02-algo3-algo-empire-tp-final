@@ -42,7 +42,7 @@ public class Castillo extends Edificio implements Atacante {
 	}	
 	
 	public void atacarAlrededor(Mapa mapa) {
-        ArrayList<Colocable> colocables = this.buscarColocablesEnRango(mapa);
+        ArrayList<Colocable> colocables = this.getColocablesAlrededor(mapa);
         this.atacarAColocables(colocables);
     }
 
@@ -73,11 +73,13 @@ public class Castillo extends Edificio implements Atacante {
         // Castillo no recibe daño si lo ataca castillo
     }
 
-    private ArrayList<Colocable> buscarColocablesEnRango(Mapa mapa) {
-        return this.posiciones.get(0).buscarColocablesEnRangoDe(mapa, RANGO_DE_ATAQUE);
+    public ArrayList<Colocable> getColocablesAlrededor(Mapa mapa) {
+        ArrayList<Colocable> colocables = this.posiciones.get(0).buscarColocablesEnRangoDe(mapa, RANGO_DE_ATAQUE);
+        colocables.remove(this);
+        return colocables;
     }
 
-    private void atacarAColocables(ArrayList<Colocable> colocables) {
+    public void atacarAColocables(ArrayList<Colocable> colocables) {
         for (Colocable colocable : colocables) {
             this.atacar((Atacable) colocable);
         }
