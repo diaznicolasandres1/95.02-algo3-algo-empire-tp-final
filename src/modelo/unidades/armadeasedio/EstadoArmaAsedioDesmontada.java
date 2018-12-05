@@ -30,7 +30,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
 
     @Override
     public EstadoArmaAsedio proximoEstado() {
-        return null;
+        return this;
     }
 
 }
