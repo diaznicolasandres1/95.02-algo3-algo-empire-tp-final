@@ -46,6 +46,7 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
             alert.show();
         }
         this.contenedor.actualizarOro();
+        this.contenedor.removeMensaje();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

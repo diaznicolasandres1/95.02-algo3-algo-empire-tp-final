@@ -45,6 +45,7 @@ public class BotonConstruirCuartelFinEventHandler implements EventHandler<Action
             alert.show();
         }
         this.contenedor.actualizarOro();
+        this.contenedor.removeMensaje();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

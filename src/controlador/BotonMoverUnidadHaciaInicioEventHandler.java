@@ -2,7 +2,6 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
 
@@ -18,10 +17,7 @@ public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setContentText("Haz click en el lugar donde deseas mover la unidad");
-        alert.show();
+        this.contenedorPrincipal.setMensaje("Haz click en el lugar\ndonde deseas mover\n la unidad");
         this.contenedorPrincipal.cambiarHandlerMoverUnidad(this.unidad);
     }
 }

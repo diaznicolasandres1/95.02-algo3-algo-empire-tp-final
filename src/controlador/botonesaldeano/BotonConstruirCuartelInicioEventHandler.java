@@ -2,7 +2,6 @@ package controlador.botonesaldeano;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
@@ -21,10 +20,8 @@ public class BotonConstruirCuartelInicioEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setContentText("Haz click en donde quieres colocar el cuartel");
-        alert.show();
+        
+        this.contenedorPrincipal.setMensaje("Haz click en donde\nquieres colocar el\ncuartel");
         this.contenedorPrincipal.cambiarHandlerConstruirCuartel(this.aldeano);
     }
 }

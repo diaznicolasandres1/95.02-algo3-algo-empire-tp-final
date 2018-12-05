@@ -54,6 +54,7 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
             alert.setContentText("No existe objetivo en el casillero seleccionado");
             alert.show();
         }
+        this.contenedor.removeMensaje();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }
