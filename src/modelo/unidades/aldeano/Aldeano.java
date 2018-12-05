@@ -23,6 +23,9 @@ public class Aldeano extends Unidad {
     }
 
     public void repararEdificio(Edificio edificio) {
+        if (edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
+            throw new ConstruccionFueraDeRangoException();
+        }
         this.estado.repararEdificio(this, edificio);
     }
 
@@ -71,7 +74,5 @@ public class Aldeano extends Unidad {
             throw new ConstruccionFueraDeRangoException();
         }
     }
-    
-    
-    
+
 }

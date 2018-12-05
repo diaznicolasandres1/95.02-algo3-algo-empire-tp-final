@@ -21,7 +21,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test02AldeeanoDisponibleSumaOro() {
+    public void test02AldeanoDisponibleSumaOro() {
 
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
@@ -45,9 +45,9 @@ public class AldeanoTest {
     public void test04AldeanoOcupadoNoCreaCuartel() {
 
         Oro oro = new Oro(125);
-         Aldeano aldeano = new Aldeano(oro);
+        Aldeano aldeano = new Aldeano(oro);
 
-         aldeano.estarOcupado(2);
+        aldeano.estarOcupado(2);
 
         aldeano.construirCuartel();
     }
@@ -98,8 +98,11 @@ public class AldeanoTest {
     public void test09aldeanoReparandoCuartelDebeEstarOcupado() {
 
         Oro oro = new Oro(500);
+        Mapa mapa = new Mapa(25, 25);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
+        aldeano.colocarseEn(mapa, 10, 10);
         Cuartel cuartel = aldeano.construirCuartel(); //50 Oro
+        cuartel.colocarseEn(mapa, 11, 10);
         aldeano.finalizarTurno(); // Primer turno ocupado
         cuartel.finalizarTurno(); // Primer turno ocupado
 
@@ -117,8 +120,24 @@ public class AldeanoTest {
         Assert.assertEquals(425, cantidadOro);
     }
 
+    @Test(expected = ConstruccionFueraDeRangoException.class)
+    public void test10aldeanoIntentaRepararEdificioFueraDeSuAlcanceLanzaExcepcion() {
+
+        Mapa mapa = new Mapa(25, 25);
+        Oro oro = new Oro(1000);
+        PlazaCentral plaza = new PlazaCentral(oro);
+        Aldeano aldeano = new Aldeano(oro);
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.colocarseEn(mapa, 10, 10);
+        aldeano.colocarseEn(mapa, 8, 10);
+
+        aldeano.repararEdificio(plaza);
+    }
+
     @Test(expected = AldeanoEstaOcupadoException.class)
-    public void test10aldeanoIntentaMoverseMientrasEstaReparandoLanzaExcepcion() {
+    public void test11aldeanoIntentaMoverseMientrasEstaReparandoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
@@ -133,7 +152,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = AldeanoEstaOcupadoException.class)
-    public void test11aldeanoIntentaMoverseMientrasEstaOcupadoLanzaExcepcion() {
+    public void test12aldeanoIntentaMoverseMientrasEstaOcupadoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
@@ -148,7 +167,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = PosicionFueraDeRangoException.class)
-    public void test12aldeanoDisponibleIntentaMoverseFueraDeRangoLanzaExcepcion() {
+    public void test13aldeanoDisponibleIntentaMoverseFueraDeRangoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
@@ -162,7 +181,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = AldeanoEstaOcupadoException.class)
-    public void test13aldeanoIntentaMoverse2VecesEnUnTurnoLanzaExcepcion() {
+    public void test14aldeanoIntentaMoverse2VecesEnUnTurnoLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(500);
@@ -175,7 +194,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test14aldeanoSeMueveHaciaElNorteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test15aldeanoSeMueveHaciaElNorteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -189,7 +208,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test15aldeanoSeMueveHaciaElSurYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test16aldeanoSeMueveHaciaElSurYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -203,7 +222,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test16aldeanoSeMueveHaciaElEsteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test17aldeanoSeMueveHaciaElEsteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -217,7 +236,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test17aldeanoSeMueveHaciaElOesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test18aldeanoSeMueveHaciaElOesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -231,7 +250,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test18aldeanoSeMueveHaciaElNoresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test19aldeanoSeMueveHaciaElNoresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -245,7 +264,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test19aldeanoSeMueveHaciaElSuresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test20aldeanoSeMueveHaciaElSuresteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -259,7 +278,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test20aldeanoSeMueveHaciaElSuroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test21aldeanoSeMueveHaciaElSuroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -273,7 +292,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test21aldeanoSeMueveHaciaElNoroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test22aldeanoSeMueveHaciaElNoroesteYSeColocaUnaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -287,7 +306,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test22aldeanoIntentaColocarseFueraDelRangoPositivoDelMapaLanzaExcepcion() {
+    public void test23aldeanoIntentaColocarseFueraDelRangoPositivoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -297,7 +316,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test23aldeanoIntentaColocarseFueraDelRangoNegativoDelMapaLanzaExcepcion() {
+    public void test24aldeanoIntentaColocarseFueraDelRangoNegativoDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -307,7 +326,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test24aldeanoIntentaColocarseEnLimiteDelRangoNuloDelMapaLanzaExcepcion() {
+    public void test25aldeanoIntentaColocarseEnLimiteDelRangoNuloDelMapaLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -317,7 +336,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test25aldeanoSeColocaEnMapaYSeDescolocaYSeColocanDosUnidadesEnElMismoLugarLanzaExcepcion() {
+    public void test26aldeanoSeColocaEnMapaYSeDescolocaYSeColocanDosUnidadesEnElMismoLugarLanzaExcepcion() {
 
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(200);
@@ -331,16 +350,20 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test26aldeanoReparandoDebeEstarOcupadoYTerminaCuandoSeReparaElEdificio() {
+    public void test27aldeanoReparandoDebeEstarOcupadoYTerminaCuandoSeReparaElEdificio() {
 
+        Mapa mapa = new Mapa(25, 25);
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
         PlazaCentral plaza =  aldeano.construirPlazaCentral(); //100 Oro
+        plaza.colocarseEn(mapa, 10, 10);
+        aldeano.colocarseEn(mapa, 12, 10);
 
-        aldeano.finalizarTurno();//Segundo turno ocupado
-        plaza.finalizarTurno();//Segundo turno ocupado
-        aldeano.finalizarTurno();//tercer turno ocupado
-        plaza.finalizarTurno();//tercer turno ocupado
+
+        aldeano.finalizarTurno();// Segundo turno ocupado
+        plaza.finalizarTurno();// Segundo turno ocupado
+        aldeano.finalizarTurno();// tercer turno ocupado
+        plaza.finalizarTurno();// tercer turno ocupado
         aldeano.finalizarTurno();// Aldeano libre
         plaza.finalizarTurno();// Edificio construido
 
@@ -350,17 +373,21 @@ public class AldeanoTest {
         aldeano.finalizarTurno();
         aldeano.finalizarTurno();
 
-        Assert.assertEquals(375, oro.getOro()); //No genero oro por estar ocupado
-        Assert.assertEquals(450, plaza.getVida()); //La plaza vuelve a tener toda su vida
+        Assert.assertEquals(375, oro.getOro()); // No genero oro por estar ocupado
+        Assert.assertEquals(450, plaza.getVida()); // La plaza vuelve a tener toda su vida
     }
 
     @Test(expected = EdificioSiendoReparadoException.class)
-    public void test27dosAldeanosDiferentesIntentanRepararMismoEdificioYElSegundoAldeanoNoQuedaOcupado() {
+    public void test28dosAldeanosDiferentesIntentanRepararMismoEdificioYElSegundoAldeanoNoQuedaOcupado() {
 
         Oro oro = new Oro(1000);
+        Mapa mapa = new Mapa(25, 25);
         Aldeano unAldeano = new Aldeano(oro);
         Aldeano otroAldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
+        plaza.colocarseEn(mapa, 10, 10);
+        unAldeano.colocarseEn(mapa, 12, 10);
+        otroAldeano.colocarseEn(mapa, 10, 12);
 
         plaza.finalizarTurno();
         plaza.finalizarTurno();
@@ -372,12 +399,16 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test28aldeanoMuereMientrasReparaEdificioYOtroAldeanoTerminaDeRepararEdificio() {
+    public void test29aldeanoMuereMientrasReparaEdificioYOtroAldeanoTerminaDeRepararEdificio() {
 
         Oro oro = new Oro(1000);
+        Mapa mapa = new Mapa(25, 25);
         Aldeano unAldeano = new Aldeano(oro);
         Aldeano otroAldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
+        plaza.colocarseEn(mapa, 10, 10);
+        unAldeano.colocarseEn(mapa, 12, 10);
+        otroAldeano.colocarseEn(mapa, 10, 12);
 
         plaza.finalizarTurno();
         plaza.finalizarTurno();
@@ -397,7 +428,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test29aldeanoCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
+    public void test30aldeanoCalculaDistanciaHaciaOtraPosicionYDevuelveValorCorrecto() {
 
         Oro oro = new Oro(6000);
         Aldeano aldeano = new Aldeano(oro);
@@ -410,7 +441,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = ConstruccionFueraDeRangoException.class)
-    public void test30aldeanoIntentaContruirPlazaFueraDeSuRangoLanzaException() {
+    public void test31aldeanoIntentaContruirPlazaFueraDeSuRangoLanzaException() {
 
         Oro oro = new Oro(6000);
         Aldeano aldeano = new Aldeano(oro);
@@ -422,7 +453,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupadoException.class)
-    public void test31aldeanoIntentaContruirPlazaFueraDeSuRangoVuelveAEstarDisponibleSeMueveYSeColocaUnidadEnEsaPosicionLanzaExcepcion() {
+    public void test32aldeanoIntentaContruirPlazaFueraDeSuRangoVuelveAEstarDisponibleSeMueveYSeColocaUnidadEnEsaPosicionLanzaExcepcion() {
 
         Oro oro = new Oro(6000);
         Aldeano aldeano = new Aldeano(oro);
@@ -438,5 +469,4 @@ public class AldeanoTest {
 
         mapa.colocarUnidad(new Aldeano(oro), 11, 11);
     }
-    
 }
