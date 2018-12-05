@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
-import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacable;

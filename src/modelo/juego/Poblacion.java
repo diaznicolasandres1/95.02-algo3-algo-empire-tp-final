@@ -32,9 +32,9 @@ public class Poblacion {
         return this.unidades.size() < LIMITE_POBLACION;
     }
 
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         for (Colocable unidad : this.unidades) {
-            unidad.avanzarTurno();
+            unidad.finalizarTurno();
         }
     }
 

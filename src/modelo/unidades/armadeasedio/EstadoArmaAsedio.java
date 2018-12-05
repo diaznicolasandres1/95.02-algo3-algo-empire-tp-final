@@ -9,7 +9,7 @@ public interface EstadoArmaAsedio {
 
 	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
 
-	void atacar(Atacable atacable, ArmaDeAsedio arma);
+    void atacar(Atacable objetivo, ArmaDeAsedio arma);
 	void montarArma(ArmaDeAsedio armaDeAsedio);
 	void desmontarArma(ArmaDeAsedio armaDeAsedio);
 	EstadoArmaAsedio proximoEstado();

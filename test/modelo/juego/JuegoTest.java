@@ -30,7 +30,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         String unNombre = juego.getNombreJugadorActual();
-        juego.cambiarTurno();
+        juego.finalizarTurno();
         String otroNombre = juego.getNombreJugadorActual();
 
         if (unNombre.equals("Rojo"))
@@ -44,7 +44,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         Castillo castillo1 = (Castillo) juego.getColocable(1, 1);
         Castillo castillo2 = (Castillo) juego.getColocable(1, 4);
@@ -63,7 +63,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         Aldeano aldeano1 = (Aldeano) juego.getColocable(1, 5);
         Aldeano aldeano2 = (Aldeano) juego.getColocable(1, 8);
@@ -81,7 +81,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         PlazaCentral plaza = (PlazaCentral) juego.getColocable(1, 6);
         juego.crearAldeano(plaza);
@@ -95,7 +95,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirPlazaCentral(aldeano, 1, 9);
@@ -117,7 +117,7 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
@@ -139,13 +139,13 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
 
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
         Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
         juego.crearEspadachin(cuartel);
 
@@ -159,11 +159,11 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
@@ -179,10 +179,10 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         Castillo castillo = (Castillo) juego.getColocable(1, 1);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         juego.crearArmaDeAsedio(castillo);
@@ -197,17 +197,17 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
         juego.crearEspadachin(cuartel);
-        juego.cambiarTurno();
-        juego.cambiarTurno();
+        juego.finalizarTurno();
+        juego.finalizarTurno();
         juego.crearEspadachin(cuartel);
         Espadachin unEspadachin = (Espadachin) juego.getColocable(1, 11);
         Espadachin otroEspadachin = (Espadachin) juego.getColocable(2, 8);
@@ -220,11 +220,11 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
@@ -239,17 +239,17 @@ public class JuegoTest {
 
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul"))
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         Aldeano aldeano = (Aldeano) juego.getColocable(1, 8);
         juego.construirCuartel(aldeano, 1, 9);
         for (int i = 0; i < 6; i++) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         Cuartel cuartel = (Cuartel) juego.getColocable(1, 9);
         juego.crearArquero(cuartel);
-        juego.cambiarTurno();
-        juego.cambiarTurno();
+        juego.finalizarTurno();
+        juego.finalizarTurno();
         juego.crearEspadachin(cuartel);
         Arquero unArquero = (Arquero) juego.getColocable(1, 11);
         Espadachin otroEspadachin = (Espadachin) juego.getColocable(2, 8);
@@ -259,9 +259,10 @@ public class JuegoTest {
     
     @Test
     public void test13juegoMoverHaciarCambiaUbicacionCorrectamente() {
+
         Juego juego = new Juego("Rojo", "Azul");
         if (juego.getNombreJugadorActual().equals("Azul")) {
-            juego.cambiarTurno();
+            juego.finalizarTurno();
         }
 
         Aldeano aldeano1 = (Aldeano) juego.getColocable(1, 8);
@@ -271,5 +272,4 @@ public class JuegoTest {
         Assert.assertNull(juego.getColocable(1, 8));
         Assert.assertEquals(aldeano1, aldeano2);
     }
-    
 }

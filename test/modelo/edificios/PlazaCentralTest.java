@@ -36,9 +36,9 @@ public class PlazaCentralTest {
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
         /* Avanzo 3 turnos y como esta creada recibe daño */
         plaza.recibirDanio(50);
 
@@ -50,9 +50,9 @@ public class PlazaCentralTest {
 
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
 
         plaza.reducirVida(50);
         plaza.incrementarVida();
@@ -64,9 +64,9 @@ public class PlazaCentralTest {
 
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
 
         plaza.recibirDanio(50);
 
@@ -82,9 +82,9 @@ public class PlazaCentralTest {
 
         Oro oro = new Oro(500);
         PlazaCentral plaza = new PlazaCentral(oro);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
 
         Aldeano aldeano = plaza.crearAldeanoDesdePlaza();
 
@@ -171,9 +171,9 @@ public class PlazaCentralTest {
 
         Oro oro = new Oro(1000);
         PlazaCentral plaza = new PlazaCentral(oro);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
 
         plaza.reducirVida(100);
         plaza.repararse(new Aldeano(oro));

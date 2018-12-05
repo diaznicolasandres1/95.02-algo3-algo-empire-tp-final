@@ -37,9 +37,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         cuartel.recibirDanio(50);
         Assert.assertEquals(cuartel.getVida(), 200);
@@ -50,9 +50,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         cuartel.recibirDanio(50);
         cuartel.incrementarVida();
@@ -65,9 +65,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         cuartel.recibirDanio(50);
 
@@ -82,9 +82,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(1000);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         Arquero arquero = cuartel.crearArqueroDesdeCuartel();
 
@@ -96,9 +96,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(500);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         Espadachin espadachin = cuartel.crearEspadachinDesdeCuartel();
 
@@ -187,9 +187,9 @@ public class CuartelTest {
 
         Oro oro = new Oro(1000);
         Cuartel cuartel = new Cuartel(oro);
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
-        cuartel.avanzarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
+        cuartel.finalizarTurno();
 
         cuartel.reducirVida(100);
         cuartel.repararse(new Aldeano(oro));

@@ -23,8 +23,8 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
         this.juego = juego;
         this.fila = fila;
         this.columna = columna;
-
     }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

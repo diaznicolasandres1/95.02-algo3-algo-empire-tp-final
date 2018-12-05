@@ -8,7 +8,7 @@ public interface EstadoEspadachin {
 
 	void avanzarTurno(Espadachin espadachin);
 
-    void atacar(Atacable atacable, Espadachin espadachin);
+    void atacar(Atacable objetivo, Espadachin espadachin);
 
     void moverEspadachinDesdeHacia(Espadachin espadachin, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento);
 }

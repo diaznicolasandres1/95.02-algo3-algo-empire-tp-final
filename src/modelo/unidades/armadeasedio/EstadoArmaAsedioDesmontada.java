@@ -14,7 +14,7 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
     }
 
     @Override
-    public void atacar(Atacable atacable, ArmaDeAsedio arma) {
+    public void atacar(Atacable objetivo, ArmaDeAsedio arma) {
         throw new NoSePuedeAtacarConArmaAsedioDesmontadaException();
     }
 

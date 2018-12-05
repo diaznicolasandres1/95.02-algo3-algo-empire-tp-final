@@ -12,8 +12,8 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	}
 
 	@Override
-    public void atacar(Atacable atacable, Espadachin espadachin) {
-        atacable.recibirDanio(espadachin);
+    public void atacar(Atacable objetivo, Espadachin espadachin) {
+        objetivo.recibirDanio(espadachin);
 	}
 
 	@Override

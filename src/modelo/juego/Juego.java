@@ -21,11 +21,11 @@ public class Juego {
     private static final int BASE_MAPA = 25;
     private static final int ALTURA_MAPA = 25;
 
-    public Juego(String nombre1, String nombre2) {
+    public Juego(String jugadorUno, String jugadorDos) {
 
         this.mapa = new Mapa(BASE_MAPA, ALTURA_MAPA);
-        Jugador unJugador = new Jugador(nombre1, this.mapa, 1, 1, 1, 6);
-        Jugador otroJugador = new Jugador(nombre2, this.mapa, ALTURA_MAPA - 3, BASE_MAPA - 3, ALTURA_MAPA - 1, BASE_MAPA - 6);
+        Jugador unJugador = new Jugador(jugadorUno, this.mapa, 1, 1, 1, 6);
+        Jugador otroJugador = new Jugador(jugadorDos, this.mapa, ALTURA_MAPA - 3, BASE_MAPA - 3, ALTURA_MAPA - 1, BASE_MAPA - 6);
         unJugador.setOponente(otroJugador);
         otroJugador.setOponente(unJugador);
         if (new Random().nextBoolean()) {
@@ -56,7 +56,6 @@ public class Juego {
     public int getPoblacionJugadorActual(){
         return this.jugadorActual.getPoblacion();
     }
-
 
     /*-----Metodos de Edificios-----*/
 
@@ -103,8 +102,8 @@ public class Juego {
         this.jugadorActual.moverUnidadHacia(unidad, fila, columna);
     }
 
-    public void cambiarTurno() {
-        this.jugadorActual = this.jugadorActual.avanzarTurno();
+    public void finalizarTurno() {
+        this.jugadorActual = this.jugadorActual.finalizarTurno();
     }
 
     public void montarArma(ArmaDeAsedio arma){

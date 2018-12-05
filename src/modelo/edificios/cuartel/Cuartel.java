@@ -46,7 +46,7 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         this.estado.avanzarTurno(this);
     }
 

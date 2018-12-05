@@ -48,7 +48,7 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         this.estado.avanzarTurno(this);
     }
 }

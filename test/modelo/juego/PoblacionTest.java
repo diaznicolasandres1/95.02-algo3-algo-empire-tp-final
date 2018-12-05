@@ -1,8 +1,6 @@
 package modelo.juego;
 
 import modelo.edificios.plazacentral.PlazaCentral;
-import modelo.juego.Oro;
-import modelo.juego.Poblacion;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.excepciones.AldeanoEstaOcupadoException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
@@ -55,7 +53,7 @@ public class PoblacionTest {
 		Aldeano aldeano = new Aldeano(oro);
 		poblacion.agregarUnidad(aldeano);
 		aldeano.estarOcupado(2);
-		poblacion.avanzarTurno();
+        poblacion.finalizarTurno();
 		PlazaCentral plaza = aldeano.construirPlazaCentral();
 	}
 	
@@ -66,8 +64,8 @@ public class PoblacionTest {
 		Aldeano aldeano = new Aldeano(oro);
 		poblacion.agregarUnidad(aldeano);
 		aldeano.estarOcupado(1);
-		poblacion.avanzarTurno();
-		poblacion.avanzarTurno();
+        poblacion.finalizarTurno();
+        poblacion.finalizarTurno();
 		PlazaCentral plaza = aldeano.construirPlazaCentral();
 		
 		Assert.assertNotNull(plaza);

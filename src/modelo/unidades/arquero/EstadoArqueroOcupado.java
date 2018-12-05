@@ -13,7 +13,7 @@ public class EstadoArqueroOcupado implements EstadoArquero {
 	}
 
 	@Override
-	public void atacar(Atacable atacable, Arquero arquero) {
+    public void atacar(Atacable objetivo, Arquero arquero) {
         throw new ArqueroYaFueUtilizadoEnEsteTurnoException();
 	}
 

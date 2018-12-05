@@ -307,7 +307,7 @@ public class EspadachinTest {
         mapa.colocarEdificio(plaza, 4, 10, 10);
 
         espadachin.atacar(plaza);
-        espadachin.avanzarTurno();
+        espadachin.finalizarTurno();
         espadachin.atacar(plaza);
 
         Assert.assertEquals(plaza.getVida(), 420);

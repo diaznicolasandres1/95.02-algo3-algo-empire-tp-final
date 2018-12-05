@@ -47,7 +47,7 @@ public class Aldeano extends Unidad {
     }
 
     @Override
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         this.estado.recolectarOro(this.oro);
         this.estado.avanzarTurno(this);
     }

@@ -2,7 +2,6 @@ package modelo.edificios;
 
 import junit.framework.Assert;
 import modelo.edificios.castillo.Castillo;
-import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
@@ -220,9 +219,9 @@ public class CastilloTest {
         mapa.colocarUnidad(espadachin, 8, 10);
         mapa.colocarUnidad(unAldeano, 13, 10);
         mapa.colocarUnidad(otroAldeano, 13, 11);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
 
         castillo.atacarAlrededor(mapa);
 

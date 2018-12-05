@@ -28,7 +28,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 		this.estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());
 	}
 
-	public void avanzarTurno() {
+	public void finalizarTurno() {
 		this.estado = this.estado.proximoEstado();
 	}
 
@@ -38,11 +38,11 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 	}
 
 	@Override
-	public void atacar(Atacable atacable) {
-		if (atacable.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
+	public void atacar(Atacable objetivo) {
+		if (objetivo.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
-		this.estado.atacar(atacable, this);
+		this.estado.atacar(objetivo, this);
         this.estado = new EstadoArmaAsedioEnPausa(this.estado);
 	}
 

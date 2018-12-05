@@ -8,19 +8,15 @@ public class EntradaUsuario {
 
     private HBox hBox;
     private TextField textField;
-    private ColorPicker colorPicker;
 
-    public EntradaUsuario(String textoHover, Color colorPorDefecto) {
+    public EntradaUsuario(String textoHover) {
 
         TextField texto = new TextField(textoHover);
         texto.setPrefColumnCount(30);
-        ColorPicker color = new ColorPicker(colorPorDefecto);
-        color.setStyle("-fx-color-label-visible: false;");
-        HBox hBox = new HBox(texto, color);
+        HBox hBox = new HBox(texto);
         hBox.setSpacing(10);
         this.hBox = hBox;
         this.textField = texto;
-        this.colorPicker = color;
     }
 
     public HBox getHb() {
@@ -31,7 +27,4 @@ public class EntradaUsuario {
         return this.textField.getText();
     }
 
-    public Color getColor() {
-        return this.colorPicker.getValue();
-    }
 }

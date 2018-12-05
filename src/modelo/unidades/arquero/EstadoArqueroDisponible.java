@@ -12,8 +12,8 @@ public class EstadoArqueroDisponible implements EstadoArquero {
 	}
 
 	@Override
-	public void atacar(Atacable atacable, Arquero arquero) {
-		atacable.recibirDanio(arquero);
+    public void atacar(Atacable objetivo, Arquero arquero) {
+        objetivo.recibirDanio(arquero);
 	}
 
 	@Override

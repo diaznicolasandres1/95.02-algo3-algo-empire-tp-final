@@ -20,11 +20,11 @@ public class Espadachin extends Unidad implements Atacante {
     }
 
     @Override
-    public void atacar(Atacable atacable) {
-        if (atacable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
+    public void atacar(Atacable objetivo) {
+        if (objetivo.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
-        this.estado.atacar(atacable, this);
+        this.estado.atacar(objetivo, this);
         this.estarOcupado();
     }
 
@@ -34,7 +34,7 @@ public class Espadachin extends Unidad implements Atacante {
         this.estarOcupado();
     }
 
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         this.estado.avanzarTurno(this);
     }
 

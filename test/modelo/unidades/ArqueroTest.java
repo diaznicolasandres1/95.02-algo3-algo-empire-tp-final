@@ -308,7 +308,7 @@ public class ArqueroTest {
         mapa.colocarUnidad(arquero, 10, 14);
 
         arquero.atacar(plaza);
-        arquero.avanzarTurno();
+        arquero.finalizarTurno();
 
         arquero.atacar(plaza);
         Assert.assertEquals(430, plaza.getVida());

@@ -20,8 +20,8 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
     }
 
     @Override
-    public void atacar(Atacable atacable, ArmaDeAsedio arma) {
-        atacable.recibirDanio(arma);
+    public void atacar(Atacable objetivo, ArmaDeAsedio arma) {
+        objetivo.recibirDanio(arma);
     }
 
     @Override

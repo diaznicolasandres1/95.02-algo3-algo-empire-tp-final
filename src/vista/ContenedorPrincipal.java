@@ -31,15 +31,15 @@ public class ContenedorPrincipal extends BorderPane {
     private final GridPane tablero = new GridPane();
     private final String jugadorUno;
     private final String jugadorDos;
-    private  VBox izquierdo = new VBox();
-    private  VBox derecho = new VBox();
+    private VBox izquierdo = new VBox();
+    private VBox derecho = new VBox();
     private HBox top = new HBox();
     private HBox bottom = new HBox();
 
-    public ContenedorPrincipal(String unJugador, String otroJugador) {
-        this.juego = new Juego(unJugador, otroJugador);
-        this.jugadorUno = unJugador;
-        this.jugadorDos = otroJugador;
+    public ContenedorPrincipal(String jugadorUno, String jugadorDos) {
+        this.jugadorUno = jugadorUno;
+        this.jugadorDos = jugadorDos;
+        this.juego = new Juego(jugadorUno, jugadorDos);
         this.dibujarMapaConCasilleroHandler();
         this.setCostados(100,100,3,3);
         this.crearBottom();
@@ -67,7 +67,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.izquierdo.getChildren().clear();
         this.derecho.getChildren().clear();
 
-
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
 
@@ -94,8 +93,6 @@ public class ContenedorPrincipal extends BorderPane {
         Text poblacionIzq;
         Text poblacionDer;
 
-        //Oro y poblacion
-
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
 
             oroIzq = new Text("Oro: "+ oroJugadorActual);
@@ -118,7 +115,6 @@ public class ContenedorPrincipal extends BorderPane {
         poblacionDer.setFill(Color.WHITE);
         poblacionIzq.setFill(Color.WHITE);
 
-
         this.izquierdo.getChildren().addAll(tituloIzq,oroIzq,poblacionIzq, botonFinalizarTurno1);
         this.derecho.getChildren().addAll(tituloDer,oroDer,poblacionDer,botonFinalizarTurno2);
 
@@ -128,12 +124,14 @@ public class ContenedorPrincipal extends BorderPane {
     }
     
     public void actualizarOro() {
+
         int oroActual = this.juego.getOroJugadorActual();
+
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text oroIzq = new Text("Oro: "+ oroActual);
             oroIzq.setFill(Color.WHITE);
             this.izquierdo.getChildren().set(1, oroIzq);
-        }else {
+        } else {
             Text oroDer = new Text("Oro: "+ oroActual);
             oroDer.setFill(Color.WHITE);
             this.derecho.getChildren().set(1, oroDer);
@@ -141,12 +139,14 @@ public class ContenedorPrincipal extends BorderPane {
     }
     
     public void actualizarPoblacion() {
+
         int poblacionActual = this.juego.getPoblacionJugadorActual();
+
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text poblacionIzq = new Text("Poblacion: "+ poblacionActual);
             poblacionIzq.setFill(Color.WHITE);
             this.izquierdo.getChildren().set(2, poblacionIzq);
-        }else {
+        } else {
             Text poblacionDer = new Text("Poblacion: "+ poblacionActual);
             poblacionDer.setFill(Color.WHITE);
             this.derecho.getChildren().set(2, poblacionDer);
@@ -171,8 +171,6 @@ public class ContenedorPrincipal extends BorderPane {
         jugadorActual.setTextFill(Color.WHITE);
         this.bottom.getChildren().addAll(jugadorActual);
     }
-
-
 
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);

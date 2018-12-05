@@ -27,7 +27,7 @@ public class CambiadorDeHandler {
         this.juego = juego;
         this.tablero = tablero;
         this.contenedorPrincipal = contenedorPrincipal;
-        this.dibujador = new DibujadorDeMapa(juego,tablero);
+        this.dibujador = new DibujadorDeMapa(juego, tablero);
         Mapa mapa = juego.getMapa();
         this.base = mapa.getBase();
         this.altura = mapa.getAltura();

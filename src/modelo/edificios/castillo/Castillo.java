@@ -1,5 +1,6 @@
 package modelo.edificios.castillo;
 
+import modelo.excepciones.CastilloFueDestruidoException;
 import modelo.excepciones.EdificioSiendoReparadoException;
 import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
@@ -27,7 +28,7 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public void avanzarTurno() {
+    public void finalizarTurno() {
         // Castillo no maneja turnos.
     }
 	
@@ -45,8 +46,8 @@ public class Castillo extends Edificio implements Atacante {
         this.atacarAColocables(colocables);
     }
 
-    public void atacar(Atacable atacable) {
-        atacable.recibirDanio(this);
+    public void atacar(Atacable objetivo) {
+        objetivo.recibirDanio(this);
     }
 
     @Override
@@ -66,6 +67,7 @@ public class Castillo extends Edificio implements Atacante {
             throw new CastilloFueDestruidoException();
         }
     }
+
     @Override
 	public void recibirDanio(Castillo castillo) {
         // Castillo no recibe daño si lo ataca castillo

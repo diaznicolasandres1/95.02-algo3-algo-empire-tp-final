@@ -25,7 +25,7 @@ public class AldeanoTest {
 
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
-        aldeano.avanzarTurno();
+        aldeano.finalizarTurno();
         int cantidadOro = oro.getOro();
         Assert.assertEquals(125, cantidadOro);
     }
@@ -36,7 +36,7 @@ public class AldeanoTest {
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
         aldeano.estarOcupado(1);
-        aldeano.avanzarTurno();
+        aldeano.finalizarTurno();
         int cantidadOro = oro.getOro();
         Assert.assertEquals(100, cantidadOro);
     }
@@ -58,8 +58,8 @@ public class AldeanoTest {
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
         aldeano.estarOcupado(3);
-        aldeano.avanzarTurno();
-        aldeano.avanzarTurno();        
+        aldeano.finalizarTurno();
+        aldeano.finalizarTurno();
         
         int cantidadOro = oro.getOro();
         Assert.assertEquals(100, cantidadOro);
@@ -70,10 +70,10 @@ public class AldeanoTest {
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);  //Rest 25 Oro
         aldeano.construirCuartel(); //Primer turno ocupado, comienza a construir Resta 50 Oro
-        aldeano.avanzarTurno();//Segundo turno ocupado
-        aldeano.avanzarTurno();//Tercer turno ocupado  
-        aldeano.avanzarTurno(); //Ya esta libre al proximo avance sumara oro 
-        aldeano.avanzarTurno(); //Suma 25 oro
+        aldeano.finalizarTurno();//Segundo turno ocupado
+        aldeano.finalizarTurno();//Tercer turno ocupado
+        aldeano.finalizarTurno(); //Ya esta libre al proximo avance sumara oro
+        aldeano.finalizarTurno(); //Suma 25 oro
         
         int cantidadOro = oro.getOro();
         Assert.assertEquals(75, cantidadOro);
@@ -100,18 +100,18 @@ public class AldeanoTest {
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
         Cuartel cuartel = aldeano.construirCuartel(); //50 Oro
-        aldeano.avanzarTurno(); // Primer turno ocupado
-        cuartel.avanzarTurno(); // Primer turno ocupado
+        aldeano.finalizarTurno(); // Primer turno ocupado
+        cuartel.finalizarTurno(); // Primer turno ocupado
 
-        aldeano.avanzarTurno(); // Segundo turno ocupado
-        cuartel.avanzarTurno(); // Segundo turno ocupado
+        aldeano.finalizarTurno(); // Segundo turno ocupado
+        cuartel.finalizarTurno(); // Segundo turno ocupado
 
-        aldeano.avanzarTurno(); // Tercer turno ocupado
-        cuartel.avanzarTurno(); // Tercer turno ocupado
+        aldeano.finalizarTurno(); // Tercer turno ocupado
+        cuartel.finalizarTurno(); // Tercer turno ocupado
 
         cuartel.reducirVida(100); //Ya se construyo, se le puede hacer daño
         aldeano.repararEdificio(cuartel);
-        aldeano.avanzarTurno(); // No genera oro en este turno
+        aldeano.finalizarTurno(); // No genera oro en este turno
 
         int cantidadOro = oro.getOro();
         Assert.assertEquals(425, cantidadOro);
@@ -336,19 +336,19 @@ public class AldeanoTest {
         Oro oro = new Oro(500);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
         PlazaCentral plaza =  aldeano.construirPlazaCentral(); //100 Oro
-        
-        aldeano.avanzarTurno();//Segundo turno ocupado
-        plaza.avanzarTurno();//Segundo turno ocupado
-        aldeano.avanzarTurno();//tercer turno ocupado
-        plaza.avanzarTurno();//tercer turno ocupado
-        aldeano.avanzarTurno();// Aldeano libre 
-        plaza.avanzarTurno();// Edificio construido
+
+        aldeano.finalizarTurno();//Segundo turno ocupado
+        plaza.finalizarTurno();//Segundo turno ocupado
+        aldeano.finalizarTurno();//tercer turno ocupado
+        plaza.finalizarTurno();//tercer turno ocupado
+        aldeano.finalizarTurno();// Aldeano libre
+        plaza.finalizarTurno();// Edificio construido
 
         plaza.reducirVida(100); //Ya se construyo se le puede hacer daño
         aldeano.repararEdificio(plaza);
-        aldeano.avanzarTurno();       
-        aldeano.avanzarTurno();
-        aldeano.avanzarTurno();
+        aldeano.finalizarTurno();
+        aldeano.finalizarTurno();
+        aldeano.finalizarTurno();
 
         Assert.assertEquals(375, oro.getOro()); //No genero oro por estar ocupado
         Assert.assertEquals(450, plaza.getVida()); //La plaza vuelve a tener toda su vida
@@ -362,9 +362,9 @@ public class AldeanoTest {
         Aldeano otroAldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
         plaza.reducirVida(100);
         unAldeano.repararEdificio(plaza);
 
@@ -379,9 +379,9 @@ public class AldeanoTest {
         Aldeano otroAldeano = new Aldeano(oro);
         PlazaCentral plaza = new PlazaCentral(oro);
 
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
         plaza.reducirVida(100); // 350 de vida
         unAldeano.repararEdificio(plaza); // 375 de vida
 
@@ -389,8 +389,8 @@ public class AldeanoTest {
             unAldeano.reducirVida(100);
         } catch (UnidadFueDestruidaException e) {
             otroAldeano.repararEdificio(plaza); // 400 de vida
-            otroAldeano.avanzarTurno(); // 425 de vida
-            otroAldeano.avanzarTurno(); // 450 de vida
+            otroAldeano.finalizarTurno(); // 425 de vida
+            otroAldeano.finalizarTurno(); // 450 de vida
         }
 
         Assert.assertEquals(450, plaza.getVida());

@@ -33,7 +33,7 @@ public class ArmaAsedioTest {
         Posicion posicion = new Posicion(9, 9);
 
         arma.montarArma();
-        arma.avanzarTurno();
+        arma.finalizarTurno();
         arma.moverHacia(posicion, mapa);
     }
 
@@ -246,7 +246,7 @@ public class ArmaAsedioTest {
         plaza.colocarseEn(mapa, 11, 11);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(plaza);
 
@@ -277,7 +277,7 @@ public class ArmaAsedioTest {
         aldeano.colocarseEn(mapa, 12, 12);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(aldeano);
     }
@@ -293,7 +293,7 @@ public class ArmaAsedioTest {
         espadachin.colocarseEn(mapa, 12, 12);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(espadachin);
     }
@@ -309,7 +309,7 @@ public class ArmaAsedioTest {
         arquero.colocarseEn(mapa, 12, 12);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(arquero);
     }
@@ -324,7 +324,7 @@ public class ArmaAsedioTest {
 
         arma.colocarseEn(mapa, 8, 8);
         arma.montarArma();
-        arma.avanzarTurno();
+        arma.finalizarTurno();
         arma.desmontarArma();
 
         arma.moverHacia(posicion, mapa);
@@ -341,7 +341,7 @@ public class ArmaAsedioTest {
         castillo.colocarseEn(mapa, 20, 20);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(castillo);
     }
@@ -357,7 +357,7 @@ public class ArmaAsedioTest {
         castillo.colocarseEn(mapa, 6, 6);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(castillo);
 
@@ -389,7 +389,7 @@ public class ArmaAsedioTest {
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(oro);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
 
         armaDeAsedio.montarArma();
@@ -406,15 +406,15 @@ public class ArmaAsedioTest {
         plaza.colocarseEn(mapa, 5, 5);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(plaza);
 
@@ -432,17 +432,17 @@ public class ArmaAsedioTest {
         plaza.colocarseEn(mapa, 5, 5);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
         armaDeAsedio.desmontarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(plaza);
     }
@@ -458,7 +458,7 @@ public class ArmaAsedioTest {
         castillo.colocarseEn(mapa, 6, 6);
 
         armaDeAsedio.montarArma();
-        armaDeAsedio.avanzarTurno();
+        armaDeAsedio.finalizarTurno();
 
         armaDeAsedio.atacar(castillo);
         armaDeAsedio.atacar(castillo);

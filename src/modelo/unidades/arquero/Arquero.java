@@ -18,17 +18,17 @@ public class Arquero extends Unidad implements Atacante {
         this.costo = 75;
         oro.restarOro(this.costo);
 	}
-	
-	public void avanzarTurno() {
+
+    public void finalizarTurno() {
         this.estado.avanzarTurno(this);
 	}
 
 	@Override
-    public void atacar(Atacable atacable) {
-        if (atacable.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
+    public void atacar(Atacable objetivo) {
+        if (objetivo.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
-        this.estado.atacar(atacable, this);
+        this.estado.atacar(objetivo, this);
 		this.estarOcupado();
 	}
 

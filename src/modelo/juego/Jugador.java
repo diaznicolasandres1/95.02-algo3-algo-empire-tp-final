@@ -26,9 +26,9 @@ public class Jugador {
     private Oro oro;
     private Poblacion poblacion;
     private ArrayList<Colocable> estructuras;
-    private static final int ALDEANOS_INICIALES = 3;
     private Mapa mapa;
     private Jugador oponente;
+    private static final int ALDEANOS_INICIALES = 3;
 
     public Jugador(String nombre, Mapa mapa, int castilloFil, int castilloCol, int plazaFil, int plazaCol) {
 
@@ -39,44 +39,6 @@ public class Jugador {
         this.mapa = mapa;
         this.colocarCastillo(this.oro, castilloFil, castilloCol);
         this.colocarPlazaYAldeanos(this.oro, plazaFil, plazaCol);
-    }
-
-    /*-----Inicializadores-----*/
-
-    private void colocarPlazaYAldeanos(Oro oro, int fila, int columna) {
-        PlazaCentral plaza = new PlazaCentral(oro);
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.avanzarTurno();
-        plaza.colocarseEn(this.mapa, fila, columna);
-        this.estructuras.add(plaza);
-        this.crearAldeanosIniciales(oro, plaza);
-    }
-
-    private void colocarCastillo(Oro oro, int fila, int columna) {
-        Castillo castillo = new Castillo(oro);
-        castillo.colocarseEn(this.mapa, fila, columna);
-        this.estructuras.add(castillo);
-    }
-
-    private void crearAldeanosIniciales(Oro oro, PlazaCentral plaza) {
-        for (int i = 0; i < ALDEANOS_INICIALES; i++) {
-            Aldeano aldeano = new Aldeano(oro);
-            plaza.colocarAlrededor(this.mapa, aldeano);
-            this.poblacion.agregarUnidad(aldeano);
-        }
-    }
-
-    /*-----Verificadores-----*/
-
-    private void esUnidadPropia(Colocable unidad) {
-        if (!this.poblacion.perteneceUnidad(unidad))
-            throw new UnidadSeleccionadaNoPerteneceAJugadorException();
-    }
-
-    private void esEdificioPropio(Colocable edificio) {
-        if (!this.estructuras.contains(edificio))
-            throw new EdificioSeleccionadoNoPerteneceAJugadorException();
     }
 
     /*-----Metodos setters y getters-----*/
@@ -155,17 +117,17 @@ public class Jugador {
 
     /*-----Metodos de Atacante-----*/
 
-    public void atacar(Atacante atacante, Atacable atacable) {
+    public void atacar(Atacante atacante, Atacable objetivo) {
         this.esUnidadPropia((Unidad) atacante);
-        if (this.poblacion.perteneceUnidad((Colocable) atacable))
+        if (this.poblacion.perteneceUnidad((Colocable) objetivo))
             throw new UnidadObjetivoEsPropiaException();
-        else if (this.estructuras.contains(atacable))
+        else if (this.estructuras.contains(objetivo))
             throw new EdificioObjetivoEsPropioException();
         try {
-            atacante.atacar(atacable);
+            atacante.atacar(objetivo);
         } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
-            ((Colocable) atacable).descolocarseDe(this.mapa);
-            this.oponente.removerColocable((Colocable) atacable);
+            ((Colocable) objetivo).descolocarseDe(this.mapa);
+            this.oponente.removerColocable((Colocable) objetivo);
         }
     }
 
@@ -201,16 +163,52 @@ public class Jugador {
         unidad.moverHacia(destino, this.mapa);
     }
 
-    public Jugador avanzarTurno() {
+    public Jugador finalizarTurno() {
         for (Colocable edificio : this.estructuras) {
-            edificio.avanzarTurno();
+            edificio.finalizarTurno();
         }
-        this.poblacion.avanzarTurno();
+        this.poblacion.finalizarTurno();
         return this.oponente;
     }
 
     private void removerColocable(Colocable colocable) {
         this.poblacion.removerUnidad(colocable);
         this.estructuras.remove(colocable);
+    }
+
+    private void esUnidadPropia(Colocable unidad) {
+        if (!this.poblacion.perteneceUnidad(unidad)) {
+            throw new UnidadSeleccionadaNoPerteneceAJugadorException();
+        }
+    }
+
+    private void esEdificioPropio(Colocable edificio) {
+        if (!this.estructuras.contains(edificio)) {
+            throw new EdificioSeleccionadoNoPerteneceAJugadorException();
+        }
+    }
+
+    private void colocarPlazaYAldeanos(Oro oro, int fila, int columna) {
+        PlazaCentral plaza = new PlazaCentral(oro);
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.finalizarTurno();
+        plaza.colocarseEn(this.mapa, fila, columna);
+        this.estructuras.add(plaza);
+        this.crearAldeanosIniciales(oro, plaza);
+    }
+
+    private void colocarCastillo(Oro oro, int fila, int columna) {
+        Castillo castillo = new Castillo(oro);
+        castillo.colocarseEn(this.mapa, fila, columna);
+        this.estructuras.add(castillo);
+    }
+
+    private void crearAldeanosIniciales(Oro oro, PlazaCentral plaza) {
+        for (int i = 0; i < ALDEANOS_INICIALES; i++) {
+            Aldeano aldeano = new Aldeano(oro);
+            plaza.colocarAlrededor(this.mapa, aldeano);
+            this.poblacion.agregarUnidad(aldeano);
+        }
     }
 }

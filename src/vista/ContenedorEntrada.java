@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ public class ContenedorEntrada extends VBox {
         this.setSpacing(20);
         this.setPadding(new Insets(25));
 
-        EntradaUsuario unaEntrada = new EntradaUsuario("Primer Jugador", Color.CYAN);
-        EntradaUsuario otraEntrada = new EntradaUsuario("Segundo Jugador", Color.ORANGE);
+        EntradaUsuario unaEntrada = new EntradaUsuario("Primer Jugador");
+        EntradaUsuario otraEntrada = new EntradaUsuario("Segundo Jugador");
         this.jugadores.add(unaEntrada);
         this.jugadores.add(otraEntrada);
 

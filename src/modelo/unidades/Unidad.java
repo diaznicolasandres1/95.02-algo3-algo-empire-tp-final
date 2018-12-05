@@ -64,7 +64,7 @@ public abstract class Unidad implements Colocable, Atacable {
         return posicion.calcularDistanciaA(this.posicion);
     }
 
-    public abstract void avanzarTurno();
+    public abstract void finalizarTurno();
 
     public abstract void moverHacia(Posicion destino, Mapa mapa);
 

@@ -1,4 +1,4 @@
-package modelo.edificios.castillo;
+package modelo.excepciones;
 
 public class CastilloFueDestruidoException extends RuntimeException {
 }
