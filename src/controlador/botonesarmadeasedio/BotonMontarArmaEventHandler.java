@@ -16,7 +16,7 @@ public class BotonMontarArmaEventHandler implements EventHandler<ActionEvent> {
     private ArmaDeAsedio armaDeAsedio;
     private Juego juego;
 
-    public BotonMontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal){
+    public BotonMontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
         this.armaDeAsedio = arma;
         this.juego  = juego;
     }

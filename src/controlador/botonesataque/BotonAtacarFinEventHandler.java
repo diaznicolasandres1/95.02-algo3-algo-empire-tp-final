@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 import modelo.edificios.castillo.CastilloFueDestruidoException;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
 import vista.ContenedorPrincipal;
@@ -37,19 +38,21 @@ public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
         alert.setTitle("Error al atacar");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            this.juego.atacar(this.atacante, atacado);
+            this.juego.atacar(this.atacante, (Atacable) atacado);
         } catch (CastilloFueDestruidoException e) {
             alert.setContentText("El castillo fue destruido. Se finaliza el juego");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                Platform.exit();
             }
-        }
-        catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
+        } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException | ArmaDeAsedioException e) {
             alert.setContentText(e.getMessage());
             alert.show();
         } catch (ColocableFueraDeRangoDeAtaqueException e) {
             alert.setContentText("Objetivo fuera de rango de ataque");
+            alert.show();
+        } catch (NullPointerException e) {
+            alert.setContentText("No existe objetivo en el casillero seleccionado");
             alert.show();
         }
         this.contenedor.dibujarMapaConCasilleroHandler();

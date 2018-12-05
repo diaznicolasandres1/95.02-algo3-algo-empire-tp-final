@@ -1,6 +1,7 @@
 package modelo.juego;
 
 import modelo.excepciones.*;
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.edificios.castillo.Castillo;
 
@@ -154,17 +155,17 @@ public class Jugador {
 
     /*-----Metodos de Atacante-----*/
 
-    public void atacar(Atacante atacante, Colocable objetivo) {
+    public void atacar(Atacante atacante, Atacable atacable) {
         this.esUnidadPropia((Unidad) atacante);
-        if (this.poblacion.perteneceUnidad(objetivo))
+        if (this.poblacion.perteneceUnidad((Colocable) atacable))
             throw new UnidadObjetivoEsPropiaException();
-        if (this.estructuras.contains(objetivo))
+        else if (this.estructuras.contains(atacable))
             throw new EdificioObjetivoEsPropioException();
         try {
-            atacante.atacar(objetivo);
+            atacante.atacar(atacable);
         } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
-            objetivo.descolocarseDe(this.mapa);
-            this.oponente.removerColocable(objetivo);
+            ((Colocable) atacable).descolocarseDe(this.mapa);
+            this.oponente.removerColocable((Colocable) atacable);
         }
     }
 

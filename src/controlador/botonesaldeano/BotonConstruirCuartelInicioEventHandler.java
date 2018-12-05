@@ -13,7 +13,7 @@ public class BotonConstruirCuartelInicioEventHandler implements EventHandler<Act
     public ContenedorPrincipal contenedorPrincipal;
 
 
-    public BotonConstruirCuartelInicioEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal){
+    public BotonConstruirCuartelInicioEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.aldeano = aldeano;
         this.juego= juego;
         this.contenedorPrincipal = contenedorPrincipal;

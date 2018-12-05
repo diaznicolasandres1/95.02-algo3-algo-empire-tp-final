@@ -33,7 +33,7 @@ public class ContenedorEntrada extends VBox {
         VBox vBox = new VBox(unaEntrada.getHb(), otraEntrada.getHb());
         vBox.setSpacing(30);
 
-        Image imagen = new Image("file:src/vista/imagenes/imagen_inicio.png", 1500, 150, true, true);
+        Image imagen = new Image("file:src/vista/imagenes/titulo_inicio.png", 1500, 150, true, true);
         ImageView imagenVista = new ImageView(imagen);
 
         Image fondo = new Image("file:src/vista/imagenes/fondo_inicio.jpg", 525, 525, false, true);

@@ -31,7 +31,6 @@ public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Colocable colocable = this.juego.getColocable(this.fila, this.columna);
-        /*Refactorizar en un switch */
         if (colocable instanceof Aldeano) {
             this.contenedor.dibujarMetodosAldeano((Aldeano) colocable);
         } else if (colocable instanceof Cuartel) {

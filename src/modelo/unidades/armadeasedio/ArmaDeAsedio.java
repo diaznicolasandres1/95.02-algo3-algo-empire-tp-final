@@ -1,11 +1,11 @@
 package modelo.unidades.armadeasedio;
 
+import modelo.unidades.Atacable;
 import modelo.unidades.Atacante;
 import modelo.excepciones.ColocableFueraDeRangoDeAtaqueException;
 import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
-import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 
 public class ArmaDeAsedio extends Unidad implements Atacante {
@@ -34,15 +34,15 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 
 	@Override
 	public void moverHacia(Posicion destino, Mapa mapa) {
-        this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, this.distanciaDeMovimiento);
+		this.estado.moverUnidadDesdeHacia(this, mapa, destino, this.posicion, DISTANCIA_DE_MOVIMIENTO);
 	}
 
 	@Override
-	public void atacar(Colocable colocable) {
-		if (colocable.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
+	public void atacar(Atacable atacable) {
+		if (atacable.calcularDistanciaA(this.posicion) > DISTANCIA_MAXIMA_ATAQUE) {
 			throw new ColocableFueraDeRangoDeAtaqueException();
 		}
-		this.estado.atacar(colocable, this);
+		this.estado.atacar(atacable, this);
         this.estado = new EstadoArmaAsedioEnPausa(this.estado);
 	}
 

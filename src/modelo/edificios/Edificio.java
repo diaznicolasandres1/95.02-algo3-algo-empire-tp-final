@@ -6,6 +6,7 @@ import modelo.juego.Oro;
 import modelo.mapa.Posicion;
 import modelo.excepciones.EdificioTieneVidaMaximaException;
 import modelo.mapa.Mapa;
+import modelo.unidades.Atacable;
 import modelo.unidades.Colocable;
 import modelo.unidades.Unidad;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
@@ -15,7 +16,7 @@ import modelo.unidades.aldeano.Aldeano;
 
 import java.util.ArrayList;
 
-public abstract class Edificio implements Colocable {
+public abstract class Edificio implements Colocable, Atacable {
 
     protected static final int DANIO_DE_ESPADACHIN = 15;
     protected static final int DANIO_DE_ARQUERO = 10;
@@ -91,7 +92,6 @@ public abstract class Edificio implements Colocable {
         return distanciaMinima;
     }
 
-	@Override
     public abstract void avanzarTurno();
 
 	public abstract void terminoDeCrearse();

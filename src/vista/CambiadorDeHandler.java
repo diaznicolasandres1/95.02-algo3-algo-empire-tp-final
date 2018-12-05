@@ -20,7 +20,6 @@ public class CambiadorDeHandler {
     private GridPane tablero;
     private ContenedorPrincipal contenedorPrincipal;
     private DibujadorDeMapa dibujador;
-    private Mapa mapa;
     private int base;
     private int altura;
 
@@ -29,11 +28,10 @@ public class CambiadorDeHandler {
         this.tablero = tablero;
         this.contenedorPrincipal = contenedorPrincipal;
         this.dibujador = new DibujadorDeMapa(juego,tablero);
-        this.mapa = juego.getMapa();
-        this.base = this.mapa.getBase();
-        this.altura = this.mapa.getAltura();
+        Mapa mapa = juego.getMapa();
+        this.base = mapa.getBase();
+        this.altura = mapa.getAltura();
     }
-
 
     public void cambiadorAConstruirCuartelFin(Aldeano aldeano){
         for (int i = 0; i < this.altura; i++) {

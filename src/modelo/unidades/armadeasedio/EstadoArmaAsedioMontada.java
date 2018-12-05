@@ -3,7 +3,7 @@ package modelo.unidades.armadeasedio;
 import modelo.excepciones.ArmaDeAsedioYaSeEncuentraMontadaException;
 import modelo.mapa.Posicion;
 import modelo.mapa.Mapa;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 import modelo.unidades.Unidad;
 import modelo.excepciones.NoSePuedeMoverArmaAsedioMontadaException;
 
@@ -20,8 +20,8 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
     }
 
     @Override
-    public void atacar(Colocable colocable, ArmaDeAsedio arma) {
-        colocable.recibirDanio(arma);
+    public void atacar(Atacable atacable, ArmaDeAsedio arma) {
+        atacable.recibirDanio(arma);
     }
 
     @Override

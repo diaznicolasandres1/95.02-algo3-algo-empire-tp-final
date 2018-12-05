@@ -2,7 +2,7 @@ package modelo.unidades.espadachin;
 
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidades.Colocable;
+import modelo.unidades.Atacable;
 
 public class EstadoEspadachinDisponible implements EstadoEspadachin {
 
@@ -12,8 +12,8 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	}
 
 	@Override
-    public void atacar(Colocable colocable, Espadachin espadachin) {
-        colocable.recibirDanio(espadachin);
+    public void atacar(Atacable atacable, Espadachin espadachin) {
+        atacable.recibirDanio(espadachin);
 	}
 
 	@Override
