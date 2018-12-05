@@ -34,17 +34,17 @@ public class CreadorDeBotones {
         construirCuartel.setOnAction(cuartelEventHandler);
         botones.add(construirCuartel);
 
-        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(juego, aldeano, contenedor);
+        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(aldeano, contenedor);
         Button construirPlaza = new Button("Constuir Plaza Central");
         construirPlaza.setOnAction(plazaCentralEventHandler);
         botones.add(construirPlaza);
 
-        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(juego, aldeano, contenedor);
+        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(aldeano, contenedor);
         Button repararEdificio = new Button("Reparar edificio");
         repararEdificio.setOnAction(repararEdificioInicioEventHandler);
         botones.add(repararEdificio);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego, aldeano, contenedor);
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(aldeano, contenedor);
         Button moverAldeano = new Button("Mover unidad");
         moverAldeano.setOnAction(moverHandler);
         botones.add(moverAldeano);
@@ -83,12 +83,12 @@ public class CreadorDeBotones {
         desmontarArma.setOnAction(desmontarArmaEventHandler);
         botones.add(desmontarArma);
 
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego, armaDeAsedio, contenedor);
+        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(armaDeAsedio, contenedor);
         Button atacar = new Button("Atacar");
         atacar.setOnAction(atacarInicioEventHandler);
         botones.add(atacar);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego, armaDeAsedio, contenedor);
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(armaDeAsedio, contenedor);
         Button moverArma = new Button("Mover unidad");
         moverArma.setOnAction(moverHandler);
         botones.add(moverArma);
@@ -108,16 +108,16 @@ public class CreadorDeBotones {
         return botones;
     }
 
-    public ArrayList<Button> crearBotonesPara(Atacante atacante, Juego juego, ContenedorPrincipal contenedor) {
+    public ArrayList<Button> crearBotonesPara(Atacante atacante, ContenedorPrincipal contenedor) {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(juego, atacante, contenedor);
+        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(atacante, contenedor);
         Button atacar = new Button("Atacar");
         atacar.setOnAction(atacarInicioEventHandler);
         botones.add(atacar);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(juego, (Unidad) atacante, contenedor);
+        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler((Unidad) atacante, contenedor);
         Button moverEspadachin = new Button("Mover unidad");
         moverEspadachin.setOnAction(moverHandler);
         botones.add(moverEspadachin);

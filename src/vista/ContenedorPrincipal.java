@@ -47,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
 
 
-        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1990, 1020, false, true);
+        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1590, 1020, false, true);
 
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
@@ -57,15 +57,15 @@ public class ContenedorPrincipal extends BorderPane {
     public void setTop(){
         Image tituloTop = new Image("file:src/vista/imagenes/AlgoEmpire.png", 250, 100, false, true);
         ImageView titulo = new ImageView(tituloTop);
-        top.getChildren().add(titulo);
-        this.setTop(top);
+        this.top.getChildren().add(titulo);
+        this.setTop(this.top);
         this.top.setAlignment(Pos.CENTER);
     }
 
     public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
 
-        izquierdo.getChildren().clear();
-        derecho.getChildren().clear();
+        this.izquierdo.getChildren().clear();
+        this.derecho.getChildren().clear();
 
 
         Text tituloIzq = new Text(this.jugadorUno);
@@ -96,7 +96,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         //Oro y poblacion
 
-        if(this.juego.getNombreJugadorActual() == jugadorUno){
+        if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
 
             oroIzq = new Text("Oro: "+ oroJugadorActual);
             poblacionIzq = new Text("Poblacion: "+ poblacionActual);
@@ -104,7 +104,7 @@ public class ContenedorPrincipal extends BorderPane {
             oroDer = new Text ("Oro: "+oroJugadorAnterior);
             poblacionDer = new Text("Poblacion: "+ poblacionAnterior);
 
-        }else{
+        } else {
 
             oroDer = new Text("Oro: "+ oroJugadorActual);
             poblacionDer = new Text("Poblacion: "+ poblacionActual);
@@ -129,7 +129,7 @@ public class ContenedorPrincipal extends BorderPane {
     
     public void actualizarOro() {
         int oroActual = this.juego.getOroJugadorActual();
-        if(this.juego.getNombreJugadorActual() == jugadorUno){
+        if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text oroIzq = new Text("Oro: "+ oroActual);
             oroIzq.setFill(Color.WHITE);
             this.izquierdo.getChildren().set(1, oroIzq);
@@ -142,7 +142,7 @@ public class ContenedorPrincipal extends BorderPane {
     
     public void actualizarPoblacion() {
         int poblacionActual = this.juego.getPoblacionJugadorActual();
-        if(this.juego.getNombreJugadorActual() == jugadorUno){
+        if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text poblacionIzq = new Text("Poblacion: "+ poblacionActual);
             poblacionIzq.setFill(Color.WHITE);
             this.izquierdo.getChildren().set(2, poblacionIzq);
@@ -210,7 +210,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     public void dibujarMetodoEspadachinOArquero(Atacante atacante) {
         this.bottom.getChildren().clear();
-        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this.juego, this);
+        ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this);
         this.configurarBottom();
         botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
