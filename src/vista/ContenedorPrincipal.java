@@ -109,6 +109,10 @@ public class ContenedorPrincipal extends BorderPane {
             poblacionIzq = new Text("Poblacion: "+ poblacionAnterior);
         }
 
+        oroIzq.setFont(Font.font(17));
+        oroDer.setFont(Font.font(17));
+        poblacionDer.setFont(Font.font(17));
+        poblacionIzq.setFont(Font.font(17));
         oroIzq.setFill(Color.WHITE);
         oroDer.setFill(Color.WHITE);
         poblacionDer.setFill(Color.WHITE);
@@ -192,7 +196,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosAldeano(Aldeano aldeano) {
-        this.setMensaje("Aldeano\n  Vida:"+ aldeano.getVida());
+        this.setMensaje("Aldeano\n❤ Vida:"+ aldeano.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(aldeano, this.juego, this);
         this.configurarBottom();
@@ -200,7 +204,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCuartel(Cuartel cuartel) {
-        this.setMensaje("Cuartel\n  Vida:"+ cuartel.getVida());
+        this.setMensaje("Cuartel\n❤ Vida:"+ cuartel.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(cuartel, this.juego, this);
         this.configurarBottom();
@@ -208,7 +212,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
-        this.setMensaje("ArmaDeAsedio\n  Vida:"+ armaDeAsedio.getVida());
+        this.setMensaje("ArmaDeAsedio\n❤ Vida:"+ armaDeAsedio.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(armaDeAsedio, this.juego, this);
         this.configurarBottom();
@@ -216,7 +220,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosPlazaCentral(PlazaCentral plaza) {
-        this.setMensaje("Plaza Central\n  Vida:"+ plaza.getVida());
+        this.setMensaje("Plaza Central\n❤ Vida:"+ plaza.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(plaza, this.juego, this);
         this.configurarBottom();
@@ -225,7 +229,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     public void dibujarMetodoEspadachinOArquero(Atacante atacante) {
         Unidad unidad = (Unidad)atacante;
-        this.setMensaje("atacante\n  Vida:"+ unidad.getVida());
+        this.setMensaje("atacante\n❤ Vida:"+ unidad.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this);
         this.configurarBottom();
@@ -233,7 +237,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCastillo(Castillo castillo) {
-        this.setMensaje("Castillo\n  Vida:"+ castillo.getVida());
+        this.setMensaje("Castillo\n❤ Vida:"+ castillo.getVida());
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(castillo, this.juego, this);
         this.configurarBottom();
@@ -248,7 +252,7 @@ public class ContenedorPrincipal extends BorderPane {
     
     public void setMensaje(String mensaje) {
         Text texto = new Text(mensaje);
-        texto.setFont(Font.font(15));
+        texto.setFont(Font.font(17));
         texto.setFill(Color.WHITE);
         texto.setTextAlignment(TextAlignment.LEFT);
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
@@ -260,7 +264,7 @@ public class ContenedorPrincipal extends BorderPane {
         }
     }
     
-    public void removeMensaje() {
+    public void clearMensajes() {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             this.mensajesIzq.getChildren().clear();
         }else {

@@ -39,7 +39,7 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        this.contenedor.removeMensaje();
+        this.contenedor.clearMensajes();
         this.contenedor.dibujarMapaConCasilleroHandler();
     }
 }

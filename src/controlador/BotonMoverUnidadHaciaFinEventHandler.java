@@ -42,7 +42,7 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
             alert.setContentText("La posicion de destino se encuentra fuera de rango de movimiento");
             alert.show();
         }
-        this.contenedorPrincipal.removeMensaje();
+        this.contenedorPrincipal.clearMensajes();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }

@@ -17,6 +17,7 @@ public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent actionEvent) {
 
+        this.contenedorPrincipal.clearMensajes();
         this.juego.finalizarTurno();
         this.contenedorPrincipal.crearBottom();
         this.contenedorPrincipal.actualizarOro();
