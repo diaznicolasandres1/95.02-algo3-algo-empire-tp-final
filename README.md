@@ -8,9 +8,6 @@ Segundo cuatrimestre año 2018 - FIUBA.
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/02562e58ec574e73bee2a1ecf7b99712)](https://www.codacy.com/app/diaznicolasandres1/Algo-Empire-AYP3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=diaznicolasandres1/Algo-Empire-AYP3&amp;utm_campaign=Badge_Grade)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
-![alt text](https://github.com/diaznicolasandres1/AYPIII-TP2-AlgoEmpire/blob/master/src/vista/imagenes/Captura%20de%20pantalla%20de%202018-12-01%2014-43-39.png)
-
 ## Intregrantes
 - [Balladares, Alejandro](https://github.com/AlejandroBalladares)
 - [Diaz, Nicolas Andres](https://github.com/diaznicolasandres1)
