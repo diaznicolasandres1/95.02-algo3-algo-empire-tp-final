@@ -3,21 +3,17 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import modelo.juego.Juego;
 import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
 
 public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<ActionEvent> {
 
-    private Juego juego;
     private Unidad unidad;
     private ContenedorPrincipal contenedorPrincipal;
 
-    public BotonMoverUnidadHaciaInicioEventHandler(Juego juego, Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
-        this.juego = juego;
+    public BotonMoverUnidadHaciaInicioEventHandler(Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
         this.unidad = unidad;
         this.contenedorPrincipal = contenedorPrincipal;
-
     }
 
     @Override
