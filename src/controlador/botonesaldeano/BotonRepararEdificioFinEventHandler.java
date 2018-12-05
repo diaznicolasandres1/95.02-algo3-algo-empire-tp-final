@@ -38,6 +38,9 @@ public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionE
         } catch (ColocableSeleccionadoException | EdificioException | UnidadYaFueUtilizadaEnEsteTurnoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
+        } catch (ConstruccionFueraDeRangoException e) {
+            alert.setContentText("El edificio no se encuentra proximo al aldeano");
+            alert.show();
         }
         this.contenedor.clearMensajes();
         this.contenedor.dibujarMapaConCasilleroHandler();

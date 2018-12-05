@@ -6,6 +6,7 @@ import modelo.unidades.Atacante;
 import modelo.edificios.castillo.Castillo;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import modelo.edificios.Edificio;
 import modelo.edificios.cuartel.Cuartel;
@@ -120,10 +121,11 @@ public class Jugador {
 
     public void atacar(Atacante atacante, Atacable objetivo) {
         this.esUnidadPropia((Unidad) atacante);
-        if (this.poblacion.perteneceUnidad((Colocable) objetivo))
+        if (this.poblacion.perteneceUnidad((Colocable) objetivo)) {
             throw new UnidadObjetivoEsPropiaException();
-        else if (this.estructuras.contains(objetivo))
+        } else if (this.estructuras.contains(objetivo)) {
             throw new EdificioObjetivoEsPropioException();
+        }
         try {
             atacante.atacar(objetivo);
         } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
@@ -169,16 +171,18 @@ public class Jugador {
             edificio.finalizarTurno();
         }
         this.poblacion.finalizarTurno();
-        ArrayList<Colocable> objetivos = this.castillo.getColocablesAlrededor(this.mapa);
-        ArrayList<Colocable> removibles = new ArrayList<>();
-        for(Colocable objetivo : objetivos) {
-            if (this.poblacion.perteneceUnidad(objetivo) | this.estructuras.contains(objetivo))
-                removibles.add(objetivo);
-        }
-        for(Colocable removible : removibles)
-            objetivos.remove(removible);
-        castillo.atacarAColocables(objetivos);
+        this.castilloAtacar();
         return this.oponente;
+    }
+
+    private void castilloAtacar() {
+
+        ArrayList<Colocable> objetivos = this.castillo.getColocablesAlrededor(this.mapa);
+        ArrayList<Colocable> colocablesPropios = objetivos.stream().filter(objetivo -> this.poblacion.perteneceUnidad(objetivo) || this.estructuras.contains(objetivo)).collect(Collectors.toCollection(ArrayList::new));
+
+        colocablesPropios.forEach(objetivos::remove);
+
+        this.castillo.atacarAColocables(objetivos);
     }
 
     private void removerColocable(Colocable colocable) {

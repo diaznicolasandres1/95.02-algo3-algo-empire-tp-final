@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -36,8 +35,8 @@ public class ContenedorPrincipal extends BorderPane {
     private VBox derecho = new VBox();
     private VBox mensajesIzq = new VBox();
     private VBox mensajesDer = new VBox();
-    private HBox top = new HBox();
     private HBox bottom = new HBox();
+    private static final String RUTA_IMG_FONDO = "file:src/vista/imagenes/fondo_juego_1.jpg";
 
     public ContenedorPrincipal(String jugadorUno, String jugadorDos) {
         this.jugadorUno = jugadorUno;
@@ -49,20 +48,10 @@ public class ContenedorPrincipal extends BorderPane {
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
 
-
-        Image fondo = new Image("file:src/vista/imagenes/fondo_juego_1.jpg", 1590, 1020, false, true);
+        Image fondo = new Image(RUTA_IMG_FONDO, 1590, 1020, false, true);
 
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
-        //setTop();
-    }
-
-    public void setTop(){
-        Image tituloTop = new Image("file:src/vista/imagenes/AlgoEmpire.png", 250, 100, false, true);
-        ImageView titulo = new ImageView(tituloTop);
-        this.top.getChildren().add(titulo);
-        this.setTop(this.top);
-        this.top.setAlignment(Pos.CENTER);
     }
 
     public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
@@ -94,14 +83,12 @@ public class ContenedorPrincipal extends BorderPane {
         Text poblacionDer;
 
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
-
             oroIzq = new Text("Oro: "+ oroJugadorActual);
             poblacionIzq = new Text("Poblacion: "+ poblacionActual);
 
             oroDer = new Text ("Oro: "+ oroJugadorAnterior);
             poblacionDer = new Text("Poblacion: "+ poblacionAnterior);
         } else {
-
             oroDer = new Text("Oro: "+ oroJugadorActual);
             poblacionDer = new Text("Poblacion: "+ poblacionActual);
 
@@ -118,11 +105,11 @@ public class ContenedorPrincipal extends BorderPane {
         poblacionDer.setFill(Color.WHITE);
         poblacionIzq.setFill(Color.WHITE);
 
-        this.izquierdo.getChildren().addAll(tituloIzq,oroIzq,poblacionIzq, this.mensajesIzq);
-        this.derecho.getChildren().addAll(tituloDer,oroDer,poblacionDer, this.mensajesDer);
+        this.izquierdo.getChildren().addAll(tituloIzq, oroIzq, poblacionIzq, this.mensajesIzq);
+        this.derecho.getChildren().addAll(tituloDer, oroDer, poblacionDer, this.mensajesDer);
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             this.izquierdo.getChildren().add(3, botonFinalizarTurno);
-        }else {
+        } else {
             this.derecho.getChildren().add(3, botonFinalizarTurno);
         }
         this.setLeft(this.izquierdo);
@@ -134,7 +121,7 @@ public class ContenedorPrincipal extends BorderPane {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Button botonFinalizar = (Button)this.derecho.getChildren().remove(3);
             this.izquierdo.getChildren().add(3, botonFinalizar);
-        }else {
+        } else {
             Button botonFinalizar = (Button)this.izquierdo.getChildren().remove(3);
             this.derecho.getChildren().add(3, botonFinalizar);
         }
@@ -258,7 +245,7 @@ public class ContenedorPrincipal extends BorderPane {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             this.mensajesIzq.getChildren().clear();
             this.mensajesIzq.getChildren().add(texto);
-        }else {
+        } else {
             this.mensajesDer.getChildren().clear();
             this.mensajesDer.getChildren().add(texto);
         }
@@ -267,7 +254,7 @@ public class ContenedorPrincipal extends BorderPane {
     public void clearMensajes() {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             this.mensajesIzq.getChildren().clear();
-        }else {
+        } else {
             this.mensajesDer.getChildren().clear();
         }
     }

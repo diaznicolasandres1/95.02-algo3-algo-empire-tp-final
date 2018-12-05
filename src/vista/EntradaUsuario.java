@@ -2,7 +2,6 @@ package vista;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 
 public class EntradaUsuario {
 

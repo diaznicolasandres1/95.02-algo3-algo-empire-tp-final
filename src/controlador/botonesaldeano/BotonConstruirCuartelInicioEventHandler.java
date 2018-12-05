@@ -20,8 +20,8 @@ public class BotonConstruirCuartelInicioEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        
-        this.contenedorPrincipal.setMensaje("Haz click en donde\nquieres colocar el\ncuartel");
+
+        this.contenedorPrincipal.setMensaje("Haz click en donde\n quieres colocar el\n cuartel");
         this.contenedorPrincipal.cambiarHandlerConstruirCuartel(this.aldeano);
     }
 }

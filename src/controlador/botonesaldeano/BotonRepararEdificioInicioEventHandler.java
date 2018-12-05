@@ -17,7 +17,7 @@ public class BotonRepararEdificioInicioEventHandler implements EventHandler<Acti
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.contenedorPrincipal.setMensaje("Haz click en el\nedificio que quieres\nreparar");
+        this.contenedorPrincipal.setMensaje("Haz click en el\n edificio que quieres\n reparar");
         this.contenedorPrincipal.cambiarHandlerRepararEdificio(this.aldeano);
     }
 }

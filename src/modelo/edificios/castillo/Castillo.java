@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Castillo extends Edificio implements Atacante {
 
     private static final int RANGO_DE_ATAQUE = 5;
+    private static final int POSICION_INICIAL = 0;
 	
 	public Castillo(Oro oro) {
 		this.vidaMaxima = 1000;
@@ -54,8 +55,7 @@ public class Castillo extends Edificio implements Atacante {
     public void repararse(Aldeano aldeano) {
         if (this.aldeanoReparando == null) {
             this.aldeanoReparando = aldeano;
-        }
-        if (this.aldeanoReparando != aldeano) {
+        } else if (this.aldeanoReparando != aldeano) {
             throw new EdificioSiendoReparadoException();
         }
         this.incrementarVida();
@@ -68,13 +68,8 @@ public class Castillo extends Edificio implements Atacante {
         }
     }
 
-    @Override
-	public void recibirDanio(Castillo castillo) {
-        // Castillo no recibe daño si lo ataca castillo
-    }
-
     public ArrayList<Colocable> getColocablesAlrededor(Mapa mapa) {
-        ArrayList<Colocable> colocables = this.posiciones.get(0).buscarColocablesEnRangoDe(mapa, RANGO_DE_ATAQUE);
+        ArrayList<Colocable> colocables = this.posiciones.get(POSICION_INICIAL).buscarColocablesEnRangoDe(mapa, RANGO_DE_ATAQUE);
         colocables.remove(this);
         return colocables;
     }

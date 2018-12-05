@@ -19,17 +19,14 @@ public class Poblacion {
     }
 
     public void agregarUnidad(Colocable unidad) {
-        if (!this.esCantidadDePoblacionValida())
+        if (!this.esCantidadDePoblacionValida()) {
             throw new LimiteDePoblacionAlcanzadoException();
+        }
         this.unidades.add(unidad);
     }
 
     public void removerUnidad(Colocable unidad) {
         this.unidades.remove(unidad);
-    }
-
-    private boolean esCantidadDePoblacionValida() {
-        return this.unidades.size() < LIMITE_POBLACION;
     }
 
     public void finalizarTurno() {
@@ -40,6 +37,10 @@ public class Poblacion {
 
     public boolean perteneceUnidad(Colocable unidad) {
         return this.unidades.contains(unidad);
+    }
+
+    private boolean esCantidadDePoblacionValida() {
+        return this.unidades.size() < LIMITE_POBLACION;
     }
 
 }

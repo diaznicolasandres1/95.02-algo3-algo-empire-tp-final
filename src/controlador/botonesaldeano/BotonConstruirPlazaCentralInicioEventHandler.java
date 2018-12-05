@@ -17,7 +17,7 @@ public class BotonConstruirPlazaCentralInicioEventHandler implements EventHandle
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.contenedorPrincipal.setMensaje("Haz click en donde\nquieres colocar la\nplaza central");
+        this.contenedorPrincipal.setMensaje("Haz click en donde\n quieres colocar la\n plaza central");
         this.contenedorPrincipal.cambiarHandlerConstuirPlazaCentral(this.aldeano);
     }
 }

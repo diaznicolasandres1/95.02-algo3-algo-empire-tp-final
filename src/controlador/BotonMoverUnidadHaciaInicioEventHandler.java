@@ -17,7 +17,7 @@ public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.contenedorPrincipal.setMensaje("Haz click en el lugar\ndonde deseas mover\n la unidad");
+        this.contenedorPrincipal.setMensaje("Haz click en el lugar\n donde deseas mover\n la unidad");
         this.contenedorPrincipal.cambiarHandlerMoverUnidad(this.unidad);
     }
 }

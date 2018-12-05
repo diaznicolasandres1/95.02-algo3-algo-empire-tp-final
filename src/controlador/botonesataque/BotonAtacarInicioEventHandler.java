@@ -17,7 +17,7 @@ public class BotonAtacarInicioEventHandler implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.contenedorPrincipal.setMensaje("Haz click en el\nsobre quien quieres}\nrealizar el ataque");
+        this.contenedorPrincipal.setMensaje("Haz click sobre\n quien quieres\n realizar el ataque");
         this.contenedorPrincipal.cambiarHandlerAtaque(this.atacante);
 
     }
