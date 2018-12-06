@@ -48,6 +48,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
         this.tablero.setMinSize(755, 755);
+        this.setMinSize(850, 850);
         this.setCenter(this.tablero);
 
         Image fondo = new Image(RUTA_IMG_FONDO, 1590, 1020, false, true);
