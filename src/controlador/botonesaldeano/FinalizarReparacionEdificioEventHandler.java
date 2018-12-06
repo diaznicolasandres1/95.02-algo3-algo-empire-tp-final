@@ -12,14 +12,15 @@ import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
-public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarReparacionEdificioEventHandler implements EventHandler<ActionEvent> {
+
     private final ContenedorPrincipal contenedor;
     private final Aldeano reparador;
     private final Juego juego;
     private final int fila;
     private final int columna;
 
-    public BotonRepararEdificioFinEventHandler(Juego juego, Aldeano reparador, int fila, int columna, ContenedorPrincipal contenedor){
+    public FinalizarReparacionEdificioEventHandler(Juego juego, Aldeano reparador, int fila, int columna, ContenedorPrincipal contenedor) {
         this.reparador = reparador;
         this.contenedor = contenedor;
         this.juego = juego;

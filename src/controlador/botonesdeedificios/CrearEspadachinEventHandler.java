@@ -4,41 +4,41 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
-import modelo.edificios.plazacentral.PlazaCentral;
+import modelo.edificios.cuartel.Cuartel;
+import modelo.excepciones.CuartelCreandoseException;
 import modelo.excepciones.EdificioSeleccionadoNoPerteneceAJugadorException;
 import modelo.excepciones.LimiteDePoblacionAlcanzadoException;
 import modelo.excepciones.OroInsuficienteException;
-import modelo.excepciones.PlazaCentralEnConstruccionException;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
-public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> {
+public class CrearEspadachinEventHandler implements EventHandler<ActionEvent> {
 
     private final Juego juego;
-    private final PlazaCentral plaza;
+    private final Cuartel cuartel;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearAldeanoEventHandler(Juego juego, PlazaCentral plaza, ContenedorPrincipal contenedorPrincipal){
+    public CrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
-        this.plaza = plaza;
+        this.cuartel = cuartel;
         this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Error al crear aldeano");
+        alert.setTitle("Error al crear espadachin");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            this.juego.crearAldeano(this.plaza);
+            this.juego.crearEspadachin(this.cuartel);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();
         } catch (OroInsuficienteException e) {
-            alert.setContentText("No tienes oro suficiente para crear un aldeano");
+            alert.setContentText("No tienes oro suficiente para crear un arquero");
             alert.show();
-        } catch (PlazaCentralEnConstruccionException e) {
-            alert.setContentText("La plaza central se encuentra en construccion");
+        } catch (CuartelCreandoseException e) {
+            alert.setContentText("El cuartel se encuentra en construccion");
             alert.show();
         } catch (LimiteDePoblacionAlcanzadoException e) {
             alert.setContentText("Limite de poblacion alcanzado");

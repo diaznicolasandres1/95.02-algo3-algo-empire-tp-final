@@ -9,14 +9,15 @@ import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
-public class BotonConstruirCuartelFinEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarConstruccionCuartelEventHandler implements EventHandler<ActionEvent> {
+
     private final ContenedorPrincipal contenedor;
     private final Aldeano constructor;
     private final Juego juego;
     private final int fila;
     private final int columna;
 
-    public BotonConstruirCuartelFinEventHandler(Juego juego, Aldeano constructor, int fila, int columna, ContenedorPrincipal contenedor) {
+    public FinalizarConstruccionCuartelEventHandler(Juego juego, Aldeano constructor, int fila, int columna, ContenedorPrincipal contenedor) {
         this.constructor = constructor;
         this.contenedor = contenedor;
         this.juego = juego;

@@ -1,7 +1,7 @@
 package vista;
 
-import controlador.BotonJugarEventHandler;
-import controlador.BotonSalirEventHandler;
+import controlador.JugarEventHandler;
+import controlador.SalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -48,17 +48,17 @@ public class ContenedorEntrada extends VBox {
 
     public void setBotonesIniciales(Stage stage) {
 
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(stage, this.jugadores);
-        BotonSalirEventHandler botonSalirEventHandler = new BotonSalirEventHandler();
+        JugarEventHandler jugarEventHandler = new JugarEventHandler(stage, this.jugadores);
+        SalirEventHandler salirEventHandler = new SalirEventHandler();
 
         Button botonJugar = new Button("");
-        botonJugar.setOnAction(botonJugarEventHandler);
+        botonJugar.setOnAction(jugarEventHandler);
         botonJugar.setBackground(Background.EMPTY);
         Image jugar = new Image(RUTA_BOTON_JUGAR);
         botonJugar.setGraphic(new ImageView(jugar));
 
         Button botonSalir = new Button("");
-        botonSalir.setOnAction(botonSalirEventHandler);
+        botonSalir.setOnAction(salirEventHandler);
         botonSalir.setBackground(Background.EMPTY);
         Image salir = new Image(RUTA_BOTON_SALIR);
         botonSalir.setGraphic(new ImageView(salir));

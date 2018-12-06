@@ -5,12 +5,12 @@ import javafx.event.EventHandler;
 import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
 
-public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<ActionEvent> {
+public class IniciarMoverUnidadEventHandler implements EventHandler<ActionEvent> {
 
     private final Unidad unidad;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonMoverUnidadHaciaInicioEventHandler(Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
+    public IniciarMoverUnidadEventHandler(Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
         this.unidad = unidad;
         this.contenedorPrincipal = contenedorPrincipal;
     }

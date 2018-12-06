@@ -5,12 +5,12 @@ import javafx.event.EventHandler;
 import modelo.unidades.Atacante;
 import vista.ContenedorPrincipal;
 
-public class BotonAtacarInicioEventHandler implements EventHandler<ActionEvent> {
+public class IniciarAtaqueEventHandler implements EventHandler<ActionEvent> {
 
     private final Atacante atacante;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonAtacarInicioEventHandler(Atacante atacante, ContenedorPrincipal contenedorPrincipal) {
+    public IniciarAtaqueEventHandler(Atacante atacante, ContenedorPrincipal contenedorPrincipal) {
         this.atacante = atacante;
         this.contenedorPrincipal = contenedorPrincipal;
     }

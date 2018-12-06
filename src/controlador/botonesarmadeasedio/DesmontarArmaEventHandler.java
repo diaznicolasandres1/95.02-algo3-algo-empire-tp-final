@@ -11,28 +11,26 @@ import modelo.juego.Juego;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import vista.ContenedorPrincipal;
 
-public class BotonMontarArmaEventHandler implements EventHandler<ActionEvent> {
+public class DesmontarArmaEventHandler implements EventHandler<ActionEvent> {
 
     private final ArmaDeAsedio armaDeAsedio;
     private final Juego juego;
 
-    public BotonMontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
+    public DesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
         this.armaDeAsedio = arma;
-        this.juego  = juego;
+        this.juego = juego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Error al montar arma");
+        alert.setTitle("Error al desmontar arma");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            this.juego.montarArma(this.armaDeAsedio);
+            this.juego.desmontarArma(this.armaDeAsedio);
         } catch (ArmaDeAsedioException | ColocableSeleccionadoException e) {
             alert.setContentText(e.getMessage());
             alert.show();
         }
     }
-
-
 }

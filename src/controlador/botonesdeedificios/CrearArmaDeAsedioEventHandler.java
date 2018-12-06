@@ -12,13 +12,13 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
-public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEvent> {
+public class CrearArmaDeAsedioEventHandler implements EventHandler<ActionEvent> {
 
     private final Juego juego;
     private final Castillo castillo;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearArmaDeAsedioEventHandler(Juego juego, Castillo castillo, ContenedorPrincipal contenedorPrincipal){
+    public CrearArmaDeAsedioEventHandler(Juego juego, Castillo castillo, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.castillo = castillo;
         this.contenedorPrincipal = contenedorPrincipal;

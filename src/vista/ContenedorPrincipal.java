@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.BotonCambiarTurnoEventHandler;
+import controlador.FinalizarTurnoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -63,7 +63,7 @@ public class ContenedorPrincipal extends BorderPane {
         Text tituloIzq = new Text(this.jugadorUno);
         Text tituloDer = new Text(this.jugadorDos);
 
-        BotonCambiarTurnoEventHandler cambiadorTurno = new BotonCambiarTurnoEventHandler(this.juego, this);
+        FinalizarTurnoEventHandler cambiadorTurno = new FinalizarTurnoEventHandler(this.juego, this);
         Button botonFinalizarTurno = new Button("Finalizar Turno");
         botonFinalizarTurno.setOnAction(cambiadorTurno);
         botonFinalizarTurno.setPadding(new Insets(15));

@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.BotonCasilleroEventHandler;
+import controlador.CasilleroEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import modelo.edificios.castillo.Castillo;
@@ -34,7 +34,7 @@ public class DibujadorDeMapa {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
                 Button botonCasillero = new Button("");
-                botonCasillero.setOnAction(new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
+                botonCasillero.setOnAction(new CasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
                 this.dibujarColocable(colocable, botonCasillero);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }

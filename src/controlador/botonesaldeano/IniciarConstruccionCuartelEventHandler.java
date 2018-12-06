@@ -6,13 +6,13 @@ import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
-public class BotonConstruirCuartelInicioEventHandler implements EventHandler<ActionEvent> {
+public class IniciarConstruccionCuartelEventHandler implements EventHandler<ActionEvent> {
+
     public Juego juego;
     public Aldeano aldeano;
     public ContenedorPrincipal contenedorPrincipal;
 
-
-    public BotonConstruirCuartelInicioEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
+    public IniciarConstruccionCuartelEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.aldeano = aldeano;
         this.juego= juego;
         this.contenedorPrincipal = contenedorPrincipal;

@@ -12,13 +12,13 @@ import modelo.excepciones.OroInsuficienteException;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
-public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEvent> {
+public class CrearArqueroEventHandler implements EventHandler<ActionEvent> {
 
     private final Juego juego;
     private final Cuartel cuartel;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCrearEspadachinEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
+    public CrearArqueroEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.cuartel = cuartel;
         this.contenedorPrincipal = contenedorPrincipal;
@@ -27,10 +27,10 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Error al crear espadachin");
+        alert.setTitle("Error al crear arquero");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         try {
-            this.juego.crearEspadachin(this.cuartel);
+            this.juego.crearArquero(this.cuartel);
         } catch (EdificioSeleccionadoNoPerteneceAJugadorException e) {
             alert.setContentText(e.getMessage());
             alert.show();
@@ -49,3 +49,4 @@ public class BotonCrearEspadachinEventHandler implements EventHandler<ActionEven
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
     }
 }
+

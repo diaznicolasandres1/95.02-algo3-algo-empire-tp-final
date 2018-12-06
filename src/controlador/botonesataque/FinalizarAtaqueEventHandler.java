@@ -15,14 +15,15 @@ import vista.ContenedorPrincipal;
 
 import java.util.Optional;
 
-public class BotonAtacarFinEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
+
     private final ContenedorPrincipal contenedor;
     private final Atacante atacante;
     private final Juego juego;
     private final int fila;
     private final int columna;
 
-    public  BotonAtacarFinEventHandler(Juego juego, Atacante atacante, int fila, int columna, ContenedorPrincipal contenedorPrincipal){
+    public FinalizarAtaqueEventHandler(Juego juego, Atacante atacante, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.atacante = atacante;
         this.contenedor = contenedorPrincipal;

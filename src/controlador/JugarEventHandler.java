@@ -9,14 +9,14 @@ import vista.EntradaUsuario;
 
 import java.util.ArrayList;
 
-public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
+public class JugarEventHandler implements EventHandler<ActionEvent> {
 
     private static final int JUGADOR_UNO = 0;
     private static final int JUGADOR_DOS = 1;
     private final ArrayList<EntradaUsuario> jugadores;
     private final Stage stage;
 
-    public BotonJugarEventHandler(Stage stage, ArrayList<EntradaUsuario> jugadores) {
+    public JugarEventHandler(Stage stage, ArrayList<EntradaUsuario> jugadores) {
         this.stage = stage;
         this.jugadores = jugadores;
     }

@@ -5,11 +5,11 @@ import javafx.event.EventHandler;
 import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
-public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarTurnoEventHandler implements EventHandler<ActionEvent> {
     private final Juego juego;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonCambiarTurnoEventHandler(Juego juego, ContenedorPrincipal contenedorPrincipal){
+    public FinalizarTurnoEventHandler(Juego juego, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;
         this.contenedorPrincipal = contenedorPrincipal;
     }

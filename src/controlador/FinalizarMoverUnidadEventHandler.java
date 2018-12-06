@@ -9,7 +9,7 @@ import modelo.juego.Juego;
 import modelo.unidades.Unidad;
 import vista.ContenedorPrincipal;
 
-public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarMoverUnidadEventHandler implements EventHandler<ActionEvent> {
 
     private final Unidad unidad;
     private final Juego juego;
@@ -17,7 +17,7 @@ public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<Action
     private final int columna;
     private final ContenedorPrincipal contenedorPrincipal;
 
-    public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
+    public FinalizarMoverUnidadEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
         this.unidad = unidad;
         this.juego = juego;
         this.fila = fila;

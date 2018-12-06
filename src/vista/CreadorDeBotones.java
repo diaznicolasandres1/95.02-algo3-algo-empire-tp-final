@@ -1,16 +1,16 @@
 package vista;
 
-import controlador.BotonMoverUnidadHaciaInicioEventHandler;
-import controlador.botonesaldeano.BotonConstruirCuartelInicioEventHandler;
-import controlador.botonesaldeano.BotonConstruirPlazaCentralInicioEventHandler;
-import controlador.botonesaldeano.BotonRepararEdificioInicioEventHandler;
-import controlador.botonesarmadeasedio.BotonDesmontarArmaEventHandler;
-import controlador.botonesarmadeasedio.BotonMontarArmaEventHandler;
-import controlador.botonesataque.BotonAtacarInicioEventHandler;
-import controlador.botonesdeedificios.BotonCrearAldeanoEventHandler;
-import controlador.botonesdeedificios.BotonCrearArmaDeAsedioEventHandler;
-import controlador.botonesdeedificios.BotonCrearArqueroEventHandler;
-import controlador.botonesdeedificios.BotonCrearEspadachinEventHandler;
+import controlador.IniciarMoverUnidadEventHandler;
+import controlador.botonesaldeano.IniciarConstruccionCuartelEventHandler;
+import controlador.botonesaldeano.IniciarConstruccionPlazaCentralEventHandler;
+import controlador.botonesaldeano.IniciarReparacionEdificioEventHandler;
+import controlador.botonesarmadeasedio.DesmontarArmaEventHandler;
+import controlador.botonesarmadeasedio.MontarArmaEventHandler;
+import controlador.botonesataque.IniciarAtaqueEventHandler;
+import controlador.botonesdeedificios.CrearAldeanoEventHandler;
+import controlador.botonesdeedificios.CrearArmaDeAsedioEventHandler;
+import controlador.botonesdeedificios.CrearArqueroEventHandler;
+import controlador.botonesdeedificios.CrearEspadachinEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,27 +42,27 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonConstruirCuartelInicioEventHandler cuartelEventHandler = new BotonConstruirCuartelInicioEventHandler(juego, aldeano, contenedor);
+        IniciarConstruccionCuartelEventHandler cuartelEventHandler = new IniciarConstruccionCuartelEventHandler(juego, aldeano, contenedor);
         Button construirCuartel = new Button("Construir Cuartel: 50 oro");
         Image martillo = new Image(RUTA_MARTILLO, 18, 18, true, true);
         construirCuartel.setGraphic(new ImageView(martillo));
         construirCuartel.setOnAction(cuartelEventHandler);
         botones.add(construirCuartel);
 
-        BotonConstruirPlazaCentralInicioEventHandler plazaCentralEventHandler = new BotonConstruirPlazaCentralInicioEventHandler(aldeano, contenedor);
+        IniciarConstruccionPlazaCentralEventHandler plazaCentralEventHandler = new IniciarConstruccionPlazaCentralEventHandler(aldeano, contenedor);
         Button construirPlaza = new Button("Constuir Plaza Central: 100 oro");
         construirPlaza.setGraphic(new ImageView(martillo));
         construirPlaza.setOnAction(plazaCentralEventHandler);
         botones.add(construirPlaza);
 
-        BotonRepararEdificioInicioEventHandler repararEdificioInicioEventHandler = new BotonRepararEdificioInicioEventHandler(aldeano, contenedor);
+        IniciarReparacionEdificioEventHandler repararEdificioInicioEventHandler = new IniciarReparacionEdificioEventHandler(aldeano, contenedor);
         Button repararEdificio = new Button("Reparar edificio");
         Image llave = new Image(RUTA_LLAVE_INGLESA, 18, 18, true, true);
         repararEdificio.setGraphic(new ImageView(llave));
         repararEdificio.setOnAction(repararEdificioInicioEventHandler);
         botones.add(repararEdificio);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(aldeano, contenedor);
+        IniciarMoverUnidadEventHandler moverHandler = new IniciarMoverUnidadEventHandler(aldeano, contenedor);
         Button moverAldeano = new Button("Mover unidad");
         Image flecha = new Image(RUTA_FLECHA, 18, 18, true, true);
         moverAldeano.setGraphic(new ImageView(flecha));
@@ -76,14 +76,14 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonCrearArqueroEventHandler arqueroHandler = new BotonCrearArqueroEventHandler(juego, cuartel, contenedor);
+        CrearArqueroEventHandler arqueroHandler = new CrearArqueroEventHandler(juego, cuartel, contenedor);
         Button crearArquero = new Button("Crear arquero: 75 oro");
         Image arquero = new Image(RUTA_ARQUERO, 18, 18, true, true);
         crearArquero.setGraphic(new ImageView(arquero));
         crearArquero.setOnAction(arqueroHandler);
         botones.add(crearArquero);
 
-        BotonCrearEspadachinEventHandler espadachinEventHandler = new BotonCrearEspadachinEventHandler(juego, cuartel, contenedor);
+        CrearEspadachinEventHandler espadachinEventHandler = new CrearEspadachinEventHandler(juego, cuartel, contenedor);
         Button crearEspadachin = new Button("Crear espadachin: 50 oro");
         Image espadachin = new Image(RUTA_ESPADACHIN, 18, 18, true, true);
         crearEspadachin.setGraphic(new ImageView(espadachin));
@@ -97,28 +97,28 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonMontarArmaEventHandler montarArmaEventHandler = new BotonMontarArmaEventHandler(juego, armaDeAsedio, contenedor);
+        MontarArmaEventHandler montarArmaEventHandler = new MontarArmaEventHandler(juego, armaDeAsedio, contenedor);
         Button montarArma = new Button("Montar arma de asedio");
         Image montar = new Image(RUTA_MONTAR, 18, 18, true, true);
         montarArma.setGraphic(new ImageView(montar));
         montarArma.setOnAction(montarArmaEventHandler);
         botones.add(montarArma);
 
-        BotonDesmontarArmaEventHandler desmontarArmaEventHandler = new BotonDesmontarArmaEventHandler(juego, armaDeAsedio, contenedor);
+        DesmontarArmaEventHandler desmontarArmaEventHandler = new DesmontarArmaEventHandler(juego, armaDeAsedio, contenedor);
         Button desmontarArma = new Button("Desmontar arma de asedio");
         Image desmontar = new Image(RUTA_DESMONTAR, 18, 18, true, true);
         desmontarArma.setGraphic(new ImageView(desmontar));
         desmontarArma.setOnAction(desmontarArmaEventHandler);
         botones.add(desmontarArma);
 
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(armaDeAsedio, contenedor);
+        IniciarAtaqueEventHandler atacarInicioEventHandler = new IniciarAtaqueEventHandler(armaDeAsedio, contenedor);
         Button atacar = new Button("Atacar");
         atacar.setOnAction(atacarInicioEventHandler);
         Image espadas = new Image(RUTA_ESPADAS, 18, 18, true, true);
         atacar.setGraphic(new ImageView(espadas));
         botones.add(atacar);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler(armaDeAsedio, contenedor);
+        IniciarMoverUnidadEventHandler moverHandler = new IniciarMoverUnidadEventHandler(armaDeAsedio, contenedor);
         Button moverArma = new Button("Mover unidad");
         Image flecha = new Image(RUTA_FLECHA, 18, 18, true, true);
         moverArma.setGraphic(new ImageView(flecha));
@@ -132,7 +132,7 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonCrearAldeanoEventHandler crearAldeanoEventHandler = new BotonCrearAldeanoEventHandler(juego, plaza, contenedor);
+        CrearAldeanoEventHandler crearAldeanoEventHandler = new CrearAldeanoEventHandler(juego, plaza, contenedor);
         Button crearAldeano = new Button("Crear Aldeano: 25 oro");
         Image imgAldeano = new Image(RUTA_ALDEANO, 18, 18, true, true);
         crearAldeano.setGraphic(new ImageView(imgAldeano));
@@ -146,14 +146,14 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonAtacarInicioEventHandler atacarInicioEventHandler = new BotonAtacarInicioEventHandler(atacante, contenedor);
+        IniciarAtaqueEventHandler atacarInicioEventHandler = new IniciarAtaqueEventHandler(atacante, contenedor);
         Button atacar = new Button("Atacar");
         atacar.setOnAction(atacarInicioEventHandler);
         Image espadas = new Image(RUTA_ESPADAS, 18, 18, true, true);
         atacar.setGraphic(new ImageView(espadas));
         botones.add(atacar);
 
-        BotonMoverUnidadHaciaInicioEventHandler moverHandler = new BotonMoverUnidadHaciaInicioEventHandler((Unidad) atacante, contenedor);
+        IniciarMoverUnidadEventHandler moverHandler = new IniciarMoverUnidadEventHandler((Unidad) atacante, contenedor);
         Button mover = new Button("Mover unidad");
         Image imgMover = new Image(RUTA_FLECHA, 18, 18, true, true);
         mover.setGraphic(new ImageView(imgMover));
@@ -167,7 +167,7 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        BotonCrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new BotonCrearArmaDeAsedioEventHandler(juego, castillo, contenedor);
+        CrearArmaDeAsedioEventHandler armaDeAsedioEventHandler = new CrearArmaDeAsedioEventHandler(juego, castillo, contenedor);
         Button crearArmaDeAsedio = new Button("Crear arma de asedio: 200 oro");
         Image imgArma = new Image(RUTA_ARMA_DE_ASEDIO, 18, 18, true, true);
         crearArmaDeAsedio.setGraphic(new ImageView(imgArma));

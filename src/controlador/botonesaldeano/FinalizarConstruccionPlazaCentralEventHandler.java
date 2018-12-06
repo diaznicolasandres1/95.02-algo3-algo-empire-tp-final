@@ -9,7 +9,7 @@ import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
-public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<ActionEvent> {
+public class FinalizarConstruccionPlazaCentralEventHandler implements EventHandler<ActionEvent> {
 
     private final ContenedorPrincipal contenedor;
     private final Aldeano constructor;
@@ -17,7 +17,7 @@ public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<A
     private final int fila;
     private final int columna;
 
-    public BotonConstruirPlazaCentralFinEventHandler(Juego juego, Aldeano constructor, int fila, int columna, ContenedorPrincipal contenedor){
+    public FinalizarConstruccionPlazaCentralEventHandler(Juego juego, Aldeano constructor, int fila, int columna, ContenedorPrincipal contenedor) {
         this.constructor = constructor;
         this.contenedor = contenedor;
         this.juego = juego;

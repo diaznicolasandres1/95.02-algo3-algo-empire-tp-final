@@ -14,14 +14,14 @@ import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 import vista.ContenedorPrincipal;
 
-public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
+public class CasilleroEventHandler implements EventHandler<ActionEvent> {
 
     private final ContenedorPrincipal contenedor;
     private final int fila;
     private final int columna;
     private final Juego juego;
 
-    public BotonCasilleroEventHandler(Juego juego, int fila, int columna, ContenedorPrincipal contenedor) {
+    public CasilleroEventHandler(Juego juego, int fila, int columna, ContenedorPrincipal contenedor) {
         this.fila = fila;
         this.columna = columna;
         this.juego = juego;
