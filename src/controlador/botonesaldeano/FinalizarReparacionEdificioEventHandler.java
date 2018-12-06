@@ -1,10 +1,14 @@
 package controlador.botonesaldeano;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.edificios.Edificio;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
@@ -14,6 +18,7 @@ import vista.ContenedorPrincipal;
 
 public class FinalizarReparacionEdificioEventHandler implements EventHandler<ActionEvent> {
 
+    private static final String RUTA_SONIDO_REPARAR_FIN = "src/vista/sonidos/construir_fin.wav";
     private final ContenedorPrincipal contenedor;
     private final Aldeano reparador;
     private final Juego juego;
@@ -45,5 +50,7 @@ public class FinalizarReparacionEdificioEventHandler implements EventHandler<Act
         }
         this.contenedor.clearMensajes();
         this.contenedor.dibujarMapaConCasilleroHandler();
+        Media sound = new Media(new File(RUTA_SONIDO_REPARAR_FIN).toURI().toString());
+        (new MediaPlayer(sound)).play();
     }
 }

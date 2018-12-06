@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacable;
@@ -13,10 +15,13 @@ import modelo.unidades.Atacante;
 import modelo.unidades.Colocable;
 import vista.ContenedorPrincipal;
 
+import java.io.File;
 import java.util.Optional;
 
 public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
 
+    private static final String RUTA_SONIDO_ATACAR = "src/vista/sondiso/espadachin_atacar.wav";
+    private static final String RUTA_SONIDO_VICTORIA = "src/vista/sonidos/victoria.wav";
     private final ContenedorPrincipal contenedor;
     private final Atacante atacante;
     private final Juego juego;
@@ -41,6 +46,8 @@ public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
             this.juego.atacar(this.atacante, (Atacable) atacado);
         } catch (CastilloFueDestruidoException e) {
             alert.setContentText("El castillo fue destruido. Se finaliza el juego");
+            Media sound = new Media(new File(RUTA_SONIDO_VICTORIA).toURI().toString());
+            (new MediaPlayer(sound)).play();
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                Platform.exit();
@@ -57,5 +64,7 @@ public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
         }
         this.contenedor.clearMensajes();
         this.contenedor.dibujarMapaConCasilleroHandler();
+        Media sound = new Media(new File(RUTA_SONIDO_ATACAR).toURI().toString());
+        (new MediaPlayer(sound)).play();
     }
 }

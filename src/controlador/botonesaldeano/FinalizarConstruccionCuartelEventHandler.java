@@ -1,9 +1,13 @@
 package controlador.botonesaldeano;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
@@ -11,6 +15,7 @@ import vista.ContenedorPrincipal;
 
 public class FinalizarConstruccionCuartelEventHandler implements EventHandler<ActionEvent> {
 
+    private static final String RUTA_SONIDO_CONSTRUIR_FIN = "src/vista/sonidos/construir_fin.wav";
     private final ContenedorPrincipal contenedor;
     private final Aldeano constructor;
     private final Juego juego;
@@ -48,5 +53,7 @@ public class FinalizarConstruccionCuartelEventHandler implements EventHandler<Ac
         this.contenedor.actualizarOro();
         this.contenedor.clearMensajes();
         this.contenedor.dibujarMapaConCasilleroHandler();
+        Media sound = new Media(new File(RUTA_SONIDO_CONSTRUIR_FIN).toURI().toString());
+        (new MediaPlayer(sound)).play();
     }
 }

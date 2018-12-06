@@ -1,9 +1,13 @@
 package controlador;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Unidad;
@@ -11,6 +15,7 @@ import vista.ContenedorPrincipal;
 
 public class FinalizarMoverUnidadEventHandler implements EventHandler<ActionEvent> {
 
+    private static final String RUTA_SONIDO_MOVER = "src/vista/sonidos/mover_fin.wav";
     private final Unidad unidad;
     private final Juego juego;
     private final int fila;
@@ -44,5 +49,7 @@ public class FinalizarMoverUnidadEventHandler implements EventHandler<ActionEven
         }
         this.contenedorPrincipal.clearMensajes();
         this.contenedorPrincipal.dibujarMapaConCasilleroHandler();
+        Media sound = new Media(new File(RUTA_SONIDO_MOVER).toURI().toString());
+        (new MediaPlayer(sound)).play();
     }
 }

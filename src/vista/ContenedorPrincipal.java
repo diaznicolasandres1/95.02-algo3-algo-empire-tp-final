@@ -47,6 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
+        this.tablero.setMinSize(755, 755);
         this.setCenter(this.tablero);
 
         Image fondo = new Image(RUTA_IMG_FONDO, 1590, 1020, false, true);
@@ -135,10 +136,12 @@ public class ContenedorPrincipal extends BorderPane {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text oroIzq = new Text("Oro: "+ oroActual);
             oroIzq.setFill(Color.WHITE);
+            oroIzq.setFont(Font.font(17));
             this.izquierdo.getChildren().set(1, oroIzq);
         } else {
             Text oroDer = new Text("Oro: "+ oroActual);
             oroDer.setFill(Color.WHITE);
+            oroDer.setFont(Font.font(17));
             this.derecho.getChildren().set(1, oroDer);
         }
     }
@@ -150,10 +153,12 @@ public class ContenedorPrincipal extends BorderPane {
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {
             Text poblacionIzq = new Text("Poblacion: "+ poblacionActual);
             poblacionIzq.setFill(Color.WHITE);
+            poblacionIzq.setFont(Font.font(17));
             this.izquierdo.getChildren().set(2, poblacionIzq);
         } else {
             Text poblacionDer = new Text("Poblacion: "+ poblacionActual);
             poblacionDer.setFill(Color.WHITE);
+            poblacionDer.setFont(Font.font(17));
             this.derecho.getChildren().set(2, poblacionDer);
         }
     }
@@ -239,7 +244,7 @@ public class ContenedorPrincipal extends BorderPane {
     
     public void setMensaje(String mensaje) {
         Text texto = new Text(mensaje);
-        texto.setFont(Font.font(17));
+        texto.setFont(Font.font(14));
         texto.setFill(Color.WHITE);
         texto.setTextAlignment(TextAlignment.LEFT);
         if (this.juego.getNombreJugadorActual().equals(this.jugadorUno)) {

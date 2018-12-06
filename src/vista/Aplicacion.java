@@ -1,8 +1,12 @@
 package vista;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
@@ -24,5 +28,7 @@ public class Aplicacion extends Application {
         primaryStage.setScene(escenaInicial);
         primaryStage.setResizable(false);
         primaryStage.show();
+        Media sound = new Media(new File("src/vista/sonidos/menu.wav").toURI().toString());
+        (new MediaPlayer(sound)).play();
     }
 }
