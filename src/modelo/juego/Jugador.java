@@ -183,13 +183,14 @@ public class Jugador {
     }
 
     private void castilloAtacar() {
-
         ArrayList<Colocable> objetivos = this.castillo.getColocablesAlrededor(this.mapa);
-        ArrayList<Colocable> colocablesPropios = objetivos.stream().filter(objetivo -> this.poblacion.perteneceUnidad(objetivo) || this.estructuras.contains(objetivo)).collect(Collectors.toCollection(ArrayList::new));
-
-        colocablesPropios.forEach(objetivos::remove);
-
+        this.eliminarColocablesPropios(objetivos);
         this.castillo.atacarAColocables(objetivos);
+    }
+
+    private void eliminarColocablesPropios(ArrayList<Colocable> colocables) {
+        ArrayList<Colocable> colocablesPropios = colocables.stream().filter(colocable -> this.poblacion.perteneceUnidad(colocable) || this.estructuras.contains(colocable)).collect(Collectors.toCollection(ArrayList::new));
+        colocablesPropios.forEach(colocables::remove);
     }
 
     private void removerColocable(Colocable colocable) {
