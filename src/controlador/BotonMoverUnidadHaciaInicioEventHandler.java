@@ -7,8 +7,8 @@ import vista.ContenedorPrincipal;
 
 public class BotonMoverUnidadHaciaInicioEventHandler implements EventHandler<ActionEvent> {
 
-    private Unidad unidad;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Unidad unidad;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonMoverUnidadHaciaInicioEventHandler(Unidad unidad, ContenedorPrincipal contenedorPrincipal) {
         this.unidad = unidad;

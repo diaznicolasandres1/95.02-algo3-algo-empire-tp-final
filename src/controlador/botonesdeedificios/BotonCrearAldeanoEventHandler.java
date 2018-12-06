@@ -14,9 +14,9 @@ import vista.ContenedorPrincipal;
 
 public class BotonCrearAldeanoEventHandler implements EventHandler<ActionEvent> {
 
-    private Juego juego;
-    private PlazaCentral plaza;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Juego juego;
+    private final PlazaCentral plaza;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonCrearAldeanoEventHandler(Juego juego, PlazaCentral plaza, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;

@@ -11,7 +11,7 @@ import modelo.unidades.Unidad;
 
 public class Aldeano extends Unidad {
 
-    private Oro oro;
+    private final Oro oro;
     private EstadoAldeano estado = new EstadoAldeanoDisponible();
     private static final int RANGO_CONTRUCCION = 1;
 

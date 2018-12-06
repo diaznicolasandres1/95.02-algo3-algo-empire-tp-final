@@ -7,8 +7,8 @@ import vista.ContenedorPrincipal;
 
 public class BotonRepararEdificioInicioEventHandler implements EventHandler<ActionEvent> {
 
-    private Aldeano aldeano;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Aldeano aldeano;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonRepararEdificioInicioEventHandler(Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.aldeano = aldeano;

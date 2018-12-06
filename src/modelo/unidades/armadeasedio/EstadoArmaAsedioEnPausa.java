@@ -12,7 +12,7 @@ import modelo.excepciones.NoSePuedeMoverArmaDeAsedioEnPausaException;
 
 public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 
-	private EstadoArmaAsedio proximoEstado;
+	private final EstadoArmaAsedio proximoEstado;
 
 	public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado) {
 		this.proximoEstado = proximoEstado;

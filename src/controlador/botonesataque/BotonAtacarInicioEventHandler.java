@@ -7,8 +7,8 @@ import vista.ContenedorPrincipal;
 
 public class BotonAtacarInicioEventHandler implements EventHandler<ActionEvent> {
 
-    private Atacante atacante;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Atacante atacante;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonAtacarInicioEventHandler(Atacante atacante, ContenedorPrincipal contenedorPrincipal) {
         this.atacante = atacante;

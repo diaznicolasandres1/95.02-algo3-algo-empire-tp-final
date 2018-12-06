@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class MapaTest {
 
-    private Oro oro = new Oro(10000);
+    private final Oro oro = new Oro(10000);
 
     @Test(expected = TamanioInvalidoException.class)
     public void test01crearMapaConMedidasNegativasLanzaExcepcion() {

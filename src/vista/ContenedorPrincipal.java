@@ -31,10 +31,10 @@ public class ContenedorPrincipal extends BorderPane {
     private final GridPane tablero = new GridPane();
     private final String jugadorUno;
     private final String jugadorDos;
-    private VBox izquierdo = new VBox();
-    private VBox derecho = new VBox();
-    private VBox mensajesIzq = new VBox();
-    private VBox mensajesDer = new VBox();
+    private final VBox izquierdo = new VBox();
+    private final VBox derecho = new VBox();
+    private final VBox mensajesIzq = new VBox();
+    private final VBox mensajesDer = new VBox();
     private HBox bottom = new HBox();
     private static final String RUTA_IMG_FONDO = "file:src/vista/imagenes/fondo_juego_1.jpg";
 
@@ -43,10 +43,11 @@ public class ContenedorPrincipal extends BorderPane {
         this.jugadorDos = jugadorDos;
         this.juego = new Juego(jugadorUno, jugadorDos);
         this.dibujarMapaConCasilleroHandler();
-        this.setCostados(100,100,3,3);
+        this.setCostados(100, 100, 3, 3);
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
         this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
+        this.setCenter(this.tablero);
 
         Image fondo = new Image(RUTA_IMG_FONDO, 1590, 1020, false, true);
 
@@ -179,11 +180,10 @@ public class ContenedorPrincipal extends BorderPane {
     public void dibujarMapaConCasilleroHandler() {
         DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
         dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
-        this.setCenter(this.tablero);
     }
 
     public void dibujarMetodosAldeano(Aldeano aldeano) {
-        this.setMensaje("Aldeano\n❤ Vida:"+ aldeano.getVida());
+        this.setMensaje("Aldeano\n❤ Vida: " + aldeano.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(aldeano));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(aldeano, this.juego, this);
         this.configurarBottom();
@@ -191,7 +191,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCuartel(Cuartel cuartel) {
-        this.setMensaje("Cuartel\n❤ Vida:"+ cuartel.getVida());
+        this.setMensaje("Cuartel\n❤ Vida: " + cuartel.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(cuartel));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(cuartel, this.juego, this);
         this.configurarBottom();
@@ -199,7 +199,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
-        this.setMensaje("ArmaDeAsedio\n❤ Vida:"+ armaDeAsedio.getVida());
+        this.setMensaje("Arma de asedio\n❤ Vida: " + armaDeAsedio.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(armaDeAsedio));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(armaDeAsedio, this.juego, this);
         this.configurarBottom();
@@ -207,7 +207,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosPlazaCentral(PlazaCentral plaza) {
-        this.setMensaje("Plaza Central\n❤ Vida:"+ plaza.getVida());
+        this.setMensaje("Plaza Central\n❤ Vida: " + plaza.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(plaza));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(plaza, this.juego, this);
         this.configurarBottom();
@@ -215,8 +215,8 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodoEspadachinOArquero(Atacante atacante) {
-        Unidad unidad = (Unidad)atacante;
-        this.setMensaje("atacante\n❤ Vida:"+ unidad.getVida());
+        Unidad unidad = (Unidad) atacante;
+        this.setMensaje("Atacante\n❤ Vida: " + unidad.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(unidad));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this);
         this.configurarBottom();
@@ -224,7 +224,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCastillo(Castillo castillo) {
-        this.setMensaje("Castillo\n❤ Vida:"+ castillo.getVida());
+        this.setMensaje("Castillo\n❤ Vida: " + castillo.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(castillo));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(castillo, this.juego, this);
         this.configurarBottom();

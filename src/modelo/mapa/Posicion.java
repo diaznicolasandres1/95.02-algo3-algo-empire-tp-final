@@ -13,8 +13,8 @@ import static java.lang.Math.abs;
 
 public class Posicion {
 
-    private int posX;
-    private int posY;
+    private final int posX;
+    private final int posY;
 
     public Posicion(int posX, int posY) {
 

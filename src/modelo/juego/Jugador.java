@@ -23,12 +23,12 @@ import modelo.unidades.espadachin.Espadachin;
 
 public class Jugador {
 
-    private String nombre;
-    private Oro oro;
-    private Poblacion poblacion;
-    private ArrayList<Colocable> estructuras;
+    private final String nombre;
+    private final Oro oro;
+    private final Poblacion poblacion;
+    private final ArrayList<Colocable> estructuras;
     private Castillo castillo;
-    private Mapa mapa;
+    private final Mapa mapa;
     private Jugador oponente;
     private static final int ALDEANOS_INICIALES = 3;
 
@@ -173,6 +173,13 @@ public class Jugador {
         this.poblacion.finalizarTurno();
         this.castilloAtacar();
         return this.oponente;
+    }
+
+    public String buscarDuenioDe(Colocable colocable) {
+        if (this.poblacion.perteneceUnidad(colocable) || this.estructuras.contains(colocable)) {
+            return this.nombre;
+        }
+        return this.oponente.getNombre();
     }
 
     private void castilloAtacar() {

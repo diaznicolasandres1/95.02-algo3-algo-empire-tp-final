@@ -13,10 +13,10 @@ import static java.lang.Math.sqrt;
 
 public class Mapa {
 
-    private ArrayList<Casillero> casilleros;
-    private ArrayList<Fila> filas;
-    private int base;
-    private int altura;
+    private final ArrayList<Casillero> casilleros;
+    private final ArrayList<Fila> filas;
+    private final int base;
+    private final int altura;
     private static final int BASE_MINIMA = 12;
     private static final int ALTURA_MINIMA = 12;
 

@@ -11,11 +11,11 @@ import vista.ContenedorPrincipal;
 
 public class BotonMoverUnidadHaciaFinEventHandler implements EventHandler<ActionEvent> {
 
-    private Unidad unidad;
-    private Juego juego;
-    private int fila;
-    private int columna;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Unidad unidad;
+    private final Juego juego;
+    private final int fila;
+    private final int columna;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonMoverUnidadHaciaFinEventHandler(Juego juego, Unidad unidad, int fila, int columna, ContenedorPrincipal contenedorPrincipal) {
         this.unidad = unidad;

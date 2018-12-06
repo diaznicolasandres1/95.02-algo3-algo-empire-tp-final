@@ -17,7 +17,7 @@ import java.util.Random;
 public class Juego {
 
     private Jugador jugadorActual;
-    private Mapa mapa;
+    private final Mapa mapa;
     private static final int BASE_MAPA = 25;
     private static final int ALTURA_MAPA = 25;
 
@@ -114,4 +114,7 @@ public class Juego {
         this.jugadorActual.desmontarArma(arma);
     }
 
+    public String getNombreJugadorDuenioDe(Colocable colocable) {
+        return this.jugadorActual.buscarDuenioDe(colocable);
+    }
 }

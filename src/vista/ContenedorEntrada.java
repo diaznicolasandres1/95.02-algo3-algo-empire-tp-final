@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ContenedorEntrada extends VBox {
 
-    private ArrayList<EntradaUsuario> jugadores;
+    private final ArrayList<EntradaUsuario> jugadores;
     private static final String RUTA_TITULO = "file:src/vista/imagenes/titulo_inicio.png";
     private static final String RUTA_FONDO_INICIO = "file:src/vista/imagenes/fondo_inicio.jpg";
     private static final String RUTA_BOTON_JUGAR = "file:src/vista/imagenes/boton_jugar.png";

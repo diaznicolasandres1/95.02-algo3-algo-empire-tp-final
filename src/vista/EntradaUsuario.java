@@ -5,8 +5,8 @@ import javafx.scene.layout.HBox;
 
 public class EntradaUsuario {
 
-    private HBox hBox;
-    private TextField textField;
+    private final HBox hBox;
+    private final TextField textField;
 
     public EntradaUsuario(String textoHover) {
 

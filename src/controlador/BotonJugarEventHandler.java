@@ -13,8 +13,8 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
 
     private static final int JUGADOR_UNO = 0;
     private static final int JUGADOR_DOS = 1;
-    private ArrayList<EntradaUsuario> jugadores;
-    private Stage stage;
+    private final ArrayList<EntradaUsuario> jugadores;
+    private final Stage stage;
 
     public BotonJugarEventHandler(Stage stage, ArrayList<EntradaUsuario> jugadores) {
         this.stage = stage;

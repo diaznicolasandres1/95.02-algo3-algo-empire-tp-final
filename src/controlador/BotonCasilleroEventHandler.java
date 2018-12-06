@@ -16,10 +16,10 @@ import vista.ContenedorPrincipal;
 
 public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
 
-    private ContenedorPrincipal contenedor;
-    private int fila;
-    private int columna;
-    private Juego juego;
+    private final ContenedorPrincipal contenedor;
+    private final int fila;
+    private final int columna;
+    private final Juego juego;
 
     public BotonCasilleroEventHandler(Juego juego, int fila, int columna, ContenedorPrincipal contenedor) {
         this.fila = fila;

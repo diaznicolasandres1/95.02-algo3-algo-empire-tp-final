@@ -14,9 +14,9 @@ import vista.ContenedorPrincipal;
 
 public class BotonCrearArqueroEventHandler implements EventHandler<ActionEvent> {
 
-    private Juego juego;
-    private Cuartel cuartel;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Juego juego;
+    private final Cuartel cuartel;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonCrearArqueroEventHandler(Juego juego, Cuartel cuartel, ContenedorPrincipal contenedorPrincipal) {
         this.juego = juego;

@@ -13,8 +13,8 @@ import vista.ContenedorPrincipal;
 
 public class BotonDesmontarArmaEventHandler  implements EventHandler<ActionEvent> {
 
-    private ArmaDeAsedio armaDeAsedio;
-    private Juego juego;
+    private final ArmaDeAsedio armaDeAsedio;
+    private final Juego juego;
 
     public BotonDesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
         this.armaDeAsedio = arma;

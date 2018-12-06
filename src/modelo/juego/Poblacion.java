@@ -7,7 +7,7 @@ import modelo.unidades.Colocable;
 
 public class Poblacion {
 
-    private ArrayList<Colocable> unidades;
+    private final ArrayList<Colocable> unidades;
     private static final int LIMITE_POBLACION = 50;
 
     public Poblacion() {

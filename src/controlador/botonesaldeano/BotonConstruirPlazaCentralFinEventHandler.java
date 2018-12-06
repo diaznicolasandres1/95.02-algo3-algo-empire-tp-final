@@ -11,11 +11,11 @@ import vista.ContenedorPrincipal;
 
 public class BotonConstruirPlazaCentralFinEventHandler implements EventHandler<ActionEvent> {
 
-    private ContenedorPrincipal contenedor;
-    private Aldeano constructor;
-    private Juego juego;
-    private int fila;
-    private int columna;
+    private final ContenedorPrincipal contenedor;
+    private final Aldeano constructor;
+    private final Juego juego;
+    private final int fila;
+    private final int columna;
 
     public BotonConstruirPlazaCentralFinEventHandler(Juego juego, Aldeano constructor, int fila, int columna, ContenedorPrincipal contenedor){
         this.constructor = constructor;

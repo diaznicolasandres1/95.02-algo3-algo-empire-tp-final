@@ -16,12 +16,12 @@ import modelo.unidades.aldeano.Aldeano;
 
 public class CambiadorDeHandler {
 
-    private Juego juego;
-    private GridPane tablero;
-    private ContenedorPrincipal contenedorPrincipal;
-    private DibujadorDeMapa dibujador;
-    private int base;
-    private int altura;
+    private final Juego juego;
+    private final GridPane tablero;
+    private final ContenedorPrincipal contenedorPrincipal;
+    private final DibujadorDeMapa dibujador;
+    private final int base;
+    private final int altura;
 
     public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero) {
         this.juego = juego;
@@ -33,7 +33,7 @@ public class CambiadorDeHandler {
         this.altura = mapa.getAltura();
     }
 
-    public void cambiadorAConstruirCuartelFin(Aldeano aldeano){
+    public void cambiadorAConstruirCuartelFin(Aldeano aldeano) {
         for (int i = 0; i < this.altura; i++) {
             for (int j = 0; j < this.base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
@@ -45,7 +45,7 @@ public class CambiadorDeHandler {
         }
     }
 
-    public void cambiadorAConstruirPlazaCentralFin(Aldeano aldeano){
+    public void cambiadorAConstruirPlazaCentralFin(Aldeano aldeano) {
         for (int i = 0; i < this.altura; i++) {
             for (int j = 0; j < this.base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);

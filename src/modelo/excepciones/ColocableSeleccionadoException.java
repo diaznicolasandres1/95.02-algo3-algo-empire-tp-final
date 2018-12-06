@@ -2,7 +2,7 @@ package modelo.excepciones;
 
 public class ColocableSeleccionadoException extends RuntimeException {
 
-    private String mensaje;
+    private final String mensaje;
 
     public ColocableSeleccionadoException(String mensaje) {
         this.mensaje = mensaje;

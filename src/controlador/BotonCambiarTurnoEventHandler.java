@@ -6,8 +6,8 @@ import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
 public class BotonCambiarTurnoEventHandler implements EventHandler<ActionEvent> {
-    private Juego juego;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Juego juego;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonCambiarTurnoEventHandler(Juego juego, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;

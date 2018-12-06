@@ -13,11 +13,11 @@ import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 
 public class BotonRepararEdificioFinEventHandler implements EventHandler<ActionEvent> {
-    private ContenedorPrincipal contenedor;
-    private Aldeano reparador;
-    private Juego juego;
-    private int fila;
-    private int columna;
+    private final ContenedorPrincipal contenedor;
+    private final Aldeano reparador;
+    private final Juego juego;
+    private final int fila;
+    private final int columna;
 
     public BotonRepararEdificioFinEventHandler(Juego juego, Aldeano reparador, int fila, int columna, ContenedorPrincipal contenedor){
         this.reparador = reparador;

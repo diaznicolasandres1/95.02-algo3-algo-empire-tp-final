@@ -2,7 +2,7 @@ package modelo.excepciones;
 
 public class UnidadYaFueUtilizadaEnEsteTurnoException extends RuntimeException {
 
-    private String mensaje;
+    private final String mensaje;
 
     public UnidadYaFueUtilizadaEnEsteTurnoException(String mensaje) {
         this.mensaje = mensaje;

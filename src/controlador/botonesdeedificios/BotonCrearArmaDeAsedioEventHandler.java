@@ -14,9 +14,9 @@ import vista.ContenedorPrincipal;
 
 public class BotonCrearArmaDeAsedioEventHandler implements EventHandler<ActionEvent> {
 
-    private Juego juego;
-    private Castillo castillo;
-    private ContenedorPrincipal contenedorPrincipal;
+    private final Juego juego;
+    private final Castillo castillo;
+    private final ContenedorPrincipal contenedorPrincipal;
 
     public BotonCrearArmaDeAsedioEventHandler(Juego juego, Castillo castillo, ContenedorPrincipal contenedorPrincipal){
         this.juego = juego;

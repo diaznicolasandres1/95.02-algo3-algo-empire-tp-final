@@ -2,7 +2,7 @@ package modelo.excepciones;
 
 public class ArmaDeAsedioException extends RuntimeException {
 
-    private String mensaje;
+    private final String mensaje;
 
     public ArmaDeAsedioException(String mensaje) {
         this.mensaje = mensaje;

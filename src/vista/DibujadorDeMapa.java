@@ -16,8 +16,8 @@ import modelo.unidades.espadachin.Espadachin;
 
 public class DibujadorDeMapa {
 
-    private GridPane tablero;
-    private Juego juego;
+    private final GridPane tablero;
+    private final Juego juego;
 
     public DibujadorDeMapa(Juego juego, GridPane tablero) {
         this.juego = juego;
@@ -34,7 +34,7 @@ public class DibujadorDeMapa {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
                 Button botonCasillero = new Button("");
-                botonCasillero.setOnAction( new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
+                botonCasillero.setOnAction(new BotonCasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
                 this.dibujarColocable(colocable, botonCasillero);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }

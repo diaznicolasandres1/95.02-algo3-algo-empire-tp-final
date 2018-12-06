@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Fila {
 
-    private ArrayList<Casillero> casilleros;
+    private final ArrayList<Casillero> casilleros;
 
     public Fila() {
         this.casilleros = new ArrayList<>();

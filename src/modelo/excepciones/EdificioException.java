@@ -2,7 +2,7 @@ package modelo.excepciones;
 
 public class EdificioException extends RuntimeException {
 
-    private String mensaje;
+    private final String mensaje;
 
     public EdificioException(String mensaje) {
         this.mensaje = mensaje;
