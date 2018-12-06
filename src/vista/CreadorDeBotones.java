@@ -42,7 +42,7 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        IniciarConstruccionCuartelEventHandler cuartelEventHandler = new IniciarConstruccionCuartelEventHandler(juego, aldeano, contenedor);
+        IniciarConstruccionCuartelEventHandler cuartelEventHandler = new IniciarConstruccionCuartelEventHandler(aldeano, contenedor);
         Button construirCuartel = new Button("Construir Cuartel: 50 oro");
         Image martillo = new Image(RUTA_MARTILLO, 18, 18, true, true);
         construirCuartel.setGraphic(new ImageView(martillo));
@@ -97,14 +97,14 @@ public class CreadorDeBotones {
 
         ArrayList<Button> botones = new ArrayList<>();
 
-        MontarArmaEventHandler montarArmaEventHandler = new MontarArmaEventHandler(juego, armaDeAsedio, contenedor);
+        MontarArmaEventHandler montarArmaEventHandler = new MontarArmaEventHandler(juego, armaDeAsedio);
         Button montarArma = new Button("Montar arma de asedio");
         Image montar = new Image(RUTA_MONTAR, 18, 18, true, true);
         montarArma.setGraphic(new ImageView(montar));
         montarArma.setOnAction(montarArmaEventHandler);
         botones.add(montarArma);
 
-        DesmontarArmaEventHandler desmontarArmaEventHandler = new DesmontarArmaEventHandler(juego, armaDeAsedio, contenedor);
+        DesmontarArmaEventHandler desmontarArmaEventHandler = new DesmontarArmaEventHandler(juego, armaDeAsedio);
         Button desmontarArma = new Button("Desmontar arma de asedio");
         Image desmontar = new Image(RUTA_DESMONTAR, 18, 18, true, true);
         desmontarArma.setGraphic(new ImageView(desmontar));

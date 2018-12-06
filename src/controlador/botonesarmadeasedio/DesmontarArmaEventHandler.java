@@ -16,7 +16,7 @@ public class DesmontarArmaEventHandler implements EventHandler<ActionEvent> {
     private final ArmaDeAsedio armaDeAsedio;
     private final Juego juego;
 
-    public DesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
+    public DesmontarArmaEventHandler(Juego juego, ArmaDeAsedio arma) {
         this.armaDeAsedio = arma;
         this.juego = juego;
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class FilaTest {
 
-    Oro oro = new Oro(1000);
+    final Oro oro = new Oro(1000);
 
     @Test
     public void test01creacionDeFila() {

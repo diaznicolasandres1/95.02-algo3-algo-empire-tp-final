@@ -16,7 +16,7 @@ public class MontarArmaEventHandler implements EventHandler<ActionEvent> {
     private final ArmaDeAsedio armaDeAsedio;
     private final Juego juego;
 
-    public MontarArmaEventHandler(Juego juego, ArmaDeAsedio arma, ContenedorPrincipal contenedorPrincipal) {
+    public MontarArmaEventHandler(Juego juego, ArmaDeAsedio arma) {
         this.armaDeAsedio = arma;
         this.juego  = juego;
     }

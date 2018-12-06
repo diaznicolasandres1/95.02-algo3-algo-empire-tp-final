@@ -8,13 +8,11 @@ import vista.ContenedorPrincipal;
 
 public class IniciarConstruccionCuartelEventHandler implements EventHandler<ActionEvent> {
 
-    public Juego juego;
-    public Aldeano aldeano;
-    public ContenedorPrincipal contenedorPrincipal;
+    public final Aldeano aldeano;
+    public final ContenedorPrincipal contenedorPrincipal;
 
-    public IniciarConstruccionCuartelEventHandler(Juego juego, Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
+    public IniciarConstruccionCuartelEventHandler(Aldeano aldeano, ContenedorPrincipal contenedorPrincipal) {
         this.aldeano = aldeano;
-        this.juego= juego;
         this.contenedorPrincipal = contenedorPrincipal;
     }
 

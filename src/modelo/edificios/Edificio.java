@@ -1,6 +1,5 @@
 package modelo.edificios;
 
-import javafx.scene.paint.Color;
 import modelo.edificios.castillo.Castillo;
 import modelo.excepciones.EdificioFueDestruidoException;
 import modelo.juego.Oro;
@@ -31,7 +30,6 @@ public abstract class Edificio implements Colocable, Atacable {
     protected Oro oro;
     protected ArrayList<Posicion> posiciones;
     protected Aldeano aldeanoReparando;
-    protected Color color;
     private static final int POSICION_INICIAL = 0;
 
 	public int getVida() {
@@ -69,14 +67,6 @@ public abstract class Edificio implements Colocable, Atacable {
             throw new EdificioTieneVidaMaximaException();
 		}
 	}
-
-    public Color getColor() {
-        return this.color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
 
     @Override
     public void descolocarseDe(Mapa mapa) {
