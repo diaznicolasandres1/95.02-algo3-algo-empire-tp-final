@@ -19,6 +19,7 @@ public class DibujadorDeMapa {
     private final GridPane tablero;
     private final Juego juego;
 
+
     public DibujadorDeMapa(Juego juego, GridPane tablero) {
         this.juego = juego;
         this.tablero = tablero;
@@ -33,37 +34,50 @@ public class DibujadorDeMapa {
         for (int i = 0; i < altura; i++) {
             for (int j = 0; j < base; j++) {
                 Colocable colocable = this.juego.getColocable(i + 1, j + 1);
+                String duenio = juego.getNombreJugadorDuenioDe(colocable);
+                String color = contenedor.getColor(duenio);
                 Button botonCasillero = new Button("");
                 botonCasillero.setOnAction(new CasilleroEventHandler(this.juego, i + 1, j + 1, contenedor));
-                this.dibujarColocable(colocable, botonCasillero);
+                this.dibujarColocable(colocable, botonCasillero,contenedor);
                 this.tablero.add(botonCasillero, j, i, 1, 1);
             }
         }
     }
 
-    public void dibujarColocable(Colocable colocable, Button botonCasillero) {
+    public void dibujarColocable(Colocable colocable, Button botonCasillero, ContenedorPrincipal contenedor) {
+        String duenio = juego.getNombreJugadorDuenioDe(colocable);
+        String color = contenedor.getColor(duenio);
+
+
         if (colocable instanceof Aldeano) {
-            botonCasillero.setText("A");
-            botonCasillero.setStyle("-fx-background-color: green");
-        } else if (colocable instanceof Espadachin) {
-            botonCasillero.setText("E");
-            botonCasillero.setStyle("-fx-background-color: white");
-        } else if (colocable instanceof Arquero) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"green");
             botonCasillero.setText("a");
-            botonCasillero.setStyle("-fx-background-color: pink");
-        } else if (colocable instanceof Castillo) {
-            botonCasillero.setText("C");
-            botonCasillero.setStyle("-fx-background-color: blue");
-        } else if (colocable instanceof PlazaCentral) {
-            botonCasillero.setText("P");
-            botonCasillero.setStyle("-fx-background-color: red");
-        } else if (colocable instanceof Cuartel) {
-            botonCasillero.setText("c");
-            botonCasillero.setStyle("-fx-background-color: yellow");
-        } else if (colocable instanceof ArmaDeAsedio) {
+
+        } else if (colocable instanceof Espadachin) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"blue");
+            botonCasillero.setText("E");
+
+        } else if (colocable instanceof Arquero) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"yellow");
             botonCasillero.setText("A");
-            botonCasillero.setStyle("-fx-background-color: grey");
+
+        } else if (colocable instanceof Castillo) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"cyan");
+            botonCasillero.setText("C");
+
+        } else if (colocable instanceof PlazaCentral) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"grey");
+            botonCasillero.setText("P");
+
+        } else if (colocable instanceof Cuartel) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"steelblue");
+            botonCasillero.setText("C");
+
+        } else if (colocable instanceof ArmaDeAsedio) {
+            botonCasillero.setStyle("-fx-background-color: "+color+"skyblue");
+            botonCasillero.setText("Ar");
+
         }
-        botonCasillero.setPrefSize(30, 30);
+        botonCasillero.setPrefSize(35, 35);
     }
 }
