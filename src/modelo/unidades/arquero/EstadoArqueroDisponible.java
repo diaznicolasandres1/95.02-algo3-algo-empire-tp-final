@@ -6,7 +6,9 @@ import modelo.unidades.Atacable;
 
 public class EstadoArqueroDisponible implements EstadoArquero {
 
-	@Override
+	private static final String NOMRE_ESTADO = "Disponible";
+
+    @Override
 	public void avanzarTurno(Arquero arquero) {
 		arquero.estarDisponible();
 	}
@@ -19,5 +21,9 @@ public class EstadoArqueroDisponible implements EstadoArquero {
 	@Override
     public void moverArqueroDesdeHacia(Arquero arquero, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento) {
         origen.moverUnidadHacia(arquero, mapa, destino, distanciaDeMovimiento);
+	}
+	
+	public String getNombreEstado() {
+	    return NOMRE_ESTADO;
 	}
 }

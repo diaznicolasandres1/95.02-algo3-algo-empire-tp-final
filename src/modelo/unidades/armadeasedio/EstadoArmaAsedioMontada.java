@@ -9,6 +9,8 @@ import modelo.excepciones.NoSePuedeMoverArmaAsedioMontadaException;
 
 public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
 
+    private static final String NOMBRE_ESTADO = "Montada";
+
     @Override
     public EstadoArmaAsedio proximoEstado() {
         return this;
@@ -33,5 +35,10 @@ public class EstadoArmaAsedioMontada implements EstadoArmaAsedio{
     @Override
     public void montarArma(ArmaDeAsedio armaDeAsedio) {
         throw new ArmaDeAsedioYaSeEncuentraMontadaException();
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
     }
 }

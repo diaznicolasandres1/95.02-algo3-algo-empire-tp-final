@@ -12,7 +12,8 @@ import modelo.excepciones.NoSePuedeMoverArmaDeAsedioEnPausaException;
 
 public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 
-	private final EstadoArmaAsedio proximoEstado;
+	private static final String NOMBRE_ESTADO = "En pausa";
+    private final EstadoArmaAsedio proximoEstado;
 
 	public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado) {
 		this.proximoEstado = proximoEstado;
@@ -43,4 +44,9 @@ public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 	public EstadoArmaAsedio proximoEstado() {
         return this.proximoEstado;
 	}
+	
+	@Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
 }

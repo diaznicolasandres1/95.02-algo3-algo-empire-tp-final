@@ -8,6 +8,7 @@ import modelo.unidades.espadachin.Espadachin;
 
 public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 
+    private static final String NOMBRE_ESTADO = "En construccion";
     private int turnos = 3;
 	
 	public void avanzarTurno(Edificio cuartel) {
@@ -36,4 +37,9 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 	public Arquero crearArquero(Oro oro) {		
 		throw new CuartelCreandoseException();
 	}
+	
+	@Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
 }

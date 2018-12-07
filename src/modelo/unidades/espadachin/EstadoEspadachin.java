@@ -11,4 +11,6 @@ public interface EstadoEspadachin {
     void atacar(Atacable objetivo, Espadachin espadachin);
 
     void moverEspadachinDesdeHacia(Espadachin espadachin, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento);
+
+    String getNombreEstado();
 }

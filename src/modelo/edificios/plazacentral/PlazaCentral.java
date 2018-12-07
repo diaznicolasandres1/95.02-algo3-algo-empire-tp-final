@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 
+    static final String NOMBRE_CLASE = "Edificio";
     private EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
     public PlazaCentral(Oro oroInicio) {
@@ -23,6 +24,14 @@ public class PlazaCentral extends Edificio {
         this.aldeanoReparando = null;
     }
 
+    public void recibirDanio(int valorDanio) {
+        this.estado.recibirDanio(this, valorDanio);
+    }
+
+    public Aldeano crearAldeanoDesdePlaza() {
+        return this.estado.crearAldeano(this.oro);
+    }
+
     @Override
     public void repararse(Aldeano aldeano) {
         if (this.aldeanoReparando == null) {
@@ -34,14 +43,6 @@ public class PlazaCentral extends Edificio {
         this.estado.reparar(this);
     }
 
-    public void recibirDanio(int valorDanio) {
-        this.estado.recibirDanio(this, valorDanio);
-    }
-
-    public Aldeano crearAldeanoDesdePlaza() {
-        return this.estado.crearAldeano(this.oro);
-    }
-
     @Override
     public void terminoDeCrearse() {
         this.estado = new EstadoPlazaCentralCreada();
@@ -50,5 +51,15 @@ public class PlazaCentral extends Edificio {
     @Override
     public void finalizarTurno() {
         this.estado.avanzarTurno(this);
+    }
+
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return this.estado.getNombreEstado();
     }
 }

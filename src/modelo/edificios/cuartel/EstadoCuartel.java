@@ -8,5 +8,8 @@ import modelo.unidades.espadachin.Espadachin;
 public interface EstadoCuartel extends EstadoEdificio {
 
     Espadachin crearEspadachin(Oro oro);
+    
     Arquero crearArquero(Oro oro);
+    
+    String getNombreEstado();
 }

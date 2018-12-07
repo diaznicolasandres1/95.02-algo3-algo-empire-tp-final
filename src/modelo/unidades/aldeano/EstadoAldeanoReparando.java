@@ -14,6 +14,7 @@ import modelo.unidades.Unidad;
 
 public class EstadoAldeanoReparando implements EstadoAldeano {
 
+    private static final String NOMBRE_ESTADO = "Reparando";
     private Edificio edificio;
 
     @Override
@@ -52,6 +53,11 @@ public class EstadoAldeanoReparando implements EstadoAldeano {
         throw new AldeanoEstaOcupadoException();
     }
 
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
+    
     @Override
     public void matar() {
         this.edificio.liberarAldeano();

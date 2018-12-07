@@ -21,6 +21,8 @@ public interface EstadoAldeano {
 	PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
 
 	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima);
+	
+	String getNombreEstado();
 
 	void matar();
 }

@@ -7,6 +7,7 @@ import modelo.unidades.aldeano.Aldeano;
 
 public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 
+    private static final String NOMBRE_ESTADO = "En construccion";
     private int turnos = 3;
 
     @Override
@@ -34,4 +35,8 @@ public class EstadoPlazaCentralEnConstruccion implements EstadoPlazaCentral {
 
     }
 
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
 }

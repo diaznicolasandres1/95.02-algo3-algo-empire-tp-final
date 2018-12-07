@@ -17,6 +17,8 @@ public class Castillo extends Edificio implements Atacante {
 
     private static final int RANGO_DE_ATAQUE = 5;
     private static final int POSICION_INICIAL = 0;
+    private static final String NOMBRE_CLASE = "Castillo";
+    private static final String NOMBRE_ESTADO = "Sin estado";
 	
 	public Castillo(Oro oro) {
 		this.vidaMaxima = 1000;
@@ -27,16 +29,6 @@ public class Castillo extends Edificio implements Atacante {
 		this.posiciones = new ArrayList<>();
         this.aldeanoReparando = null;
     }
-
-    @Override
-    public void finalizarTurno() {
-        // Castillo no maneja turnos.
-    }
-	
-	@Override
-	public void terminoDeCrearse() {
-        // Ya empieza construido.
-	}
 
 	public ArmaDeAsedio crearArmaDeAsedio() {
         return new ArmaDeAsedio(this.oro);
@@ -49,16 +41,6 @@ public class Castillo extends Edificio implements Atacante {
 
     public void atacar(Atacable objetivo) {
         objetivo.recibirDanio(this);
-    }
-
-    @Override
-    public void repararse(Aldeano aldeano) {
-        if (this.aldeanoReparando == null) {
-            this.aldeanoReparando = aldeano;
-        } else if (this.aldeanoReparando != aldeano) {
-            throw new EdificioSiendoReparadoException();
-        }
-        this.incrementarVida();
     }
 
     public void reducirVida(int danio) {
@@ -78,5 +60,35 @@ public class Castillo extends Edificio implements Atacante {
         for (Colocable colocable : colocables) {
             this.atacar((Atacable) colocable);
         }
+    }
+
+    @Override
+    public void repararse(Aldeano aldeano) {
+        if (this.aldeanoReparando == null) {
+            this.aldeanoReparando = aldeano;
+        } else if (this.aldeanoReparando != aldeano) {
+            throw new EdificioSiendoReparadoException();
+        }
+        this.incrementarVida();
+    }
+    
+    @Override
+    public void terminoDeCrearse() {
+        // Ya empieza construido.
+    }
+        
+    @Override
+    public void finalizarTurno() {
+        // Castillo no maneja turnos.
+    }
+    
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
     }
 }

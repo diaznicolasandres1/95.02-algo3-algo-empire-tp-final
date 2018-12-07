@@ -12,6 +12,7 @@ import modelo.unidades.Unidad;
 
 public class EstadoAldeanoOcupado implements EstadoAldeano{
 
+    private static final String NOMBRE_ESTADO = "Ocupado";
     private int turnos;
 
     public EstadoAldeanoOcupado(int turnosOcupado) {
@@ -51,6 +52,11 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
         throw new AldeanoEstaOcupadoException();
     }
 
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
+    
     @Override
     public void matar() {
         throw new UnidadFueDestruidaException();

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Cuartel extends Edificio {
 
+    private static final String NOMBRE_CLASE = "Cuartel";
     private EstadoCuartel estado = new EstadoCuartelEnConstruccion();
 
     public Cuartel(Oro nuevoOro) {
@@ -25,6 +26,18 @@ public class Cuartel extends Edificio {
         this.aldeanoReparando = null;
     }
 
+    public void recibirDanio(int valorDanio) {
+        this.estado.recibirDanio(this, valorDanio);
+    }
+
+    public Arquero crearArqueroDesdeCuartel() {
+        return this.estado.crearArquero(this.oro);
+    }
+
+    public Espadachin crearEspadachinDesdeCuartel() {
+        return this.estado.crearEspadachin(this.oro);
+    }
+    
     @Override
     public void repararse(Aldeano aldeano) {
         if (this.aldeanoReparando == null) {
@@ -36,10 +49,6 @@ public class Cuartel extends Edificio {
         this.estado.reparar(this);
     }
 
-    public void recibirDanio(int valorDanio) {
-        this.estado.recibirDanio(this, valorDanio);
-    }
-
     @Override
     public void terminoDeCrearse() {
         this.estado = new EstadoCuartelConstruido();
@@ -49,12 +58,14 @@ public class Cuartel extends Edificio {
     public void finalizarTurno() {
         this.estado.avanzarTurno(this);
     }
-
-    public Arquero crearArqueroDesdeCuartel() {
-        return this.estado.crearArquero(this.oro);
+    
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
     }
-
-    public Espadachin crearEspadachinDesdeCuartel() {
-        return this.estado.crearEspadachin(this.oro);
+    
+    @Override
+    public String getNombreEstado() {
+        return this.estado.getNombreEstado();
     }
 }

@@ -11,6 +11,8 @@ import modelo.unidades.Unidad;
 
 public class EstadoAldeanoDisponible implements EstadoAldeano {
 
+    private static final String NOMBRE_ESTADO = "Disponible";
+
     public void recolectarOro(Oro oro) {
         oro.sumarOro(25);
     }
@@ -44,6 +46,11 @@ public class EstadoAldeanoDisponible implements EstadoAldeano {
         origen.moverUnidadHacia(unidad, mapa, destino, distanciaMaxima);
     }
 
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
+    
     @Override
     public void matar() {
         throw new UnidadFueDestruidaException();

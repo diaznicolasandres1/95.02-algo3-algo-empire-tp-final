@@ -8,6 +8,8 @@ import modelo.excepciones.ArmaDeAsedioYaSeEncuentraDesmontadaException;
 import modelo.excepciones.NoSePuedeAtacarConArmaAsedioDesmontadaException;
 
 public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
+    
+    private static final String NOMBRE_ESTADO = "Desmontada";
 
     public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaDeMovimiento) {
         origen.moverUnidadHacia(unidad, mapa, destino, distanciaDeMovimiento);
@@ -32,5 +34,9 @@ public class EstadoArmaAsedioDesmontada implements EstadoArmaAsedio {
     public EstadoArmaAsedio proximoEstado() {
         return this;
     }
-
+    
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
 }

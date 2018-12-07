@@ -11,6 +11,7 @@ import modelo.unidades.Unidad;
 public class ArmaDeAsedio extends Unidad implements Atacante {
 
 	private static final int DISTANCIA_MAXIMA_ATAQUE = 5;
+    private static final String NOMBRE_CLASE = "Arma de Asedio";
 	private EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
 
 	public ArmaDeAsedio(Oro oro) {
@@ -29,6 +30,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 		this.estado = new EstadoArmaAsedioEnPausa(new EstadoArmaAsedioDesmontada());
 	}
 
+	@Override
 	public void finalizarTurno() {
 		this.estado = this.estado.proximoEstado();
 	}
@@ -48,4 +50,13 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
         this.estado = new EstadoArmaAsedioEnPausa(this.estado);
 	}
 
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return this.estado.getNombreEstado();
+    }
 }

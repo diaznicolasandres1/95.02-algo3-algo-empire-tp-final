@@ -11,4 +11,6 @@ public interface EstadoArquero {
     void atacar(Atacable objetivo, Arquero arquero);
 
     void moverArqueroDesdeHacia(Arquero arquero, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento);
+
+    String getNombreEstado();
 }

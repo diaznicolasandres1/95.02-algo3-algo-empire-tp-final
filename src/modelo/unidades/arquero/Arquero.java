@@ -12,6 +12,7 @@ public class Arquero extends Unidad implements Atacante {
 
     private EstadoArquero estado = new EstadoArqueroDisponible();
     private static final int RANGO_DE_ATAQUE = 3;
+    private static final String NOMBRE_CLASE = "Arquero";
 	
 	public Arquero(Oro oro) {
         this.vida = 75;
@@ -19,6 +20,15 @@ public class Arquero extends Unidad implements Atacante {
         oro.restarOro(this.costo);
 	}
 
+    public void estarDisponible() {
+        this.estado = new EstadoArqueroDisponible();
+    }
+    
+    public void estarOcupado() {
+        this.estado = new EstadoArqueroOcupado();
+    }
+
+	@Override
     public void finalizarTurno() {
         this.estado.avanzarTurno(this);
 	}
@@ -38,12 +48,13 @@ public class Arquero extends Unidad implements Atacante {
         this.estarOcupado();
     }
 
-	public void estarDisponible() {
-        this.estado = new EstadoArqueroDisponible();
-	}
-	
-	public void estarOcupado() {
-        this.estado = new EstadoArqueroOcupado();
-	}
-
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return this.estado.getNombreEstado();
+    }
 }

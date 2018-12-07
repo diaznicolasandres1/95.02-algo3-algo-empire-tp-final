@@ -7,7 +7,9 @@ import modelo.unidades.espadachin.Espadachin;
 
 public class EstadoCuartelConstruido implements EstadoCuartel {
 
-	@Override
+	private static final String NOMBRE_ESTADO = "Disponible";
+
+    @Override
 	public void recibirDanio(Edificio cuartel, int danio) {
         cuartel.reducirVida(danio);
 	}
@@ -31,8 +33,8 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
 		cuartel.incrementarVida();
 	}
 
-
-
-
-
+	@Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
+    }
 }

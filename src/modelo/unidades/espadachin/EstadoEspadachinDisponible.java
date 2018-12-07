@@ -6,7 +6,9 @@ import modelo.unidades.Atacable;
 
 public class EstadoEspadachinDisponible implements EstadoEspadachin {
 
-	@Override
+	private static final String NOMBRE_ESTADO = "Disponible";
+
+    @Override
 	public void avanzarTurno(Espadachin espadachin) {
 		espadachin.estarDisponible();		
 	}
@@ -19,5 +21,10 @@ public class EstadoEspadachinDisponible implements EstadoEspadachin {
 	@Override
     public void moverEspadachinDesdeHacia(Espadachin espadachin, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento) {
         origen.moverUnidadHacia(espadachin, mapa, destino, distanciaDeMovimiento);
+    }
+	
+	@Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
     }
 }

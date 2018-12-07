@@ -197,7 +197,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosAldeano(Aldeano aldeano) {
-        this.setMensaje("Aldeano\n❤ Vida: " + aldeano.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(aldeano));
+        this.setMensaje("Aldeano\n» Vida: " + aldeano.getVida() +
+                "\n» Estado: " + aldeano.getNombreEstado() + 
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(aldeano));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(aldeano, this.juego, this);
         this.configurarBottom();
@@ -205,7 +207,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCuartel(Cuartel cuartel) {
-        this.setMensaje("Cuartel\n❤ Vida: " + cuartel.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(cuartel));
+        this.setMensaje("Cuartel\n» Vida: " + cuartel.getVida() +
+                "\n» Estado: " + cuartel.getNombreEstado() +
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(cuartel));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(cuartel, this.juego, this);
         this.configurarBottom();
@@ -213,7 +217,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
-        this.setMensaje("Arma de asedio\n❤ Vida: " + armaDeAsedio.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(armaDeAsedio));
+        this.setMensaje("Arma de asedio\n» Vida: " + armaDeAsedio.getVida() +
+                "\n» Estado: " + armaDeAsedio.getNombreEstado() +
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(armaDeAsedio));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(armaDeAsedio, this.juego, this);
         this.configurarBottom();
@@ -221,7 +227,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosPlazaCentral(PlazaCentral plaza) {
-        this.setMensaje("Plaza Central\n❤ Vida: " + plaza.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(plaza));
+        this.setMensaje("Plaza Central\n» Vida: " + plaza.getVida() +
+                "\n» Estado: " + plaza.getNombreEstado() +
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(plaza));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(plaza, this.juego, this);
         this.configurarBottom();
@@ -230,7 +238,9 @@ public class ContenedorPrincipal extends BorderPane {
 
     public void dibujarMetodoEspadachinOArquero(Atacante atacante) {
         Unidad unidad = (Unidad) atacante;
-        this.setMensaje("Atacante\n❤ Vida: " + unidad.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(unidad));
+        this.setMensaje("Atacante\n» Vida: " + unidad.getVida() +
+                "\n» Estado: " + unidad.getNombreEstado() +
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(unidad));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(atacante, this);
         this.configurarBottom();
@@ -238,7 +248,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMetodosCastillo(Castillo castillo) {
-        this.setMensaje("Castillo\n❤ Vida: " + castillo.getVida() + "\n Pertenece a: " + this.juego.getNombreJugadorDuenioDe(castillo));
+        this.setMensaje("Castillo\n» Vida: " + castillo.getVida() +
+                "\n» Estado: " + castillo.getNombreEstado() +
+                "\n» Pertenece a: " + this.juego.getNombreJugadorDuenioDe(castillo));
         this.bottom.getChildren().clear();
         ArrayList<Button> botones = this.creadorDeBotones.crearBotonesPara(castillo, this.juego, this);
         this.configurarBottom();

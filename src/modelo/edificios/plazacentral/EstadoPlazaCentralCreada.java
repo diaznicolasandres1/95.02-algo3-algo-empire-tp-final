@@ -6,6 +6,8 @@ import modelo.unidades.aldeano.Aldeano;
 
 public class EstadoPlazaCentralCreada implements EstadoPlazaCentral{
 
+    private static final String NOMBRE_ESTADO = "Disponible";
+
     @Override
     public Aldeano crearAldeano(Oro oro) {
         return new Aldeano(oro);
@@ -24,5 +26,10 @@ public class EstadoPlazaCentralCreada implements EstadoPlazaCentral{
     @Override
     public void avanzarTurno(Edificio plazaCentral) {
         // Plaza central creada no maneja turnos
+    }
+    
+    @Override
+    public String getNombreEstado() {
+        return NOMBRE_ESTADO;
     }
 }

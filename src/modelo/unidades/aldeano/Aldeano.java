@@ -14,6 +14,7 @@ public class Aldeano extends Unidad {
     private final Oro oro;
     private EstadoAldeano estado = new EstadoAldeanoDisponible();
     private static final int RANGO_CONTRUCCION = 1;
+    private static final String NOMBRE_CLASE = "Aldeano";
 
     public Aldeano(Oro oroNuevo) {
         this.vida = 50;
@@ -48,6 +49,15 @@ public class Aldeano extends Unidad {
     public PlazaCentral construirPlazaCentral() {
         return this.estado.construirPlazaCentral(this, 3, this.oro);
     }
+    
+    public void colocarEdificio(Edificio edificio, Mapa mapa, int fila, int columna) {
+        edificio.colocarseEn(mapa, fila, columna);
+        if (edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
+            this.estarDisponible();
+            edificio.descolocarseDe(mapa);
+            throw new ConstruccionFueraDeRangoException();
+        }
+    }
 
     @Override
     public void finalizarTurno() {
@@ -65,14 +75,15 @@ public class Aldeano extends Unidad {
     public void matar() {
         this.estado.matar();
     }
-
-    public void colocarEdificio(Edificio edificio, Mapa mapa, int fila, int columna) {
-        edificio.colocarseEn(mapa, fila, columna);
-        if (edificio.calcularDistanciaA(this.posicion) > RANGO_CONTRUCCION) {
-            this.estarDisponible();
-            edificio.descolocarseDe(mapa);
-            throw new ConstruccionFueraDeRangoException();
-        }
+    
+    
+    @Override
+    public String getNombreClase() {
+        return NOMBRE_CLASE;
     }
-
+    
+    @Override
+    public String getNombreEstado() {
+        return this.estado.getNombreEstado();
+    }
 }
