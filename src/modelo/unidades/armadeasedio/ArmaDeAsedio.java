@@ -11,7 +11,7 @@ import modelo.unidades.Unidad;
 public class ArmaDeAsedio extends Unidad implements Atacante {
 
 	private static final int DISTANCIA_MAXIMA_ATAQUE = 5;
-    private static final String NOMBRE_CLASE = "Arma de Asedio";
+    private static final String NOMBRE_CLASE = "Arma de asedio";
 	private EstadoArmaAsedio estado = new EstadoArmaAsedioDesmontada();
 
 	public ArmaDeAsedio(Oro oro) {

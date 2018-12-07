@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 
-    static final String NOMBRE_CLASE = "Edificio";
+    static final String NOMBRE_CLASE = "Plaza central";
     private EstadoPlazaCentral estado = new EstadoPlazaCentralEnConstruccion();
 
     public PlazaCentral(Oro oroInicio) {
