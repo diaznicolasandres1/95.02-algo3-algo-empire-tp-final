@@ -10,11 +10,11 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 
     private static final String NOMBRE_ESTADO = "En construccion";
     private int turnos = 3;
-	
+
 	public void avanzarTurno(Edificio cuartel) {
 		this.turnos -= 1;
 		if (this.turnos < 1) {
-			cuartel.terminoDeCrearse();			
+			cuartel.terminoDeCrearse();
 		}
 	}
 
@@ -24,20 +24,20 @@ public class EstadoCuartelEnConstruccion implements EstadoCuartel {
 	}
 
 	@Override
-	public void recibirDanio(Edificio cuartel, int danio) {	
+	public void recibirDanio(Edificio cuartel, int danio) {
 		throw new CuartelCreandoseException();
 	}
 
 	@Override
-	public Espadachin crearEspadachin(Oro oro) {		
+	public Espadachin crearEspadachin(Oro oro) {
 		throw new CuartelCreandoseException();
 	}
 
 	@Override
-	public Arquero crearArquero(Oro oro) {		
+	public Arquero crearArquero(Oro oro) {
 		throw new CuartelCreandoseException();
 	}
-	
+
 	@Override
     public String getNombreEstado() {
         return NOMBRE_ESTADO;

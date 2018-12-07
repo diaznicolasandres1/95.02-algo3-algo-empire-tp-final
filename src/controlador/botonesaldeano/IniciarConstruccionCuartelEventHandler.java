@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import modelo.juego.Juego;
 import modelo.unidades.aldeano.Aldeano;
 import vista.ContenedorPrincipal;
 

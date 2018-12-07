@@ -7,10 +7,10 @@ public interface Colocable {
     void colocarseEn(Mapa mapa, int fila, int columna);
     
     void descolocarseDe(Mapa mapa);
-    
-    public abstract String getNombreClase();
-    
-    public abstract String getNombreEstado();
+
+    String getNombreClase();
+
+    String getNombreEstado();
 
     void finalizarTurno();
 }

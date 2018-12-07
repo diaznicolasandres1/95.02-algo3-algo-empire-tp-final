@@ -13,12 +13,12 @@ public class Arquero extends Unidad implements Atacante {
     private EstadoArquero estado = new EstadoArqueroDisponible();
     private static final int RANGO_DE_ATAQUE = 3;
     private static final String NOMBRE_CLASE = "Arquero";
-	
-	public Arquero(Oro oro) {
+
+    public Arquero(Oro oro) {
         this.vida = 75;
         this.costo = 75;
         oro.restarOro(this.costo);
-	}
+    }
 
     public void estarDisponible() {
         this.estado = new EstadoArqueroDisponible();
@@ -28,21 +28,21 @@ public class Arquero extends Unidad implements Atacante {
         this.estado = new EstadoArqueroOcupado();
     }
 
-	@Override
+    @Override
     public void finalizarTurno() {
         this.estado.avanzarTurno(this);
-	}
+    }
 
-	@Override
+    @Override
     public void atacar(Atacable objetivo) {
         if (objetivo.calcularDistanciaA(this.posicion) > RANGO_DE_ATAQUE) {
             throw new ColocableFueraDeRangoDeAtaqueException();
         }
         this.estado.atacar(objetivo, this);
-		this.estarOcupado();
-	}
+        this.estarOcupado();
+    }
 
-	@Override
+    @Override
     public void moverHacia(Posicion destino, Mapa mapa) {
         this.estado.moverArqueroDesdeHacia(this, this.posicion, destino, mapa, DISTANCIA_DE_MOVIMIENTO);
         this.estarOcupado();

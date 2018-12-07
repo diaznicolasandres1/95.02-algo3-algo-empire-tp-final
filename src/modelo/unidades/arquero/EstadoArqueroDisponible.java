@@ -6,24 +6,24 @@ import modelo.unidades.Atacable;
 
 public class EstadoArqueroDisponible implements EstadoArquero {
 
-	private static final String NOMRE_ESTADO = "Disponible";
+    private static final String NOMRE_ESTADO = "Disponible";
 
     @Override
-	public void avanzarTurno(Arquero arquero) {
-		arquero.estarDisponible();
-	}
+    public void avanzarTurno(Arquero arquero) {
+        arquero.estarDisponible();
+    }
 
-	@Override
+    @Override
     public void atacar(Atacable objetivo, Arquero arquero) {
         objetivo.recibirDanio(arquero);
-	}
+    }
 
-	@Override
+    @Override
     public void moverArqueroDesdeHacia(Arquero arquero, Posicion origen, Posicion destino, Mapa mapa, int distanciaDeMovimiento) {
         origen.moverUnidadHacia(arquero, mapa, destino, distanciaDeMovimiento);
-	}
-	
-	public String getNombreEstado() {
-	    return NOMRE_ESTADO;
-	}
+    }
+
+    public String getNombreEstado() {
+        return NOMRE_ESTADO;
+    }
 }

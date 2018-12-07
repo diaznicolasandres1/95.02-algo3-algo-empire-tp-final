@@ -19,22 +19,22 @@ public class Castillo extends Edificio implements Atacante {
     private static final int POSICION_INICIAL = 0;
     private static final String NOMBRE_CLASE = "Castillo";
     private static final String NOMBRE_ESTADO = "Sin estado";
-	
-	public Castillo(Oro oro) {
-		this.vidaMaxima = 1000;
-		this.vida = 1000;
-		this.reparacion = 15;
-		this.tamanio = 16;
+
+    public Castillo(Oro oro) {
+        this.vidaMaxima = 1000;
+        this.vida = 1000;
+        this.reparacion = 15;
+        this.tamanio = 16;
         this.oro = oro;
-		this.posiciones = new ArrayList<>();
+        this.posiciones = new ArrayList<>();
         this.aldeanoReparando = null;
     }
 
-	public ArmaDeAsedio crearArmaDeAsedio() {
+    public ArmaDeAsedio crearArmaDeAsedio() {
         return new ArmaDeAsedio(this.oro);
-	}	
-	
-	public void atacarAlrededor(Mapa mapa) {
+    }
+
+    public void atacarAlrededor(Mapa mapa) {
         ArrayList<Colocable> colocables = this.getColocablesAlrededor(mapa);
         this.atacarAColocables(colocables);
     }

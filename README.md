@@ -15,23 +15,19 @@ Segundo cuatrimestre año 2018 - FIUBA.
 ---
 ## Pasos para trabajar
 
-Solo la primera vez:
-1. `git clone https://github.com/diaznicolasandres1/Algo-Empire-AYP3`.
-1. `cd Algo-Empire-AYP3`
-
 Siempre:
 1. `git pull`
-1.  Cambios en codigo, informe o diagramas
+2.  Cambios en codigo, informe o diagramas
     1.  Informe: Modificar [informe](https://www.overleaf.com/6538475577bggwkfmmvhnz)
     1.  Codigo: Modificar src/ y test/ con IntelliJ/Eclipse/Netbeans
     1.  Diagramas: Modificar diagramas con Astah UML y subirlos como imagenes
-1.  Ejecutar pruebas unitarias y de integración. Además, usar el script de Ant (`ant` en el directorio donde se tenga el proyecto) para comprobar que se pueda buildear correctamente
-1. `git status`
-1. `git add ARCHIVOS_MODIFICADOS`. No agregar archivos propios de los IDEs.
-1. `git commit -m "Comentario del commit"`
-1. `git push origin master` 
-1.  Confirmar que el build paso las pruebas de [Travis](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3/) (se recibe un mail de no hacerlo)
+3.  Ejecutar pruebas unitarias y de integración. Además, usar el script de Ant (`ant` en el directorio donde se tenga el proyecto) para comprobar que se pueda buildear correctamente
+4. `git status`
+5. `git add ARCHIVOS_MODIFICADOS`. No agregar archivos propios de los IDEs.
+6. `git commit -m "Comentario del commit"`
+7. `git push origin master` 
+8.  Confirmar que el build paso las pruebas de [Travis](https://travis-ci.com/diaznicolasandres1/Algo-Empire-AYP3/) (se recibe un mail de no hacerlo)
 
-## Pasos para ejecutar el juego
-1.  Abrir terminal en Algo-Empire-AYP3
-1.  `ant ejecutar.aplicacion`
+## Pasos para ejecutar
+1.  Abrir terminal en el directorio donde se haya clonado el proyecto
+2.  `ant ejecutar.aplicacion`

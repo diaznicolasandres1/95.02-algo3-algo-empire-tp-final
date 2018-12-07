@@ -7,15 +7,15 @@ import modelo.unidades.Unidad;
 
 public interface EstadoArmaAsedio {
 
-	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
+    void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int rangoMovimiento);
 
     void atacar(Atacable objetivo, ArmaDeAsedio arma);
-    
-	void montarArma(ArmaDeAsedio armaDeAsedio);
-	
-	void desmontarArma(ArmaDeAsedio armaDeAsedio);
-	
-	EstadoArmaAsedio proximoEstado();
+
+    void montarArma(ArmaDeAsedio armaDeAsedio);
+
+    void desmontarArma(ArmaDeAsedio armaDeAsedio);
+
+    EstadoArmaAsedio proximoEstado();
 
     String getNombreEstado();
 }

@@ -23,7 +23,7 @@ public class EstadoCuartelConstruido implements EstadoCuartel {
 	public Arquero crearArquero(Oro oro) {
         return new Arquero(oro);
 	}
-	
+
 	@Override
 	public void avanzarTurno(Edificio cuartel) {
         // Cuartel no pasa turnos mientras esta construido.

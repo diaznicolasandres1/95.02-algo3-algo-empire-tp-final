@@ -12,40 +12,40 @@ import modelo.excepciones.NoSePuedeMoverArmaDeAsedioEnPausaException;
 
 public class EstadoArmaAsedioEnPausa implements EstadoArmaAsedio {
 
-	private static final String NOMBRE_ESTADO = "En pausa";
+    private static final String NOMBRE_ESTADO = "En pausa";
     private final EstadoArmaAsedio proximoEstado;
 
-	public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado) {
-		this.proximoEstado = proximoEstado;
-	}
+    public EstadoArmaAsedioEnPausa(EstadoArmaAsedio proximoEstado) {
+        this.proximoEstado = proximoEstado;
+    }
 
-	@Override
-	public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen,
-									  int distanciaDeMovimiento) {
-		throw new NoSePuedeMoverArmaDeAsedioEnPausaException();
-	}
+    @Override
+    public void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen,
+                                      int distanciaDeMovimiento) {
+        throw new NoSePuedeMoverArmaDeAsedioEnPausaException();
+    }
 
-	@Override
+    @Override
     public void atacar(Atacable objetivo, ArmaDeAsedio arma) {
-		throw new NoSePuedeAtacarConArmaDeAsedioEnPausaException();
+        throw new NoSePuedeAtacarConArmaDeAsedioEnPausaException();
 
-	}
+    }
 
-	@Override
-	public void montarArma(ArmaDeAsedio armaDeAsedio) {
-		throw new NoSePuedeMontarArmaDeAsedioEnPausaException();
-	}
+    @Override
+    public void montarArma(ArmaDeAsedio armaDeAsedio) {
+        throw new NoSePuedeMontarArmaDeAsedioEnPausaException();
+    }
 
-	@Override
-	public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
-		throw new NoSePuedeDesmontarArmaDeAsedioEnPausaException();
-	}
+    @Override
+    public void desmontarArma(ArmaDeAsedio armaDeAsedio) {
+        throw new NoSePuedeDesmontarArmaDeAsedioEnPausaException();
+    }
 
-	public EstadoArmaAsedio proximoEstado() {
+    public EstadoArmaAsedio proximoEstado() {
         return this.proximoEstado;
-	}
-	
-	@Override
+    }
+
+    @Override
     public String getNombreEstado() {
         return NOMBRE_ESTADO;
     }

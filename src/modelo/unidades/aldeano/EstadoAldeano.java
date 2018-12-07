@@ -10,19 +10,19 @@ import modelo.unidades.Unidad;
 
 public interface EstadoAldeano {
 
-	Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro);
+    Cuartel construirCuartel(Aldeano aldeano, int turnosOcupado, Oro oro);
 
-	void recolectarOro(Oro oro);
+    void recolectarOro(Oro oro);
 
-	void avanzarTurno(Aldeano aldeano);
+    void avanzarTurno(Aldeano aldeano);
 
-	void repararEdificio(Aldeano aldeano, Edificio edificio);
+    void repararEdificio(Aldeano aldeano, Edificio edificio);
 
-	PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
+    PlazaCentral construirPlazaCentral(Aldeano aldeano, int turnosOcupado, Oro oro);
 
-	void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima);
-	
-	String getNombreEstado();
+    void moverUnidadDesdeHacia(Unidad unidad, Mapa mapa, Posicion destino, Posicion origen, int distanciaMaxima);
 
-	void matar();
+    String getNombreEstado();
+
+    void matar();
 }

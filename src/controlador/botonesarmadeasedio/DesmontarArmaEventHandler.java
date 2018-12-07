@@ -9,7 +9,6 @@ import modelo.excepciones.ArmaDeAsedioException;
 import modelo.excepciones.ColocableSeleccionadoException;
 import modelo.juego.Juego;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
-import vista.ContenedorPrincipal;
 
 public class DesmontarArmaEventHandler implements EventHandler<ActionEvent> {
 

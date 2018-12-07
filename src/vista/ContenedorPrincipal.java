@@ -29,8 +29,8 @@ public class ContenedorPrincipal extends BorderPane {
     private final CreadorDeBotones creadorDeBotones;
     private final Juego juego;
     private final GridPane tablero = new GridPane();
-    private  String jugadorUno;
-    private  String jugadorDos;
+    private final String jugadorUno;
+    private final String jugadorDos;
     private final VBox izquierdo = new VBox();
     private final VBox derecho = new VBox();
     private final VBox mensajesIzq = new VBox();
@@ -58,7 +58,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public String getColor(String nombreJugador){
-        if(nombreJugador == this.jugadorUno){
+        if (nombreJugador.equals(this.jugadorUno)) {
             return "light";
         }else{
             return "";
@@ -256,12 +256,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.configurarBottom();
         botones.forEach(boton -> this.bottom.getChildren().add(boton));
     }
-
-    private void configurarBottom() {
-        this.setjugadorActual();
-        this.bottom.setSpacing(10);
-        this.bottom.setAlignment(Pos.CENTER);
-    }
     
     public void setMensaje(String mensaje) {
         Text texto = new Text(mensaje);
@@ -283,6 +277,12 @@ public class ContenedorPrincipal extends BorderPane {
         } else {
             this.mensajesDer.getChildren().clear();
         }
+    }
+
+    private void configurarBottom() {
+        this.setjugadorActual();
+        this.bottom.setSpacing(10);
+        this.bottom.setAlignment(Pos.CENTER);
     }
 
     /* Cambiadores de handlers */

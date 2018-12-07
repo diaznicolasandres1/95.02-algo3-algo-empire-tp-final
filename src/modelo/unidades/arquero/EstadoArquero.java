@@ -5,8 +5,8 @@ import modelo.mapa.Posicion;
 import modelo.unidades.Atacable;
 
 public interface EstadoArquero {
-	
-	void avanzarTurno(Arquero arquero);
+
+    void avanzarTurno(Arquero arquero);
 
     void atacar(Atacable objetivo, Arquero arquero);
 

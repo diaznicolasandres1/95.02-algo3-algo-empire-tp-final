@@ -22,25 +22,25 @@ public abstract class Edificio implements Colocable, Atacable {
     protected static final int DANIO_DE_ARQUERO = 10;
     protected static final int DANIO_DE_CASTILLO = 20;
     protected static final int DANIO_ARMA_DE_ASEDIO = 75;
-	protected int vidaMaxima;
-	protected int vida;
-	protected int costo;
-	protected int tamanio;
-	protected int reparacion;
+    private static final int POSICION_INICIAL = 0;
+    protected int vidaMaxima;
+    protected int vida;
+    protected int costo;
+    protected int tamanio;
+    protected int reparacion;
     protected Oro oro;
     protected ArrayList<Posicion> posiciones;
     protected Aldeano aldeanoReparando;
-    private static final int POSICION_INICIAL = 0;
 
-	public int getVida() {
+    public int getVida() {
         return this.vida;
-	}
-	
-	public void recibirDanio(Espadachin espadachin) {
+    }
+
+    public void recibirDanio(Espadachin espadachin) {
         this.reducirVida(DANIO_DE_ESPADACHIN);
-	}
-	
-	public void recibirDanio(Arquero arquero) {
+    }
+
+    public void recibirDanio(Arquero arquero) {
         this.reducirVida(DANIO_DE_ARQUERO);
     }
 
@@ -65,8 +65,8 @@ public abstract class Edificio implements Colocable, Atacable {
             this.vida = this.vidaMaxima;
             this.liberarAldeano();
             throw new EdificioTieneVidaMaximaException();
-		}
-	}
+        }
+    }
 
     @Override
     public void descolocarseDe(Mapa mapa) {
@@ -95,13 +95,13 @@ public abstract class Edificio implements Colocable, Atacable {
 
     public abstract void finalizarTurno();
 
-	public abstract void terminoDeCrearse();
+    public abstract void terminoDeCrearse();
 
     public abstract void repararse(Aldeano aldeano);
-	
-	public void colocarAlrededor(Mapa mapa, Unidad unidad) {
+
+    public void colocarAlrededor(Mapa mapa, Unidad unidad) {
         this.posiciones.get(POSICION_INICIAL).colocarAlrededor(mapa, this.tamanio, unidad);
-	}
+    }
 
     public void liberarAldeano() {
         this.aldeanoReparando = null;
