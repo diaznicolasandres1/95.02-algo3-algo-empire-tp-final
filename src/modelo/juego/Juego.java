@@ -18,8 +18,8 @@ public class Juego {
 
     private Jugador jugadorActual;
     private final Mapa mapa;
-    private static final int BASE_MAPA = 25;
-    private static final int ALTURA_MAPA = 25;
+    private static final int BASE_MAPA = 20;
+    private static final int ALTURA_MAPA = 20;
 
     public Juego(String jugadorUno, String jugadorDos) {
 
