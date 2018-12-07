@@ -2,6 +2,8 @@ package vista;
 
 import controlador.CasilleroEventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import modelo.edificios.castillo.Castillo;
 import modelo.edificios.cuartel.Cuartel;
@@ -13,6 +15,9 @@ import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
+
+
+import java.awt.*;
 
 public class DibujadorDeMapa {
 
@@ -44,6 +49,9 @@ public class DibujadorDeMapa {
     public void dibujarColocable(Colocable colocable, Button botonCasillero, ContenedorPrincipal contenedor) {
         botonCasillero.setPrefSize(35, 35);
         if (colocable == null) {
+            Image pasto = new Image("file:src/vista/imagenes/pasto.png",35,35,true,false);
+            botonCasillero.setGraphic(new ImageView(pasto));
+            botonCasillero.setStyle("-fx-padding:0");
             return;
         }
         
@@ -52,33 +60,44 @@ public class DibujadorDeMapa {
         
         switch(colocable.getNombreClase()) {
             case "Aldeano":
-                botonCasillero.setStyle("-fx-background-color: "+color+"green");
-                botonCasillero.setText("a");
+                Image aldeano = new Image("file:src/vista/imagenes/372.png",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(aldeano));
+
                 break;
             case "Espadachin":
-                botonCasillero.setStyle("-fx-background-color: "+color+"blue");
-                botonCasillero.setText("E");
+                Image espadachin = new Image("file:src/vista/imagenes/espadachin.png",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(espadachin));
+
+
+
                 break;
             case "Arquero":
-                botonCasillero.setStyle("-fx-background-color: "+color+"yellow");
-                botonCasillero.setText("A");
+                Image arquero = new Image("file:src/vista/imagenes/arquero.jpg",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(arquero));
+
                 break;
             case "Castillo":
-                botonCasillero.setStyle("-fx-background-color: "+color+"cyan");
-                botonCasillero.setText("C");
+                Image castillo = new Image("file:src/vista/imagenes/castillo.jpg",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(castillo));
+
                 break;
             case "Plaza central":
-                botonCasillero.setStyle("-fx-background-color: "+color+"grey");
-                botonCasillero.setText("P");
+                Image plaza = new Image("file:src/vista/imagenes/plazacentral.jpg",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(plaza));
+
                 break;
             case "Cuartel":
-                botonCasillero.setStyle("-fx-background-color: "+color+"steelblue");
-                botonCasillero.setText("C");
+                Image cuartel = new Image("file:src/vista/imagenes/cuartel.jpg",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(cuartel));
+
                 break;
             case "Arma de asedio":
-                botonCasillero.setStyle("-fx-background-color: "+color+"skyblue");
-                botonCasillero.setText("Ar");
+                Image armaasedio = new Image("file:src/vista/imagenes/armaasedio.jpg",35,35,true,false);
+                botonCasillero.setGraphic(new ImageView(armaasedio));
+
                 break;
         }
+        botonCasillero.setStyle("-fx-padding:0");
+
     }
 }
