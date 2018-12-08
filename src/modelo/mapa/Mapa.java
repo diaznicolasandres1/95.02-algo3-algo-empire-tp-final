@@ -77,17 +77,15 @@ public class Mapa {
         int auxColumna = columna - rango;
         ArrayList<Colocable> colocablesEnRango = new ArrayList<>();
 
-        for (int i = 0; i < 6 + (rango * 2); i++) {
-            for (int j = 0; j < 5 + (rango * 2); j++) {
+        for (int i = 0; i < 3 + (rango * 2); i++) {
+            for (int j = 0; j < 3 + (rango * 2); j++) {
                 Colocable colocable;
                 try {
                     colocable = this.buscarColocableEn(auxFila + i, auxColumna + j);
-                    if (colocable == null) {
-                        continue;
-                    } else if (colocablesEnRango.contains(colocable)) {
+                    if (colocable == null | colocablesEnRango.contains(colocable)) {
                         continue;
                     }
-                } catch (IndexOutOfBoundsException fueraDelRangoDelMapa) {
+                } catch (IndexOutOfBoundsException ignored) {
                     continue;
                 }
                 colocablesEnRango.add(colocable);
