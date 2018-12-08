@@ -283,7 +283,7 @@ public class ArmaAsedioTest {
     }
 
     @Test(expected = UnidadNoPuedeSerAtacadaPorArmaDeAsedioException.class)
-    public void test22armaDeAsedioNoPuedeAtacarEspadachinLanzaExcepcion() {
+    public void test22armaDeAsedioAtacaAEspadachinYLanzaExcepcion() {
 
         Oro oro = new Oro(1000);
         Mapa mapa = new Mapa(20, 20);
@@ -299,7 +299,7 @@ public class ArmaAsedioTest {
     }
 
     @Test(expected = UnidadNoPuedeSerAtacadaPorArmaDeAsedioException.class)
-    public void test23armaDeAsedioNoPuedeAtacarEspadachinLanzaExcepcion() {
+    public void test23armaDeAsedioAtacaAArqueroYLanzaExcepcion() {
 
         Oro oro = new Oro(1000);
         Mapa mapa = new Mapa(20, 20);
