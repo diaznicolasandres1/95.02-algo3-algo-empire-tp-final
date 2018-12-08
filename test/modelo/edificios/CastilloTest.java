@@ -7,11 +7,15 @@ import modelo.juego.Oro;
 import modelo.edificios.plazacentral.PlazaCentral;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidades.Atacable;
+import modelo.unidades.Colocable;
 import modelo.unidades.aldeano.Aldeano;
 import modelo.unidades.armadeasedio.ArmaDeAsedio;
 import modelo.unidades.arquero.Arquero;
 import modelo.unidades.espadachin.Espadachin;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 
 public class CastilloTest {
@@ -59,13 +63,7 @@ public class CastilloTest {
         castillo.incrementarVida();
         castillo.incrementarVida();
         castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
-        castillo.incrementarVida();
+
         castillo.incrementarVida();
     }
 
@@ -180,7 +178,10 @@ public class CastilloTest {
         mapa.colocarUnidad(arquero, 13, 11);
         mapa.colocarUnidad(armaDeAsedio, 8, 11);
 
-         castillo.atacarAlrededor(mapa);
+        ArrayList<Colocable> objetivos = castillo.getColocablesAlrededor(mapa);
+        for (Colocable objetivo : objetivos) {
+            castillo.atacar((Atacable) objetivo);
+        }
 
         Assert.assertEquals(30, aldeano.getVida());
         Assert.assertEquals(80, espadachin.getVida());
@@ -198,7 +199,7 @@ public class CastilloTest {
         castillo.colocarseEn(mapa, 9, 10);
         mapa.colocarEdificio(plaza, 4, 13, 10);
 
-        castillo.atacarAlrededor(mapa);
+        castillo.atacar(plaza);
 
         Assert.assertEquals(plaza.getVida(), 430);
     }
@@ -223,7 +224,10 @@ public class CastilloTest {
         plaza.finalizarTurno();
         plaza.finalizarTurno();
 
-        castillo.atacarAlrededor(mapa);
+        ArrayList<Colocable> objetivos = castillo.getColocablesAlrededor(mapa);
+        for (Colocable objetivo : objetivos) {
+            castillo.atacar((Atacable) objetivo);
+        }
 
         Assert.assertEquals(unAldeano.getVida(), 30);
         Assert.assertEquals(otroAldeano.getVida(), 30);
@@ -232,21 +236,25 @@ public class CastilloTest {
     }
 
     @Test
-    public void test15CastilloAtacaPeroAldeanoEstaFueraDelRangoDeAtaqueYNoLeSacaVida() {
+    public void test15CastilloAtacaAlrededorUnidadFueraDeRangoDeAtaqueNoRecibeDanio() {
+
         Mapa mapa = new Mapa(20, 20);
         Oro oro = new Oro(10000);
         Castillo castillo = new Castillo(oro);
         Aldeano aldeano = new Aldeano(oro);
+        castillo.colocarseEn(mapa, 10, 10);
+        aldeano.colocarseEn(mapa, 17, 10);
 
-        castillo.colocarseEn(mapa, 2, 2);
-        mapa.colocarUnidad(aldeano, 20, 20);
+        ArrayList<Colocable> objetivos = castillo.getColocablesAlrededor(mapa);
+        for (Colocable objetivo : objetivos) {
+            castillo.atacar((Atacable) objetivo);
+        }
 
-        castillo.atacarAlrededor(mapa);
-        Assert.assertEquals(aldeano.getVida(), 50);
+        Assert.assertEquals(50, aldeano.getVida());
     }
 
     @Test(expected = EdificioSiendoReparadoException.class)
-    public void test16castilloSeIntentaRepararPorDosAldeanosDiferentesLanzaExcepcion() {
+    public void test15castilloSeIntentaRepararPorDosAldeanosDiferentesLanzaExcepcion() {
 
         Oro oro = new Oro(1000);
         Castillo castillo = new Castillo(oro);
@@ -258,7 +266,7 @@ public class CastilloTest {
     }
 
     @Test
-    public void test17castilloCalculaDistanciaHaciaOtraPosicionDevuelveValorCorrecto() {
+    public void test16castilloCalculaDistanciaHaciaOtraPosicionDevuelveValorCorrecto() {
 
         Oro oro = new Oro(2000);
         Castillo castillo = new Castillo(oro);
@@ -271,7 +279,7 @@ public class CastilloTest {
     }
 
     @Test(expected = CastilloFueDestruidoException.class)
-    public void test18castilloReduceVidaYEsDestruidoLanzaExcepcion() {
+    public void test17castilloReduceVidaYEsDestruidoLanzaExcepcion() {
 
         Oro oro = new Oro(2000);
         Castillo castillo = new Castillo(oro);

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 
 public class Castillo extends Edificio implements Atacante {
 
-    private static final int RANGO_DE_ATAQUE = 5;
+    private static final int RANGO_DE_ATAQUE = 3;
     private static final int POSICION_INICIAL = 0;
     private static final String NOMBRE_CLASE = "Castillo";
-    private static final String NOMBRE_ESTADO = "Sin estado";
+    private static final String NOMBRE_ESTADO = "Disponible";
 
     public Castillo(Oro oro) {
         this.vidaMaxima = 1000;
@@ -32,11 +32,6 @@ public class Castillo extends Edificio implements Atacante {
 
     public ArmaDeAsedio crearArmaDeAsedio() {
         return new ArmaDeAsedio(this.oro);
-    }
-
-    public void atacarAlrededor(Mapa mapa) {
-        ArrayList<Colocable> colocables = this.getColocablesAlrededor(mapa);
-        this.atacarAColocables(colocables);
     }
 
     public void atacar(Atacable objetivo) {
@@ -54,12 +49,6 @@ public class Castillo extends Edificio implements Atacante {
         ArrayList<Colocable> colocables = this.posiciones.get(POSICION_INICIAL).buscarColocablesEnRangoDe(mapa, RANGO_DE_ATAQUE);
         colocables.remove(this);
         return colocables;
-    }
-
-    public void atacarAColocables(ArrayList<Colocable> colocables) {
-        for (Colocable colocable : colocables) {
-            this.atacar((Atacable) colocable);
-        }
     }
 
     @Override
