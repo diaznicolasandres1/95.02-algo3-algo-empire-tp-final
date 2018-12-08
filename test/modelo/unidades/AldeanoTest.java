@@ -25,9 +25,10 @@ public class AldeanoTest {
 
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
+
         aldeano.finalizarTurno();
-        int cantidadOro = oro.getOro();
-        Assert.assertEquals(125, cantidadOro);
+
+        Assert.assertEquals(120, oro.getOro());
     }
 
     @Test
@@ -35,10 +36,11 @@ public class AldeanoTest {
 
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
+
         aldeano.estarOcupado(1);
         aldeano.finalizarTurno();
-        int cantidadOro = oro.getOro();
-        Assert.assertEquals(100, cantidadOro);
+
+        Assert.assertEquals(100, oro.getOro());
     }
     
     @Test(expected = AldeanoEstaOcupadoException.class)
@@ -58,25 +60,25 @@ public class AldeanoTest {
         Oro oro = new Oro(125);
         Aldeano aldeano = new Aldeano(oro);
         aldeano.estarOcupado(3);
+
         aldeano.finalizarTurno();
         aldeano.finalizarTurno();
-        
-        int cantidadOro = oro.getOro();
-        Assert.assertEquals(100, cantidadOro);
+
+        Assert.assertEquals(100, oro.getOro());
     }
 
     @Test
     public void test06AldeanoPor3TurnosConstruyendoNoSumaOro() {
         Oro oro = new Oro(125);
-        Aldeano aldeano = new Aldeano(oro);  //Rest 25 Oro
-        aldeano.construirCuartel(); //Primer turno ocupado, comienza a construir Resta 50 Oro
-        aldeano.finalizarTurno();//Segundo turno ocupado
-        aldeano.finalizarTurno();//Tercer turno ocupado
-        aldeano.finalizarTurno(); //Ya esta libre al proximo avance sumara oro
-        aldeano.finalizarTurno(); //Suma 25 oro
-        
-        int cantidadOro = oro.getOro();
-        Assert.assertEquals(75, cantidadOro);
+        Aldeano aldeano = new Aldeano(oro);  // Resta 25 Oro
+
+        aldeano.construirCuartel(); // Primer turno ocupado, comienza a construir resta 50 Oro
+        aldeano.finalizarTurno();// Segundo turno ocupado
+        aldeano.finalizarTurno();// Tercer turno ocupado
+        aldeano.finalizarTurno(); // Ya esta libre, en el proximo turno suma oro
+        aldeano.finalizarTurno(); // Suma 20 oro
+
+        Assert.assertEquals(70, oro.getOro());
     }
     
     @Test
@@ -96,7 +98,6 @@ public class AldeanoTest {
 
     @Test
     public void test09aldeanoReparandoCuartelDebeEstarOcupado() {
-
         Oro oro = new Oro(500);
         Mapa mapa = new Mapa(25, 25);
         Aldeano aldeano = new Aldeano(oro);  //25 oro
@@ -112,12 +113,11 @@ public class AldeanoTest {
         aldeano.finalizarTurno(); // Tercer turno ocupado
         cuartel.finalizarTurno(); // Tercer turno ocupado
 
-        cuartel.reducirVida(100); //Ya se construyo, se le puede hacer daño
+        cuartel.reducirVida(100); // Ya se termino de construir, se le puede hacer daño
         aldeano.repararEdificio(cuartel);
         aldeano.finalizarTurno(); // No genera oro en este turno
 
-        int cantidadOro = oro.getOro();
-        Assert.assertEquals(425, cantidadOro);
+        Assert.assertEquals(425, oro.getOro());
     }
 
     @Test(expected = ConstruccionFueraDeRangoException.class)

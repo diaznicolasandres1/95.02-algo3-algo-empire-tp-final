@@ -12,9 +12,10 @@ import modelo.unidades.Unidad;
 public class EstadoAldeanoDisponible implements EstadoAldeano {
 
     private static final String NOMBRE_ESTADO = "Disponible";
+    private static final int ORO_A_GENERAR = 20;
 
     public void recolectarOro(Oro oro) {
-        oro.sumarOro(25);
+        oro.sumarOro(ORO_A_GENERAR);
     }
 
     public void avanzarTurno(Aldeano aldeano) {
