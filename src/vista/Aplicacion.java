@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
 
+    private static final String RUTA_ICONO_BARRA_MENU = "file:src/vista/imagenes/icono_barra_titulo.jpg";
+    private static final String RUTA_SONIDO_MENU = "src/vista/sonidos/menu.wav";
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -19,7 +22,7 @@ public class Aplicacion extends Application {
     public void start(Stage primaryStage) {
 
         primaryStage.setTitle("AlgoEmpire");
-        primaryStage.getIcons().add(new Image("file:src/vista/imagenes/icono_barra_titulo.jpg"));
+        primaryStage.getIcons().add(new Image(RUTA_ICONO_BARRA_MENU));
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada();
         Scene escenaInicial = new Scene(contenedorEntrada);
@@ -28,7 +31,7 @@ public class Aplicacion extends Application {
         primaryStage.setScene(escenaInicial);
         primaryStage.setResizable(false);
         primaryStage.show();
-        Media sound = new Media(new File("src/vista/sonidos/menu.wav").toURI().toString());
+        Media sound = new Media(new File(RUTA_SONIDO_MENU).toURI().toString());
         (new MediaPlayer(sound)).play();
     }
 }

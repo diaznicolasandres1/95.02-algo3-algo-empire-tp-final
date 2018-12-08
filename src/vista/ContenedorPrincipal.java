@@ -46,7 +46,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setCostados(100, 100, 3, 3);
         this.crearBottom();
         this.creadorDeBotones = new CreadorDeBotones();
-        this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero);
+        this.cambiadorDeHandler = new CambiadorDeHandler(this.juego, this, this.tablero, this.jugadorUno, this.jugadorDos);
         this.tablero.setMinSize(755, 755);
         this.setMinSize(850, 850);
         this.setCenter(this.tablero);
@@ -55,14 +55,6 @@ public class ContenedorPrincipal extends BorderPane {
 
         BackgroundImage imagenFondo = new BackgroundImage(fondo, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenFondo));
-    }
-
-    public String getColor(String nombreJugador){
-        if (nombreJugador.equals(this.jugadorUno)) {
-            return "light";
-        }else{
-            return "";
-        }
     }
 
     public void setCostados(int oroJugadorAnterior, int oroJugadorActual,int poblacionAnterior, int poblacionActual) {
@@ -192,7 +184,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujarMapaConCasilleroHandler() {
-        DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero);
+        DibujadorDeMapa dibujadorDeMapa = new DibujadorDeMapa(this.juego, this.tablero, this.jugadorUno, this.jugadorDos);
         dibujadorDeMapa.dibujarMapaConCasilleroHandler(this);
     }
 

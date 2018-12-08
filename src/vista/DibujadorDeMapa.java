@@ -13,10 +13,17 @@ public class DibujadorDeMapa {
 
     private final GridPane tablero;
     private final Juego juego;
+    private final String jugadorUno;
+    private final String jugadorDos;
+    private static final String RUTA_PASTO = "file:src/vista/imagenes/pasto.png";
+    private static final int TAMANIO_ANCHO_DE_BOTON = 35;
+    private static final int TAMANIO_ALTO_DE_BOTON = 35;
 
-    public DibujadorDeMapa(Juego juego, GridPane tablero) {
+    public DibujadorDeMapa(Juego juego, GridPane tablero, String jugadorUno, String jugadorDos) {
         this.juego = juego;
         this.tablero = tablero;
+        this.jugadorUno = jugadorUno;
+        this.jugadorDos = jugadorDos;
     }
 
     public void dibujarMapaConCasilleroHandler(ContenedorPrincipal contenedor) {
@@ -38,45 +45,23 @@ public class DibujadorDeMapa {
     public void dibujarColocable(Colocable colocable, Button botonCasillero) {
 
         if (colocable == null) {
-            Image pasto = new Image("file:src/vista/imagenes/pasto.png", 35, 35, true, true);
+            Image pasto = new Image(RUTA_PASTO, TAMANIO_ANCHO_DE_BOTON, TAMANIO_ALTO_DE_BOTON, true, true);
             botonCasillero.setGraphic(new ImageView(pasto));
             botonCasillero.setStyle("-fx-padding: 0");
-            botonCasillero.setPrefSize(35, 35);
+            botonCasillero.setPrefSize(TAMANIO_ANCHO_DE_BOTON, TAMANIO_ALTO_DE_BOTON);
             return;
         }
-        
-        switch(colocable.getNombreClase()) {
-            case "Aldeano":
-                Image aldeano = new Image("file:src/vista/imagenes/372.png",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(aldeano));
-                break;
-            case "Espadachin":
-                Image espadachin = new Image("file:src/vista/imagenes/espadachin.png",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(espadachin));
-                break;
-            case "Arquero":
-                Image arquero = new Image("file:src/vista/imagenes/arquero.jpg",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(arquero));
-                break;
-            case "Castillo":
-                Image castillo = new Image("file:src/vista/imagenes/castillo.jpg",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(castillo));
-                break;
-            case "Plaza central":
-                Image plaza = new Image("file:src/vista/imagenes/plazacentral.jpg",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(plaza));
 
-                break;
-            case "Cuartel":
-                Image cuartel = new Image("file:src/vista/imagenes/cuartel.jpg",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(cuartel));
-                break;
-            case "Arma de asedio":
-                Image armaasedio = new Image("file:src/vista/imagenes/armaasedio.jpg",35,35,true,false);
-                botonCasillero.setGraphic(new ImageView(armaasedio));
-                break;
+        String nombreColocable = colocable.getNombreClase();
+
+        if (this.jugadorUno.equals(this.juego.getNombreJugadorDuenioDe(colocable))) {
+            Image imagen = new Image("file:src/vista/imagenes/" + nombreColocable + "_jugador_uno.jpg", TAMANIO_ANCHO_DE_BOTON, TAMANIO_ALTO_DE_BOTON, false, true);
+            botonCasillero.setGraphic(new ImageView(imagen));
+        } else {
+            Image imagen = new Image("file:src/vista/imagenes/" + nombreColocable + "_jugador_dos.jpg", TAMANIO_ANCHO_DE_BOTON, TAMANIO_ALTO_DE_BOTON, false, true);
+            botonCasillero.setGraphic(new ImageView(imagen));
         }
         botonCasillero.setStyle("-fx-padding: 0");
-        botonCasillero.setPrefSize(35, 35);
+        botonCasillero.setPrefSize(TAMANIO_ANCHO_DE_BOTON, TAMANIO_ALTO_DE_BOTON);
     }
 }

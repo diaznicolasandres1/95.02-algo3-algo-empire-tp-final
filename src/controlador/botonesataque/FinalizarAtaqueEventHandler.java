@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
 
-    private static final String RUTA_SONIDO_ATACAR = "src/vista/sondiso/espadachin_atacar.wav";
+    private static final String RUTA_SONIDO_ATACAR = "src/vista/sonidos/espadachin_atacar.wav";
     private static final String RUTA_SONIDO_VICTORIA = "src/vista/sonidos/victoria.wav";
     private final ContenedorPrincipal contenedor;
     private final Atacante atacante;
@@ -45,7 +45,7 @@ public class FinalizarAtaqueEventHandler implements EventHandler<ActionEvent> {
         try {
             this.juego.atacar(this.atacante, (Atacable) atacado);
         } catch (CastilloFueDestruidoException e) {
-            alert.setContentText("El castillo fue destruido. Se finaliza el juego");
+            alert.setContentText("El castillo fue destruido. El ganador es: " + this.juego.getNombreJugadorActual());
             Media sound = new Media(new File(RUTA_SONIDO_VICTORIA).toURI().toString());
             (new MediaPlayer(sound)).play();
             Optional<ButtonType> result = alert.showAndWait();

@@ -10,6 +10,7 @@ import modelo.juego.Juego;
 import vista.ContenedorPrincipal;
 
 public class FinalizarTurnoEventHandler implements EventHandler<ActionEvent> {
+
     private static final String RUTA_SONIDO_FINAL_TURNO = "src/vista/sonidos/final_turno.wav";
     private final Juego juego;
     private final ContenedorPrincipal contenedorPrincipal;
@@ -21,7 +22,6 @@ public class FinalizarTurnoEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-
         this.contenedorPrincipal.clearMensajes();
         this.juego.finalizarTurno();
         this.contenedorPrincipal.crearBottom();

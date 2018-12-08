@@ -185,7 +185,14 @@ public class Jugador {
     private void castilloAtacar() {
         ArrayList<Colocable> objetivos = this.castillo.getColocablesAlrededor(this.mapa);
         this.eliminarColocablesPropios(objetivos);
-        this.castillo.atacarAColocables(objetivos);
+        for (Colocable objetivo : objetivos) {
+            try {
+                this.castillo.atacar((Atacable) objetivo);
+            } catch (UnidadFueDestruidaException | EdificioFueDestruidoException e) {
+                objetivo.descolocarseDe(this.mapa);
+                this.oponente.removerColocable(objetivo);
+            }
+        }
     }
 
     private void eliminarColocablesPropios(ArrayList<Colocable> colocables) {

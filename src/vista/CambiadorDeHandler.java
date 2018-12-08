@@ -23,11 +23,11 @@ public class CambiadorDeHandler {
     private final int base;
     private final int altura;
 
-    public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero) {
+    public CambiadorDeHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, GridPane tablero, String jugadorUno, String jugadorDos) {
         this.juego = juego;
         this.tablero = tablero;
         this.contenedorPrincipal = contenedorPrincipal;
-        this.dibujador = new DibujadorDeMapa(juego, tablero);
+        this.dibujador = new DibujadorDeMapa(juego, tablero, jugadorUno, jugadorDos);
         Mapa mapa = juego.getMapa();
         this.base = mapa.getBase();
         this.altura = mapa.getAltura();
